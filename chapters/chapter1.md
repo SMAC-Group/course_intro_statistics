@@ -8,6 +8,8 @@ type: chapter
 id: 1
 ---
 
+# Test
+
 ## Objectif
 This course is intended to provide an introduction to statistical programming using the R language. It will also provide students with notions of data management, manipulation and analysis as well as of reproducible research, result-sharing and version control (using GitHub). At the end of the class, students should be able to automatically extract data from websites and create interactive web apps as well as dynamic reports to visualize and analyze them.
 
