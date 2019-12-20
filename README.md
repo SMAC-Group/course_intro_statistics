@@ -2,9 +2,13 @@
 <img src="static/logo.svg" align="center" width="450px"/>
 </p>
 
-Welcome! This is the source repository for **GMWM Tutorial with R**, hosted at: <https://github.com/SMAC-Group/course_gmwm>.
+<p align="center">
+<h1>Introduction to Data Science with <code>R</code> </h1>
+</p>
 
-The [site](https://gmwm.netlify.com/)  itself is built on an amazing framework created by <a href='https://ines.io/'>Ines Montani</a>, originally created for her [spaCy course](https://course.spacy.io).  The front-end is powered by
+Welcome! This is the source repository for the exercice support website for the class **Introduction to Data Science** given on Spring semester 2019 at the University of Geneva. The website is hosted at: <https://github.com/SMAC-Group/course_gmwm>.
+
+The [site](https://intro-to-ds.netlify.com/)  itself is built on an amazing framework created by <a href='https://ines.io/'>Ines Montani</a>, originally created for her [spaCy course](https://course.spacy.io).  The front-end is powered by
 [Gatsby](http://gatsbyjs.org/) and [Reveal.js](https://revealjs.com) and the
 back-end code execution uses [Binder](https://mybinder.org). </p>
 
