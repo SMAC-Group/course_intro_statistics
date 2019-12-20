@@ -1,7 +1,7 @@
 ---
-title: '📈 Chapter 2: Introduction to Times Series'
+title: 'Chapter 2: Data Structures'
 description:
-  ''
+  'Understand how to organizing data so that it can be used effectively. '
 prev: /chapter1
 next: /chapter3
 type: chapter

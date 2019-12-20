@@ -1,7 +1,7 @@
 ---
-title: '🛰 Chapter 4: Allan Variance'
+title: 'Chapter 4: Functions'
 description:
-  ' '
+  'Write your own functions'
 prev: /chapter4
 next: /null
 type: chapter

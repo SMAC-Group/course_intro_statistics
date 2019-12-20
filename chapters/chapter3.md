@@ -1,7 +1,7 @@
 ---
-title: '😱 Chapter 3: Allan Variance Calibration Techniques'
+title: 'Chapter 3: Control Structures'
 description:
-  'Allan Variance Calibration'
+  'Understand how control structures dictate the flow of control.'
 prev: /chapter2
 next: /chapter4
 type: chapter
