@@ -21,7 +21,7 @@ export default ({ data }) => {
             <Logo className={classes.logo} aria-label={siteMetadata.title} />
             <section>
                 <div align="center">
-                <h1 className={classes.subtitle}>Introduction to Inertial Sensor Stochastic Calibration</h1>
+                <h1 className={classes.subtitle}>Introduction to Data Science</h1>
                 </div>
             </section>
             {chapters.map(({ slug, title, description }) => (

@@ -57,13 +57,13 @@ const Layout = ({ isHome, title, description, children }) => {
                             <footer className={classes.footer}>
                             
                             <div align="center">
-                            <H3>About the instructors</H3>
+                            <H3>About the instructor and the T.A.</H3>
                             </div>
                                 <div className={classes.footerContent}>
                                     <section className={classes.footerSection}>
                                         {meta.showProfileImage && (
                                             <img
-                                                src="/jan_skaloud.png"
+                                                src="/yuming.jpg"
                                                 alt=""
                                                 className={classes.profile}
                                             />
@@ -71,7 +71,7 @@ const Layout = ({ isHome, title, description, children }) => {
 
                                         
                                         <p> 
-                                        Jan Skaloud is a Senior Scientist, member of the Geodetic Engineering Laboratory - EPFL
+                                        Yuming Zhang is a Ph.D Student and Teaching Assistant working at the Research Center for Statistics of the University of Geneva.
                                         </p>
                                             
                                     </section>
