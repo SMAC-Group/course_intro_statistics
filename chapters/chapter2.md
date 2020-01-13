@@ -11,260 +11,485 @@ id: 2
 
 <exercise id="1" title="General Information">
 
-In this chapter we will consider an introduction to time series analysis from standard statistical standpoint. This chapter is based on the R package [`simts`](https://smac-group.github.io/simts/index.html), which can be installed as follows:
-
-```{r}
-# Cran (stable) version
-install.packages("simts")
-
-# Developpement version
-devtools::install_github("SMAC-Group/simts")
-```
-
-The sildes we will can be downloaded [here](https://github.com/SMAC-Group/course_smac_epfl/raw/master/pdf_slides/slides_chap2.pdf). 
-
-Main references:
-
-1. *Time series analysis and its applications: with R examples*, Shumway & Stoffer, Fourth Edition, 2017, Springer, online version available [here](https://www.stat.pitt.edu/stoffer/tsa4/tsa4.pdf).
-2. *Applied Time Series Analysis with `R`*, Guerrier, *et al.* 2019, online version available [here](http://ts.smac-group.com).
+In this chapter we will consider an introduction to Data Structure with `R`
 
 </exercise>
 
-<exercise id="2" title="Plotting Time Series">
 
 
-The `simts` has plenty of example time series. For example, we consider here a data set coming from the domain of hydrology. The data concerns monthly precipitation (in *mm*) over a certain period of time (1907 to 1972) and is interesting for scientists in order to study water cycles. The data are presented in the graph below:
+<exercise id="2" title="Introduction to vectors">
+
+## Introduction to vectors
+
+Let's define some simple vectors: 
+```{r}
+(grand_slam_win = c(9, 15, 5, 12, 18))
+```
+
 
 ```{r}
-# Loading simts
-library(simts)
-
-# Load hydro dataset
-data("hydro")
-
-# Simulate based on data
-hydro = gts(as.vector(hydro), start = 1907, freq = 12, unit_ts = "in.", 
-            name_ts = "Precipitation", data_name = "Hydrology data")
-
-# Plot hydro 
-plot(hydro)
+c(1, c(1, 3), c(3))
 ```
-<img src="chap2_precip_plot.png" alt="" width="100%">
 
-Let us consider the limitations of a direct graphical representation of a time series when the sample size is large. Indeed, due to visual limitations, a direct plotting of the data will probably result in an uninformative aggregation of points between which it is unable to distinguish anything. For example, we consider here the data coming from the calibration procedure of an Inertial Measurement Unit (IMU) which, in general terms, is used to enhance navigation precision or reconstruct three dimensional movements. These sensors are used in a very wide range of applications such as robotics, virtual reality, vehicle stability control, human and animal motion capture and so forth. The signals coming from these instruments are measured at high frequencies over a long time and are often characterized by linear trends and numerous underlying stochastic processes. The code below retrieves some data from an IMU and plots it directly. First, we install the `imudata` which is hosted on GitHub:
+Guess the value of `d`:
+
+```{r}
+a = c(1,2,3)
+b = c(4,5)
+d = c(a,b,a)
+```
+
+We can also define vectors with characters:
+
+```{r}
+(players <- c("Andy Murray", "Rafael Nadal", "Stan Wawrinka", 
+             "Novak Djokovic", "Roger Federer"))
+```
+
+What is stored in a vector? Check out the function `typeof`!
+
+```{r}
+typeof(players)
+typeof(grand_slam_win)
+```
+
+Integer vs numeric (or double):
+```{r}
+typeof(c(1,2,3))
+typeof(c(1L,2L,3L))
+```
+
+Here is an example of "coercion" (i.e. mixing different kinds of elements in a vector):
+
+```{r}
+(a = c("a", 2))
+(b = c(FALSE, TRUE, 1, 2, "a"))
+```
+
+</exercise>
+
+<exercise id="3" title="Subsetting">
+
+## Subsetting
+
+Subsetting is very important when working with vector. This can be done in various ways. We can use positive indices:
+
+```{r}
+(x = c(1,2,4,5,1))
+x[3]
+```
+
+```{r}
+n = length(x)
+x[c(1,3,n-1)]
+x[(n+1)]
+```
+
+Note what happens to `x[(n+1)]`! This is one of the oddities of `R` and is likely to create some bugs, so be aware of this!
+
+We can also use negative indices:
+
+```{r}
+x[c(-1,-3)]
+```
+
+It is possible to combine the positive and negative indices, for example:
+
+```{r}
+x = c(1,2,4,5,1)
+x[-1][c(2,3)]
+```
+
+which is equivalent to
+
+```{r}
+(y = x[-1])
+y[c(2,3)]
+```
+
+However, it is **really mixed** indices. For example, this code won't work:
 
 ```{r, eval=FALSE}
-# Install imudata R package (this may take a few minutes)
-devtools::install_github("SMAC-Group/imudata")
+x[c(1,2,3,-4)]
 ```
 
-Next, we plot the time series:
-
-```{r, cache=TRUE}
-# Load IMU data
-data(imu6, package = "imudata")
-
-# Construct gst object
-Xt = gts(imu6[,1], data_name = "Gyroscope data", unit_time = "hour", 
-         freq = 100*60*60, name_ts = "Angular rate", 
-         unit_ts = bquote(rad^2/s^2))
-
-# Plot time series
-plot(Xt)
+Finally, it is also possible to use boolean value to extract the elements of a vector. For example:
+```{r}
+x[c(T, F, T, F, T)]
 ```
-<img src="chap_imu_plot.png" alt=" " width="100%">
 
 </exercise>
 
-<exercise id="3" title="Simulating Time Series">
+<exercise id="4" title="Attributes">
 
-Time series can easily be simulated with `simts`. For example, to simulate an White Noise (WN) with variance $\sigma^2 = 1$:
+## Attributes
 
-```{r}
-n = 1000                               # process length
-sigma2 = 1                             # process variance
-Xt = gen_gts(n, WN(sigma2 = sigma2))
-plot(Xt)
-```
-
-<div align="center">
-<img src="chap2_simuWN-1.png" alt=" " width="90%">
-</div>
-
-Similarly, for a random walk (RW):
+It is often a good idea to add attributes to a vector. Here is an example:
 
 ```{r}
-n = 1000                               # process length
-gamma2 = 1                             # process variance
-Xt = gen_gts(n, RW(gamma2 = gamma2))
-plot(Xt)
+(grand_slam_win = c(9, 15, 5, 12, 18))
+attr(grand_slam_win, "date") <- "07-15-2017"
+attr(grand_slam_win, "type") <- "Men, Singles"
+grand_slam_win
 ```
 
-<div align="center">
-<img src="chap2_simuRW-1.png" alt=" " width="90%">
-</div>
-
-Composite stochastic processes can also be simulated. For example, the model WN + RW + DR can be simulated as follows:
+You retrive an attribute as follows:
 
 ```{r}
-set.seed(18)                            # seed for reproducibility
-n = 1000                                # process length
-delta = 0.005                           # delta parameter (drift)
-sigma2 = 10                             # variance parameter (white noise)
-gamma2 = 0.1                            # innovation variance (random walk)
-model = WN(sigma2 = sigma2) + RW(gamma2 = gamma2) + DR(omega = delta)
-Xt = gen_lts(n = n, model = model)
-plot(Xt)
+attr(grand_slam_win, "date")
 ```
-<div align="center">
-<img src="chap2_simu_composite-1.png" alt=" " width="90%">
-</div>
 
-Equivalently, composite stochastic processes can also be simulated with plotting (and returning) the latent processes as follos:
+It is also possible to **name** the elements of a vector. For example:
+```{r}
+(grand_slam_win <- c("Andy Murray" = 9, "Rafael Nadal" = 15, 
+                   "Stan Wawrinka" = 5, "Novak Djokovic" = 12,
+                   "Roger Federer" = 18))
+```
+
+Then subsetting can also be made using the names of the elements:
 
 ```{r}
-set.seed(18)           
-Xt = gen_gts(n = n, model = model)
-plot(Xt)
+grand_slam_win[2]
+grand_slam_win[c("Rafael Nadal", "Roger Federer")]
 ```
 
-<div align="center">
-<img src="chap2_simu_composite2-1.png" alt=" " width="90%">
+All the names can be retrieved as follows:
+
+```{r}
+names(grand_slam_win)
+```
+
+## Simple functions for vectors
+
+Here are some examples:
+
+```{r}
+mean(grand_slam_win)
+median(grand_slam_win)
+sd(grand_slam_win)
+sum(grand_slam_win)
+length(grand_slam_win)
+```
+
+The functions `order` and `sort` are particularly useful!
+
+```{r}
+x = c(1,3,5,8,1)
+sort(x)
+sort(x, decreasing = FALSE)
+sort(x, decreasing = TRUE)
+order(x)
+x[order(x)]
+```
+
+<div class="alert alert-info">
+  <strong> Please make sure to read the section on dates!
 </div>
 
-Using your favorite R IDE (RStudio) or the coding enviroment below simulate a white noise process of length 1000 with variance 1:
+</exercise>
 
-<codeblock id="01_03">
+<exercise id="5" title="Making sequences">
 
-The function `WN()` can be used here.
+## Making Sequences
 
-</codeblock>
+In `R` we often need to construct sequences. Here are some examples:
 
-Similarly, simulate a composite process containg a white noise, a random walk and an AR(1) with the length and the parameter values of your choice:
+```{r}
+1:10
+10:1
+(10:100)/10
+seq(from = 1, to = 10, length.out = 15)
+```
 
-<codeblock id="01_04">
+A sequence can for example be used to plot a function. For example, here is a code to plot the function $f(x) = \sin(x)$ in the range $x \in [-4\pi, \; 4\pi]$.
 
-The functions `RW()` and `AR1()` can be used here. It is interesting to compare the functions `gen_gts()` and `gen_lts()`.
+```{r}
+x = seq(from = -4*pi, to = 4*pi, length.out = 10^4)
+y = sin(x)
+plot(x, y, type = "l")
+```
 
-</codeblock>
+Guess what the code below is doing:
+
+```{r, eval = FALSE}
+x = c(1,2,4,7,15)
+n = length(x)
+x[1:n]
+x[n:1]
+```
+
+## Example: AAPL stock price
+
+```{r}
+(today <- Sys.Date())
+(three_months_ago <- seq(today, length = 2, by = "-3 months")[2])
+library(quantmod)
+getSymbols("AAPL", from = three_months_ago, to = today)
+candleChart(AAPL, theme = 'white', type = 'candles')
+```
+
+```{r}
+# Compute returns
+AAPL_returns <- na.omit(ClCl(AAPL))
+mean(AAPL_returns)
+median(AAPL_returns)
+mu <- mean(AAPL_returns)
+(k <- mean((AAPL_returns - mu)^4)/(mean((AAPL_returns - mu)^2))^2 - 3)
+```
+
+
+# Class: 18/03/19
+
+Let's continue with the AAPL stock price example and make a histogram based on the data. 
+```{r}
+x = seq(from = -0.1, to = 0.1, length.out = 10^4)
+y = dnorm(x, mean(AAPL_returns), sd(AAPL_returns))
+hist(AAPL_returns, probability = TRUE, col = "lightgrey")
+lines(x, y, col = 2, lwd = 2)
+```
+</exercise>
+
+<exercise id="6" title="Matrices">
+
+
+## Matrices
+
+We can use the `matrix()` function to create a matrix from a vector:
+
+```{r}
+(mat <- matrix(1:12, ncol = 4,  nrow = 3, byrow = TRUE))
+```
+
+It is often the case that we already have equi-dimensional vectors available and we wish to bundle them together as a matrix. In these cases, two useful functions are `cbind()` to combine vectors as vertical columns side-by-side, and `rbind()` to combine vectors as horizontal rows. Here is an example with `cbind()`:
+
+```{r}
+players <- c("Andy Murray", "Rafael Nadal", "Stan Wawrinka", 
+             "Novak Djokovic", "Roger Federer")
+grand_slam_win <- c(9, 15, 5, 12, 18)
+win_percentage <- c(78.07, 82.48, 63.96, 82.77, 81.80)
+(mat <- cbind(grand_slam_win, win_percentage))
+```
+
+Once the matrix is defined, we can assign names to its rows and columns by using `rownames()` and `colnames()`, respectively.
+
+```{r}
+rownames(mat) <- players
+colnames(mat) <- c("GS win", "Win rate")
+mat
+```
+
+As with vectors, there are some useful functions that can be used for matrix operators. For example, `t()` returns a matrix transpose:
+
+```{r}
+(A_char = matrix(c("a","b","c","d"),2, 2))
+(A <- matrix(1:8, 4, 2))
+t(A)
+```
+
+We can also do matrix addition simply with `+`.
+```{r}
+(B = A+A)
+```
+
+When we do matrix multiplication, we need to be more careful. Check the difference of the following two multiplications:
+
+```{r}
+A*A                # elementwise multiplication
+(D = t(A)%*%A)     # regular matrix multiplication
+```
+
+In addition, the function `solve()` allows to inverse a matrix.
+
+```{r}
+(D_inv = solve(D))
+round(D%*%D_inv, 14)
+D%*%D_inv
+```
+
+We can also easily create a diagonal matrix with the function `diag()`:
+
+```{r}
+diag(c(1,1))
+```
+
+
+## Example: Portfolio Optimization
+
+```{r}
+# Load quantmod
+library(quantmod)
+
+# Download data
+today <- Sys.Date()
+five_years_ago <- seq(today, length = 2, by = "-5 year")[2]
+getSymbols("AAPL", from = five_years_ago, to = today)
+getSymbols("NFLX", from = five_years_ago, to = today)
+
+# Compute returns
+Ra <- na.omit(ClCl(AAPL))
+Rn <- na.omit(ClCl(NFLX)) 
+
+# Estimation of mu and Sigma
+Sigma <- cov(cbind(Ra, Rn))
+mu <- c(mean(Ra), mean(Rn))
+
+# Compute omega^*
+omega_star <- (Sigma[2, 2] - Sigma[1, 2])/(Sigma[1, 1] + Sigma[2, 2] - 2*Sigma[1, 2])
+
+# Compute investment expected value and variance
+mu_investment <- omega_star*mu[1] + (1 - omega_star)*mu[2]
+var_investment <- omega_star^2*Sigma[1,1] + (1 - omega_star)^2*Sigma[2,2] +
+  2*omega_star*(1 - omega_star)*Sigma[1,2]
+```
+
+</exercise>
+
+
+<exercise id="7" title="Lists">
+
+## List
+
+A list is one of the commonly used heterogeneous data structures. For example, here we create a list that contains different element types (numeric, character, logical, matrix).
+
+```{r}
+# List elements
+num_vec <- c(188, 140)
+char_vec <- c("Height", "Weight", "Length")
+logic_vec <- rep(TRUE, 8)
+my_mat <- matrix(0, nrow = 5, ncol = 5)
+
+# List initialization 
+(my_list <- list(num_vec, char_vec, logic_vec, my_mat))
+```
+
+To extract/subset for the second vector (i.e. the vector of characters in this case) in the list, different from vector subsetting, we use double brackets `[[ ]]`.
+
+```{r}
+my_list[[2]]
+my_list[[2]][2]
+my_list[[4]][1,5]
+```
+
+Additionally, it is possible to add named labels to the elements of your list.
+
+```{r}
+my_list <- list(number = num_vec, character = char_vec, 
+                 logic = logic_vec, matrix = my_mat)
+```
+
+And equivalently we can subset the list based on the named labels.
+
+```{r}
+my_list$number
+my_list[["number"]]
+```
+
+When performing subsetting with list, always be careful with the use of brackets. Check the difference of using `[[ ]]` and `[ ]`:
+
+```{r}
+my_list[[1]]  
+my_list[1]    
+
+typeof(my_list[[1]])
+typeof(my_list[1])
+
+my_list[[1]] + 1
+```
+
+```{r, eval=FALSE}
+my_list[1] + 1
+```
 
 
 </exercise>
 
-<exercise id="4" title="Autocorrelation">
-
-It is possible to plot the *theoretical* ACF of most time series with `simts`. For example, for an AR(1) we have
-
-```{r AR1theoACF, cache = TRUE, echo = TRUE, fig.cap = "Comparison of theoretical ACF of AR(1) with different parameter values", fig.align='center', fig.height = 8, fig.width = 10}
-par(mfrow=c(2,2))
-plot(theo_acf(ar = 0.9, ma = NULL), 
-     main = expression(paste("Theoretical ACF plot of AR(1) with ", phi, " = 0.9")))
-plot(theo_acf(ar = 0.5, ma = NULL),
-     main = expression(paste("Theoretical ACF plot of AR(1) with ", phi, " = 0.5")))
-plot(theo_acf(ar = -0.9, ma = NULL), 
-     main = expression(paste("Theoretical ACF plot of AR(1) with ", phi, " = -0.9")))
-plot(theo_acf(ar = 0.1, ma = NULL), 
-     main = expression(paste("Theoretical ACF plot of AR(1) with ", phi, " = 0.1")))
-```
-
-<img src="AR1theoACF-1.png" alt=" " width="100%">
-
-The theoretical ACF of a process can also be compared with the empirical ACF. For example
-
-```{r AR1acfcomp, cache = TRUE, echo = TRUE, fig.cap = "Comparison between theoretical and empirical ACF for an AR(1) process", fig.align='center', fig.height = 8, fig.width = 10}
-par(mfrow=c(2,2))
-plot(theo_acf(ar = 0.9, ma = NULL), 
-     main = expression(paste("Theoretical ACF plot of AR(1) with ", phi, " = 0.9")))
-
-Xt = gen_gts(n = 50, model = AR1(phi = 0.9, sigma2 = 1))
-plot(auto_corr(Xt, lag.max = 20), main = "Simulated AR(1) with n = 50")
-
-Xt = gen_gts(n = 500, model = AR1(phi = 0.9, sigma2 = 1))
-plot(auto_corr(Xt, lag.max = 20), main = "Simulated AR(1) with n = 500")
-
-Xt = gen_gts(n = 5000, model = AR1(phi = 0.9, sigma2 = 1))
-plot(auto_corr(Xt, lag.max = 20), main = "Simulated AR(1) with n = 5000")
-```
-
-<img src="AR1acfcomp-1.png" alt=" " width="100%">
-
-</exercise>
 
 
-<exercise id="5" title="hgjgs">
 
-</exercise>
 
-<exercise id="6" title="Robustness Issues">
+<exercise id="8" title="Dataframes">
 
-The data generating process delivers a theoretical autocorrelation
-(autocovariance) function that, as explained in the previous section,
-can then be estimated through the sample autocorrelation (autocovariance)
-functions. However, in practice, the sample is often issued from a data 
-generating process that is "close" to the true one, meaning that the sample
-suffers from some form of small contamination. This contamination is typically
-represented by a small amount of extreme observations that are called "outliers"
-that come from a process that is different from the true data generating process. The fact that the sample can suffer from outliers implies that the standard
-estimation of the autocorrelation (autocovariance) functions through the sample
-functions could be highly biased. The standard estimators presented in the
-previous section are therefore not "robust" and can behave badly when the sample
-suffers from contamination. More details on this topic can be found [here](https://smac-group.github.io/ts/fundtimeseries.html#robustness-issues). 
- 
-In order to limit this effect of outliers, different *robust* estimators exist for time
-series problems which are designed to reduce the impact of contamination on 
-the estimation procedure. Among these estimators, there are a few that estimate the
-autocorrelation (autocovariance) functions in a robust manner. One of these 
-estimators is provided in the ``robacf()`` function in the `robcor` package which we will use to investigate the importance of robust ACF estimation on some real data. We consider the data on monthly precipitation (`hydro`) presented in the previous chapter. This data is measured over 65 years (between 1907 and 1972) and is an example of data that is used to determine the behaviour of a water cycle. More specifically, precipitation is often considered the starting point for the analysis of a water cycle and, based on its behaviour, the rest of the water cycle is determined based on other variables. Therefore, a correct analysis of precipitation is extremely important to correctly define the behaviour of the water cycle passing through run-off and groundwater formation to evaporation and condensation. Given this, let us now take a look at the classic autocorrelation plot of this data.
+
+## Dataframes
+
+We can create a data frame using data.frame()
 
 ```{r}
-# Load hydro dataset
-data("hydro")
-# Define the time series as a gts object
-hydro = gts(as.vector(hydro), start = 1907, freq = 12, unit_ts = "mm", name_ts = "Precipitation", data_name = "Hydrology data")
-# Plot the Empirical ACF
-plot(auto_corr(hydro))
+### Creation
+
+players <- c("Andy Murray", "Rafael Nadal", "Stan Wawrinka", 
+             "Novak Djokovic", "Roger Federer")
+
+grand_slam_win <- c(9, 15, 5, 12, 18)
+
+date_of_birth <- c("15 May 1987", "3 June 1986", "28 March 1985", 
+                  "22 May 1987", "8 August 1981")
+
+country <- c("Great Britain", "Spain", "Switzerland", 
+            "Serbia", "Switzerland")
+ATP_ranking <- c(1, 2, 3, 4, 5)
+
+prize_money <- c(60449649, 85920132, 30577981, 109447408, 104445185)
+
+tennis <- data.frame(date_of_birth, grand_slam_win, country, 
+                    ATP_ranking, prize_money)
+
+dimnames(tennis)[[1]] <- players
+tennis
 ```
 
 
-<div align="center">
-<img src="chap2_acf-1.png" alt=" " width="75%">
+## Example: Maps
+
+Please refer to the piazza post to see how to obtain a Google API key for map services. You may need the following code to activate your API key from R:
+
+```{r, eval=FALSE}
+library(ggmap)
+register_google(key = "your key here") 
+```
+
+<div class="alert alert-info">
+  <strong> Note: As the Google API key is related to the personal google account, the API key used to illustrate in the textbook is not shown here, and therefore, the following code is not evaluated. By inputting your personal Google API key to the above code, you should be able to run the following code and obtain desirable results. 
 </div>
 
-Based on this ACF plot, one would probably conclude that (counterintuitively) there does not appear to be any significant form of correlation between lagged observations in the data. From a hydrological point of view, one would therefore assume an uncorrelated model for precipitation (i.e. white noise) and, based on this, model the rest of the water cycle. However, let us take a look at the robust ACF plot.
+After registering the API key from R, you can start to play with the map services as follows. The `geocode()` function will return the latitude and longitude of a location using the Google Geocoding API. For example, we can locate Uni-Mail using the following code:
 
-```{r}
-# Plot the Robust ACF
-plot(auto_corr(hydro, robust = TRUE))
+```{r, eval=FALSE}
+unimail_coord <- geocode("Unimail, Geneva", source = "google")
 ```
 
-<div align="center">
-<img src="chap2_robacf-1.png" alt=" " width="75%" class="center">
-</div>
+Now we continue with our tennis players example:
 
-If we analyse this output, the conclusion appears to be extremely different and, in some way, makes more sense from a hydrological point of view (i.e. the amount of precipitation between close months and over specific months is correlated). Indeed, we can see that there appears to be a seasonal correlation ("waves" in the ACF plot) and that close months appear to be correlated between them. To better highlight this difference (whci can lead to different conclusions) let us finally compare the plots.
-
-```{r}
-# Compare classic and robust ACF
-compare_acf(hydro)
+```{r, eval=FALSE}
+birth_place <- c("Glasgow, Scotland", "Manacor, Spain", "Lausanne, Switzerland", "Belgrade, Serbia", "Basel, Switzerland")
+birth_coord <- geocode(birth_place, source = "google")
 ```
 
-<img src="chap2_compareacf-1.png" alt=" " width="100%">
+Then we can create a dataframe to store all information related to the tennis players of interest:
 
-Therefore, based on the choice of analysis (i.e. classic or robust), the entire water cycle analysis would change and could deliver very different conclusions.
+```{r, eval=FALSE}
+players <- c("Andy Murray", "Rafael Nadal", "Stan Wawrinka", 
+             "Novak Djokovic", "Roger Federer")
+grand_slam_win <- c(9, 15, 5, 12, 18)
+
+birth_coord$Players <- players
+birth_coord$GS <- grand_slam_win
+birth_coord
+is.data.frame(birth_coord)
+```
+
+Let's represent this information graphically. We haven't seen how to make graph yet so don't worry too much about the details of how this graph is made.
+
+```{r, eval=FALSE}
+library(mapproj)
+map <- get_map(location = 'Switzerland', zoom = 4)
+ggmap(map) + geom_point(data = birth_coord, 
+             aes(lon, lat, col = Players, size = GS)) + 
+             scale_size(name="Grand Slam Wins") + 
+             xlab("Longitude") + ylab("Latitude")
+```
+
+
 
 </exercise>
 
-<exercise id="7" title="kh">
-
-ksdgrg;kb lfzsgn
-
-zflgn
-
-```{r}
-sdrgm
-```
-<slides source = "test">
-
-</slides>
-
-</exercise>

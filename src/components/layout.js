@@ -63,7 +63,7 @@ const Layout = ({ isHome, title, description, children }) => {
                                     <section className={classes.footerSection}>
                                         {meta.showProfileImage && (
                                             <img
-                                                src="/yuming.jpg"
+                                                src="/lvoirol2.jpg"
                                                 alt=""
                                                 className={classes.profile}
                                             />
@@ -71,7 +71,7 @@ const Layout = ({ isHome, title, description, children }) => {
 
                                         
                                         <p> 
-                                        Yuming Zhang is a Ph.D Student and Teaching Assistant working at the Research Center for Statistics of the University of Geneva.
+                                        Lionel Voirol is a Ph.D Student and Teaching Assistant working at the Research Center for Statistics of the University of Geneva. 
                                         </p>
                                             
                                     </section>
