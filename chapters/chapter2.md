@@ -21,19 +21,23 @@ In this chapter we will consider an introduction to Data Structure with `R`
 
 ## Introduction to vectors
 
+$$
+a^2 + b^2 = c^2
+$$
+
 Let's define some simple vectors: 
-```{r}
+```r
 (grand_slam_win = c(9, 15, 5, 12, 18))
 ```
 
 
-```{r}
+```r
 c(1, c(1, 3), c(3))
 ```
 
 Guess the value of `d`:
 
-```{r}
+```r
 a = c(1,2,3)
 b = c(4,5)
 d = c(a,b,a)
@@ -41,27 +45,27 @@ d = c(a,b,a)
 
 We can also define vectors with characters:
 
-```{r}
+```r
 (players <- c("Andy Murray", "Rafael Nadal", "Stan Wawrinka", 
              "Novak Djokovic", "Roger Federer"))
 ```
 
 What is stored in a vector? Check out the function `typeof`!
 
-```{r}
+```r
 typeof(players)
 typeof(grand_slam_win)
 ```
 
 Integer vs numeric (or double):
-```{r}
+```r
 typeof(c(1,2,3))
 typeof(c(1L,2L,3L))
 ```
 
 Here is an example of "coercion" (i.e. mixing different kinds of elements in a vector):
 
-```{r}
+```r
 (a = c("a", 2))
 (b = c(FALSE, TRUE, 1, 2, "a"))
 ```
@@ -74,12 +78,12 @@ Here is an example of "coercion" (i.e. mixing different kinds of elements in a v
 
 Subsetting is very important when working with vector. This can be done in various ways. We can use positive indices:
 
-```{r}
+```r
 (x = c(1,2,4,5,1))
 x[3]
 ```
 
-```{r}
+```r
 n = length(x)
 x[c(1,3,n-1)]
 x[(n+1)]
@@ -89,20 +93,20 @@ Note what happens to `x[(n+1)]`! This is one of the oddities of `R` and is likel
 
 We can also use negative indices:
 
-```{r}
+```r
 x[c(-1,-3)]
 ```
 
 It is possible to combine the positive and negative indices, for example:
 
-```{r}
+```r
 x = c(1,2,4,5,1)
 x[-1][c(2,3)]
 ```
 
 which is equivalent to
 
-```{r}
+```r
 (y = x[-1])
 y[c(2,3)]
 ```
@@ -114,7 +118,7 @@ x[c(1,2,3,-4)]
 ```
 
 Finally, it is also possible to use boolean value to extract the elements of a vector. For example:
-```{r}
+```r
 x[c(T, F, T, F, T)]
 ```
 
@@ -126,7 +130,7 @@ x[c(T, F, T, F, T)]
 
 It is often a good idea to add attributes to a vector. Here is an example:
 
-```{r}
+```r
 (grand_slam_win = c(9, 15, 5, 12, 18))
 attr(grand_slam_win, "date") <- "07-15-2017"
 attr(grand_slam_win, "type") <- "Men, Singles"
@@ -135,12 +139,12 @@ grand_slam_win
 
 You retrive an attribute as follows:
 
-```{r}
+```r
 attr(grand_slam_win, "date")
 ```
 
 It is also possible to **name** the elements of a vector. For example:
-```{r}
+```r
 (grand_slam_win <- c("Andy Murray" = 9, "Rafael Nadal" = 15, 
                    "Stan Wawrinka" = 5, "Novak Djokovic" = 12,
                    "Roger Federer" = 18))
@@ -148,14 +152,14 @@ It is also possible to **name** the elements of a vector. For example:
 
 Then subsetting can also be made using the names of the elements:
 
-```{r}
+```r
 grand_slam_win[2]
 grand_slam_win[c("Rafael Nadal", "Roger Federer")]
 ```
 
 All the names can be retrieved as follows:
 
-```{r}
+```r
 names(grand_slam_win)
 ```
 
@@ -163,7 +167,7 @@ names(grand_slam_win)
 
 Here are some examples:
 
-```{r}
+```r
 mean(grand_slam_win)
 median(grand_slam_win)
 sd(grand_slam_win)
@@ -173,7 +177,7 @@ length(grand_slam_win)
 
 The functions `order` and `sort` are particularly useful!
 
-```{r}
+```r
 x = c(1,3,5,8,1)
 sort(x)
 sort(x, decreasing = FALSE)
@@ -194,7 +198,7 @@ x[order(x)]
 
 In `R` we often need to construct sequences. Here are some examples:
 
-```{r}
+```r
 1:10
 10:1
 (10:100)/10
@@ -203,7 +207,7 @@ seq(from = 1, to = 10, length.out = 15)
 
 A sequence can for example be used to plot a function. For example, here is a code to plot the function $f(x) = \sin(x)$ in the range $x \in [-4\pi, \; 4\pi]$.
 
-```{r}
+```r
 x = seq(from = -4*pi, to = 4*pi, length.out = 10^4)
 y = sin(x)
 plot(x, y, type = "l")
@@ -220,7 +224,7 @@ x[n:1]
 
 ## Example: AAPL stock price
 
-```{r}
+```r
 (today <- Sys.Date())
 (three_months_ago <- seq(today, length = 2, by = "-3 months")[2])
 library(quantmod)
@@ -228,7 +232,7 @@ getSymbols("AAPL", from = three_months_ago, to = today)
 candleChart(AAPL, theme = 'white', type = 'candles')
 ```
 
-```{r}
+```r
 # Compute returns
 AAPL_returns <- na.omit(ClCl(AAPL))
 mean(AAPL_returns)
@@ -241,7 +245,7 @@ mu <- mean(AAPL_returns)
 # Class: 18/03/19
 
 Let's continue with the AAPL stock price example and make a histogram based on the data. 
-```{r}
+```r
 x = seq(from = -0.1, to = 0.1, length.out = 10^4)
 y = dnorm(x, mean(AAPL_returns), sd(AAPL_returns))
 hist(AAPL_returns, probability = TRUE, col = "lightgrey")
@@ -256,13 +260,13 @@ lines(x, y, col = 2, lwd = 2)
 
 We can use the `matrix()` function to create a matrix from a vector:
 
-```{r}
+```r
 (mat <- matrix(1:12, ncol = 4,  nrow = 3, byrow = TRUE))
 ```
 
 It is often the case that we already have equi-dimensional vectors available and we wish to bundle them together as a matrix. In these cases, two useful functions are `cbind()` to combine vectors as vertical columns side-by-side, and `rbind()` to combine vectors as horizontal rows. Here is an example with `cbind()`:
 
-```{r}
+```r
 players <- c("Andy Murray", "Rafael Nadal", "Stan Wawrinka", 
              "Novak Djokovic", "Roger Federer")
 grand_slam_win <- c(9, 15, 5, 12, 18)
@@ -272,7 +276,7 @@ win_percentage <- c(78.07, 82.48, 63.96, 82.77, 81.80)
 
 Once the matrix is defined, we can assign names to its rows and columns by using `rownames()` and `colnames()`, respectively.
 
-```{r}
+```r
 rownames(mat) <- players
 colnames(mat) <- c("GS win", "Win rate")
 mat
@@ -280,27 +284,27 @@ mat
 
 As with vectors, there are some useful functions that can be used for matrix operators. For example, `t()` returns a matrix transpose:
 
-```{r}
+```r
 (A_char = matrix(c("a","b","c","d"),2, 2))
 (A <- matrix(1:8, 4, 2))
 t(A)
 ```
 
 We can also do matrix addition simply with `+`.
-```{r}
+```r
 (B = A+A)
 ```
 
 When we do matrix multiplication, we need to be more careful. Check the difference of the following two multiplications:
 
-```{r}
+```r
 A*A                # elementwise multiplication
 (D = t(A)%*%A)     # regular matrix multiplication
 ```
 
 In addition, the function `solve()` allows to inverse a matrix.
 
-```{r}
+```r
 (D_inv = solve(D))
 round(D%*%D_inv, 14)
 D%*%D_inv
@@ -308,14 +312,14 @@ D%*%D_inv
 
 We can also easily create a diagonal matrix with the function `diag()`:
 
-```{r}
+```r
 diag(c(1,1))
 ```
 
 
 ## Example: Portfolio Optimization
 
-```{r}
+```r
 # Load quantmod
 library(quantmod)
 
@@ -351,7 +355,7 @@ var_investment <- omega_star^2*Sigma[1,1] + (1 - omega_star)^2*Sigma[2,2] +
 
 A list is one of the commonly used heterogeneous data structures. For example, here we create a list that contains different element types (numeric, character, logical, matrix).
 
-```{r}
+```r
 # List elements
 num_vec <- c(188, 140)
 char_vec <- c("Height", "Weight", "Length")
@@ -364,7 +368,7 @@ my_mat <- matrix(0, nrow = 5, ncol = 5)
 
 To extract/subset for the second vector (i.e. the vector of characters in this case) in the list, different from vector subsetting, we use double brackets `[[ ]]`.
 
-```{r}
+```r
 my_list[[2]]
 my_list[[2]][2]
 my_list[[4]][1,5]
@@ -372,21 +376,21 @@ my_list[[4]][1,5]
 
 Additionally, it is possible to add named labels to the elements of your list.
 
-```{r}
+```r
 my_list <- list(number = num_vec, character = char_vec, 
                  logic = logic_vec, matrix = my_mat)
 ```
 
 And equivalently we can subset the list based on the named labels.
 
-```{r}
+```r
 my_list$number
 my_list[["number"]]
 ```
 
 When performing subsetting with list, always be careful with the use of brackets. Check the difference of using `[[ ]]` and `[ ]`:
 
-```{r}
+```r
 my_list[[1]]  
 my_list[1]    
 
@@ -414,7 +418,7 @@ my_list[1] + 1
 
 We can create a data frame using data.frame()
 
-```{r}
+```r
 ### Creation
 
 players <- c("Andy Murray", "Rafael Nadal", "Stan Wawrinka", 
