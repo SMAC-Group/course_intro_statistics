@@ -22,10 +22,6 @@ Let's define some simple vectors:
 c(1, c(1, 3), c(3))
 ```
 
-
-Notes: When using `(x = 2)` it attirbutes to `x` the value 2 and prints it. Also, the function `c()` can be sued within itself...
-
-
 ```out
 [1] 1 1 3 3
 ```
@@ -41,6 +37,8 @@ We can also define vectors with characters:
 [1] "Andy Murray"    "Rafael Nadal"   "Stan Wawrinka"  "Novak Djokovic"
 [5] "Roger Federer"
 ```
+
+Notes: When using `(x = 2)` it attirbutes to `x` the value 2 and prints it. Also, the function `c()` can be sued within itself...
 
 ---
 
