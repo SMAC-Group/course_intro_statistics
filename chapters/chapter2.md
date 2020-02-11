@@ -16,7 +16,7 @@ In this chapter we will consider an introduction to Data Structure with `R`
 </exercise>
 
 
-<exercise id="2" title="Introduction to vectors">
+<exercise id="2" title="Introduction to vectors" type = "slides">
 
 <slides source="chapter2_01"> 
 </slides>
