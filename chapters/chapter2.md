@@ -27,7 +27,7 @@ In this chapter we will consider an introduction to Data Structure with `R`
 
 <exercise id="3" title="Introduction to vectors">
 
-Multiple Choice: Guess the value of `d`:
+Guess the value of `d`:
   
 ```r
 a = c(1,2,3)
@@ -36,21 +36,27 @@ d = c(a,b,a)
 ```
 
 <choice id="1">
-<opt text=" [1] ">
-`[1] "a" "b" "a"` over five, indicating it is nonlinear."
+<opt text = "<code>[1] 'a' 'b' 'a'</code>" >
+No, <code>d</code> contains numeric values.
 </opt>
-<opt text="length" >
-``[1] "a" "b" "a"`.
+<opt text="<code>[1] 1 2 3 4 5</code>" >
 </opt>
-<opt text="price" correct="true">
-Correct! `price` is significant (p <0.05) and linear (`edf` near 1).
+<opt text="<code>[1] 4 5 1 2 3 4 5</code>" >
 </opt>
-<opt text="rpm">
-`s(rpm)` has `edf` over five, indicating it is nonlinear.
-</opt>
-<opt text="width">
-`s(width)` has a `p-value` over 0.05 and no stars, indicating it is not significant.
+<opt text="<code>[1] 1 2 3 4 5 1 2 3</code>" correct="true">
 </opt>
 </choice>
+
+Subset the elements 1, 2, 4 and 5 of the vector `x`:
+
+<codeblock id="01_01">
+To select with positive indices, you can simply use: <code>x[c(1, 2, 4, 5)]</code>
+</codeblock>
+
+Find an easier way to subset `x`:
+
+<codeblock id="01_02">
+Try to decompose the problem... First, try to understand what is <code>x[c(1, 2, 4, 6)]</code>, then, <code>x[c(1, 2, 4, 6)][-2]</code> and so on.
+</codeblock>
 
 </exercise>
