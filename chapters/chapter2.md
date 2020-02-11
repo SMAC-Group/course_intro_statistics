@@ -36,7 +36,7 @@ d = c(a,b,a)
 ```
 
 <choice id="1">
-<opt code=" [1] ">
+<opt text=" [1] ">
 `[1] "a" "b" "a"` over five, indicating it is nonlinear."
 </opt>
 <opt text="length" >
