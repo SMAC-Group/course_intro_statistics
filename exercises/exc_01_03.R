@@ -1,11 +1,9 @@
-# Load library
-library(simts)
+# Generate data
+x = rnorm(1000)
 
-# Sample size
-n = 10^3
+# plot density
+par(mfrow=c(2,1))
 
-# Define model
-model = __(sigma2 = 1)
+# KDE
 
-# Simulate time series
-Xt = gen_gts(n = n, model = _____)
+# Boxplot

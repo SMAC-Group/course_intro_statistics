@@ -1,14 +1,11 @@
-# Load library
-library(simts)
+# Generate data
+x = rnorm(1000)
 
-# Sample size
-n = 10^3
+# plot density
+par(mfrow=c(2,1))
 
-# Define model
-model = WN(sigma2 = 1)
+# KDE
+plot(density(x), main = "KDE of x")
 
-# Simulate time series
-Xt = gen_gts(n = n, model = model)
-
-# Plot time series
-plot(Xt)
+# Boxplot
+boxplot(x, horizontal = T, main = "Boxplot of x")

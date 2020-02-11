@@ -16,244 +16,47 @@ In this chapter we will consider an introduction to Data Structure with `R`
 </exercise>
 
 
-
 <exercise id="2" title="Introduction to vectors">
 
-## Introduction to vectors
+<slides source="chapter2_01"> 
+</slides>
 
-$$
-a^2 + b^2 = c^2
-$$
-
-Let's define some simple vectors: 
-```r
-(grand_slam_win = c(9, 15, 5, 12, 18))
-```
-
-
-```r
-c(1, c(1, 3), c(3))
-```
-
-Guess the value of `d`:
-
-```r
-a = c(1,2,3)
-b = c(4,5)
-d = c(a,b,a)
-```
-
-We can also define vectors with characters:
-
-```r
-(players <- c("Andy Murray", "Rafael Nadal", "Stan Wawrinka", 
-             "Novak Djokovic", "Roger Federer"))
-```
-
-What is stored in a vector? Check out the function `typeof`!
-
-```r
-typeof(players)
-typeof(grand_slam_win)
-```
-
-Integer vs numeric (or double):
-```r
-typeof(c(1,2,3))
-typeof(c(1L,2L,3L))
-```
-
-Here is an example of "coercion" (i.e. mixing different kinds of elements in a vector):
-
-```r
-(a = c("a", 2))
-(b = c(FALSE, TRUE, 1, 2, "a"))
-```
 
 </exercise>
 
 <exercise id="3" title="Subsetting">
 
-## Subsetting
-
-Subsetting is very important when working with vector. This can be done in various ways. We can use positive indices:
-
-```r
-(x = c(1,2,4,5,1))
-x[3]
-```
-
-```r
-n = length(x)
-x[c(1,3,n-1)]
-x[(n+1)]
-```
-
-Note what happens to `x[(n+1)]`! This is one of the oddities of `R` and is likely to create some bugs, so be aware of this!
-
-We can also use negative indices:
-
-```r
-x[c(-1,-3)]
-```
-
-It is possible to combine the positive and negative indices, for example:
-
-```r
-x = c(1,2,4,5,1)
-x[-1][c(2,3)]
-```
-
-which is equivalent to
-
-```r
-(y = x[-1])
-y[c(2,3)]
-```
-
-However, it is **really mixed** indices. For example, this code won't work:
-
-```{r, eval=FALSE}
-x[c(1,2,3,-4)]
-```
-
-Finally, it is also possible to use boolean value to extract the elements of a vector. For example:
-```r
-x[c(T, F, T, F, T)]
-```
+<slides source="chapter2_02"> 
+</slides>
 
 </exercise>
 
 <exercise id="4" title="Attributes">
 
-## Attributes
+<slides source="chapter2_03"> 
+</slides>
 
-It is often a good idea to add attributes to a vector. Here is an example:
-
-```r
-(grand_slam_win = c(9, 15, 5, 12, 18))
-attr(grand_slam_win, "date") <- "07-15-2017"
-attr(grand_slam_win, "type") <- "Men, Singles"
-grand_slam_win
-```
-
-You retrive an attribute as follows:
-
-```r
-attr(grand_slam_win, "date")
-```
-
-It is also possible to **name** the elements of a vector. For example:
-```r
-(grand_slam_win <- c("Andy Murray" = 9, "Rafael Nadal" = 15, 
-                   "Stan Wawrinka" = 5, "Novak Djokovic" = 12,
-                   "Roger Federer" = 18))
-```
-
-Then subsetting can also be made using the names of the elements:
-
-```r
-grand_slam_win[2]
-grand_slam_win[c("Rafael Nadal", "Roger Federer")]
-```
-
-All the names can be retrieved as follows:
-
-```r
-names(grand_slam_win)
-```
-
-## Simple functions for vectors
-
-Here are some examples:
-
-```r
-mean(grand_slam_win)
-median(grand_slam_win)
-sd(grand_slam_win)
-sum(grand_slam_win)
-length(grand_slam_win)
-```
-
-The functions `order` and `sort` are particularly useful!
-
-```r
-x = c(1,3,5,8,1)
-sort(x)
-sort(x, decreasing = FALSE)
-sort(x, decreasing = TRUE)
-order(x)
-x[order(x)]
-```
-
-<div class="alert alert-info">
-  <strong> Please make sure to read the section on dates!
-</div>
 
 </exercise>
 
-<exercise id="5" title="Making sequences">
+<exercise id="5" title="Simple functions for vectors">
+
+<slides source="chapter2_03_01"> 
+</slides>
+
+
+</exercise>
+
+<exercise id="6" title="Making sequences">
 
 ## Making Sequences
 
-In `R` we often need to construct sequences. Here are some examples:
+<slides source="chapter2_04"> 
+</slides>
 
-```r
-1:10
-10:1
-(10:100)/10
-seq(from = 1, to = 10, length.out = 15)
-```
-
-A sequence can for example be used to plot a function. For example, here is a code to plot the function $f(x) = \sin(x)$ in the range $x \in [-4\pi, \; 4\pi]$.
-
-```r
-x = seq(from = -4*pi, to = 4*pi, length.out = 10^4)
-y = sin(x)
-plot(x, y, type = "l")
-```
-
-Guess what the code below is doing:
-
-```{r, eval = FALSE}
-x = c(1,2,4,7,15)
-n = length(x)
-x[1:n]
-x[n:1]
-```
-
-## Example: AAPL stock price
-
-```r
-(today <- Sys.Date())
-(three_months_ago <- seq(today, length = 2, by = "-3 months")[2])
-library(quantmod)
-getSymbols("AAPL", from = three_months_ago, to = today)
-candleChart(AAPL, theme = 'white', type = 'candles')
-```
-
-```r
-# Compute returns
-AAPL_returns <- na.omit(ClCl(AAPL))
-mean(AAPL_returns)
-median(AAPL_returns)
-mu <- mean(AAPL_returns)
-(k <- mean((AAPL_returns - mu)^4)/(mean((AAPL_returns - mu)^2))^2 - 3)
-```
-
-
-# Class: 18/03/19
-
-Let's continue with the AAPL stock price example and make a histogram based on the data. 
-```r
-x = seq(from = -0.1, to = 0.1, length.out = 10^4)
-y = dnorm(x, mean(AAPL_returns), sd(AAPL_returns))
-hist(AAPL_returns, probability = TRUE, col = "lightgrey")
-lines(x, y, col = 2, lwd = 2)
-```
 </exercise>
 
-<exercise id="6" title="Matrices">
+<exercise id="7" title="Matrices">
 
 
 ## Matrices
@@ -349,7 +152,7 @@ var_investment <- omega_star^2*Sigma[1,1] + (1 - omega_star)^2*Sigma[2,2] +
 </exercise>
 
 
-<exercise id="7" title="Lists">
+<exercise id="8" title="Lists">
 
 ## List
 
@@ -411,7 +214,7 @@ my_list[1] + 1
 
 
 
-<exercise id="8" title="Dataframes">
+<exercise id="9" title="Dataframes">
 
 
 ## Dataframes
@@ -497,3 +300,12 @@ ggmap(map) + geom_point(data = birth_coord,
 
 </exercise>
 
+
+<exercise id="10" title="Exercises">
+
+<codeblock id="01_03">
+
+This is a hint.
+
+</codeblock>
+</exercise>
