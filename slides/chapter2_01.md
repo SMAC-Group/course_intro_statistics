@@ -27,16 +27,6 @@ c(1, c(1, 3), c(3))
 
 ---
 
-Guess the value of `d`:
-
-```r
-a = c(1,2,3)
-b = c(4,5)
-d = c(a,b,a)
-```
-
----
-
 We can also define vectors with characters:
 
 ```r
