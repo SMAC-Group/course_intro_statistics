@@ -58,3 +58,15 @@ Try to decompose the problem... First, try to understand what is <code>x[c(1, 2,
 
 
 </exercise>
+
+<exercise id="4" title="Attributes, simple functions applied to vectors and sequences" type = "slides">
+
+<slides source="chapter2_03">
+</slides>
+
+</exercise>
+
+
+<exercise id="5" title="Attributes, simple functions applied to vectors and sequences: Exercises">
+
+</exercise>
