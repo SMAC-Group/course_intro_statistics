@@ -76,7 +76,7 @@ typeof(a)
 ```
 
 ```r
-typeof(c(1L,2L,3L))
+typeof(b)
 ```
 
 ```out

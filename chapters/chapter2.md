@@ -21,13 +21,11 @@ In this chapter we will consider an introduction to Data Structure with `R`
 <slides source="chapter2_01">
 </slides>
 
-
-
 </exercise>
 
-<exercise id="3" title="Introduction to vectors">
+<exercise id="3" title="Introduction to vectors: Exercises">
 
-Guess the value of `d`:
+### Guess the value of `d`:
 
 ```r
 a = c(1,2,3)
@@ -35,8 +33,8 @@ b = c(4,5)
 d = c(a,b,a)
 ```
 
+
 <choice id="1">
-</opt>
 <opt text="<code>[1] 1 2 3 4 5</code>" >
 </opt>
 <opt text="<code>[1] 4 5 1 2 3 4 5</code>" >
@@ -45,16 +43,18 @@ d = c(a,b,a)
 </opt>
 </choice>
 
-Subset the elements 1, 2, 4 and 5 of the vector `x`:
+
+### Subset the elements 1, 2, 4 and 5 of the vector `x`:
 
 <codeblock id="01_01">
 To select with positive indices, you can simply use: <code>x[c(1, 2, 4, 5)]</code>
 </codeblock>
 
-Find an easier way to subset `x`:
+### Find an easier way to subset `x`:
 
 <codeblock id="01_02">
 Try to decompose the problem... First, try to understand what is <code>x[c(1, 2, 4, 6)]</code>, then, <code>x[c(1, 2, 4, 6)][-2]</code> and so on.
 </codeblock>
+
 
 </exercise>
