@@ -83,7 +83,7 @@ In this chapter we will consider an introduction to Data Structure with `R`
 
 Multiple Choice: Which smooth term in this model is _significant_ and _linear_?
 <choice id="1">
-<opt text = "<code>this is written in code font</code>" >
+<opt text = "<code>this is written in code font </code>" >
 `s(weight)` has `edf` over five, indicating it is nonlinear."
 </opt>
 <opt text="length" >

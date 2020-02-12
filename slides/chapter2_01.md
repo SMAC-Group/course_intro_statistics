@@ -70,7 +70,7 @@ typeof(c(1,2,3))
 [1] "double"
 ```
 
-```
+```r
 typeof(c(1L,2L,3L))
 ```
 ```out
@@ -88,7 +88,7 @@ Here is an example of "coercion" (i.e. mixing different kinds of elements in a v
 [1] "a" "2"
 ```
 
-```
+```r
 (b = c(FALSE, TRUE, 1, 2, "a"))
 ```
 ```out
