@@ -70,3 +70,15 @@ Try to decompose the problem... First, try to understand what is <code>x[c(1, 2,
 <exercise id="5" title="Attributes, simple functions applied to vectors and sequences: Exercises">
 
 </exercise>
+
+
+
+<exercise id="6" title="Matrices, Lists and DataFrames" type = "slides">
+<slides source="chapter2_05">
+</slides>
+
+</exercise>
+
+<exercise id="7" title="Matrices, Lists and DataFrames: Exercises">
+
+</exercise>
