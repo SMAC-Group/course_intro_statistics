@@ -1,41 +1,84 @@
 ---
-title: 'Chapter 1: Introduction and Motivation'
+title: 'Chapter 1: Data Structures'
 description:
-  'Course objectives and general informations'
+  'Understand how to organizing data so that it can be used effectively. '
 prev: null
 next: /chapter2
 type: chapter
 id: 1
 ---
 
+
 <exercise id="1" title="General Information">
 
-## Objectif
-This course is intended to provide an introduction to statistical programming using the R language. It will also provide students with notions of data management, manipulation and analysis as well as of reproducible research, result-sharing and version control (using GitHub). At the end of the class, students should be able to automatically extract data from websites and create interactive web apps as well as dynamic reports to visualize and analyze them.
+In this chapter we will consider an introduction to Data Structure with `R`
 
-## Descriptif
-Tentative list of topics that will be discussed in this class are listed below:
+</exercise>
 
-- Reproducible research: knitr and rmarkdown;
-- Version control: Github;
-- Introduction to programming: Data structures, logical operators, control structures and functions;
-- Visualizations: Exploratory data analysis with Base R and ggplot2;
-- R packages: Construction of R-packages using devtools, roxygen2, pkgdown;
-- Web scrapping: Automatic extraction of data from websites using rvest and quantmod;
-- Web applications: interactive web apps using Shiny.
-- High Performance Computing: Rcpp.
 
-## Bibliographie
-- Required: An Introduction to Statistical Programming Methods with R
-- Recommended: Advanced R Programming Hadley Wickham
-- Recommended: R Packages Hadley Wickham
-- Recommended: An Introduction to R W. N. Venables, D. M. Smith, and the R Core Team
-- Supplemental: ggplot2: Elegant Graphics for Data Analysis [2nd Edition - GitHub Only] Hadley Wickham
-- Supplemental: R for Data Science Garrett Grolemund and Hadley Wickham
-- Supplemental: The R Inferno Patrick Burns
+<exercise id="2" title="Introduction to vectors" type = "slides">
 
-## Evaluation
-Contr&#244;le continu.
-The examination is based on group projects made during the semester.
+<slides source="chapter1_01">
+</slides>
+
+</exercise>
+
+<exercise id="3" title="Introduction to vectors: Exercises">
+
+### Guess the value of `d`:
+
+```r
+a = c(1,2,3)
+b = c(4,5)
+d = c(a,b,a)
+```
+
+
+<choice id="1">
+<opt text="<code>[1] 1 2 3 4 5</code>" >
+</opt>
+<opt text="<code>[1] 4 5 1 2 3 4 5</code>" >
+</opt>
+<opt text="<code>[1] 1 2 3 4 5 1 2 3</code>" correct="true">
+</opt>
+</choice>
+
+
+### Subset the elements 1, 2, 4 and 5 of the vector `x`:
+
+<codeblock id="01_01">
+To select with positive indices, you can simply use: <code>x[c(1, 2, 4, 5)]</code>
+</codeblock>
+
+### Find an easier way to subset `x`:
+
+<codeblock id="01_02">
+Try to decompose the problem... First, try to understand what is <code>x[c(1, 2, 4, 6)]</code>, then, <code>x[c(1, 2, 4, 6)][-2]</code> and so on.
+</codeblock>
+
+
+</exercise>
+
+<exercise id="4" title="Attributes, simple functions applied to vectors and sequences" type = "slides">
+
+<slides source="chapter1_02">
+</slides>
+
+</exercise>
+
+
+<exercise id="5" title="Attributes, simple functions applied to vectors and sequences: Exercises">
+
+</exercise>
+
+
+
+<exercise id="6" title="Matrices, Lists and DataFrames" type = "slides">
+<slides source="chapter1_03">
+</slides>
+
+</exercise>
+
+<exercise id="7" title="Matrices, Lists and DataFrames: Exercises">
 
 </exercise>
