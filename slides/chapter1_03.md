@@ -24,6 +24,8 @@ We can use the `matrix()` function to create a matrix from a vector:
  [3,]    9   10   11   12
 ```
 
+Notes: Here, the argument `byrow`	specifies that the matrix is filled by rows. Otherwise, the matrix is filled by columns.
+
 ---
 
 
@@ -64,6 +66,17 @@ mat
  Novak Djokovic     12    82.77
  Roger Federer      18    81.80
 ```
+
+Notes: One can also extract colnames or rownames from a matrix. For example, on could extract the rownames vector of the matrix defined in this slide with:
+
+```r
+colnames(mat)
+```
+```out
+[1] "GS win"   "Win rate"
+```
+
+
 ---
 
 
@@ -135,6 +148,8 @@ A*A                # elementwise multiplication
  [2,]   70  174
 ```
 
+Notes: Recall that the matrix multiplication operation is defined as such. If If \\(\mathbf{A}\\) is an \\(m \times n\\) matrix and \\(\mathbf{B}\\) is an \\(n \times p\\) matrix, the matrix product \\(\mathbf{C}=\mathbf{A B}\\) (denoted without multiplication signs or dotined to be the \\(m \times p\\) such that \\(c_{i j}=a_{i 1} b_{1 j}+\cdots+a_{i n} b_{n j}=\sum_{k=1}^{n} a_{i k} b_{k j}\\)
+
 ---
 
 In addition, the function `solve()` allows to inverse a matrix.
@@ -167,6 +182,8 @@ D%*%D_inv
  [1,]    1 -8.881784e-16
  [2,]    0  1.000000e+00
 ```
+
+Notes: Recall that if \\(\mathbf{A}\\) is a matrix with a non-null determinant, then the inverse matrix noted \\(\mathbf{A}^{-1}\\) can be computed and the matrix product \\(\mathbf{A}\mathbf{A}^{-1}\\) = \\(\mathbf{I}\\), where \\(\mathbf{I}\\) is the identity matrix, a square matrix with ones on the main diagonal and zeros elsewhere.
 
 ---
 

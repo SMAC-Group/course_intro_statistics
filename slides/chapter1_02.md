@@ -208,6 +208,8 @@ x[order(x)]
 [1] 1 1 3 5 8
 ```
 
+Notes: Note that `sort(x, decreasing = FALSE)` and `x[order(x)]` return the same result.
+
 ---
 
 <div align="center">
@@ -221,13 +223,65 @@ Dates can take various format and can easily be confusing when programming. `R` 
 
 ---
 
- 
+One can transform dates in the ISO 8601 international standard format %Y-%m-%d using the function `as.Date()`. For furter details regarding dates format, one can read the `R` documentation on dates [here](https://www.rdocumentation.org/packages/base/versions/3.6.2/topics/as.Date) and the following R bloggers [blogpost](https://www.r-bloggers.com/date-formats-in-r/).
+
+Here is an example:
+
 ```r
-# use as.Date( ) to convert strings to dates
-mydates <- as.Date(c("2020-02-12", "2020-01-10"))
-# number of days between 6/22/07 and 2/13/04
-days <- mydates[1] - mydates[2]
+mydates = c("05/27/19", "01/15/20")
+mydates2 <- as.Date(mydates, format = "%m/%d/%y")
+mydates2
 ```
+
+```out
+[1] "2019-05-27" "2020-01-15"
+```
+
+---
+
+Furthermore, one can execute basic arithmetic operations on dates:
+
+```r
+mydates3 <- as.Date(c("2020-02-12", "2020-01-10",
+                      "2019-05-17", "2019-10-22",
+                      "2019-03-10","2019-09-16"))
+mydates3[1] - mydates3[2]
+```
+
+```out
+Time difference of 33 days
+```
+
+```r
+max(mydates3)
+```
+```out
+[1] "2020-02-12"
+```
+```r
+min(mydates3)
+```
+```out
+[1] "2019-03-10"
+```
+
+---
+
+```r
+mean(mydates3)
+```
+```out
+[1] "2019-09-14"
+```
+
+```r
+mydates3[1] + 22
+```
+```out
+[1] "2020-03-05"
+```
+
+Finally, the package `lubridate` from the `tidyverse` proposes various functions that makes it easier to work with dates. You can find further details about `lubridate` [here](https://lubridate.tidyverse.org/)
 
 ---
 
@@ -371,6 +425,8 @@ lines(x, y, col = 2, lwd = 2)
 ```
 
 <div style="text-align:center"><img src="fig3.png" alt=" " width="70%">
+
+Notes: Here, we first generate a vector from \\(-0.1\\) to \\(0.1\\) to then calculate the probability density function of a Normal Law \\(\phi(x)\\) given \\(\hat{\mu}\\) and  \\(\hat{\sigma}^2\\) in order to plot the correponding probability density on top of the histogramm of the returns.
 
 
 ---
