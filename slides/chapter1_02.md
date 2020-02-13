@@ -35,6 +35,8 @@ attr(,"type")
 [1] "Men, Singles"
 ```
 
+Notes: In this section, we will discuss attributes for vectors. For more information have at this [link](https://smac-group.github.io/ds/data.html#vectattr)
+
 ---
 
 You retrieve an attribute as follows:
@@ -57,6 +59,15 @@ It is also possible to **name** the elements of a vector. For example:
 ```out
     Andy Murray   Rafael Nadal  Stan Wawrinka Novak Djokovic  Roger Federer 
               9             15              5             12             18
+```
+
+Notes: Note that you can retreive the attributes of a vector returned as a vector with the function <code>names()</code>. You can then subset element of the returned vector. For example,
+```r
+names(grand_slam_win)[1:2]
+```
+will here return
+```out
+[1] "Andy Murray"  "Rafael Nadal"
 ```
 
 ---
@@ -126,6 +137,16 @@ sd(grand_slam_win)
 [1] 5.069517
 ```
 
+Notes: Note that one can also retrieve Tukey Five Number summary of a vector using the function <code>summary()</code>. For example:
+
+```r
+summary(grand_slam_win)
+```
+
+```out
+Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+5.0     9.0    12.0    11.8    15.0    18.0 
+```
 ---
 
 ```r
@@ -187,7 +208,26 @@ x[order(x)]
 [1] 1 1 3 5 8
 ```
 
-***Please make sure to read the section on dates!***
+---
+
+<div align="center">
+<big> <b> Dates </b> </big>
+</div> 
+ 
+Dates can take various format and can easily be confusing when programming. `R` provides various tools and packages to work with dates.
+
+<div style="text-align:center"><img src="joke_date.png" alt=" " width="45%">
+
+
+---
+
+ 
+```r
+# use as.Date( ) to convert strings to dates
+mydates <- as.Date(c("2020-02-12", "2020-01-10"))
+# number of days between 6/22/07 and 2/13/04
+days <- mydates[1] - mydates[2]
+```
 
 ---
 
@@ -221,6 +261,21 @@ In `R` we often need to construct sequences. Here are some examples:
  [57]  6.6  6.7  6.8  6.9  7.0  7.1  7.2  7.3  7.4  7.5  7.6  7.7  7.8  7.9
  [71]  8.0  8.1  8.2  8.3  8.4  8.5  8.6  8.7  8.8  8.9  9.0  9.1  9.2  9.3
  [85]  9.4  9.5  9.6  9.7  9.8  9.9 10.0
+```
+
+Notes: Sequences are often used when programming iterative procedures. For exmaple, when using `for` loop (see next chapter). For example,
+```r
+for(i in 1:5){
+     print("I realy like this class")
+}
+```
+will return:
+```out
+[1] "I realy like this class"
+[1] "I realy like this class"
+[1] "I realy like this class"
+[1] "I realy like this class"
+[1] "I realy like this class"
 ```
 
 ---
