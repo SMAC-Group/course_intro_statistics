@@ -41,8 +41,11 @@ In this chapter we will consider an introduction to Control Structure with `R`
 
 ---
 
-<codeblock id="02_01">
-You can use the command `prompt` in order to store an input from the use. Also, you can use the command `seq` to iterate in a `for` loop.
+### Write a code that produce the latin alphabet sequence of letters, such that the code print a capital letter if the letter has a odd number on the sequence and a lowercase letter otherwise.
+
+<codeblock id="02_02">
+Ycou could solve this problem using the vectors `letters` and `LETTERS` as well as the `%%` operator.
 </codeblock>
+
 
 </exercise>

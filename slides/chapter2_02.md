@@ -10,20 +10,49 @@ Logical operators are very commonly used in programming to create (or return) lo
 
 Be careful with the difference of `=` and `==`. `=` assigns value to a variable while `==` evaluates whether the variable equals to the given value.
 
-```{r}
+```r
 x = 5
 x == 4
+```
+
+```out
+## [1] FALSE
+```
+
+```r
 x > 5
+```
+```out
+## [1] FALSE
+```
+```
 x >= 5
 ```
+```out
+[1] TRUE
+```
+
+---
 
 We can also evaluate element-wise or vector-wise.
 
-```{r}
+```r
 x = c(5,6,1,5)
 x >= 5              # element-wise
+```
+
+```out
+## [1]  TRUE  TRUE FALSE  TRUE
+```
+
+```r
 x >= c(5,10,3,6)    # vector-wise
 ```
+```out
+## [1]  TRUE FALSE FALSE FALSE
+```
+
+---
 
 Notice that when applying `+` (i.e. numerical operation), we will force `TRUE` to be `1` and `FALSE` to be 0.
 
@@ -31,44 +60,125 @@ Notice that when applying `+` (i.e. numerical operation), we will force `TRUE` t
 x = 5
 y = 6
 x == 5
+```
+
+```out
+## [1] TRUE
+```
+```r
 y > 4
+```
+
+```out
+## [1] TRUE
+```
+```r
 (x == 5) + (y > 4)
 ```
+```out
+## [1] 2
+```
+
+---
 
 `&&` means `and`, i.e. the result is `TRUE` only when ALL statements are `TRUE`. 
 
-```{r}
+```r
 (x == 5) && (y > 4)
+```
+```out
+## [1] TRUE
+```
+```r
 (x == 2) && (y > 4)
 ```
+```out
+## [1] FALSE
+```
 
-Note that when using `&&`, the 2nd statement will be evaluated only if the 1st statement is `TRUE`. In other words, if the 1st statement is `FALSE`, then the 2nd statement won't be evaluated. 
+Notes: Note that when using `&&`, the 2nd statement will be evaluated only if the 1st statement is `TRUE`. In other words, if the 1st statement is `FALSE`, then the 2nd statement won't be evaluated. 
+
+---
 
 ```{r}
 x = 5
 y = NA
 (x == 5) && (y > 0)
+```
+
+```out
+[1] NA
+```
+```r
 (x == 2) && (y > 0) 
 ```
+```out
+1] FALSE
+```
+
+---
+
 This is similar when we use `or` operator, i.e. `||`.
 
-```{r}
+```r
 x = 5
 y = 6
 (x == 2) || (y > 0)
+```
+
+```out
+## [1] TRUE
+```
+
+```r
 (x == 2) || (y > 10) 
+```
+
+```out
+[1] FALSE
+```
+
+```r
 !(x == 5) || (y > 10)
 ```
 
+```out
+[1] FALSE
+```
+
+---
+
 Be careful about the difference between `&` and `&&`. `&` is a vectorized operator while `&&` is an elementwise (not vectorized) operator. So for `&&` only the first elements of each vector will be considered. Similar for `|` and `||`.
 
-```{r}
+```r
 x = c(5,7)
 y = c(6,4)
 x > 6
+```
+
+```out
+[1] FALSE  TRUE
+```
+
+```r
 y > 5
+```
+
+```out
+[1]  TRUE FALSE
+```
+
+```r
 x > 6 & y > 5
 ```
+
+```out
+[1]  FALSE FALSE
+```
+
+---
+
+
 ```{r}
 x > 4
 y > 5

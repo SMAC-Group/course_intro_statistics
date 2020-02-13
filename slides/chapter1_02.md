@@ -426,7 +426,7 @@ lines(x, y, col = 2, lwd = 2)
 
 <div style="text-align:center"><img src="fig3.png" alt=" " width="70%">
 
-Notes: Here, we first generate a vector from \\(-0.1\\) to \\(0.1\\) to then calculate the probability density function of a Normal Law \\(\phi(x)\\) given \\(\hat{\mu}\\) and  \\(\hat{\sigma}^2\\) in order to plot the correponding probability density on top of the histogramm of the returns.
+Notes: Here, we first generate a vector from \\(-0.1\\) to \\(0.1\\) to then calculate the probability density function of a Normal Law \\(\phi(x)\\) given \\(\hat{\mu}\\) and  \\(\hat{\sigma}^2\\) in order to plot the correponding probability density on top of the histogram of the returns.
 
 
 ---
