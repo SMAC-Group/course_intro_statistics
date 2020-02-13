@@ -248,16 +248,6 @@ plot(x, y, type = "l")
 
 ---
 
-Guess what the code below is doing:
-
-```{r, eval = FALSE}
-x = c(1,2,4,7,15)
-n = length(x)
-x[1:n]
-x[n:1]
-```
-
----
 
 ## Example: AAPL stock price
 
