@@ -6,7 +6,7 @@ type: slides
 
 ---
 
-<div style="text-align:center"><img src="comic_control_structure.jpg" alt=" " width="35%">
+<div style="text-align:center"><img src="comic_control_structure.jpg" alt=" " width="80%">
 
 
 ---
