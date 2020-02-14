@@ -6,6 +6,9 @@ type: slides
 
 ---
 
+<div style="text-align:center"><img src="comic_if_ai.jpg" alt=" " width="55%">
+
+---
 
 An `if` statement tells R to do a certain task only when a certain condition is satisfied. For example, the following code tells R that we only add 1 to x if x is bigger than 0.
 

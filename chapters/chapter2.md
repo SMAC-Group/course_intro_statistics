@@ -37,7 +37,7 @@ In this chapter we will consider an introduction to Control Structure with `R`
 
 </exercise>
 
-<exercise id = "4" title ="Logical operators: Exercises">
+<exercise id = "5" title ="Logical operators and If/else statement: Exercises">
 
 ---
 

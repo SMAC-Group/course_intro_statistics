@@ -6,6 +6,11 @@ type: slides
 
 ---
 
+<div style="text-align:center"><img src="comic_control_structure.jpg" alt=" " width="35%">
+
+
+---
+
 Suppose that we are interested in creating a simple code to check if it can possibly get very cold and, if this is the case, lead us to decide whether we should take a jacket today. To write such a code, first we need to find out how cold it can possibly get today at our location, i.e. the minimum temperature.
 
 ```r
