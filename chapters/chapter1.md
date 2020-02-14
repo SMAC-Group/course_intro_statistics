@@ -59,7 +59,7 @@ Try to decompose the problem... First, try to understand what is <code>x[c(1, 2,
 
 </exercise>
 
-<exercise id="4" title="Attributes, simple functions applied to vectors and sequences" type = "slides">
+<exercise id="4" title="Attributes, simple functions applied to vectors, dates and sequences" type = "slides">
 
 <slides source="chapter1_02">
 </slides>
@@ -67,7 +67,7 @@ Try to decompose the problem... First, try to understand what is <code>x[c(1, 2,
 </exercise>
 
 
-<exercise id="5" title="Attributes, simple functions applied to vectors and sequences: Exercises">
+<exercise id="5" title="Attributes, simple functions applied to vectors, dates and sequences: Exercises">
 
 ### 1) Guess what the code below is doing:
 
@@ -97,11 +97,16 @@ Read about the argument <code>decreasing</code> in the documentation of the func
 
 ### 3) Extract all the odd numbers from 1 to 1000. 
 <codeblock id="01_08">
-Note that <code>%%</code> is the modulus operator in R. (i.e.<MATH>13mod12 = 1</MATH>)
+Read the documentation of the function <code>seq</code> to understand its arguments.
+</codeblock>
+
+### 4) Extract all the multiples of 4 from 1 to 444.
+<codeblock id="01_09">
+Use the function <code>seq</code>.
 </codeblock>
 
 
-### 4) Plot the Sigmoïd function from \\(x \in [-20, 20]\\). Recall that the sigmoïd function is \\(f(x) = 1/(1+e^{-x})\\).
+### 5) Plot the Sigmoïd function from \\(x \in [-20, 20]\\). Recall that the sigmoïd function is \\(f(x) = 1/(1+e^{-x})\\).
 
 
 <codeblock id="01_03">
@@ -109,7 +114,7 @@ Use the function <code>seq</code> or the <code>:</code> operator to generate a s
 </codeblock>
 
 
-### 5) Load the dataset `mtcars` and calculate the mean, median and variance of the variable <code>mpg</code> ("Miles/(US) gallon").
+### 6) Load the dataset `mtcars` and calculate the mean, median and variance of the variable <code>mpg</code> ("Miles/(US) gallon"). Convert the variable to KM/Liter. Note that the conversion scale is 1 mpg (US) = 0.425144 km/L.
 
 <codeblock id="01_05">
 Revisit the slides if you don't remember these functions.

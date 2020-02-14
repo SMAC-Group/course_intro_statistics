@@ -1,2 +1,1 @@
-myseq = seq(1000)
-myseq[myseq %% 2 == 1]
+seq(from = 1, to = 1000, by = 2)

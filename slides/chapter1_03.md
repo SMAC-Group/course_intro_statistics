@@ -11,6 +11,10 @@ type: slides
  </div> 
 
 
+<div style="text-align:center"><img src="comic_matrix3.jpg" alt=" " width="55%">
+
+---
+
 We can use the `matrix()` function to create a matrix from a vector:
 
 ```r
@@ -24,8 +28,18 @@ We can use the `matrix()` function to create a matrix from a vector:
  [3,]    9   10   11   12
 ```
 
-Notes: Here, the argument `byrow`	specifies that the matrix is filled by rows. Otherwise, the matrix is filled by columns.
+Notes: Here, the argument `byrow`	specifies that the matrix is filled by rows. Otherwise, the matrix is filled by columns by default.
 
+```r
+(mat <- matrix(1:12, ncol = 4,  nrow = 3))
+```
+returns
+```out
+     [,1] [,2] [,3] [,4]
+[1,]    1    4    7   10
+[2,]    2    5    8   11
+[3,]    3    6    9   12
+```
 ---
 
 
@@ -46,6 +60,18 @@ win_percentage <- c(78.07, 82.48, 63.96, 82.77, 81.80)
  [3,]              5          63.96
  [4,]             12          82.77
  [5,]             18          81.80
+```
+
+Notes: One can subset a given matrix based on a logical boolean condition. For example, let's say we want to keep only the rows for which the variable `win_percentage` is greater or equal to 80. We could proceed as follows:
+
+```r
+mat[mat[,2]>80,]
+```
+```out
+     grand_slam_win win_percentage
+[1,]             15          82.48
+[2,]             12          82.77
+[3,]             18          81.80
 ```
 
 ---
@@ -109,6 +135,26 @@ t(A)
  [2,]    5    6    7    8
 ```
 
+Notes: When working with matrices and doing linear algebra, the function `dim` can be very useful in order to check your matrices dimensions.
+
+```r
+?dim
+```
+
+```
+dim {base}	R Documentation
+Dimensions of an Object
+Description
+Retrieve or set the dimension of an object.
+```
+For example, 
+```r
+dim(A)
+```
+will returns
+```out
+[1] 4 2
+```
 ---
 
 We can also do matrix addition simply with `+`.

@@ -2,7 +2,14 @@
 type: slides
 ---
 
-# Attributes, simple functions applied to vectors and sequences
+# Attributes, simple functions applied to vectors, dates and sequences
+
+Notes: In this section, we will discuss different elements. You can find further informations regarding: 
+- Attributes for vectors [here](https://smac-group.github.io/ds/data.html#vectattr)
+- Simple functions applied to vectors [here](https://smac-group.github.io/ds/data.html#useful-functions-with-vectors)
+and
+- Working with dates in `R` [here](https://smac-group.github.io/ds/data.html#working-with-dates)
+- Making Sequences [here](https://smac-group.github.io/ds/data.html#creating-sequences)
 
 ---
 
@@ -35,7 +42,7 @@ attr(,"type")
 [1] "Men, Singles"
 ```
 
-Notes: In this section, we will discuss attributes for vectors. For more information have at this [link](https://smac-group.github.io/ds/data.html#vectattr)
+Notes: In this section, we will discuss attributes for vectors. You can find further informations on this topic [here](https://smac-group.github.io/ds/data.html#vectattr)
 
 ---
 
@@ -62,6 +69,7 @@ It is also possible to **name** the elements of a vector. For example:
 ```
 
 Notes: Note that you can retreive the attributes of a vector returned as a vector with the function <code>names()</code>. You can then subset element of the returned vector. For example,
+
 ```r
 names(grand_slam_win)[1:2]
 ```
@@ -104,7 +112,18 @@ names(grand_slam_win)
 
 ```
 
+Notes: Note that you can also subset a a named vector with negative indices. For example
 
+```r
+grand_slam_win[-c(1:3)]
+```
+
+will returns
+
+```out
+Novak Djokovic  Roger Federer 
+            12             18 
+```
 ---
 
  <div align="center">
@@ -129,6 +148,10 @@ median(grand_slam_win)
 [1] 12
 ```
 
+Notes: In this section, we will discuss simple functions applied to vectors. You can find further informations on this topic [here](https://smac-group.github.io/ds/data.html#useful-functions-with-vectors)
+
+---
+
 ```r
 sd(grand_slam_win)
 ```
@@ -147,6 +170,8 @@ summary(grand_slam_win)
 Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
 5.0     9.0    12.0    11.8    15.0    18.0 
 ```
+
+
 ---
 
 ```r
@@ -193,6 +218,33 @@ sort(x, decreasing = TRUE)
 
 ```
 
+Notes: One can always read the documentation of a function by calling `help(name_of_the_function)` or `?name_of_the_function`. For example, on the difference between `sort` and `order`, one can execute:
+
+```r
+help(sort)
+```
+
+```
+sort {base}	R Documentation
+Sorting or Ordering Vectors
+Description
+Sort (or order) a vector or factor (partially) into ascending or descending order. For ordering along more than one variable, e.g., for sorting data frames, see order.
+```
+
+and 
+
+```r
+?order
+```
+
+```
+order {base}	R Documentation
+Ordering Permutation
+Description
+order returns a permutation which rearranges its first argument into ascending or descending order, breaking ties by further arguments. sort.list is the same, using only one argument.
+See the examples for how to use these functions to sort data frames, etc.
+```
+
 ---
 
 ```r
@@ -220,6 +272,7 @@ Dates can take various format and can easily be confusing when programming. `R` 
 
 <div style="text-align:center"><img src="joke_date.png" alt=" " width="45%">
 
+Notes: In this section, we will discuss dates. You can find further informations on this topic [here](https://smac-group.github.io/ds/data.html#working-with-dates)
 
 ---
 
@@ -288,6 +341,8 @@ Finally, the package `lubridate` from the `tidyverse` proposes various functions
  <div align="center">
  <big> <b> Making sequences </b> </big>
  </div> 
+ 
+In this section, we will discuss sequences. You can find further informations on this topic [here](https://smac-group.github.io/ds/data.html#creating-sequences)
 
 In `R` we often need to construct sequences. Here are some examples:
 
