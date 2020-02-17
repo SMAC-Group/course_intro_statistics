@@ -28,12 +28,15 @@ x == 4
 ```r
 x > 5
 ```
+
 ```out
 ## [1] FALSE
 ```
-```
+
+```r
 x >= 5
 ```
+
 ```out
 [1] TRUE
 ```
@@ -62,7 +65,7 @@ x >= c(5,10,3,6)    # vector-wise
 
 Notice that when applying `+` (i.e. numerical operation), we will force `TRUE` to be `1` and `FALSE` to be 0.
 
-```{r}
+```r
 x = 5
 y = 6
 x == 5
@@ -71,6 +74,7 @@ x == 5
 ```out
 ## [1] TRUE
 ```
+
 ```r
 y > 4
 ```
@@ -81,6 +85,7 @@ y > 4
 ```r
 (x == 5) + (y > 4)
 ```
+
 ```out
 ## [1] 2
 ```
@@ -92,12 +97,15 @@ y > 4
 ```r
 (x == 5) && (y > 4)
 ```
+
 ```out
 ## [1] TRUE
 ```
+
 ```r
 (x == 2) && (y > 4)
 ```
+
 ```out
 ## [1] FALSE
 ```
@@ -106,7 +114,7 @@ Notes: Note that when using `&&`, the 2nd statement will be evaluated only if th
 
 ---
 
-```{r}
+```r
 x = 5
 y = NA
 (x == 5) && (y > 0)
@@ -118,6 +126,7 @@ y = NA
 ```r
 (x == 2) && (y > 0) 
 ```
+
 ```out
 1] FALSE
 ```
@@ -188,12 +197,15 @@ x > 6 & y > 5
 ```r
 x > 4
 ```
+
 ```out
 [1] TRUE TRUE
 ```
+
 ```r
 y > 5
 ```
+
 ```out
 [1]  TRUE FALSE
 ```
@@ -201,6 +213,7 @@ y > 5
 ```r
 x > 4 & y > 5  
 ```
+
 ```out
 [1]  TRUE FALSE
 ```
@@ -208,6 +221,7 @@ x > 4 & y > 5
 ```r
 x > 4 && y > 5
 ```
+
 ```out
 [1] TRUE
 ```
@@ -217,16 +231,17 @@ x > 4 && y > 5
 ```r
 x > 4 | y > 5 
 ```
+
 ```out
 [1] TRUE TRUE
 ```
+
 ```r
 x > 4 || y > 5
 ```
+
 ```out
 [1] TRUE
-```
-
 ```
 
 ---
@@ -270,6 +285,7 @@ x > 4 && y > 5
 ---
 
 The function `xor` is used to test if ONLY ONE of the statements is `TRUE`. 
+
 ```r
 x = 5
 y = 7
@@ -300,7 +316,7 @@ xor(x==3, y==6) # none TRUE, so returns FALSE
 
 To test non-equality, we use `!=`.
 
-```{r}
+```r
 x = 5
 y = 7
 x != 5
@@ -310,6 +326,7 @@ x != 5
 ```out
 [1] FALSE
 ```
+
 ```r
 !(x==5) # equivalent way to test non-equality
 ```
@@ -342,7 +359,7 @@ returns
 ---
 
 
-```{r}
+```r
 x = 6
 y = 7
 !(xor(x >= 6 || y < 10, x ==y))
@@ -419,6 +436,18 @@ all(x > 1)
 [1] FALSE
 ```
 
+Notes: One can obtain the documentation for the function `all()` as such:
+
+```r
+help(all)
+```
+which returns:
+```
+all {base}	R Documentation
+Are All Values True?
+Description
+Given a set of logical vectors, are all of the values true?
+```
 ---
 
 To perform subsetting and retrieve only the elements that satisfy the given condition:
@@ -442,7 +471,7 @@ numeric(0)
 
 ---
 
-```{r}
+```r
 x = rnorm(1000)
 a = x[x>1]
 hist(a)
@@ -454,17 +483,34 @@ hist(a)
 
 We can also calculate the proportion of `TRUE` of a vector using the fact that `TRUE` is also evaluated as `1`: 
 
-```{r}
+```r
 n = 10000
 x = rnorm(n)
 sum(x>1) / n  # this proportion should be close to 1/6
 ```
+
 ```out
 [1] 0.1593
 ```
+
 ```r
 1/6
 ```
+
 ```out
 [1] 0.1666667
 ```
+
+
+Notes: The exact probability \\(P(X_i>1)\\) if \\( X_i \sim \mathcal{N}(0,1) \\)= \\(1 - \Phi(1) = 0.1586553 \\) and can be computed as such:
+
+```r
+1-pnorm(1)
+```
+
+```out
+[1] 0.1586553
+```
+
+
+---

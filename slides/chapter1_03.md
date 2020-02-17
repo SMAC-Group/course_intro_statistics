@@ -270,6 +270,8 @@ getSymbols("NFLX", from = five_years_ago, to = today)
 [1] "NFLX"
 ```
 
+Notes: Find the documentation of the pacakge `quantmod` "Quantitative Financial Modelling Framework" [here](https://cran.r-project.org/web/packages/quantmod/index.html).
+
 ---
 
 
@@ -291,6 +293,8 @@ mu_investment <- omega_star*mu[1] + (1 - omega_star)*mu[2]
 var_investment <- omega_star^2*Sigma[1,1] + (1 - omega_star)^2*Sigma[2,2] +
   2*omega_star*(1 - omega_star)*Sigma[1,2]
 ```
+
+Notes: Note here that the object `Sigma` is the variance-covariance matrix of the two variable `Ra` and `Rn` and `mu` is the vector of both means. 
 
 ---
 
@@ -335,6 +339,31 @@ my_mat <- matrix(0, nrow = 5, ncol = 5)
  [3,]    0    0    0    0    0
  [4,]    0    0    0    0    0
  [5,]    0    0    0    0    0
+```
+
+Notes: One can check the dimensions of the list and its elements by the following commands:
+
+```r
+length(my_list)
+```
+
+```out
+[1] 4
+```
+
+and
+
+```r
+ summary(my_list)
+```
+
+```out
+     Length Class  Mode     
+[1,]  2     -none- numeric  
+[2,]  3     -none- character
+[3,]  8     -none- logical  
+[4,] 25     -none- numeric 
+
 ```
 
 ---
@@ -507,30 +536,80 @@ tennis
 
 ## Example: Maps
 
-Please refer to the piazza post to see how to obtain a Google API key for map services. You may need the following code to activate your API key from R:
+
+
+Now we continue with our tennis players example and create a dataframe to store all information related to the tennis players of interest:
+
+```r
+birth_place <- c("Glasgow, Scotland", "Manacor, Spain", "Lausanne, Switzerland", "Belgrade, Serbia", "Basel, Switzerland")
+lon = c(-4.251806,  3.209532  ,6.632273, 20.448922,  7.588576)
+lat = c(55.86424, 39.56972 ,46.51965 ,44.78657, 47.55960)
+birth_coord = data.frame(cbind(lon, lat))
+players <- c("Andy Murray", "Rafael Nadal", "Stan Wawrinka", 
+             "Novak Djokovic", "Roger Federer")
+grand_slam_win <- c(9, 15, 5, 12, 18)
+birth_coord$Players <- players
+birth_coord$GS <- grand_slam_win
+birth_coord$City = birth_place
+```
+
+Notes: You can obtain lattitude and longitude from a specific point in `R` using the different services like Bing or Google Maps. However, you will generally needs to register to the given service and enable access to its API with an account. Using Google map the procedure is the following:
+
+- Request an API access key [here](https://console.cloud.google.com)
+- Register your your personnal API key in `R`with 
 
 ```r
 library(ggmap)
 register_google(key = "your key here") 
 ```
 
-
-Notes: As the Google API key is related to the personal google account, the API key used to illustrate in the textbook is not shown here, and therefore, the following code is not evaluated. By inputting your personal Google API key to the above code, you should be able to run the following code and obtain desirable results. 
-
----
-
-After registering the API key from R, you can start to play with the map services as follows. The `geocode()` function will return the latitude and longitude of a location using the Google Geocoding API. For example, we can locate Uni-Mail using the following code:
+- The geocode() function will return the latitude and longitude of a location using the Google Geocoding API.
 
 ```r
 unimail_coord <- geocode("Unimail, Geneva", source = "google")
+unimail_coord
 ```
 
-Now we continue with our tennis players example:
+```out
+  A tibble: 1 x 2
+    lon   lat
+  <dbl> <dbl>
+1  6.14  46.2
+```
+
+
+---
+
 
 ```r
-birth_place <- c("Glasgow, Scotland", "Manacor, Spain", "Lausanne, Switzerland", "Belgrade, Serbia", "Basel, Switzerland")
-birth_coord <- geocode(birth_place, source = "google")
+birth_coord
 ```
+
+```out
+        lon      lat        Players GS                  City
+1 -4.251806 55.86424    Andy Murray  9     Glasgow, Scotland
+2  3.209532 39.56972   Rafael Nadal 15        Manacor, Spain
+3  6.632273 46.51965  Stan Wawrinka  5 Lausanne, Switzerland
+4 20.448922 44.78657 Novak Djokovic 12      Belgrade, Serbia
+5  7.588576 47.55960  Roger Federer 18    Basel, Switzerland
+```
+
+---
+
+We can now plot a map with the 
+```r
+# plot map
+library(leaflet)
+
+m <- leaflet() %>%
+  addTiles() %>%  # Add default OpenStreetMap map tiles
+  addCircleMarkers(lng=birth_coord$lon, lat=birth_coord$lat,
+  radius = birth_coord$GS*1.5)
+m  # Print the map
+```
+<div style="text-align:center"><img src="img_map_player.png" alt=" " width="60%">
+
+
 
 ---
 
