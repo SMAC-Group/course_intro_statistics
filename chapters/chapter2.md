@@ -41,11 +41,38 @@ In this chapter we will consider an introduction to Control Structure with `R`
 
 ---
 
-### Write a code that produce the latin alphabet sequence of letters, such that the code print a capital letter if the letter has a odd number on the sequence and a lowercase letter otherwise.
+### 1) Write a code that produce the latin alphabet sequence of letters, such that the code print a capital letter if the letter has a odd number on the sequence and a lowercase letter otherwise.
 
 <codeblock id="02_02">
-Ycou could solve this problem using the vectors `letters` and `LETTERS` as well as the `%%` operator.
+You could solve this problem using the vectors `letters` and `LETTERS` as well as the `%%` operator.
 </codeblock>
+
+### 2) Guess the value of the following commands:
+
+```r
+a = c(1,4,8,6,3,7)
+b = c(6,8,9,6,10,11)
+a != b
+```
+
+<choice id="1">
+<opt text="<code>[1] FALSE</code>" >
+</opt>
+<opt text="<code>[1] FALSE FALSE FALSE  TRUE FALSE FALSE </code>"  >
+</opt>
+<opt text="<code>[1] TRUE</code>" >
+</opt>
+<opt text="<code>[1]  TRUE  TRUE  TRUE FALSE  TRUE  TRUE</code>" correct="true">
+</opt>
+</choice>
+
+### 3) In this exercise, you will implement a simple sorting algorithm called the "Bubble Sort". Read about the algorithmic structure of this algorithm [here](https://en.wikipedia.org/wiki/Bubble_sort) and complete the following code. 
+
+<codeblock id="02_04">
+
+</codeblock>
+
+
 
 
 </exercise>

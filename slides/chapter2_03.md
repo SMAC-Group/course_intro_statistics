@@ -63,6 +63,7 @@ x
 ```out
 [1] 0.2904028
 ```
+Notes: The function `rnorm()` simulates observations from a Standard Normal law (i.e. \\(X_i \sim \mathcal{N}(0,1)\\)). 
 
 ---
 
