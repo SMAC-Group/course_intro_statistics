@@ -88,5 +88,9 @@ Under some conditions, a simple strategy could be:
 
 
 
-
+# test to embed giff
+![](maze_solved.gif)
+<img src=”giff/maze_solved.gif” alt=”animated” />
+<img src="maze_solved.gif" />
 </exercise>
+
