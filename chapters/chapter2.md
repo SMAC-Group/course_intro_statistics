@@ -72,6 +72,20 @@ a != b
 
 </codeblock>
 
+### 4) In this exercise, you will implement an algorithm that can solve a simple maze such as the one below.
+Under some conditions, a simple strategy could be:
+
+- if there is space in front of you, go forward
+- else, if there is space on your right, turn right
+- else, if there is space on your left, turn left
+- else, [all three sides (forward, left, right) are closed] turn around
+
+
+
+<codeblock id="02_03">
+
+</codeblock>
+
 
 
 

@@ -8,7 +8,3 @@ type: chapter
 id: 3
 ---
 
-<exercise id = "41 title ="Functions" type = "slides">
-
-<slides source="chapter3_01">
-</slides>

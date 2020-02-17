@@ -10,7 +10,7 @@ Logical operators are very commonly used in programming to create (or return) lo
 
 <div style="text-align:center"><img src="comic_logical.jpg" alt=" " width="40%">
 
-Notes: You can find further informations on Logical operator in `R` [here](https://smac-group.github.io/ds/control.html#logoperators)
+Notes: You can find further informations on Logical operator in `R` [here](https://smac-group.github.io/ds/control.html#logoperators).
 
 ---
 
@@ -130,6 +130,8 @@ y = NA
 ```out
 1] FALSE
 ```
+
+Notes: Note that any logical comparison with an object assigned to the value `NA` will return `NA`.
 
 ---
 
