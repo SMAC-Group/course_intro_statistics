@@ -18,10 +18,12 @@ id: 3
 
 <exercise id="2" title="Functions: Exercises" type = "slides">
 
-### 2) In this exercise, you will implement a function that returns the \\(n\\) number of the Fibonacci sequence, noted \\(F_n\\). You can read about the Fibonacci sequence [here](https://en.wikipedia.org/wiki/Fibonacci_number). 
+### 2) Fibonacci Sequence
+
+In this exercise, you will implement a function that returns the \\(n\\) number of the Fibonacci sequence noted  \\(\mathcal{F}\_{n}\\). You can read about the Fibonacci sequence [here](https://en.wikipedia.org/wiki/Fibonacci_number). 
 
 <codeblock id="03_01">
-
+This is a great example to use a recursive function.
 </codeblock>
 
 
