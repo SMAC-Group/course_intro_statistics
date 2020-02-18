@@ -2,12 +2,12 @@
 type: slides
 ---
 
-Functions
+# Functions
 
 ---
 
+Let's define a function that return the result of the addition of two numbers.
 
-## Functions
 ```r
 add = function(x, y){
   return(x+y)
@@ -15,11 +15,19 @@ add = function(x, y){
 add(2,3)
 ```
 
+```out
+[1] 5
+```
+
 However, the code below won't work:
 
 ```r
 add()
 ```
+
+Notes: Note that the code `add()` does not return any output because there are no default values and therefore no values to be added.
+
+---
 
 We can also provide default values to the inputs of the function, so that when we don't specify values of the inputs, the default values will be used.
 
@@ -29,16 +37,41 @@ add = function(x=2, y=3){
 }
 
 add()
+```
+
+```out
+[1] 5
+```
+
+```r
 add(x=4)
 ```
+```out
+[1] 7
+```
+
+Notes: Note that the code `add(x=4)` returns 7 because the default value for `y` is `3`. Therefore, `3 + 4 = 7`.
+---
 
 Notice that everything in R is a function. For example,
 
 ```r
 # The followings do the same:
 1+2
+```
+
+```out
+[1] 3
+```
+```r
 `+`(1,2)
 ```
+
+```out
+[1] 3
+```
+
+---
 
 So we can define our own mathematical operator.
 
@@ -50,6 +83,13 @@ So we can define our own mathematical operator.
 `:)` (3,4)
 ```
 
+```out
+[1] 12
+```
+
+Notes: We can now call the `:)` operator as a function.
+---
+
 
 ```r
 `%^%` = function(x, y){
@@ -59,16 +99,38 @@ So we can define our own mathematical operator.
 3 %^% 4
 ```
 
+```out
+[1] 12
+```
+
+--
+
 ```r
 abs_sqrt = function(x = 1){
   sign(x) * sqrt(abs(x))
 }
 
 abs_sqrt(9)
+```
+
+```out
+[1] 3
+```
+
+```r
 abs_sqrt(-9)
 ```
 
-```{r}
+
+```out
+[1] -3
+```
+
+---
+
+Similarly,
+
+```r
 abs_sqrt2 = function(x = 1){
   if(x >= 0){
     return(sqrt(x))
@@ -78,11 +140,24 @@ abs_sqrt2 = function(x = 1){
 }
 
 abs_sqrt2(9)
+```
+
+```r
 abs_sqrt2(-9)
 ```
 
+```out
+[1] 3
+```
 
-# Class: 15/04/19
+
+```out
+[1] -3
+```
+
+---
+
+# Example: Matrix and scalar product
 
 ```r
 gen_prod = function(first_arg=matrix(rnorm(9),3,3), 
@@ -112,38 +187,63 @@ gen_prod = function(first_arg=matrix(rnorm(9),3,3),
 
 ```
 
-## Example: Least-squares function
+Notes: Note that the function `gen_prod()` can perform simple scalar multiplication, matrix by scalar multiplication  as well as matrix multiplication depending on the dimensions of the inputs.
+
+For example, 
+
+```r
+gen_prod(3,5)
+```
+will returns
+
+```out
+     [,1]
+[1,]   15
+```
+
+while
+
+```r
+gen_prod(matrix(seq(9), ncol=3),5)
+```
+will returns
+
+```out
+     [,1] [,2] [,3]
+[1,]    5   20   35
+[2,]   10   25   40
+[3,]   15   30   45
+```
+
+---
+
+# Example: Least-squares function
+
 ```r
 my_lm = function(X, y, alpha=0.05){
   X = as.matrix(X)
   y = as.vector(y)
-  
   n = length(y)
   p = dim(X)[2]
   df = n-p
-  
   # beta estimate
   beta_hat = solve(t(X)%*%X) %*% t(X) %*% y
-  
   # sigma2 estimate
   resid = y - X %*% as.matrix(beta_hat)
   sigma2_hat = (1/df) * t(resid) %*% resid
-  
   # var(beta) estimate
   var_beta_hat = sigma2_hat * solve(t(X)%*%X)
-  
   # CI for beta
   up = beta_hat + qnorm(p=1-alpha/2) * sqrt(var_beta_hat)
   low = beta_hat - qnorm(p=1-alpha/2) * sqrt(var_beta_hat)
   ci_beta = c(low, up)
-  
-  result = list(beta = beta_hat,
-                sigma2 = sigma2_hat,
-                var_beta = var_beta_hat,
-                ci = ci_beta)
+  result = list(beta = beta_hat, sigma2 = sigma2_hat,
+                var_beta = var_beta_hat, ci = ci_beta)
   return(result)
 }
 ```
+
+---
 
 ```r
 library(gamair)
@@ -161,10 +261,36 @@ base_results = c(fit_lm$coefficients,
                  (1/fit_lm$df.residual)*t(fit_lm$residuals)%*%fit_lm$residuals)
 results = cbind(manual_results, base_results)
 row.names(results) = c("Beta", "Sigma")
-results
+```
+
+Notes: Let's call our implementation of the least squares and compare it with the `lm` function in `R`. Note that
+```r
+help(lm)
+```
+will returns
+```
+lm {stats}	R Documentation
+Fitting Linear Models
+Description
+lm is used to fit linear models. It can be used to carry out regression, single stratum analysis of variance and analysis of covariance (although aov may provide a more convenient interface for these).
+
 ```
 
 
+
+---
+
+```r
+results
+```
+
+```out
+##       manual_results base_results
+## Beta        76.58117     76.58117
+## Sigma    67046.33165  67046.33165
+```
+
+---
 
 
 

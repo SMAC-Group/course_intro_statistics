@@ -98,10 +98,11 @@ final_pos = c(10,11)
 points(x=starting_pos[1], y=starting_pos[2], col = "darkgreen", pch = 16, cex = 5)
 points(x=final_pos[1], y=final_pos[2], col = "red", pch = 16, cex = 5)
 
-# define initial position, initial dir and iteration number
+# define initial position, initial dir, iteration number and time_delay
 actual_pos = starting_pos
 actual_dir = c(0,1)
 iteration = 1
+time_delay=.01
 
 # launch search and continue search while actual position is not equal to final position
 while(___){
@@ -109,7 +110,7 @@ while(___){
   actual_pos = res[[1]]
   actual_dir = res[[2]]
   text(x = actual_pos[1], y = actual_pos[2], labels = iteration, cex = 2, col ="blue4")
-  Sys.sleep(.7)
+  Sys.sleep(time_delay)
   iteration = iteration+1
 }
 
