@@ -75,7 +75,7 @@ a != b
 ### 4) In this exercise, you will implement an algorithm that can solve a simple maze such as the one below.
 
 <div style="text-align:center">
-<img src="little_maze.jpg" alt=" " width="25%">
+<img src="little_maze.jpg" alt=" " width="15%">
 </div>
 
 Under some conditions regarding the maze, a simple strategy could be:
@@ -85,22 +85,22 @@ Under some conditions regarding the maze, a simple strategy could be:
 - else, if there is space on your left, turn left
 - else, [all three sides (forward, left, right) are closed] turn around
 
+Complete the code below in order to solve the following maze:
 
+<div style="text-align:center">
+<img src="mymaze.png" alt=" " width="35%">
+</div>
+
+The code, once completed, should return you the following output.
+
+<div style="text-align:center">
+<img src="maze_solved.gif" alt=" " width="35%">
+</div>
 
 
 <codeblock id="02_03">
 
 </codeblock>
-
-
-
-# test to embed giff
-<img src={maze_solved.gif} alt="Otter dancing with a fish" />
-![](./giff/maze_solved.gif)
-<img src="maze_solved.gif" alt=" " width="25%">
-<img src=”./giff/maze_solved.gif” alt="" />
-<img src="maze_solved.gif" />
-![otter dancing with a fish](./images/dancing-otter.gif)
 
 </exercise>
 

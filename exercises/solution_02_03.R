@@ -26,23 +26,23 @@ rownames(matmaze)=rev(seq(sqrt(length(maze))))
 # define search fct
 
 search_new_pos = function(actual_pos, actual_dir){
-  #define possible direction
+  # define possible direction
   # going right on the map
   if(all(actual_dir == c(1,0))){
     go_right = c(0,-1)
     go_left = c(0,1)
     turn_back = c(-1,0)
-    #going left on the map
+  # going left on the map
   }else if(all(actual_dir == c(-1,0))){
     go_right = c(0,1)
     go_left = c(0,-1)
     turn_back = c(1,0)
-    #going up on the map
+  # going up on the map
   }else if(all(actual_dir == c(0,1))){
     go_right = c(1,0)
     go_left = c(-1,0)
     turn_back = c(0,-1)
-    
+  # going down on the map
   }else if(all(actual_dir == c(0,-1))){
     go_right = c(-1,0)
     go_left = c(1,0)
@@ -66,17 +66,19 @@ search_new_pos = function(actual_pos, actual_dir){
   x_new_pos_left = as.character(new_pos_to_evaluate_left[2])
   y_new_pos_left = as.character(new_pos_to_evaluate_left[1])
   
-  # evaluate poisition in front
+  # evaluate position in front
   if(matmaze[x_new_pos_front,y_new_pos_front] == 0){
     new_pos = new_pos_to_evaluate_front
     actual_dir = actual_dir
-    #evaluate position right
+  # evaluate position right
   }else if(matmaze[x_new_pos_right,y_new_pos_right] == 0){
     new_pos = new_pos_to_evaluate_right
     actual_dir = go_right
+  # evaluate position left
   }else if(matmaze[x_new_pos_left,y_new_pos_left] == 0){
     new_pos = new_pos_to_evaluate_left
     actual_dir = go_left
+  # else turn back
   }else{
     new_pos = actual_pos+turn_back
     actual_dir = -actual_dir
@@ -87,15 +89,21 @@ search_new_pos = function(actual_pos, actual_dir){
 
 # plot maze and define starting and final position
 plot(matmaze, col=c("white", "black"), key=NULL, main ="Maze")
+
+# define starting and final position
 starting_pos = c(2,1)
 final_pos = c(10,11)
+
+# plot starting and final position
 points(x=starting_pos[1], y=starting_pos[2], col = "darkgreen", pch = 16, cex = 5)
 points(x=final_pos[1], y=final_pos[2], col = "red", pch = 16, cex = 5)
+
+# define initial position, initial dir and iteration number
 actual_pos = starting_pos
 actual_dir = c(0,1)
 iteration = 1
 
-# launch search 
+# launch search and continue search while actual position is not equal to final position
 while(!all(actual_pos == final_pos)){
   res = search_new_pos(actual_pos = actual_pos, actual_dir = actual_dir)
   actual_pos = res[[1]]
