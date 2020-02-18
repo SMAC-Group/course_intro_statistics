@@ -73,12 +73,18 @@ a != b
 </codeblock>
 
 ### 4) In this exercise, you will implement an algorithm that can solve a simple maze such as the one below.
-Under some conditions, a simple strategy could be:
+
+<div style="text-align:center">
+<img src="little_maze.jpg" alt=" " width="25%">
+</div>
+
+Under some conditions regarding the maze, a simple strategy could be:
 
 - if there is space in front of you, go forward
 - else, if there is space on your right, turn right
 - else, if there is space on your left, turn left
 - else, [all three sides (forward, left, right) are closed] turn around
+
 
 
 
@@ -89,8 +95,12 @@ Under some conditions, a simple strategy could be:
 
 
 # test to embed giff
-![](maze_solved.gif)
-<img src=”giff/maze_solved.gif” alt=”animated” />
+<img src={maze_solved.gif} alt="Otter dancing with a fish" />
+![](./giff/maze_solved.gif)
+<img src="maze_solved.gif" alt=" " width="25%">
+<img src=”./giff/maze_solved.gif” alt="" />
 <img src="maze_solved.gif" />
+![otter dancing with a fish](./images/dancing-otter.gif)
+
 </exercise>
 
