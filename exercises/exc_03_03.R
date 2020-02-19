@@ -1,32 +1,33 @@
-# Generate a vector of Natural number
-setseed(12345)
-sample_size = 5
-myvec = sample(0:50, size = sample_size)
-myvec
-
-# Bubble sort
-for(iter_num in seq(length(myvec)-1, 1, -1)){
-  print("############")
-  print(paste("Iteration", length(myvec)-iter_num))
-  print("############")
-  for(idx in seq(iter_num)){
-    print(paste("-->Comparing obs", idx, "and obs.", idx+1))
-    # if the element at position idx is greater than the element at position idx+1
-    if(___){
-      # store idx in temp
-      temp = myvec[idx]
-      # assign idx+1 to idx
-      myvec[___] = myvec[___]
-      # assign idx to idx+1
-      myvec[idx+1] = temp
-      print(paste("Element ", idx, "is greater than element", idx+1, ".","Switching elements",  idx, "and", idx+1))
-      print(paste("The vector is now"))
-      print(myvec)
-      # else if the element at position idx is smaller or equal to the element at position idx+1
-    }else if(___){
-      print(paste("Element ", idx, "is smaller or equal to element", idx+1, ". No changes" ))
-      print(paste("The vector is"))
-      print(myvec)
-    }
+median_bootstrap_sd = function(x, bootstrap_iterations){
+  T_boot = vector(length = ___)
+  for(i in seq(___)){
+    set.seed(i)
+    boot_sample = sample(x = x, size = length(x), replace = ___)
+    T_boot[i] = median(___)
   }
+  se = ___
+  norm_ci = c(median(x) - 2* __, median(x) + 2* se)
+  percentile_ci = c(quantile(x = ___, probs = .025), ___(x = T_boot, probs = .975))
+  out = list(
+    vec_bootstrap_median = ___,
+    nbr_iter = ___,
+    variance_median = var(___),
+    standard_error_median = se,
+    norm_ci = ___,
+    percentile_ci = percentile_ci
+  )
+  return(out)
 }
+
+# generate data
+set.seed(1234)
+my_data = rnorm(n = 100000, mean = 55, sd = 20)
+my_sample = sample(my_data, size = 1000, replace = F)
+
+# compute bootstrap estimate of the standard error
+my_boot_estimate = median_bootstrap_sd(x = ___, bootstrap_iterations = 1000)
+
+# compare true value and CI
+median(my_data)
+my_boot_estimate[[__]]
+my_boot_estimate[[__]]

@@ -75,7 +75,7 @@ a != b
 ### 4) In this exercise, you will implement an algorithm that can solve a simple maze such as the one below.
 
 <div style="text-align:center">
-<img src="little_maze.jpg" alt=" " width="15%">
+<img src="little_maze.jpg" alt=" " width="35%">
 </div>
 
 Under some conditions regarding the maze, a simple strategy could be:

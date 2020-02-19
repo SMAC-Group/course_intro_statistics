@@ -6,6 +6,11 @@ type: slides
 
 ---
 
+<div style="text-align:center"><img src="fct_love.jpg" alt=" " width="55%">
+
+Notes: When you define a function you give a name to a set of actions you want the computer to perform. When you **call** a function you are telling the computer to run (or execute) that set of actions.
+---
+
 Let's define a function that return the result of the addition of two numbers.
 
 ```r
@@ -292,11 +297,57 @@ results
 
 ---
 
+ <div align="center">
+ <big> <b> Recursive function </b> </big>
+ </div> 
 
+A recursive function is a function that calls itself during its execution. This enables the function to repeat itself several times, outputting the result and the end of each iteration. 
 
+A big difference between recursion and iteration is the way that they end. While a loop executes the block of code, checking each time to see if it is at the end of the sequence, there is no such sequential end for recursive code.
 
+A recursive function consists of two parts: the recursive call and the base case. 
 
+---
 
+A simple example to present recursion is a function that returns the factorial of a positive integer. Denoted by \\(n!\\), the factrial of a positive integer is the product of all positive integer elss than or equal to \\(n\\).
+
+$$\begin{equation}
+n !=n \times(n-1) \times(n-2) \times(n-3) \times \cdots \times 3 \times 2 \times 1
+\end{equation}$$
+
+Below is an example of a recursive implementation of the factorial of a positive integer.
+
+```r
+my_factorial = function(x){
+  # Base case
+  if(x == 0){
+    return(1)
+  }else if(x == 1){
+    return(1)
+  # Recursive call
+  }else{
+    return(x*my_factorial(x-1))
+  }
+}
+```
+
+Notes: One could then execute the function `my_factorial` and obtain the following results:
+
+```r
+for(i in seq(6)){
+    print(my_factorial(i))
+}
+```
+
+```out
+[1] 1
+[1] 2
+[1] 6
+[1] 24
+[1] 120
+[1] 720
+```
+---
 
 
 

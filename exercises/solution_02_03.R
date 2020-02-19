@@ -102,7 +102,7 @@ points(x=final_pos[1], y=final_pos[2], col = "red", pch = 16, cex = 5)
 actual_pos = starting_pos
 actual_dir = c(0,1)
 iteration = 1
-time_delay=..1
+time_delay=.01
 
 # launch search and continue search while actual position is not equal to final position
 while(!all(actual_pos == final_pos)){
