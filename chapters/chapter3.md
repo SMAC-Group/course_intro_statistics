@@ -55,6 +55,10 @@ This is a great example to use a recursive function.
 
 ### 4) Bootstrap application for confidence interval of a statistic. (😱)
 
+<div style="text-align:center">
+<img src="comic_boot.jpg" alt="" width="35%">
+</div>
+
 Imagine that you are interested in a statistic \\(T\_n\\) that is any function of the data (i.e. \\(T\_n = g(X\_1, ..., X\_n\\)) and that you want to estimate the standard error for the point estimate \\(\hat{T}\_n\\) . Let's consider that we are interested in estimating the median of a given population. That is, \\(T\_n\\) = \\(\mathcal{F}\_{0.5}\\), where \\(\mathcal{F}\\) is the unknown true cumulative distribution of\\(X\_i\\).
 
 One could compute a bootstrap estimate of the variance of \\(T\_n\\) as such:
