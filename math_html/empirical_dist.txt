@@ -1,0 +1,5 @@
+The empirical distribution function $\widehat{F}_{n}$ is the cdf
+that puts mass $1/n$ at each data point $X_i$. Formally,
+$$\widehat{F}_{n}(x)= \frac{\sum_{i=1}^{n} I\left(X_{i} \leq x\right)}{n}$$
+where
+$I\left(X_{i} \leq x\right)=\left\{\begin{array}{ll}{1} & {\text { if } X_{i} \leq x} \\ {0} & {\text { if } X_{i}>x}\end{array}\right.$
