@@ -4,12 +4,11 @@ type: slides
 
 # Attributes, simple functions applied to vectors, dates and sequences
 
-Notes: In this section, we will discuss different elements. You can find further informations regarding: 
-- Attributes for vectors [here](https://smac-group.github.io/ds/data.html#vectattr)
-- Simple functions applied to vectors [here](https://smac-group.github.io/ds/data.html#useful-functions-with-vectors)
-and
-- Working with dates in `R` [here](https://smac-group.github.io/ds/data.html#working-with-dates)
-- Making Sequences [here](https://smac-group.github.io/ds/data.html#creating-sequences)
+Notes: In this section, we will discuss different elements. You can find further information regarding: 
+- Attributes for vectors [here](https://smac-group.github.io/ds/data.html#vectattr);
+- Simple functions applied to vectors [here](https://smac-group.github.io/ds/data.html#useful-functions-with-vectors);
+- Working with dates in `R` [here](https://smac-group.github.io/ds/data.html#working-with-dates);
+- Making Sequences [here](https://smac-group.github.io/ds/data.html#creating-sequences).
 
 ---
 
@@ -17,6 +16,7 @@ and
  <big> <b> Attributes </b> </big>
  </div> 
  
+In this section, we will discuss attributes for vectors. You can find further information on this topic [here](https://smac-group.github.io/ds/data.html#vectattr). 
 
 It is often a good idea to add attributes to a vector. Here is an example:
 
@@ -41,8 +41,6 @@ attr(,"date")
 attr(,"type")
 [1] "Men, Singles"
 ```
-
-Notes: In this section, we will discuss attributes for vectors. You can find further informations on this topic [here](https://smac-group.github.io/ds/data.html#vectattr)
 
 ---
 
@@ -73,14 +71,14 @@ Notes: Note that you can retreive the attributes of a vector returned as a vecto
 ```r
 names(grand_slam_win)[1:2]
 ```
-will here return
+which will return:
 ```out
 [1] "Andy Murray"  "Rafael Nadal"
 ```
 
 ---
 
-Then subsetting can also be made using the names of the elements:
+We can also subset using the names of the elements:
 
 ```r
 grand_slam_win[2]
@@ -112,13 +110,13 @@ names(grand_slam_win)
 
 ```
 
-Notes: Note that you can also subset a a named vector with negative indices. For example
+Notes: Note that you can also subset a named vector with negative indices. For example
 
 ```r
 grand_slam_win[-c(1:3)]
 ```
 
-will returns
+which will return:
 
 ```out
 Novak Djokovic  Roger Federer 
@@ -130,7 +128,9 @@ Novak Djokovic  Roger Federer
  <big> <b> Simple functions for vectors </b> </big>
  </div> 
 
-Here are some examples:
+In this section, we will discuss simple functions applied to vectors. You can find further information on this topic [here](https://smac-group.github.io/ds/data.html#useful-functions-with-vectors).
+
+Here are some more examples:
 
 ```r
 mean(grand_slam_win)
@@ -148,10 +148,6 @@ median(grand_slam_win)
 [1] 12
 ```
 
-Notes: In this section, we will discuss simple functions applied to vectors. You can find further informations on this topic [here](https://smac-group.github.io/ds/data.html#useful-functions-with-vectors)
-
----
-
 ```r
 sd(grand_slam_win)
 ```
@@ -159,8 +155,6 @@ sd(grand_slam_win)
 ```out
 [1] 5.069517
 ```
-
-Notes: Note that one can also retrieve Tukey Five Number summary of a vector using the function <code>summary()</code>. For example:
 
 ```r
 summary(grand_slam_win)
@@ -247,6 +241,8 @@ See the examples for how to use these functions to sort data frames, etc.
 
 ---
 
+Note that `sort(x, decreasing = FALSE)` and `x[order(x)]` return the same result.
+
 ```r
 order(x)
 ```
@@ -260,23 +256,19 @@ x[order(x)]
 [1] 1 1 3 5 8
 ```
 
-Notes: Note that `sort(x, decreasing = FALSE)` and `x[order(x)]` return the same result.
-
 ---
 
 <div align="center">
 <big> <b> Dates </b> </big>
 </div> 
- 
-Dates can take various format and can easily be confusing when programming. `R` provides various tools and packages to work with dates.
 
-<div style="text-align:center"><img src="joke_date.png" alt=" " width="45%">
+In this section, we will discuss dates. Dates can take various format and can easily be confusing when programming. `R` provides various tools and packages to work with dates. You can find further information on this topic [here](https://smac-group.github.io/ds/data.html#working-with-dates).
 
-Notes: In this section, we will discuss dates. You can find further informations on this topic [here](https://smac-group.github.io/ds/data.html#working-with-dates)
+<div style="text-align:center"><img src="joke_date.png" alt=" " width="30%">
 
 ---
 
-One can transform dates in the ISO 8601 international standard format %Y-%m-%d using the function `as.Date()`. For furter details regarding dates format, one can read the `R` documentation on dates [here](https://www.rdocumentation.org/packages/base/versions/3.6.2/topics/as.Date) and the following R bloggers [blogpost](https://www.r-bloggers.com/date-formats-in-r/).
+One can transform dates in the ISO 8601 international standard form at `%Y-%m-%d` using the function `as.Date()`. For furter details regarding dates format, one can read the `R` documentation on dates [here](https://www.rdocumentation.org/packages/base/versions/3.6.2/topics/as.Date) and the following R bloggers [blogpost](https://www.r-bloggers.com/date-formats-in-r/).
 
 Here is an example:
 
@@ -334,7 +326,7 @@ mydates3[1] + 22
 [1] "2020-03-05"
 ```
 
-Finally, the package `lubridate` from the `tidyverse` proposes various functions that makes it easier to work with dates. You can find further details about `lubridate` [here](https://lubridate.tidyverse.org/)
+Finally, the package `lubridate` from the `tidyverse` provides various functions that make it easier to work with dates. You can find further details about `lubridate` [here](https://lubridate.tidyverse.org/).
 
 ---
 
@@ -342,7 +334,7 @@ Finally, the package `lubridate` from the `tidyverse` proposes various functions
  <big> <b> Making sequences </b> </big>
  </div> 
  
-In this section, we will discuss sequences. You can find further informations on this topic [here](https://smac-group.github.io/ds/data.html#creating-sequences)
+In this section, we will discuss sequences. You can find further information on this topic [here](https://smac-group.github.io/ds/data.html#creating-sequences).
 
 In `R` we often need to construct sequences. Here are some examples:
 
@@ -372,13 +364,13 @@ In `R` we often need to construct sequences. Here are some examples:
  [85]  9.4  9.5  9.6  9.7  9.8  9.9 10.0
 ```
 
-Notes: Sequences are often used when programming iterative procedures. For exmaple, when using `for` loop (see next chapter). For example,
+Notes: Sequences are often used when programming iterative procedures, such as when using `for` loop (see next chapter). For example,
 ```r
 for(i in 1:5){
      print("I realy like this class")
 }
 ```
-will return:
+which will return:
 ```out
 [1] "I realy like this class"
 [1] "I realy like this class"
@@ -408,7 +400,7 @@ y = sin(x)
 plot(x, y, type = "l")
 ```
 
-<div style="text-align:center"><img src="fig1.png" alt=" " width="75%">
+<div style="text-align:center"><img src="fig1.png" alt=" " width=50%">
 
 ---
 
@@ -437,7 +429,7 @@ library(quantmod)
 getSymbols("AAPL", from = three_months_ago, to = today)
 candleChart(AAPL, theme = 'white', type = 'candles')
 ```
-<div style="text-align:center"><img src="fig2.png" alt=" " width="85%">
+<div style="text-align:center"><img src="fig2.png" alt=" " width=48%">
 
 ---
 
@@ -479,9 +471,9 @@ hist(AAPL_returns, probability = TRUE, col = "lightgrey")
 lines(x, y, col = 2, lwd = 2)
 ```
 
-<div style="text-align:center"><img src="fig3.png" alt=" " width="70%">
+<div style="text-align:center"><img src="fig3.png" alt=" " width="40%">
 
-Notes: Here, we first generate a vector from \\(-0.1\\) to \\(0.1\\) to then calculate the probability density function of a Normal Law \\(\phi(x)\\) given \\(\hat{\mu}\\) and  \\(\hat{\sigma}^2\\) in order to plot the correponding probability density on top of the histogram of the returns.
+Notes: Here, we first generate a vector from \\(-0.1\\) to \\(0.1\\). Then we calculate the probability density function of a normal distribution \\(\phi(x)\\) given \\(\hat{\mu}\\) and  \\(\hat{\sigma}^2\\) in order to plot the correponding probability density on top of the histogram of the returns.
 
 
 ---

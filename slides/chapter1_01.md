@@ -4,11 +4,11 @@ type: slides
 
 # Introduction to vectors
 
-Notes: In this section, we will discuss the basic features of vectors. For more information have at this [link](https://smac-group.github.io/ds/data.html#vectors)
+Notes: In this section, we will discuss the basic features of vectors. For more information have at this [link](https://smac-group.github.io/ds/data.html#vectors).
 
 ---
 
-Let's define some simple vectors:
+First, let's consider vectors of numbers:
 
 ```r
 (grand_slam_win = c(9, 15, 5, 12, 18))
@@ -26,7 +26,7 @@ c(1, c(1, 3), c(3))
 [1] 1 1 3 3
 ```
 
-We can also define vectors with characters:
+We can also define vectors of characters:
 
 ```r
 (players <- c("Andy Murray", "Rafael Nadal", "Stan Wawrinka",
@@ -38,12 +38,12 @@ We can also define vectors with characters:
 [5] "Roger Federer"
 ```
 
-Notes: When using `(x = 2)` it attirbutes to `x` the value 2 and prints it. Also, the function `c()` can be sued within itself...
+Notes: With `x = 2`, it simply assigns the value `2` to `x`. By adding `()` around, it prints out the value. 
 
 ---
 
 
-We can also check the "kind" of objects stored in a vector? Check out the function `typeof`!
+We can evaluate the kind or type of elements that are stored in a vector using the function `typeof()`.
 
 ```r
 typeof(players)
@@ -60,10 +60,6 @@ typeof(grand_slam_win)
 ```out
 [1] "double"
 ```
-
----
-
-Integer vs numeric (or double):
 
 ```r
 a = c(1,2,3)
@@ -83,32 +79,36 @@ typeof(b)
 [1] "integer"
 ```
 
-Notes: In `R` `1L` and `1` are actually different. This is because `R` considers any number as a double by default, except when adding the suffix `L` after an integer.
+Notes: In R, `1L` and `1` are actually different. This is because `R` considers any number as a double by default, except when adding the suffix `L` after an integer.
 
 ---
 
-As indicated earlier, a vector has a homogeneous data structure meaning that it can only contain a single type among all the data types. Therefore, when more than one data type is provided, `R` will coerce the data into a "shared"" type. Here are some examples of "coercion" (i.e. mixing different kinds of elements in a vector):
+As indicated earlier, a vector has a homogeneous data structure meaning that it can only contain a single type among all the data types. Therefore, when more than one data type is provided, `R` will coerce the data into a "shared" type. 
 
-```r
-(a = c("a", 2))
-```
-```out
-[1] "a" "2"
-```
-
-```r
-(b = c(FALSE, TRUE, 1, 2, "a"))
-```
-
-```out
-[1] "FALSE" "TRUE"  "1"     "2"     "a"
-```
-
-Notes: To identify this "shared" type we can use this simple rule:
+To identify this "shared" type we can use this simple rule:
 
 logical < integer < numeric < character,
 
 which simply means that if a vector has more than one data type, the "shared" type will be that of the "largest" type according to the progression shown above.
+
+Here are some examples of "coercion" (i.e. mixing different kinds of elements in a vector):
+
+```r
+a = c("a", 2)
+typeof(a)
+```
+```out
+[1] "character"
+```
+
+```r
+b = c(FALSE, TRUE, 1, 2, "a")
+typeof(b)
+```
+```out
+[1] "character"
+```
+
 ---
 
 **Subsetting** is very important when working with vector. This can be done in various ways. We can, for example, use **positive** indices:
@@ -295,7 +295,7 @@ x[c(T, F)]
 [1] 1 4 1
 ```
 
-😳 The last example is quite surprizing! Indeed, `x` has 5 elements but we are using a vector dimension 2 inside of it... and `R` returns no error. This is because `R` recycles, or repeats, elements of the shorter vector until it matches the longer one. In this case `x[c(T, F)]` is equivalent to:
+😳 The last example is quite surprising! Indeed, `x` has 5 elements but we are using a vector dimension 2 inside of it... and `R` returns no error. This is because `R` recycles, or repeats, elements of the shorter vector until it matches the longer one. In this case `x[c(T, F)]` is equivalent to:
 
 ```r
 x[c(T, F, T, F, T)]
@@ -305,7 +305,7 @@ x[c(T, F, T, F, T)]
 [1] 1 4 1
 ```
 
-This phenomeon is called **recycling** and can easily create bugs is you are not careful.
+This phenomeon is called **recycling** and can easily create bugs if you are not careful.
 
 Notes: Remember that
 
@@ -328,7 +328,7 @@ y[c(F,T)]
 [1]  2  4  6  8 10
 ```
 
-Also, it is intersting to mention that recycling also happends when adding two vectors (but in this case and warning is normally returned). Here is an example:
+Also, it is intersting to mention that recycling also happens when adding two vectors (but usually a warning is returned in this case). Here is an example:
 
 ```r
 c(1,2,4) + c(6,0,9,10,13)
@@ -342,7 +342,7 @@ In c(1, 2, 4) + c(6, 0, 9, 10, 13) :  longer object length is not a multiple of 
 
 ---
 
-However, it is **NOT** possible to really mixed indices. For example, this code won't work:
+However, it is **NOT** possible to mix indices. For example, this code won't work:
 
 ```r
 x[c(1,2,3,-4)]
@@ -371,7 +371,7 @@ x[c(1,2,3,F)]
 [1] 1 2 4
 ```
 
-Once again, the last example is a little surprizing... make sure you understand what is going on here 😒
+Once again, the last example is surprising... make sure you understand what is going on here!
 
 Notes: Remember that
 

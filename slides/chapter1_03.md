@@ -2,7 +2,7 @@
 type: slides
 ---
 
-# Matrices, Lists and DataFrames
+# Matrices, lists and dataframes
 
 ---
 
@@ -11,7 +11,7 @@ type: slides
  </div> 
 
 
-<div style="text-align:center"><img src="comic_matrix3.jpg" alt=" " width="55%">
+<div style="text-align:center"><img src="comic_matrix3.jpg" alt=" " width="40%">
 
 ---
 
@@ -28,12 +28,12 @@ We can use the `matrix()` function to create a matrix from a vector:
  [3,]    9   10   11   12
 ```
 
-Notes: Here, the argument `byrow`	specifies that the matrix is filled by rows. Otherwise, the matrix is filled by columns by default.
+Notes: Here, the argument `byrow`	specifies that the matrix is filled by rows. Otherwise, the matrix is filled by columns by default. For example,
 
 ```r
 (mat <- matrix(1:12, ncol = 4,  nrow = 3))
 ```
-returns
+which will return:
 ```out
      [,1] [,2] [,3] [,4]
 [1,]    1    4    7   10
@@ -43,7 +43,7 @@ returns
 ---
 
 
-It is often the case that we already have equi-dimensional vectors available and we wish to bundle them together as a matrix. In these cases, two useful functions are `cbind()` to combine vectors as vertical columns side-by-side, and `rbind()` to combine vectors as horizontal rows. Here is an example with `cbind()`:
+It is often the case that we already have equi-dimensional vectors available and we wish to bundle them together as a matrix. In these cases, two useful functions are `cbind()`, which combines vectors as vertical columns side-by-side, and `rbind()`, which combines vectors as horizontal rows. Here is an example with `cbind()`:
 
 ```r
 players <- c("Andy Murray", "Rafael Nadal", "Stan Wawrinka", 
@@ -93,7 +93,7 @@ mat
  Roger Federer      18    81.80
 ```
 
-Notes: One can also extract colnames or rownames from a matrix. For example, on could extract the rownames vector of the matrix defined in this slide with:
+One can also extract colnames or rownames from a matrix. For example, on could extract the rownames vector of the matrix defined in this slide with:
 
 ```r
 colnames(mat)
@@ -104,18 +104,30 @@ colnames(mat)
 
 
 ---
-
-
-As with vectors, there are some useful functions that can be used for matrix operators. For example, `t()` returns a matrix transpose:
+When we work with matrices and doing linear algebra, the function `dim` can be very useful in order to check the dimensions of matrices:
 
 ```r
-(A_char = matrix(c("a","b","c","d"),2, 2))
+?dim
 ```
+
+```
+dim {base}	R Documentation
+Dimensions of an Object
+Description
+Retrieve or set the dimension of an object.
+```
+For example, 
+```r
+dim(A)
+```
+will return 
 ```out
-      [,1] [,2]
- [1,] "a"  "c" 
- [2,] "b"  "d"
+[1] 4 2
 ```
+---
+
+Similar to vectors, there are some useful functions that can be used for matrix operators as well. For example, `t()` returns a matrix transpose:
+
 ```r
 (A <- matrix(1:8, 4, 2))
 ```
@@ -135,32 +147,13 @@ t(A)
  [2,]    5    6    7    8
 ```
 
-Notes: When working with matrices and doing linear algebra, the function `dim` can be very useful in order to check your matrices dimensions.
-
-```r
-?dim
-```
-
-```
-dim {base}	R Documentation
-Dimensions of an Object
-Description
-Retrieve or set the dimension of an object.
-```
-For example, 
-```r
-dim(A)
-```
-will returns
-```out
-[1] 4 2
-```
 ---
 
 We can also do matrix addition simply with `+`.
 ```r
 (B = A+A)
 ```
+
 ```out
       [,1] [,2]
  [1,]    2   10
@@ -194,7 +187,7 @@ A*A                # elementwise multiplication
  [2,]   70  174
 ```
 
-Notes: Recall that the matrix multiplication operation is defined as such. If If \\(\mathbf{A}\\) is an \\(m \times n\\) matrix and \\(\mathbf{B}\\) is an \\(n \times p\\) matrix, the matrix product \\(\mathbf{C}=\mathbf{A B}\\) (denoted without multiplication signs or dotined to be the \\(m \times p\\) such that \\(c_{i j}=a_{i 1} b_{1 j}+\cdots+a_{i n} b_{n j}=\sum_{k=1}^{n} a_{i k} b_{k j}\\)
+Notes: Recall that the matrix multiplication operation is defined as such. If If \\(\mathbf{A}\\) is an \\(m \times n\\) matrix and \\(\mathbf{B}\\) is an \\(n \times p\\) matrix, the matrix product \\(\mathbf{C}=\mathbf{A B}\\) (denoted without multiplication signs or dotined to be the \\(m \times p\\) such that \\(c_{i j}=a_{i 1} b_{1 j}+\cdots+a_{i n} b_{n j}=\sum_{k=1}^{n} a_{i k} b_{k j}\\).
 
 ---
 

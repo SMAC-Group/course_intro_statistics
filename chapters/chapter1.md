@@ -1,7 +1,7 @@
 ---
 title: 'Chapter 1: Data Structures'
 description:
-  'Understand how to organizing data so that it can be used effectively. '
+  'Learn to organize data in order to use it more efficiently.'
 prev: null
 next: /chapter2
 type: chapter
@@ -9,9 +9,9 @@ id: 1
 ---
 
 
-<exercise id="1" title="General Information">
+<exercise id="1" title="General information">
 
-In this chapter we will consider an introduction to Data Structure with `R`
+In this chapter we will consider an introduction to data structure with `R`.
 
 </exercise>
 
@@ -123,13 +123,13 @@ Revisit the slides if you don't remember these functions.
 </exercise>
 
 
-<exercise id="6" title="Matrices, Lists and DataFrames" type = "slides">
+<exercise id="6" title="Matrices, lists and dataframes" type = "slides">
 <slides source="chapter1_03">
 </slides>
 
 </exercise>
 
-<exercise id="7" title="Matrices, Lists and DataFrames: Exercises">
+<exercise id="7" title="Matrices, lists and dataframes: Exercises">
 
 ### 1) Guess the value of the following commands:
 
