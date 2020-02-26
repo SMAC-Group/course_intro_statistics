@@ -57,21 +57,16 @@ const Layout = ({ isHome, title, description, children }) => {
                             <footer className={classes.footer}>
                             
                             <div align="center">
-                            <H3>About the instructor and the T.A.</H3>
+                            <H3>About the course, the professor and the T.A.s</H3>
                             </div>
                                 <div className={classes.footerContent}>
+                               
                                     <section className={classes.footerSection}>
-                                        {meta.showProfileImage && (
-                                            <img
-                                                src="/lvoirol2.jpg"
-                                                alt=""
-                                                className={classes.profile}
-                                            />
-                                        )}
+                                        
 
                                         
                                         <p> 
-                                        Lionel Voirol is a Ph.D Student and Teaching Assistant working at the Research Center for Statistics of the University of Geneva. 
+                                        This course is intended to provide an introduction to data science using the <code>R</code> language. It will also provide students with notions of data management and manipulation, data analytics as well as of reproducible research, result-sharing and version control (using GitHub). At the end of the class, students should be able to automatically extract data from websites and create interactive web apps as well as dynamic reports to visualize and analyze them. Students should also be able to construct their own <code>R</code> packages, make them available on GitHub and document them using literate programming.
                                         </p>
                                             
                                     </section>
