@@ -467,7 +467,7 @@ Let's continue with the AAPL stock price example and make a histogram based on t
 ```r
 x = seq(from = -0.1, to = 0.1, length.out = 10^4)
 y = dnorm(x, mean(AAPL_returns), sd(AAPL_returns))
-hist(AAPL_returns, probability = TRUE, col = "lightgrey")
+hist(AAPL_returns, probability = TRUE, col = "lightgrey", ylim = c(0,28))
 lines(x, y, col = 2, lwd = 2)
 ```
 
