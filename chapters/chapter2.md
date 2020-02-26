@@ -1,11 +1,12 @@
 ---
 title: 'Chapter 2: Control Structures'
 description:
-  'Understand how control structures dictate the flow of control.'
+  '🚧 In development. Coming soon.'
 prev: /chapter1
 next: null
 type: chapter
 id: 2
 ---
 
-In development. Coming soon.
+<div align=center>
+🚧 In development. Cooming soon.</div>
