@@ -9,4 +9,4 @@ id: 2
 ---
 
 <div align=center>
-🚧 In development. Cooming soon.</div>
+🚧 In development. Coming soon.</div>
