@@ -4,7 +4,7 @@ type: slides
 
 # Introduction to vectors
 
-Notes: In this section, we will discuss the basic features of vectors. For more information have at this [link](https://smac-group.github.io/ds/data.html#vectors).
+Notes: In this section, we will discuss the basic features of vectors. For more information have a look at this [link](https://smac-group.github.io/ds/data.html#vectors).
 
 ---
 
@@ -83,15 +83,11 @@ Notes: In R, `1L` and `1` are actually different. This is because `R` considers 
 
 ---
 
-As indicated earlier, a vector has a homogeneous data structure meaning that it can only contain a single type among all the data types. Therefore, when more than one data type is provided, `R` will coerce the data into a "shared" type. 
-
-To identify this "shared" type we can use this simple rule:
+As indicated earlier, a vector has a homogeneous data structure meaning that it can only contain a single type among all the data types. Therefore, when more than one data type is provided, `R` will coerce the data into a "shared" type. To identify this "shared" type we can use this simple rule:
 
 logical < integer < numeric < character,
 
-which simply means that if a vector has more than one data type, the "shared" type will be that of the "largest" type according to the progression shown above.
-
-Here are some examples of "coercion" (i.e. mixing different kinds of elements in a vector):
+which simply means that if a vector has more than one data type, the "shared" type will be that of the "largest" type according to the progression shown above. Here are some examples of "coercion" (i.e. mixing different kinds of elements in a vector):
 
 ```r
 a = c("a", 2)
@@ -154,7 +150,7 @@ Notes: Essentially, there are four main ways to subset a vector. Here we'll only
 - Negative Index,
 - Logical Indices.
 
-Also, the function `length()` return the number of elements stored in a vector. In this case, we have
+Also, the function `length()` returns the number of elements stored in a vector. In this case, we have
 
 ```r
 (n = length(x))
@@ -295,7 +291,7 @@ x[c(T, F)]
 [1] 1 4 1
 ```
 
-😳 The last example is quite surprising! Indeed, `x` has 5 elements but we are using a vector dimension 2 inside of it... and `R` returns no error. This is because `R` recycles, or repeats, elements of the shorter vector until it matches the longer one. In this case `x[c(T, F)]` is equivalent to:
+😳 The last example is quite surprising! Indeed, `x` has 5 elements but we are using a vector dimension 2 inside of it..,nd `R` returns no error. This is because `R` recycles, or repeats, elements of the shorter vector until it matches the longer one. In this case `x[c(T, F)]` is equivalent to:
 
 ```r
 x[c(T, F, T, F, T)]
@@ -317,8 +313,7 @@ Notes: Remember that
 [1] 1 2 4 5 1
 ```
 
-Here is another example to fix ideas:
-
+Here is another example t
 ```r
 y = c(1,2,3,4,5,6,7,8,9,10)
 y[c(F,T)]
@@ -371,7 +366,7 @@ x[c(1,2,3,F)]
 [1] 1 2 4
 ```
 
-Once again, the last example is surprising... make sure you understand what is going on here!
+Once again, the last example is surprising.., soake sure you understand what is going on here!
 
 Notes: Remember that
 

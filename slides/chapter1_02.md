@@ -44,7 +44,7 @@ attr(,"type")
 
 ---
 
-You retrieve an attribute as follows:
+You can retrieve an attribute as follows:
 
 ```r
 attr(grand_slam_win, "date")
@@ -110,7 +110,7 @@ names(grand_slam_win)
 
 ```
 
-Notes: Note that you can also subset a named vector with negative indices. For example
+Notes: Note that you can also subset a named vector with negative indices. For example,
 
 ```r
 grand_slam_win[-c(1:3)]
