@@ -57,7 +57,7 @@ const Layout = ({ isHome, title, description, children }) => {
                             <footer className={classes.footer}>
                             
                             <div align="center">
-                            <H3>About the course, the professor and the T.A.s</H3>
+                            <H3>About the course, the professor and the TAs</H3>
                             </div>
                                 <div className={classes.footerContent}>
                                

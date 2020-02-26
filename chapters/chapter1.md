@@ -44,7 +44,7 @@ d = c(a,b,a)
 </choice>
 
 
-### 2) Subset the elements 1, 2, 4 and 5 of the vector `x`:
+### 2) Subset the 1st, 2nd, 4th and 5th elements of the vector `x`:
 
 <codeblock id="01_01">
 To select with positive indices, you can simply use: <code>x[c(1, 2, 4, 5)]</code>
