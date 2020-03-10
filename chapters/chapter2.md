@@ -35,7 +35,7 @@ You can find further informations regarding:
 
 </exercise>
 
-<exercise id = "4" title ="If/else statement" type = "slides">
+<exercise id = "4" title ="If/else and switch statement" type = "slides">
 
 <slides source="chapter2_03">
 </slides>

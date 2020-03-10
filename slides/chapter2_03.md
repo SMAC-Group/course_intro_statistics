@@ -2,7 +2,7 @@
 type: slides
 ---
 
-# If/else statement
+# If/else and switch statement 
 
 ---
 
@@ -10,6 +10,10 @@ type: slides
 
 ---
 
+ <div align="center">
+ <big> <b> <code>if-else</code> statement </b> </big>
+ </div> 
+ 
 An `if` statement tells R to do a certain task only when a certain condition is satisfied. For example, the following code tells R that we only add 1 to x if x is bigger than 0.
 
 ```r
@@ -163,3 +167,50 @@ if (x %% 2 == 0){
 
 
 ---
+
+ <div align="center">
+ <big> <b> <code>switch</code> statement </b> </big>
+ </div> 
+ 
+A switch statement is a selection control mechanism that allows the value of an expression to change the control flow of program execution via map and search.
+
+The switch statement is used in place of long if statements which compare a variable with several integral values. It is a multi-way branch statement which provides an easy way to dispatch execution for different parts of code. This code is based on the value of the expression.
+
+Notes: Use <code>swtich</code> statement when you want to run different sequences of instructions depending on a variable that can take more than 2 values. 
+
+---
+
+Let us consider the example where we would loike to compute an arithmetic operation on two number.
+
+A solution for this exercise using a `switch` statement could be:
+
+```r
+number1 <- 20
+number2 <- 5
+operator = readline(prompt="Please enter any ARITHMETIC OPERATOR: ")
+
+switch(operator,
+       "+" = print(paste("Addition of two numbers is: ", number1 + number2)),
+       "-" = print(paste("Subtraction of two numbers is: ", number1 - number2)),
+       "*" = print(paste("Multiplication of two numbers is: ", number1 * number2)),
+       "/" = print(paste("Division of two numbers is: ", number1 / number2))
+)
+```
+
+---
+
+
+which will returns if we indicate `/` as the arithmetic operator :
+```out
+ number1 <- 20
+ number2 <- 5
+ operator = readline(prompt="Please enter any ARITHMETIC OPERATOR: ")
+Please enter any ARITHMETIC OPERATOR: /
+ switch(operator,
+        "+" = print(paste("Addition of two numbers is: ", number1 + number2)),
+        "-" = print(paste("Subtraction of two numbers is: ", number1 - number2)),
+        "*" = print(paste("Multiplication of two numbers is: ", number1 * number2)),
+        "/" = print(paste("Division of two numbers is: ", number1 / number2))
+ )
+[1] "Division of two numbers is:  4"
+```
