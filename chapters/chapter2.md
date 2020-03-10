@@ -42,7 +42,16 @@ You can find further informations regarding:
 
 </exercise>
 
-<exercise id = "5" title ="Logical operators and If/else statement: Exercises" type = "slides">
+
+<exercise id = "5" title ="Iterative Control Statements" type = "slides">
+
+<slides source="chapter2_04">
+</slides>
+
+</exercise>
+
+
+<exercise id = "6" title ="Logical operators, If/else statement and Iterative Control Statements: Exercises">
 
 ---
 
@@ -108,4 +117,5 @@ The code, once completed, should return you the following output.
 </codeblock>
 
 </exercise>
+
 
