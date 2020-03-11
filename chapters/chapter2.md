@@ -11,7 +11,12 @@ id: 2
 
 <exercise id="1" title="General Information">
 
-In this chapter we will consider an introduction to Control Structure with `R`
+In this chapter we will discuss different elements regarding Control Structure with `R`.
+You can find further informations regarding:
+- Logical operators [here](https://smac-group.github.io/ds/section-control.html#section-logoperators)
+- Selection operators [here](https://smac-group.github.io/ds/section-control.html#section-selection-operators)
+- Iterative Control Statements [here](https://smac-group.github.io/ds/section-control.html#section-iter_cont_stat)
+
 
 </exercise>
 
@@ -30,14 +35,23 @@ In this chapter we will consider an introduction to Control Structure with `R`
 
 </exercise>
 
-<exercise id = "4" title ="If/else statement" type = "slides">
+<exercise id = "4" title ="If/else and switch statement" type = "slides">
 
 <slides source="chapter2_03">
 </slides>
 
 </exercise>
 
-<exercise id = "5" title ="Logical operators and If/else statement: Exercises" type = "slides">
+
+<exercise id = "5" title ="Iterative Control Statements" type = "slides">
+
+<slides source="chapter2_04">
+</slides>
+
+</exercise>
+
+
+<exercise id = "6" title ="Logical operators, If/else statement and Iterative Control Statements: Exercises">
 
 ---
 
@@ -103,4 +117,5 @@ The code, once completed, should return you the following output.
 </codeblock>
 
 </exercise>
+
 
