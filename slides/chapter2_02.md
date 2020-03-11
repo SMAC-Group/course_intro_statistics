@@ -4,17 +4,22 @@ type: slides
 
 # Logical Operators
 
+Notes: You can find further informations on Logical operator in `R` [here](https://smac-group.github.io/ds/control.html#logoperators).
+
 ---
 
 Logical operators are very commonly used in programming to create (or return) logical (boolean) variables. Please refer to the textbook for a summarized list of commonly used logical operators. Here we give more detailed illustrations.
 
 <div style="text-align:center"><img src="comic_logical.jpg" alt=" " width="40%">
 
-Notes: You can find further informations on Logical operator in `R` [here](https://smac-group.github.io/ds/control.html#logoperators).
-
 ---
 
-Be careful with the difference of `=` and `==`. `=` assigns value to a variable while `==` evaluates whether the variable equals to the given value.
+⚠️ ** Be careful ** with the difference of `=` and `==`:
+
+- `=` assigns value to a variable
+- `==` evaluates whether the variable equals to the given value.
+
+Here is an example:
 
 ```r
 x = 5
