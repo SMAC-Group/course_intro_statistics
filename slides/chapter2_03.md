@@ -2,19 +2,15 @@
 type: slides
 ---
 
-# If/else and switch statement 
+# If/else and switch statements
 
 ---
 
 <div style="text-align:center"><img src="comic_if_ai.jpg" alt=" " width="55%">
 
 ---
-
- <div align="center">
- <big> <b> <code>if-else</code> statement </b> </big>
- </div> 
  
-An `if` statement tells R to do a certain task only when a certain condition is satisfied. For example, the following code tells R that we only add 1 to x if x is bigger than 0.
+An `if` statement tells R to do a certain task only when a certain condition is satisfied. For example, the following code tells R that we add 1 to x only if x is bigger than 0.
 
 ```r
 x = 4
@@ -47,7 +43,7 @@ x
 ---
 
 
-And below tells R to flip the sign of x if x is negative. In other words, the below code returns the absolute value.
+And the code below tells R to flip the sign of x if x is negative. In other words, the below code returns the absolute value.
 
 ```r
 (x = rnorm(1))
@@ -98,7 +94,7 @@ x
 
 ---
 
-In the below example, we use an if statement to assess if x is an even number and, if this is the case, we print a simple message. To evaluate whether x is an even number, we use `%%` (i.e. modulus, or remainder from division):
+In the below example, we use an if statement to assess if x is an even number and, if this is the case, we print a simple message. To evaluate whether x is an even number, we use `%%` (i.e. modulus, or remainder from division).
 
 ```r
 5 %% 2  
@@ -167,20 +163,16 @@ if (x %% 2 == 0){
 
 
 ---
-
- <div align="center">
- <big> <b> <code>switch</code> statement </b> </big>
- </div> 
  
 A switch statement is a selection control mechanism that allows the value of an expression to change the control flow of program execution via map and search.
 
-The switch statement is used in place of long if statements which compare a variable with several integral values. It is a multi-way branch statement which provides an easy way to dispatch execution for different parts of code. This code is based on the value of the expression.
+The switch statement is used in place of long statements which compare a variable with several integral values. It is a multi-way branch statement which provides an easy way to dispatch execution for different parts of code. This code is based on the value of the expression.
 
-Notes: Use <code>swtich</code> statement when you want to run different sequences of instructions depending on a variable that can take more than 2 values. 
+A switch statement can be used when you want to run different sequences of instructions depending on a variable that can take more than 2 values. 
 
 ---
 
-Let us consider the example where we would loike to compute an arithmetic operation on two number.
+Let us consider the example where we would like to compute an arithmetic operation on two numbers.
 
 A solution for this exercise using a `switch` statement could be:
 
@@ -200,7 +192,7 @@ switch(operator,
 ---
 
 
-which will returns if we indicate `/` as the arithmetic operator :
+if we indicate `/` as the arithmetic operator, it will return:
 ```out
  number1 <- 20
  number2 <- 5
