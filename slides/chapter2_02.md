@@ -2,19 +2,22 @@
 type: slides
 ---
 
-# Logical Operators
+# Logical operators
 
 ---
 
-Logical operators are very commonly used in programming to create (or return) logical (boolean) variables. Please refer to the textbook for a summarized list of commonly used logical operators. Here we give more detailed illustrations.
+Logical operators are very commonly used in programming to create (or return) logical (boolean) variables. Please refer to the textbook for a summarized list of commonly used logical operators. Here we give more detailed illustrations. You can find further information on logical operator in `R` [here](https://smac-group.github.io/ds/control.html#logoperators).
 
 <div style="text-align:center"><img src="comic_logical.jpg" alt=" " width="40%">
 
-Notes: You can find further informations on Logical operator in `R` [here](https://smac-group.github.io/ds/control.html#logoperators).
-
 ---
 
-Be careful with the difference of `=` and `==`. `=` assigns value to a variable while `==` evaluates whether the variable equals to the given value.
+⚠️ Be careful with the difference of `=` and `==`:
+
+- `=` assigns value to a variable;
+- `==` evaluates whether the variable equals to the given value.
+
+Here is an example:
 
 ```r
 x = 5
@@ -110,9 +113,11 @@ y > 4
 ## [1] FALSE
 ```
 
-Notes: Note that when using `&&`, the 2nd statement will be evaluated only if the 1st statement is `TRUE`. In other words, if the 1st statement is `FALSE`, then the 2nd statement won't be evaluated. 
+Note that when using `&&`, the 2nd statement will be evaluated only if the 1st statement is `TRUE`. In other words, if the 1st statement is `FALSE`, then the 2nd statement won't be evaluated. 
 
 ---
+
+Note that any logical comparison with an object assigned to the value `NA` will return `NA`.
 
 ```r
 x = 5
@@ -130,8 +135,6 @@ y = NA
 ```out
 1] FALSE
 ```
-
-Notes: Note that any logical comparison with an object assigned to the value `NA` will return `NA`.
 
 ---
 
@@ -165,7 +168,7 @@ y = 6
 
 ---
 
-Be careful about the difference between `&` and `&&`. `&` is a vectorized operator while `&&` is an elementwise (not vectorized) operator. So for `&&` only the first elements of each vector will be considered. Similar for `|` and `||`.
+Be careful about the difference between `&` and `&&`. `&` is a vectorized operator while `&&` is an element-wise (not vectorized) operator. So for `&&` only the first elements of each vector will be considered. Similar for `|` and `||`.
 
 ```r
 x = c(5,7)
@@ -336,24 +339,15 @@ x != 5
 ```out
 [1] FALSE
 ```
-
-
-Notes: Similarly, 
-
 ```r
 TRUE!=FALSE
 ```
-
-returns
 ```out
 [1] TRUE
 ```
-and
 ```r
 TRUE!=TRUE
 ```
-
-returns
 ```out
 [1] FALSE
 ```
@@ -452,7 +446,7 @@ Given a set of logical vectors, are all of the values true?
 ```
 ---
 
-To perform subsetting and retrieve only the elements that satisfy the given condition:
+To perform subsetting and to retrieve only the elements that satisfy the given condition:
 
 ```{r}
 (x = rnorm(10))
@@ -502,9 +496,7 @@ sum(x>1) / n  # this proportion should be close to 1/6
 ```out
 [1] 0.1666667
 ```
-
-
-Notes: The exact probability \\(P(X_i>1)\\) if \\( X_i \sim \mathcal{N}(0,1) \\)= \\(1 - \Phi(1) = 0.1586553 \\) and can be computed as such:
+The exact probability \\(P(X_i>1)\\) if \\( X_i \sim \mathcal{N}(0,1) \\)= \\(1 - \Phi(1) = 0.1586553 \\) can be computed as such:
 
 ```r
 1-pnorm(1)

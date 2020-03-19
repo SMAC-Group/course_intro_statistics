@@ -9,7 +9,7 @@ id: 2
 ---
 
 
-<exercise id="1" title="General Information">
+<exercise id="1" title="General information">
 
 In this chapter we will discuss different elements regarding Control Structure with `R`.
 You can find further informations regarding:
@@ -45,7 +45,7 @@ You can find further informations regarding:
 
 </exercise>
 
-<exercise id = "4" title ="If/else and switch statement" type = "slides">
+<exercise id = "4" title ="If/else and switch statements" type = "slides">
 
 <slides source="chapter2_03">
 </slides>
@@ -53,7 +53,7 @@ You can find further informations regarding:
 </exercise>
 
 
-<exercise id = "5" title ="Iterative Control Statements" type = "slides">
+<exercise id = "5" title ="Iterative control statements" type = "slides">
 
 <slides source="chapter2_04">
 </slides>
@@ -61,7 +61,7 @@ You can find further informations regarding:
 </exercise>
 
 
-<exercise id = "6" title ="Logical operators, If/else statement and Iterative Control Statements: Exercises">
+<exercise id = "6" title ="Logical operators, if/else statement and iterative control statements: Exercises">
 
 ---
 
