@@ -4,6 +4,11 @@ type: slides
 
 # Matrices, lists and dataframes
 
+Notes: In this section, we will discuss different elements. You can find further information regarding: 
+- Matrices [here](https://smac-group.github.io/ds/section-data.html#section-matrices)
+- Lists [here](https://smac-group.github.io/ds/section-data.html#section-list)
+- DataFrames [here](https://smac-group.github.io/ds/section-data.html#section-dataframe)
+
 ---
 
  <div align="center">
@@ -93,6 +98,8 @@ mat
  Roger Federer      18    81.80
 ```
 
+---
+
 One can also extract colnames or rownames from a matrix. For example, on could extract the rownames vector of the matrix defined in this slide with:
 
 ```r
@@ -103,27 +110,6 @@ colnames(mat)
 ```
 
 
----
-When we work with matrices and doing linear algebra, the function `dim` can be very useful in order to check the dimensions of matrices:
-
-```r
-?dim
-```
-
-```
-dim {base}	R Documentation
-Dimensions of an Object
-Description
-Retrieve or set the dimension of an object.
-```
-For example, 
-```r
-dim(A)
-```
-will return 
-```out
-[1] 4 2
-```
 ---
 
 Similar to vectors, there are some useful functions that can be used for matrix operators as well. For example, `t()` returns a matrix transpose:
@@ -145,6 +131,29 @@ t(A)
       [,1] [,2] [,3] [,4]
  [1,]    1    2    3    4
  [2,]    5    6    7    8
+```
+
+Notes: 
+When we work with matrices and doing linear algebra, the function `dim` can be very useful in order to check the dimensions of matrices:
+
+```r
+?dim
+```
+
+```
+dim {base}	R Documentation
+Dimensions of an Object
+Description
+Retrieve or set the dimension of an object.
+```
+
+For example, 
+```r
+dim(A)
+```
+will return 
+```out
+[1] 4 2
 ```
 
 ---
@@ -224,6 +233,8 @@ D%*%D_inv
 
 Notes: Recall that if \\(\mathbf{A}\\) is a matrix with a non-null determinant, then the inverse matrix noted \\(\mathbf{A}^{-1}\\) can be computed and the matrix product \\(\mathbf{A}\mathbf{A}^{-1}\\) = \\(\mathbf{I}\\), where \\(\mathbf{I}\\) is the identity matrix, a square matrix with ones on the main diagonal and zeros elsewhere.
 
+You may notice that `D%*%D_inv` do not return exactly the \\(\mathbf{I}\\) matrix. There are some very tiny off-diagonal values (like `-8.881784e-16`). This is because computers don't have infinite precision, so there is a bit of floating-point error here.
+
 ---
 
 We can also easily create a diagonal matrix with the function `diag()`:
@@ -236,6 +247,30 @@ diag(c(1,1))
       [,1] [,2]
  [1,]    1    0
  [2,]    0    1
+```
+
+---
+
+An other example:
+
+```r
+n = 10
+identity_mat = diag(rep(1,n))
+identity_mat
+```
+
+```out
+      [,1] [,2] [,3] [,4] [,5] [,6] [,7] [,8] [,9] [,10]
+ [1,]    1    0    0    0    0    0    0    0    0     0
+ [2,]    0    1    0    0    0    0    0    0    0     0
+ [3,]    0    0    1    0    0    0    0    0    0     0
+ [4,]    0    0    0    1    0    0    0    0    0     0
+ [5,]    0    0    0    0    1    0    0    0    0     0
+ [6,]    0    0    0    0    0    1    0    0    0     0
+ [7,]    0    0    0    0    0    0    1    0    0     0
+ [8,]    0    0    0    0    0    0    0    1    0     0
+ [9,]    0    0    0    0    0    0    0    0    1     0
+[10,]    0    0    0    0    0    0    0    0    0     1
 ```
 
 ---
@@ -263,7 +298,7 @@ getSymbols("NFLX", from = five_years_ago, to = today)
 [1] "NFLX"
 ```
 
-Notes: Find the documentation of the pacakge `quantmod` "Quantitative Financial Modelling Framework" [here](https://cran.r-project.org/web/packages/quantmod/index.html).
+Notes: Find the documentation of the package `quantmod` "Quantitative Financial Modelling Framework" [here](https://cran.r-project.org/web/packages/quantmod/index.html).
 
 ---
 
@@ -288,6 +323,62 @@ var_investment <- omega_star^2*Sigma[1,1] + (1 - omega_star)^2*Sigma[2,2] +
 ```
 
 Notes: Note here that the object `Sigma` is the variance-covariance matrix of the two variable `Ra` and `Rn` and `mu` is the vector of both means. 
+
+---
+
+We can then compute the following financial summary:
+
+```r
+investment_summary <- matrix(NA, 2, 3)
+dimnames(investment_summary)[[1]] <- c("Expected value", "Variance")
+dimnames(investment_summary)[[2]] <- c("Apple", "Netflix", "Investment")
+investment_summary[1, ] <- c(mu, mu_investment)
+investment_summary[2, ] <- c(diag(Sigma), var_investment)
+investment_summary
+```
+
+```out
+
+                      Apple      Netflix   Investment
+Expected value 0.0006760433 0.0016573827 0.0008455370
+Variance       0.0003013552 0.0007005402 0.0002831629
+
+```
+
+---
+
+We can also compare these investments graphically:
+
+```r
+# plot expected value of investment vs sd
+plot(sqrt(investment_summary[2, ]), 
+     investment_summary[1, ],
+     ylab = "Daily Expected Value of Investment",
+     xlab = "Daily Investment Standard Deviation", 
+     pch = 19, cex = 1, lty = "solid", 
+     lwd = 2, 
+     xlim = c(min(sqrt(investment_summary[2, ])), max(sqrt(investment_summary[2, ])+3e-03)), 
+     col = c(4,2,3))
+
+# add grid
+grid()
+
+# add labels
+text(sqrt(investment_summary[2, ]), 
+     investment_summary[1, ], 
+     labels = names(investment_summary[1, ]), cex= 0.7, pos = 4)
+     
+```
+
+---
+
+Which will returns the following plot:
+
+<div style="text-align:center"><img src="plot_investement_2.png" alt=" " width="60%">
+
+
+
+
 
 ---
 
@@ -463,6 +554,15 @@ my_list[[1]] + 1
 ```out
 [1] 189 141
 ```
+```r
+my_list[1]$number + 1
+```
+
+
+```out
+[1] 189 141
+```
+
 
 ```r
 my_list[1] + 1
@@ -472,6 +572,37 @@ my_list[1] + 1
 Error in my_list[1] + 1 : 
   non-numeric argument to binary operator
 ```
+Notes: You may notice that the first two command work because I subset the number `189 140` for both commands `my_list[[1]]` and `my_list[1]$number` while `my_list[1]` subset a list. 
+
+Indeed, 
+```r
+class(my_list[[1]])
+``` 
+
+and 
+
+```r
+class(my_list[1]$number)
+``` 
+
+returns 
+```out
+[1] numeric
+```
+
+while 
+
+```r
+class(my_list[1])
+
+```
+
+returns 
+
+```out
+[1] "list"
+```
+
 
 ---
 
@@ -480,7 +611,7 @@ Error in my_list[1] + 1 :
 </div> 
 
 
-We can create a data frame using data.frame()
+We can create a data frame using `data.frame()`.
 
 ```r
 ### Creation
@@ -505,6 +636,10 @@ tennis <- data.frame(date_of_birth, grand_slam_win, country,
 dimnames(tennis)[[1]] <- players
 ```
 
+---
+
+We then print the following dataframe:
+
 ```r
 tennis
 ```
@@ -522,6 +657,33 @@ tennis
  Stan Wawrinka     30577981
  Novak Djokovic   109447408
  Roger Federer    104445185
+```
+
+---
+
+You can always subset elements and vectors of elements from a dataframe. For example:
+
+```r
+tennis$date_of_birth
+```
+
+will returns
+```out
+[1] 15 May 1987   3 June 1986   28 March 1985 22 May 1987   8 August 1981
+Levels: 15 May 1987 22 May 1987 28 March 1985 3 June 1986 8 August 1981
+
+```
+and
+
+```r
+tennis[1,]
+```
+
+will returns
+
+```out
+            date_of_birth grand_slam_win       country ATP_ranking prize_money
+Andy Murray   15 May 1987              9 Great Britain           1    60449649
 ```
 
 ---
