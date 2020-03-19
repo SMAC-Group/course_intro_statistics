@@ -117,7 +117,7 @@ Note that when using `&&`, the 2nd statement will be evaluated only if the 1st s
 
 ---
 
-Note that any logical comparison with an object assigned to the value `NA` will return `NA`.
+Note that any logical comparison with an object assigned to the value `NA` will return `NA`. This is because of the notion of Short-circuit evaluation where  the second argument is executed or evaluated only if the first argument does not suffice to determine the value of the expression.
 
 ```r
 x = 5
@@ -449,25 +449,27 @@ Given a set of logical vectors, are all of the values true?
 To perform subsetting and to retrieve only the elements that satisfy the given condition:
 
 ```{r}
+set.seed(123)
 (x = rnorm(10))
 ```
 
 ```out
- [1]  0.24736191 -0.23118879 -0.01851238 -0.56685590  0.11463114
- [6]  0.44389059 -0.17093898 -0.88815248 -0.14372994 -0.56691121
+ [1] -0.56047565 -0.23017749  1.55870831  0.07050839  0.12928774
+ [6]  1.71506499  0.46091621 -1.26506123 -0.68685285 -0.44566197
 ```
 
 ```r
-x[x>1] # to get observations of x that's greater than 1
+x[x>0] # to get observations of x that's greater than 1
 ```
 
 ```out
-numeric(0)
+1.55870831 0.07050839 0.12928774 1.71506499 0.46091621
 ```
 
 ---
 
 ```r
+set.seed(123)
 x = rnorm(1000)
 a = x[x>1]
 hist(a)
@@ -482,20 +484,13 @@ We can also calculate the proportion of `TRUE` of a vector using the fact that `
 ```r
 n = 10000
 x = rnorm(n)
-sum(x>1) / n  # this proportion should be close to 1/6
+sum(x>1) / n  
 ```
 
 ```out
 [1] 0.1593
 ```
 
-```r
-1/6
-```
-
-```out
-[1] 0.1666667
-```
 The exact probability \\(P(X_i>1)\\) if \\( X_i \sim \mathcal{N}(0,1) \\)= \\(1 - \Phi(1) = 0.1586553 \\) can be computed as such:
 
 ```r

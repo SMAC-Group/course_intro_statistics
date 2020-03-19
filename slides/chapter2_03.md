@@ -4,13 +4,19 @@ type: slides
 
 # If/else and switch statements
 
+Notes: You can find further informations regarding `if else` statements [here](https://smac-group.github.io/ds/section-control.html#section-selection-operators).
+
+
 ---
 
-<div style="text-align:center"><img src="comic_if_ai.jpg" alt=" " width="55%">
-
----
  
-An `if` statement tells R to do a certain task only when a certain condition is satisfied. For example, the following code tells R that we add 1 to x only if x is bigger than 0.
+An `if` statement tells R to do a certain task only when a certain condition is satisfied. 
+
+<div style="text-align:center"><img src="schema_if.png" alt=" " width="80%">
+
+---
+
+For example, the following code tells R that we add 1 to x only if x is bigger than 0.
 
 ```r
 x = 4
@@ -68,7 +74,19 @@ Notes: The function `rnorm()` simulates observations from a Standard Normal law 
 ---
 
 
-If/else statement tells R to do either one. For example, the code below tells R to returns \\(-x^2\\) if x is negative, and returns \\(x^2\\) otherwise. In other words, this code returns the modifed squared value.
+If/else statement tells R to do either one.
+
+<div style="text-align:center"><img src="schema_ifelse.png" alt=" " width="80%">
+
+---
+
+
+<div style="text-align:center"><img src="schema_ifelse_2.png" alt=" " width="80%">
+
+
+---
+
+For example, the code below tells R to returns \\(-x^2\\) if x is negative, and returns \\(x^2\\) otherwise. In other words, this code returns the modifed squared value.
 
 ```r
 (x = rnorm(1))
@@ -158,8 +176,14 @@ if (x %% 2 == 0){
 x = 9
 if (x %% 2 == 0){
   print(paste(x, "is an even number"))
-}
+}else{print(paste(x, "is not an even number"))}
 ```
+
+```out
+"9 is not an even number"
+```
+
+
 
 
 ---

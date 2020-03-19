@@ -11,7 +11,7 @@ type: slides
 ---
 
  <div align="center">
- <big> <b> <code>for</code> loops </b> </big>
+ <big> <b> For-loops </b> </big>
  </div> 
 
 `for`-loops in `R` allows us to repeat the same part of code, or say a sequence of same instructions, under certain conditions without explicitly writing out the code everytime.
@@ -63,7 +63,7 @@ Notes: Use a <code>for</code>-loop when you want to perform a serie of operation
 ---
 
  <div align="center">
- <big> <b> <code>while</code>-loop </b> </big>
+ <big> <b> While-loop </b> </big>
  </div>
 
 A `while`-loop is a control flow statement that allows code to be executed repeatedly based on a given Boolean condition. The while loop can be thought of as a repeating if statement. The while construct consists of a block of code and a condition/expression. The condition/expression is evaluated, and if the condition/expression is true, the code within all of their following in the block is executed. This repeats until the condition/expression becomes `FALSE`.
