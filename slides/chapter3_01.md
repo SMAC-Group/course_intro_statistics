@@ -15,7 +15,7 @@ Let's define a function that returns the result of the addition of two numbers.
 
 ```r
 add = function(x, y){
-  return(x+y)
+  x+y
 }
 add(2,3)
 ```
