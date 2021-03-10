@@ -264,7 +264,7 @@ x[order(x)]
 
 In this section, we will discuss dates. Dates can take various format and can easily be confusing when programming. `R` provides various tools and packages to work with dates. You can find further information on this topic [here](https://smac-group.github.io/ds/data.html#working-with-dates).
 
-<div style="text-align:center"><img src="joke_date.png" alt=" " width="30%">
+<div style="text-align:center"><img src="joke_date.png" alt=" " width="45%">
 
 ---
 
@@ -402,7 +402,7 @@ y = sin(x)
 plot(x, y, type = "l")
 ```
 
-<div style="text-align:center"><img src="fig1.png" alt=" " width=50%">
+<div style="text-align:center"><img src="fig1.png" alt=" " width=70%">
 
 ---
 
@@ -431,7 +431,7 @@ library(quantmod)
 getSymbols("AAPL", from = three_months_ago, to = today)
 candleChart(AAPL, theme = 'white', type = 'candles')
 ```
-<div style="text-align:center"><img src="fig2.png" alt=" " width=48%">
+<div style="text-align:center"><img src="fig2.png" alt=" " width=65%">
 
 ---
 
@@ -473,7 +473,7 @@ hist(AAPL_returns, probability = TRUE, col = "lightgrey", ylim = c(0,28))
 lines(x, y, col = 2, lwd = 2)
 ```
 
-<div style="text-align:center"><img src="fig3.png" alt=" " width="40%">
+<div style="text-align:center"><img src="fig3.png" alt=" " width="60%">
 
 Notes: Here, we first generate a vector from \\(-0.1\\) to \\(0.1\\). Then we calculate the probability density function of a normal distribution \\(\phi(x)\\) given \\(\hat{\mu}\\) and  \\(\hat{\sigma}^2\\) in order to plot the correponding probability density on top of the histogram of the returns.
 
