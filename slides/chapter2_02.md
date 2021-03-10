@@ -8,7 +8,7 @@ type: slides
 
 Logical operators are very commonly used in programming to create (or return) logical (boolean) variables. Please refer to the textbook for a summarized list of commonly used logical operators. Here we give more detailed illustrations. You can find further information on logical operator in `R` [here](https://smac-group.github.io/ds/control.html#logoperators).
 
-<div style="text-align:center"><img src="comic_logical.jpg" alt=" " width="40%">
+<div style="text-align:center"><img src="comic_logical.jpg" alt=" " width="30%" height="40%">
 
 ---
 

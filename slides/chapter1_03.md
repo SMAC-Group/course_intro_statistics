@@ -374,7 +374,7 @@ text(sqrt(investment_summary[2, ]),
 
 Which will returns the following plot:
 
-<div style="text-align:center"><img src="plot_investement_2.png" alt=" " width="60%">
+<div style="text-align:center"><img src="plot_investement_2.png" alt=" " height="40%">
 
 
 
@@ -755,14 +755,13 @@ We can now plot a map with the
 ```r
 # plot map
 library(leaflet)
-
 m <- leaflet() %>%
   addTiles() %>%  # Add default OpenStreetMap map tiles
   addCircleMarkers(lng=birth_coord$lon, lat=birth_coord$lat,
   radius = birth_coord$GS*1.5)
 m  # Print the map
 ```
-<div style="text-align:center"><img src="img_map_player.png" alt=" " width="60%">
+<div style="text-align:center"><img src="img_map_player.png" alt=" " height="35%" width="35%">
 
 
 
@@ -813,4 +812,4 @@ ggmap(map) + geom_point(data = birth_coord,
 
 ```
 
-<div style="text-align:center"><img src="fig4.png" alt=" " width="70%">
+<div style="text-align:center"><img src="fig4.png" alt=" " height="40%" width="60%">

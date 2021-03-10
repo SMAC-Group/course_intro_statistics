@@ -78,7 +78,7 @@ while(number <= n){
   my_res = my_res + number
   number = number + 1
 }
-
+my_res
 ```
 
 ```out

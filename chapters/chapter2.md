@@ -17,14 +17,7 @@ You can find further informations regarding:
 - Selection operators [here](https://smac-group.github.io/ds/section-control.html#section-selection-operators)
 - Iterative Control Statements [here](https://smac-group.github.io/ds/section-control.html#section-iter_cont_stat)
 
-# This is an embedded local video
-<video width="320" height="240" controls>
-  <source src="video.mov" type="video/mp4">
-</video>
 
-
-# This is an embedded youtube video
-[![](http://img.youtube.com/vi/Yx5JEEYdVok/0.jpg)](http://www.youtube.com/watch?v=Yx5JEEYdVok "")
 
 </exercise>
 

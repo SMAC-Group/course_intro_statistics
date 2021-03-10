@@ -47,7 +47,9 @@ Trx to replicate the execution of steps presented in the flow-chart using a `whi
 
 In this exercise, you will implement a function that returns the \\(n\\) number of the Fibonacci sequence noted  \\(\mathcal{F}\_{n}\\). You can read about the Fibonacci sequence [here](https://en.wikipedia.org/wiki/Fibonacci_number). 
 
-<iframe src="https://giphy.com/embed/1Qj94sCeIEBtC" width="350" " frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p><a href="https://giphy.com/gifs/physics-1Qj94sCeIEBtC"></a></p>
+<iframe src="https://giphy.com/embed/IdkQbKfSg1Gi4" width="380" height="380" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p><a href="https://giphy.com/gifs/dat-tho-fibonacci-IdkQbKfSg1Gi4"></a></p>
+
+
 
 <codeblock id="03_01">
 This is a great example to use a recursive function.

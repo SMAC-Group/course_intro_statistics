@@ -391,7 +391,7 @@ The galaxy's distance in Mega parsecs. 1 parsec is 3.09e13 km.
 
 The code on the previous slide will return: 
 
-<div style="text-align:center"><img src="galaxies.png" alt=" " width="70%">
+<div style="text-align:center"><img src="galaxies.png" alt=" " width="50%" height="40%">
 
 
 ---
