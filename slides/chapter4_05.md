@@ -10,9 +10,11 @@ type: slides
 
 Pivoting data consists in rotating data from a state of rows to a state of columns, possibly aggregating multiple source values. Some reasons to pivot data include formatting data for reporting purposes or calculating custom aggregations for example. In `R`, the easiest way to pivot data is to rely on the [`tidyr`](https://tidyr.tidyverse.org/index.html) packages, also part of the [`tidyverse`](https://www.tidyverse.org/) collection of `R` packages.
 
-We will consider the two potential situation, when you want to pivot data from long to wide format, using the `pivot_wider()` function and when you want to pivot data from wide to long format, using the `pivot_longer()`
+We will consider the two potential situation, when you want to pivot data from long to wide format, using the `pivot_wider()` function and when you want to pivot data from wide to long format, using the `pivot_longer()`. Thanks to Garrick Aden-Buie for all the animations on this chapter that all come from this [Github repo](https://github.com/gadenbuie/tidyexplain).
+
 
 <div style="text-align:center"><img src="pivot.gif" alt=" " width="23%">
+
 
 
 ---
@@ -164,6 +166,12 @@ df_b
 
 ## Left join
 
+<div style="text-align:center"><img src="left-join.gif" alt=" " width="40%">
+
+---
+
+## Left join
+
 <div style="text-align:center"><img src="left-join.gif" alt=" " width="15%">
 
 ```r
@@ -178,6 +186,12 @@ left_join(df_a, df_b)
 2 Belgium       33693. OECD Member state
 3 Indonesia      3541. NA   
 ```
+
+---
+
+## Right join
+
+<div style="text-align:center"><img src="right-join.gif" alt=" " width="40%">
 
 ---
 
@@ -203,6 +217,12 @@ right_join(df_a, df_b)
 
 ## Full join
 
+<div style="text-align:center"><img src="full-join.gif" alt=" " width="40%">
+
+---
+
+## Full join
+
 <div style="text-align:center"><img src="full-join.gif" alt=" " width="15%">
 
 ```r
@@ -219,6 +239,12 @@ full_join(df_a, df_b, by = "country")
 4 Switzerland      NA  OECD Member state
 
 ```
+
+---
+
+## Inner join
+
+<div style="text-align:center"><img src="inner-join.gif" alt=" " width="40%">
 
 ---
 
