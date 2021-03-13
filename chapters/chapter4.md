@@ -14,13 +14,13 @@ id: 4
 
 In this chapter we will discuss different elements regarding data manipulation with `R`.
 
-Data are rarely presented in a format suitable for statistical analysis. Indeed, it is common to clean and transform data before proceeding to a statistical analysis. Common type of operations are recoding and cleaning variables, computing new variables, transforming variables or their type, pivoting data and joining several data sources together. All these operations on data constitute the pre-processing part of an analysis and it is known to be the most time consuming part of an analysis on data collected on an empirical context
+In practice, data are commonly not presented in a format that is suitable for statistical analysis. Indeed, it is common to clean and transform data before proceeding to a statistical analysis. Common types of operations include cleaning and transforming variables, computing new variables, and joining different variables together. All these operations on data constitute the pre-processing stage of an analysis and it is known to be very time consuming. 
 
-We define the process of transforming, cleaning and mapping data from one "raw" data format to another format more appropriate for statistical analysis as **data wrangling (or data munging, data cleansing, data pre-processing)**. The goal of data wrangling is to assure quality and useful data for statistical analysis.
+We define the process of cleaning, transforming and mapping data from one "raw" data format to another format more appropriate for statistical analysis as **data wrangling (or data munging, data cleaning, data pre-processing)**. The goal of data wrangling is to assure suitable data for statistical analysis.
 
-`R` provides various tools for such operations on data and especially packages from the [`tidyverse`](https://www.tidyverse.org/) collection of `R` packages.
+`R` provides various tools for operations on data, such as the packages from the [`tidyverse`](https://www.tidyverse.org/) collection of `R` packages.
 
-For the sake of the example, we will assume tabular data for all operations presented in this chapter.
+To demonstrate, we will assume tabular data for all operations presented in this chapter.
 
 </exercise>
 
