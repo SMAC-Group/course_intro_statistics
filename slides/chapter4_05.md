@@ -166,7 +166,7 @@ df_b
 
 ## Left join
 
-<div style="text-align:center"><img src="left-join.gif" alt=" " width="40%">
+<div style="text-align:center"><img src="left-join.gif" alt=" " width="30%">
 
 ---
 
@@ -191,7 +191,7 @@ left_join(df_a, df_b)
 
 ## Right join
 
-<div style="text-align:center"><img src="right-join.gif" alt=" " width="40%">
+<div style="text-align:center"><img src="right-join.gif" alt=" " width="30%">
 
 ---
 
@@ -217,7 +217,7 @@ right_join(df_a, df_b)
 
 ## Full join
 
-<div style="text-align:center"><img src="full-join.gif" alt=" " width="40%">
+<div style="text-align:center"><img src="full-join.gif" alt=" " width="30%">
 
 ---
 
@@ -244,7 +244,7 @@ full_join(df_a, df_b, by = "country")
 
 ## Inner join
 
-<div style="text-align:center"><img src="inner-join.gif" alt=" " width="40%">
+<div style="text-align:center"><img src="inner-join.gif" alt=" " width="30%">
 
 ---
 
