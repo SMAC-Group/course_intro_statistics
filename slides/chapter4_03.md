@@ -8,11 +8,9 @@ type: slides
 
 # Rename variables
 
-You may want to rename some of the variables that are present in your dataframe. One can to it manually by calling the function `colnames(df)`, and modify this object. However, you can appreciate the ease of use of the function `rename()` of `dplyr`.
+Sometimes you may want to rename some of the variables that are present in your dataframe. One approach is to do this manually by calling the function `colnames(df)`, and then modify the considered object. Alternatively, the function `rename()` in the `dplyr` package allows to handle this in a much easier manner.
 
-Let us consider the `swiss` dataset availabe in base `R`. Consult documentation on this dataset about Swiss fertility and socioeconomic indicators with `help(swiss)`.
-
-Let us rename the first two columns with:
+Let us consider the `swiss` dataset availabe in base `R`. You can check the documentation on this dataset about Swiss fertility and socioeconomic indicators with `help(swiss)`. Now we want to rename the first two columns as follows:
 
 ```r
 library(dplyr)
@@ -36,7 +34,7 @@ colnames(swiss)
 
 ---
 
-One can also provide string formatting functions to `rename_with`, such as.
+We can also provide string formatting functions to `rename_with`. As an example, we can specify lowercase or uppercase letters using:
 
 ```r
 swiss = swiss %>% rename_with(tolower)
@@ -64,9 +62,7 @@ colnames(swiss)
 
 # Recode values
 
-You can recode numeric, character or factor values with `recode()` of the `dplyr` package. 
-
-Here is an example on a vector
+You can also recode numeric, character or factor values with the `recode()` function of the `dplyr` package. Here is an example on a vector:
 
 ```r
 my_vec <- sample(c("a", "b", "c"), 15, replace = TRUE)
@@ -86,7 +82,7 @@ my_vec
 
 ---
 
-Here is an example adding a variable to te `iris` dataset.
+Here is an example to add a variable to the `iris` dataset.
 
 ```r
 data(iris)
@@ -120,9 +116,7 @@ iris %>% head()
 
 # Create new variables using mutate
 
-You can use the function `mutate` to create new variables as function of existing variables. 
-
-Here is an example using the `iris` dataset:
+You can use the function `mutate` to create new variables as functions of existing variables. Here is an example using the `iris` dataset:
 
 ```r
 head(iris)
@@ -160,10 +154,8 @@ head(iris)
 
 ---
 
-This is particularly useful when combinined with the `recode()` function. Here is a second example with the dataset `world` of the package `poliscidata`, calling `recode()` inside of a `mutate()` function..
+This is particularly useful when used together with the `recode()` function. Here is a second example with the dataset `world` of the `poliscidata` package, where we call `recode()` inside of a `mutate()` function.
 
-
-Consider the dataset `world`. 
 
 ```r
 world %>%
