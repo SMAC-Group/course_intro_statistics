@@ -8,9 +8,9 @@ type: slides
 
 ## Pivoting data 
 
-Pivoting data consists in rotating data from a state of rows to a state of columns, possibly aggregating multiple source values. Some reasons to pivot data include formatting data for reporting purposes or calculating custom aggregations for example. In `R`, the easiest way to pivot data is to rely on the [`tidyr`](https://tidyr.tidyverse.org/index.html) packages, also part of the [`tidyverse`](https://www.tidyverse.org/) collection of `R` packages.
+Pivoting data consists in rotating data from a state of rows to a state of columns, possibly aggregating multiple source values. Some reasons to pivot data include, for example, formatting data for reporting purposes or calculating custom aggregations. In `R`, the easiest way to pivot data is to rely on the [`tidyr`](https://tidyr.tidyverse.org/index.html) package, which is also part of the [`tidyverse`](https://www.tidyverse.org/) collection of `R` packages.
 
-We will consider the two potential situation, when you want to pivot data from long to wide format, using the `pivot_wider()` function and when you want to pivot data from wide to long format, using the `pivot_longer()`. Thanks to Garrick Aden-Buie for all the animations on this chapter that all come from this [Github repo](https://github.com/gadenbuie/tidyexplain).
+We will consider the two potential situations. When you want to pivot data from long to wide format, you can use the `pivot_wider()` function. When you want to pivot data from wide to long format, you can use the `pivot_longer()` function. Thanks to Garrick Aden-Buie for all the animations on this chapter that all come from this [Github repo](https://github.com/gadenbuie/tidyexplain).
 
 
 <div style="text-align:center"><img src="pivot.gif" alt=" " width="23%">
@@ -19,7 +19,7 @@ We will consider the two potential situation, when you want to pivot data from l
 
 ---
 
-Consider the dataset `gapminder` in the package `gapminder`.
+Consider the dataset `gapminder` in the `gapminder` package.
 
 ```r
 library(gapminder)
@@ -39,7 +39,7 @@ head(gapminder)
  ```
 
 ---
-We would like to transform the data such that we obtain a dataframe with one line for each country, with each column corresponding to a year, where the element of the dataframe are the values of life expectancy. You can pivot the `gapminder` object to obtain the corresponding dataframe with:
+We would like to transform the data such that the resulting dataframe has one line for each country, with each column corresponding to a year, where the elements of the dataframe are the values of life expectancy. You can pivot the `gapminder` object to obtain the corresponding dataframe as follows:
 
 ```r
 library(tidyr)
@@ -67,8 +67,8 @@ gapminder %>%
  
 ---
 
-Similarly, consider that we would like to obtain the dataset with the values of 
-`life_exp`, `pop` and `gdp_percap` in one single column `value` where a second column `measure` would indicates the variable measured (`life_exp`, `pop` or `gdp_percap`).
+Similarly, suppose that we would like to obtain the dataset with the values of 
+`life_exp`, `pop` and `gdp_percap` in one single column `value`. A second column `measure` would include the variable measured (`life_exp`, `pop` or `gdp_percap`).
 
 ```r
 gapminder %>%
@@ -98,14 +98,14 @@ gapminder %>%
 
 ## Joins 
 
-When  working with data, you will often have to combine information from different data sources. In such a case, it is useful to know how to combine rows of different dataframes based on **matching** identifier for rows. 
+When working with data, you will often have to combine information from different data sources. In this case, it is useful to know how to combine rows of different dataframes based on **matching** identifier for rows. 
 
-`dplyr` implement 4 types of mutating joints which are represented in the image below: `full_join`, `left_join`, `right_join` and `inner_join`. Consider the two dataframes to join `x` and `y`
+`dplyr` implements 4 types of mutating joints: `full_join`, `left_join`, `right_join` and `inner_join`. Suppose that we want to join two dataframes, `x` and `y`.
 
-- `left_join(x, y)`  return all rows from x, and all columns from x and y. Rows in x with no match in y will have `NA` values in the new columns. If there are multiple matches between x and y, all combinations of the matches are returned.
-- `right_join(x, y)`    return all rows from y, and all columns from x and y. Rows in y with no match in x will have `NA` values in the new columns. If there are multiple matches between x and y, all combinations of the matches are returned.
-- `inner_join(x, y)` return all rows from x where there are matching values in y, and all columns from x and y. If there are multiple matches between x and y, all combination of the matches are returned.
-- `full_join(x, y)`  return all rows and all columns from both x and y. Where there are not matching values, returns `NA` for the one missing.
+- `left_join(x, y)` returns all rows from x, and all columns from x and y. Rows in x with no match in y will have `NA` values in the new columns. If there are multiple matches between x and y, all combinations of the matches are returned.
+- `right_join(x, y)` returns all rows from y, and all columns from x and y. Rows in y with no match in x will have `NA` values in the new columns. If there are multiple matches between x and y, all combinations of the matches are returned.
+- `inner_join(x, y)` returns all rows from x where there are matching values in y, and all columns from x and y. If there are multiple matches between x and y, all combination of the matches are returned.
+- `full_join(x, y)` returns all rows and all columns from both x and y. When there are not matching values, `NA` will be returned for the missing ones.
 
 ---
 
@@ -114,7 +114,7 @@ When  working with data, you will often have to combine information from differe
 
 ---
 
-For the sake of the example, we will define two small dataframes to work with and illustrate each type of joint.
+In the following illustrating example, we will define two small dataframes to work with and explain each type of joint.
 
 ```r
 df_a <- gapminder %>%
@@ -268,7 +268,7 @@ inner_join(df_a, df_b)
 
 ---
 
-Now that we covered These set of operations on data using packages from the [`tidyverse`](https://www.tidyverse.org/) collection of `R` packages, try to solve and understand the exercises so that you practice using these functions!
+Now that we have covered all these operations on data using packages from the [`tidyverse`](https://www.tidyverse.org/) collection of `R` packages, let's try to solve and understand the exercises so that you can practice with these functions!
 
 
 # <div style="text-align:center"><img src="cleaning_data.png" alt=" " width="40%">

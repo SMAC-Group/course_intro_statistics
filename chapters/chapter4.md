@@ -57,28 +57,28 @@ To demonstrate, we will assume tabular data for all operations presented in this
 
 ---
 
-### 1) Consider the dataset `world` in the `poliscidata` package. Find a description of the dataset [here](https://rdrr.io/cran/poliscidata/man/world.html). Clean names of the variables and return the Public expenditure on education as a percentage of GDP (UN) (`spendeduc`) and the Public expenditure on health as a percentage of GDP (UN) (`spendhealth`) for the 5 country with the highest oil production, in barrels per day (CIA) (`oil`).
+### 1) Consider the dataset `world` in the `poliscidata` package. Find the description of the dataset [here](https://rdrr.io/cran/poliscidata/man/world.html). Clean names of the variables and return the public expenditure on education as a percentage of GDP (UN) (`spendeduc`) and the ublic expenditure on health as a percentage of GDP (UN) (`spendhealth`) for the 5 countries with the highest oil production, in barrels per day (CIA) (`oil`).
 
 <codeblock id="04_01">
 
 </codeblock>
 
 
-### 2) Consider the dataset `murders` in the `dslabs` package. Find a description of the dataset [here](https://www.rdocumentation.org/packages/dslabs/versions/0.7.3/topics/murders). Group the data by state abbreviation and create the summarizing variables `total_pop` and `total_murders`. Compute then the variable `murder_rate` and extract the 5 state abreviation with the highest murder rates.
+### 2) Consider the dataset `murders` in the `dslabs` package. Find the description of the dataset [here](https://www.rdocumentation.org/packages/dslabs/versions/0.7.3/topics/murders). Group the data by state abbreviation and create the summarizing variables `total_pop` and `total_murders`. Then, compute the variable `murder_rate` and extract the 5 state abreviations with the highest murder rates.
 
 <codeblock id="04_02">
 
 </codeblock>
 
 
-### 3) Consider the dataset `esoph` in the `datasets` package. Find a description of the dataset [here](https://stat.ethz.ch/R-manual/R-patched/library/datasets/html/esoph.html). Rename the variables `alcgp` and `tobgp` to respectively `alcool_consum` and `tobacco_consum`. Create a new variable that group observation per alcool consumption to the groups: `"small drinker"`, `"medium drinker"`, `"heavy drinker"` and `"dangerous drinker"`. Then, group the data by these groups and sort the group according the the highest number of cancer case (`ncases`).
+### 3) Consider the dataset `esoph` in the `datasets` package. Find the description of the dataset [here](https://stat.ethz.ch/R-manual/R-patched/library/datasets/html/esoph.html). Rename the variables `alcgp` and `tobgp` to `alcool_consum` and `tobacco_consum`, respectively. Create a new variable that groups observation per alcool consumption to the groups: `"small drinker"`, `"medium drinker"`, `"heavy drinker"` and `"dangerous drinker"`. Then, group the data by these groups and sort the resulting group according to the highest number of cancer cases (`ncases`).
 
 <codeblock id="04_03">
 
 </codeblock>
 
 
-### 4) Consider the dataset `results_us_election_2016` and the dataset `murders` in the `dslabs` package. Find a description of the datasets respectively [here](https://rdrr.io/cran/dslabs/man/polls_us_election_2016.html) and   [here](https://www.rdocumentation.org/packages/dslabs/versions/0.7.3/topics/murders). Join both datasets by `state` and identify the winner of the election by state by computing a variable `prop_clinton_trump`. Rename the variable `total` from the `murders` dataset to `total_murders`. Sort (in decreasing order) the observations based on `total_murder` and output the variables `state`, `total_murders` and `winner` for the ten first observations. 
+### 4) Consider the dataset `results_us_election_2016` and the dataset `murders` in the `dslabs` package. Find the descriptions of the datasets [here](https://rdrr.io/cran/dslabs/man/polls_us_election_2016.html) and   [here](https://www.rdocumentation.org/packages/dslabs/versions/0.7.3/topics/murders), respectively. Join both datasets by `state` and identify the winner of the election by state by computing a variable `prop_clinton_trump`. Rename the variable `total` from the `murders` dataset to `total_murders`. Sort (in decreasing order) the observations based on `total_murder` and output the variables `state`, `total_murders` and `winner` for the ten first observations. 
 
 <codeblock id="04_04">
 
@@ -96,7 +96,7 @@ To demonstrate, we will assume tabular data for all operations presented in this
 5 05                 0      0.11      0.52      0.23      0.85
 ```
 
-Complete the code to obtain the following pivoted dataset (we here just print the first observations to observe the structure):
+Complete the code to obtain the following pivoted dataset (we here just print the first few observations for a glance of the structure):
 
 ```out
    id    treatment_control measurement value

@@ -8,7 +8,7 @@ type: slides
 
 ## Summarise data
 
-`summarise()` creates new data frame that summarise the data based on specified functions. Here is a simple example considering the `iris` dataset available in base `R`:
+The `summarise()` function creates a new dataframe that summarises the data based on specified functions. Here is a simple example considering the `iris` dataset available in base `R`:
 
 ```r
 library(dplyr)
@@ -31,10 +31,7 @@ This is particularly useful when grouping observations per variable. Before expl
 
 ## Grouping and summarising data
 
-You often want to compute operations on groups defined by variables. 
-
-
-Consider the dataset `gapminder` in the package `gapminder`. `group_by()` takes an existing dataframe and converts it into a grouped dataframe where operations are performed "by group". `ungroup() ` removes grouping. Grouping does not change how the data looks but change how it acts with the other `dplyr` operations.
+Suppose you want to compute operations on groups defined by variables. Consider the dataset `gapminder` in the `gapminder` package. The `group_by()` function takes an existing dataframe and converts it into a grouped dataframe where operations are performed "by group". `ungroup() ` removes grouping. Grouping does not change how the data looks but changes how it acts with the other `dplyr` operations.
 
 ```r
 library(gapminder)
@@ -55,7 +52,7 @@ head(gapminder)
 
 ---
 
-Let us combine `group_by()` and `summarise()` to compute summary statistics for data grouped by variable.
+Let us combine `group_by()` and `summarise()` to compute summary statistics for data grouped by variables.
 
 ```r
 gapminder %>% 
@@ -84,7 +81,7 @@ gapminder %>%
 
 ## Sort observations
 
-Let us consider the dataset `world` from the `poliscidata` package. Imagine that you want to extract Literacy rate (`literacy`) and Life expectancy at birth (`lifeex_total`) for the 5 country with the highest Public expenditure on education as a percentage of GDP (UN).
+Let us consider the dataset `world` from the `poliscidata` package. Imagine that you want to extract literacy rate (`literacy`) and life expectancy at birth (`lifeex_total`) for the 5 country with the highest public expenditure on education as a percentage of GDP (UN).
 
 
 
