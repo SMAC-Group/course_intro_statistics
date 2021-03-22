@@ -8,17 +8,19 @@ type: slides
 
 ## Introducing to dplyr
 
-Data wrangling in `R` is made easier thanks to the [`tidyverse`](https://www.tidyverse.org/) collection of `R` packages, and especially because of the package `dplyr`.[`dplyr`](https://dplyr.tidyverse.org/) is a grammar of data manipulation, providing a consistent set of verbs that help you solve the most common data manipulation challenges. Many of the operations on data and datasets that we will discuss in the following chapters will be computed using functions of the `dplyr` package.`dplyr` was created to enable efficient manipulation of data with the advantages of speed and simplicity of coding. You can access to the documentation of this package and its functions [here](https://dplyr.tidyverse.org/index.html).
+Data wrangling in `R` is made easier thanks to the [`tidyverse`](https://www.tidyverse.org/) collection of `R` packages, and especially because of the `dplyr` package.[`dplyr`](https://dplyr.tidyverse.org/) is a grammar of data manipulation, providing a consistent set of verbs that help you solve the most common data manipulation challenges. Many of the operations on data and datasets that we will discuss in the following sections will be computed using functions in the `dplyr` package. The `dplyr` package was created to enable efficient manipulation of data with the advantages of speed and simplicity of coding. You can access to the documentation of this package and its functions [here](https://dplyr.tidyverse.org/index.html).
 
-When working with data, you sometimes want to work with only a subset of all variables. Also, you may also want to filter or consider only a subset of all observations. The `dplyr` provides easy to use and powerful methods for such operations in the functions of `select()`, `filter()` and `slice()`.  
-
-<div style="text-align:center"><img src="dplyr_name.jpg" alt=" " width="20%">
+When working with data, sometimes you only want to work with a subset of all variables. Also, you may want to only consider a subset of all observations. The `dplyr` package provides easy-to-use and powerful methods for such operations with the functions `select()`, `filter()` and `slice()`.  
 
 ---
 
-For this example, we will consider the dataset `world` available on the package `poliscidata`. Find a detailed description of all variables [here](https://rdrr.io/cran/poliscidata/man/world.html).
+<div style="text-align:center"><img src="dplyr_name.jpg" alt=" " width="40%">
 
-Let's first load the data 
+---
+
+For this example, we will consider the dataset `world` available in the `poliscidata` package. You can find a detailed description of all variables [here](https://rdrr.io/cran/poliscidata/man/world.html).
+
+Let's first load the data: 
 
 ```r
 library(poliscidata)
@@ -39,9 +41,7 @@ We can observe that this dataset is composed of 167 observations of 103 variable
 
 # Select variables
 
-The `select` function enables to select variables based on various selection features.
-
-You can subset specific columns as such:
+The `select` function allows to select variables based on various features. For example, you can subset specific columns as such:
 
 ```r
 world %>%
@@ -79,7 +79,7 @@ world %>%
  ```
 
 ---
-You can also select variables by matching patterns in their names, for example selecting all variables thtat starts with `"dem"` (related to democratic institution) in that dataframe`.
+You can also select variables by matching patterns in their names. For example, you can select all variables that start with `"dem"` (related to democratic institution) in the considered dataframe.
 
 
 ```r
@@ -97,14 +97,14 @@ world %>%
 6     Armenia        Hybrid        113        4.13      63.0 Approx 60%   Yes       5          Yes            Yes             0       100
  ```
  
-Consult the [documentation](https://dplyr.tidyverse.org/reference/select.html) on the `select` function for an overview of supported selection features.
+Check the [documentation](https://dplyr.tidyverse.org/reference/select.html) on the `select` function for an overview of supported selection features.
 
 ---
 
 
 # Slice observations
 
-`slice()` lets you index rows by their (integer) locations.
+The `slice` function allows to index rows by their (integer) locations.
 
 ```r
 data(iris)
@@ -122,7 +122,7 @@ iris %>%
 ```
 
 ---
-One can also make use of `slice_head()` and `slice_tail()` to select the first or last rows.
+One can also make use of `slice_head()` and `slice_tail()` to select the first or last rows, respectively.
 
 ```r
 iris %>% slice_head(n = 3)
@@ -155,7 +155,7 @@ iris %>% slice_tail(n = 3)
 # Filter observations
 
 
-You can subset observations based on logical statements. Let's consider that we want to extract all countries that are member of the EU from this dataset.
+You can subset observations based on logical statements. Suppose that we want to extract all countries that are members of the EU from this dataset.
 
 
 ```r
@@ -175,7 +175,7 @@ world %>%
 ```
 ---
 
-Let say we want to extract the Life expectancy at birth among females for countries that are democracies, member of OECD and for which the public debt as a percentage of GDP is greater or equal to 50%.
+Now let's consider to extract the life expectancy at birth among females for countries that are democracies, members of OECD, and for which the public debt as a percentage of GDP is at least 50%.
 
 ```r
 world %>%
