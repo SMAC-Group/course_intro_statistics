@@ -1,9 +1,9 @@
 ---
 title: 'Chapter 4: Data manipulation'
 description:
-  'Transform and reshape data'
+  'Transform and reshape data.'
 prev: /chapter3
-next: null
+next: /chapter5
 type: chapter
 id: 4
 ---
