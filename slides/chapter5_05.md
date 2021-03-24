@@ -3,16 +3,20 @@
 ---
 # ggplot2 extensions, animation and reactivity
 
+---
 
-maps
+- maps
 
-wordcloud
 
-sankey
+- annotations
 
-plotly
+- wordcloud
 
-gganimate
+- sankey
+
+- plotly
+
+- gganimate
 
 
 

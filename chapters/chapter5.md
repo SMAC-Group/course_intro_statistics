@@ -29,6 +29,18 @@ install.packages("ggplot2")
 install.packages("esquisse")
 ```
 
+There are plenty of interesting resources on Data Visualization and Data Vizualisation with `R`.
+
+Here is non-exhaustive lists of great resources on the topic:
+
+- [ggplot2: elegant graphics for data analysis](https://ggplot2-book.org/)
+
+- [Fundamentals of Data Visualization](https://clauswilke.com/dataviz/)
+
+- [Data Visualization with R](https://rkabacoff.github.io/datavis/) 
+
+- [Storytelling with Data: A Data Visualization Guide for Business Professionals](https://www.amazon.fr/Storytelling-Data-Visualization-Business-Professionals/dp/1119002257)
+
 </exercise>
 
 
@@ -37,34 +49,43 @@ install.packages("esquisse")
 </slides>
 </exercise>
 
-<exercise id="3" title="Representing the distribution of a single variable" type = "slides">
+<exercise id="3" title="Visualizing counts" type = "slides">
 <slides source="chapter5_02">
 </slides>
 </exercise>
 
-<exercise id="4" title="Representing the relations between multiples variables" type = "slides">
+
+<exercise id="4" title="Visualizing distributions" type = "slides">
 <slides source="chapter5_03">
 </slides>
 </exercise>
 
 
-<exercise id="5" title="Themes, faceting and arranging multiple plots" type = "slides">
+<exercise id="5" title="Visualizing many distributions" type = "slides">
+<slides source="chapter5_04">
+</slides>
+</exercise>
+
+
+<exercise id="7" title="Visualizing the relationship between two numerical variables" type = "slides">
+<slides source="chapter5_05">
+</slides>
+</exercise>
+
+<exercise id="8" title="Visualizing time series" type = "slides">
+<slides source="chapter5_05">
+</slides>
+</exercise>
+
+
+<exercise id="9" title="Visualizing time series" type = "slides">
 <slides source="chapter5_04">
 </slides>
 </exercise>
 
 
 
-<exercise id="6" title="ggplot2 extensions, animation and reactivity" type = "slides">
-<slides source="chapter5_05">
-</slides>
-</exercise>
-
-
-
-
-
-<exercise id = "7" title ="Data visualization: Exercises">
+<exercise id = "10" title ="Data visualization: Exercises">
 
 ---
 
