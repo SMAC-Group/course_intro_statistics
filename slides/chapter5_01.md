@@ -2,7 +2,7 @@
 type: slides
 ---
 
-# Getting started
+# Getting started with ggplot2
 
 ---
 
@@ -16,6 +16,17 @@ In most cases you start with `ggplot()`, supply a dataset and aesthetic mapping 
 
 
 <div style="text-align:center"><img src="ggplot2meme1.jpg" alt=" " width="20%">
+
+---
+
+ slide set 1 getting started with ggplot2
+
+- explain ggplot2 layer programming structure. define elements such as geom_layer, aes, object, and the theoretical foundations of the ggplot2 nomenclature
+- provide two simple example wit notion of stacking layers of code
+- present a simple example with pre processing with dplyr
+ talk about `esquisse`
+- provide ressources
+
 
 ---
 
@@ -35,3 +46,12 @@ dim(world)
  ```
 
 We can observe that this dataset is composed of 167 observations of 103 variables.
+
+---
+
+
+
+
+
+
+

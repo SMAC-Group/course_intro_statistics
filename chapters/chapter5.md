@@ -1,5 +1,5 @@
 ---
-title: 'Chapter 5: Data Visualization'
+title: 'Chapter 5: Data visualization'
 description:
   'Represent data and communicate information graphically.'
 prev: /chapter4
@@ -37,9 +37,34 @@ install.packages("esquisse")
 </slides>
 </exercise>
 
+<exercise id="3" title="Representing the distribution of a single variable" type = "slides">
+<slides source="chapter5_02">
+</slides>
+</exercise>
+
+<exercise id="4" title="Representing the relations between multiples variables" type = "slides">
+<slides source="chapter5_03">
+</slides>
+</exercise>
 
 
-<exercise id = "3" title ="Data Visualization: Exercises">
+<exercise id="5" title="Themes, faceting and arranging multiple plots" type = "slides">
+<slides source="chapter5_04">
+</slides>
+</exercise>
+
+
+
+<exercise id="6" title="ggplot2 extensions, animation and reactivity" type = "slides">
+<slides source="chapter5_05">
+</slides>
+</exercise>
+
+
+
+
+
+<exercise id = "7" title ="Data visualization: Exercises">
 
 ---
 

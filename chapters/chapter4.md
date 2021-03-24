@@ -57,7 +57,7 @@ To demonstrate, we will assume tabular data for all operations presented in this
 
 ---
 
-### 1) Consider the dataset `world` in the `poliscidata` package. Find the description of the dataset [here](https://rdrr.io/cran/poliscidata/man/world.html). Clean names of the variables and return the public expenditure on education as a percentage of GDP (UN) (`spendeduc`) and the ublic expenditure on health as a percentage of GDP (UN) (`spendhealth`) for the 5 countries with the highest oil production, in barrels per day (CIA) (`oil`).
+### 1) Consider the dataset `world` in the `poliscidata` package. Find the description of the dataset [here](https://rdrr.io/cran/poliscidata/man/world.html). Clean names of the variables and return the public expenditure on education as a percentage of GDP (UN) (`spendeduc`) and the public expenditure on health as a percentage of GDP (UN) (`spendhealth`) for the 5 countries with the highest oil production, in barrels per day (CIA) (`oil`).
 
 <codeblock id="04_01">
 
