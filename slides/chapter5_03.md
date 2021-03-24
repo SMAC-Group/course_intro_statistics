@@ -19,7 +19,7 @@ ggplot(data=diamonds, aes(x=price)) +
 
 ---
 
-We may migth want to add a title and consider a simpler theme
+We add a title and consider a simpler theme.
 
 ```R
 ggplot(data=diamonds, aes(x=price)) +
@@ -48,7 +48,7 @@ ggplot(data=diamonds, aes(x=price)) +
 
 ---
 
-By specifying some additional parameters we obtain a better looking graph.
+We change the theme, add a centered title and specify a color with some transparency value.
 
 ```R
 ggplot(data=diamonds, aes(x=price)) +
@@ -56,24 +56,15 @@ ggplot(data=diamonds, aes(x=price)) +
   ylab("Density") +
   geom_density(adjust=1.5, alpha=.4, fill = "darkgrey") +
   theme_minimal() +
-  ggtitle("Estimated density of price")
+  ggtitle("Estimated density of price")  + 
+  theme(plot.title = element_text(hjust = 0.5))
 ```
-
-<div style="text-align:center"><img src="dens2.png" alt=" " width="30%"></div>
-
 
 ---
 
-One could also consider visualizing this distribution with a KDE.
+<div style="text-align:center"><img src="dens2.png" alt=" " width="35%"></div>
 
-```R
-ggplot(data=diamonds, aes(x=price)) +
-  xlab("Price")+
-  ylab("Density") +
-  geom_density(adjust=1.5, alpha=.4, fill = "grey80") +
-  theme_minimal() +
-  ggtitle("Estimated density of price")
-```
+
 
 
 

@@ -4,6 +4,31 @@ library(ggplot2)
 library(magrittr)
 library(dplyr)
 data(world)
+
+
+
+ggplot(murders, aes(region, total)) +
+  geom_bar(stat="identity")
+
+
+
+ggplot(df_tab) +
+  aes(x = reorder(region, total_murders), y= total_murders) +
+  geom_bar(stat = "identity", width = .7) +
+  coord_flip()+
+  theme_minimal() +
+  xlab("Region") +
+  ylab("Total murders")+
+  geom_text(stat='identity', aes(label=total_murders), hjust=1.4, col ="white")+
+  theme(
+    panel.grid.major.y = element_blank(),
+    panel.grid.minor.y = element_blank(),
+    axis.text = element_text(size = 13)
+  )
+
+
+
+
 data(diamonds)
 
 ggplot(data=diamonds, aes(x=price)) +

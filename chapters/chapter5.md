@@ -49,7 +49,7 @@ Here is non-exhaustive lists of great resources on the topic:
 </slides>
 </exercise>
 
-<exercise id="3" title="Visualizing counts" type = "slides">
+<exercise id="3" title="Visualizing ammounts" type = "slides">
 <slides source="chapter5_02">
 </slides>
 </exercise>
@@ -78,14 +78,10 @@ Here is non-exhaustive lists of great resources on the topic:
 </exercise>
 
 
-<exercise id="9" title="Visualizing time series" type = "slides">
-<slides source="chapter5_04">
-</slides>
-</exercise>
 
 
 
-<exercise id = "10" title ="Data visualization: Exercises">
+<exercise id = "9" title ="Data visualization: Exercises">
 
 ---
 
