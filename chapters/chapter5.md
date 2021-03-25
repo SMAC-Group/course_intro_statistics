@@ -57,7 +57,7 @@ For your reference, we also list some of the interesting resources regarding dat
 </exercise>
 
 
-<exercise id="5" title="Visualizing many distributions" type = "slides">
+<exercise id="5" title="Visualizing multiple distributions" type = "slides">
 <slides source="chapter5_04">
 </slides>
 </exercise>

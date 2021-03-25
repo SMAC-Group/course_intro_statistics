@@ -2,13 +2,13 @@
 type: slides
 ---
 
-# Visualising many distributions
+# Visualizing multiple distributions
 
 ---
 
-Let us consider the `penguins` dataset avaiable in the package `palmerpenguins`. Find a detailed description of the dataset [here](https://github.com/allisonhorst/palmerpenguins).
+Let's consider the `penguins` dataset avaiable in the `palmerpenguins` package. You can find a detailed description of the dataset [here](https://github.com/allisonhorst/palmerpenguins).
 
-We load the dataset and print the first rows.
+We first load the dataset and have a look at the first few rows.
 
 ```R
 library(ggplot2)
@@ -32,11 +32,12 @@ head(penguins)
 ---
 
 
-<div style="text-align:center"><img src="penguins.gif" alt=" " width="35%"></div>
+<div style="text-align:center"><img src="penguins.gif" alt=" " width="60%"></div>
 
 ---
 
-Let's compute some variables that we will use to compare the densities of the bill ratio (bill_ratio) of penguins based on their species.
+Let's compute a new variable, `bill_ratio`, which represents the bill ratio of penguins based on their species. We will later compare the densities of `bill_ratio`.
+
 
 ```R
 df_peng_stats <- 
@@ -69,7 +70,7 @@ head(df_peng_stats)
 ```
 ---
 
-We can easily produce a plot comparing densities of bill ratio by species as such:
+We can easily produce a plot to compare the densities of bill ratio by species as follows:
 
 ```R
 ggplot(data=df_peng_stats, aes(x=bill_ratio, group=species, fill=species)) +
@@ -80,10 +81,10 @@ ggplot(data=df_peng_stats, aes(x=bill_ratio, group=species, fill=species)) +
 ```
 
 ---
-<div style="text-align:center"><img src="mdens1.png" alt=" " width="50%"></div>
+<div style="text-align:center"><img src="mdens1.png" alt=" " width="65%"></div>
 ---
 
-Or similarly, using `ggplot2` extension `ggridges`.
+Similarly, we can use a `ggplot2` extension called `ggridges`.
 
 ```R
 library(ggridges)
@@ -99,14 +100,14 @@ ggplot(df_peng_stats, aes(x = bill_ratio, y = species, fill = species)) +
 
 ---
 
-<div style="text-align:center"><img src="mdens6.png" alt=" " width="40%"></div>
+<div style="text-align:center"><img src="mdens6.png" alt=" " width="50%"></div>
 
 ---
 
-We can also consider a slightly more complex code to produce a considerably better-looking graph. Let's construct it gradually.
+We can also consider a slightly more complex code to produce a considerably more attractive graph. Let's construct it gradually.
 
 
-<div style="text-align:center"><img src="ggplot2_better.png" alt=" " width="40%"></div>
+<div style="text-align:center"><img src="ggplot2_better.png" alt=" " width="50%"></div>
 
 
 ---
@@ -135,7 +136,7 @@ g1
 ```
 ---
 
-<div style="text-align:center"><img src="mdens2.png" alt=" " width="40%"></div>
+<div style="text-align:center"><img src="mdens2.png" alt=" " width="50%"></div>
 
 ---
 
@@ -167,7 +168,7 @@ g2
 
 ---
 
-<div style="text-align:center"><img src="mdens3.png" alt=" " width="40%"></div>
+<div style="text-align:center"><img src="mdens3.png" alt=" " width="50%"></div>
 
 ---
 
@@ -190,7 +191,7 @@ g3
 
 ---
 
-<div style="text-align:center"><img src="mdens4.png" alt=" " width="40%"></div>
+<div style="text-align:center"><img src="mdens4.png" alt=" " width="50%"></div>
 
 
 ---
@@ -224,4 +225,4 @@ g4
 
 ---
 
-<div style="text-align:center"><img src="mdens5.png" alt=" " width="40%"></div>
+<div style="text-align:center"><img src="mdens5.png" alt=" " width="50%"></div>
