@@ -106,6 +106,12 @@ ggplot(df_peng_stats, aes(x = bill_ratio, y = species, fill = species)) +
 We can also consider a slightly more complex code to produce a considerably better-looking graph. Let's construct it gradually.
 
 
+<div style="text-align:center"><img src="ggplot2_better.png" alt=" " width="40%"></div>
+
+
+---
+
+
 ```R
 g1 = ggplot(df_peng_stats, aes(bill_ratio, species_num, color = species)) +
   geom_point(
@@ -129,7 +135,7 @@ g1
 ```
 ---
 
-<div style="text-align:center"><img src="mdens2.png" alt=" " width="35%"></div>
+<div style="text-align:center"><img src="mdens2.png" alt=" " width="40%"></div>
 
 ---
 
@@ -161,7 +167,7 @@ g2
 
 ---
 
-<div style="text-align:center"><img src="mdens3.png" alt=" " width="35%"></div>
+<div style="text-align:center"><img src="mdens3.png" alt=" " width="40%"></div>
 
 ---
 
@@ -184,7 +190,7 @@ g3
 
 ---
 
-<div style="text-align:center"><img src="mdens4.png" alt=" " width="35%"></div>
+<div style="text-align:center"><img src="mdens4.png" alt=" " width="40%"></div>
 
 
 ---
@@ -218,4 +224,4 @@ g4
 
 ---
 
-<div style="text-align:center"><img src="mdens5.png" alt=" " width="35%"></div>
+<div style="text-align:center"><img src="mdens5.png" alt=" " width="40%"></div>
