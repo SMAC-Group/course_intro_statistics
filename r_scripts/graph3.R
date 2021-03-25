@@ -611,7 +611,7 @@ df_stocks_long = tidyr::pivot_longer(df_stocks, col = !index)
 library(ggplot2)
 library(viridis)
 
-ggplot(df_stocks_long, aes(x = index, y = value, color= name)) +
+stocks_plot = ggplot(df_stocks_long, aes(x = index, y = value, color= name)) +
   geom_line() +
   theme_minimal() +
   labs(
@@ -627,5 +627,62 @@ ggplot(df_stocks_long, aes(x = index, y = value, color= name)) +
 
 
 # +
-  transition_reveal(index)
+
+stocks_plot + geom_point() + transition_reveal(index)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# fancy graph
+install.packages("magick")
+
+
+
+
+
+mygraph = ggplot(df_murders) +
+  aes(x = reorder(region, total_murders), y = total_murders, fill = region) +
+  geom_bar(stat = "identity", width = .7) +
+  coord_flip()+
+  theme_minimal() +
+  xlab("") +
+  ylab("")+
+  geom_text(stat='identity', aes(label=total_murders), hjust=1.4, col ="white", size = 5)+
+  theme(
+    panel.grid.major.y = element_blank(),
+    panel.grid.minor.y = element_blank(),
+    axis.text = element_text(size = 13),
+    axis.text.y = element_text( color="black", 
+                                size=14)
+  ) + ggtitle("Total murders per US region")
+mygraph
+library(magick)
+library(grid)
+png = image_read("https://www.vividmaps.com/wp-content/uploads/2018/10/US-regions.jpg")
+img = grid::rasterGrob(png, interpolate = TRUE)
+mygraph = mygraph + annotation_custom(img, ymin = 2000, ymax = 4500, xmin = 0.5, xmax = 2.5)
+mygraph = mygraph + scale_fill_manual(values = c("South" = "#d4a770", 
+                                                 "West" = "#e8cb5b", 
+                                                 "Midwest" = "#aebc5b",
+                                                 "Northeast" = "#b49ebd"))
+mygraph
+
+
+
+
+
+
+
+
 
