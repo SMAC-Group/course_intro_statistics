@@ -6,6 +6,11 @@ type: slides
 
 ---
 
+<div style="text-align:center"><img src="dplyr1.png" alt=" " width="50%"></div>
+
+
+---
+
 # Rename variables
 
 Sometimes you may want to rename some of the variables that are present in your dataframe. One approach is to do this manually by calling the function `colnames(df)`, and then modify the considered object. Alternatively, the function `rename()` in the `dplyr` package allows to handle this in a much easier manner.
