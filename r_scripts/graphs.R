@@ -169,14 +169,6 @@ world = world %>% rename("Lifeexpectancy" = lifeex_total,
 world = world %>% mutate(new_name = ifelse(country %in% c("Belgium", "Canada", "Switzerland", "China"), country, ""))
 
 
-ggplot(data = world, aes(x = gdp_10_thou, y = Life expectancy, 
-                         color = World Region, shape = oecd)) +
-  geom_point() +
-  ylab("Life expectancy") +
-  xlab("GDP per capita 10K US$") +
-  ggtitle("Life expectancy vs GDP per capita") +
-  theme_minimal() 
-
 
 
 

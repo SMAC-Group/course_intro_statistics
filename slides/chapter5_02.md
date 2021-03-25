@@ -15,6 +15,8 @@ Let's first load the data and `ggplot2` :
 
 
 ```R
+library(dplyr)
+library(ggplot2)
 library(dslabs)
 data(murders)
 head(murders)
@@ -69,7 +71,11 @@ ggplot(df_murders) +
   theme_minimal()
 ```
 
-<div style="text-align:center"><img src="bar1.png" alt=" " width="25%"></div>
+
+---
+
+
+<div style="text-align:center"><img src="bar1.png" alt=" " width="40%"></div>
 
 
 
@@ -84,8 +90,10 @@ ggplot(df_murders) +
   theme_minimal()
 ```
 
+---
 
-<div style="text-align:center"><img src="bar3.png" alt=" " width="25%"></div>
+
+<div style="text-align:center"><img src="bar3.png" alt=" " width="40%"></div>
 
 ---
 
@@ -93,19 +101,22 @@ We flip the coordinate system and remove horizontal grid lines. We also add the 
 
 ```R
 
-ggplot(df_tab) +
+ggplot(df_murders) +
   aes(x = reorder(region, total_murders), y= total_murders) +
-  geom_bar(stat = "identity", width = .7) +
+  geom_bar(stat = "identity", width = .7, fill = "grey34") +
   coord_flip()+
   theme_minimal() +
-  xlab("Region") +
-  ylab("Total murders")+
+  xlab("") +
+  ylab("")+
   geom_text(stat='identity', aes(label=total_murders), hjust=1.4, col ="white", size = 5)+
   theme(
     panel.grid.major.y = element_blank(),
     panel.grid.minor.y = element_blank(),
-    axis.text = element_text(size = 13)
-  )
+    axis.text = element_text(size = 13),
+    axis.text.y = element_text( color="black", 
+                               size=14)
+  ) + ggtitle("Total murders per US region")
+
 
 ```
 

@@ -1,9 +1,78 @@
+rm(list=ls())
+library(poliscidata)
+library(ggplot2)
+library(magrittr)
+library(dplyr)
+data(world)
+
+
+
+###### ammounts
+
+library(dplyr)
+library(ggplot2)
+library(dslabs)
+data(murders)
+head(murders)
+
+df_murders = murders %>%
+  group_by(region) %>%
+  summarise(total_pop = sum(population),
+            total_murders = sum(total)
+  ) %>%
+  mutate(
+    murder_rate = total_murders/total_pop
+  )
+
+head(df_murders)
+
+ggplot(df_murders) +
+  aes(region, total_murders) +
+  geom_bar(stat="identity") +
+  theme_minimal()
+
+
+ggplot(df_murders) +
+  aes(reorder(region, total_murders), total_murders) +
+  geom_bar(stat="identity") +
+  theme_minimal()
+
+
+ggplot(df_murders) +
+  aes(x = reorder(region, total_murders), y= total_murders) +
+  geom_bar(stat = "identity", width = .7, fill = "grey34") +
+  coord_flip()+
+  theme_minimal() +
+  xlab("") +
+  ylab("")+
+  geom_text(stat='identity', aes(label=total_murders), hjust=1.4, col ="white", size = 5)+
+  theme(
+    panel.grid.major.y = element_blank(),
+    panel.grid.minor.y = element_blank(),
+    axis.text = element_text(size = 13),
+    axis.text.y = element_text( color="black", 
+                               size=14)
+  ) + ggtitle("Total murders per US region")
+
+
+
+
+######################### visualizing many distributions
+
+rm(list=ls())
+library(ggplot2)
 library(palmerpenguins)
+library(tidyverse)   ## data science package collection (incl. the ggplot2 package)
+# library(systemfonts) ## use custom fonts (need to be installed on your OS)
+# library(scico)       ## scico color palettes(http://www.fabiocrameri.ch/colourmaps.php) in R 
+# library(ggtext)      ## add improved text rendering to ggplot2
+# library(ggforce)     ## add missing functionality to ggplot2
+# library(ggdist)      ## add uncertainity visualizations to ggplot2
+# library(magick)      ## load images into R
+# library(patchwork)   ## combine outputs from ggplot2
+
 data("penguins")
 head(penguins)
-
-
-
 
 df_peng_stats <- 
   penguins %>% 
@@ -16,12 +85,38 @@ df_peng_stats <-
     max = max(bill_ratio)
   ) %>% 
   ungroup() %>% 
-  mutate(species_num = as.numeric(fct_rev(species))) 
+  mutate(species_num = as.numeric(fct_rev(species)))  %>% 
+  select(species, bill_ratio, n, median, max, species_num)
+
+head(df_peng_stats)
+
+df_peng_stats = df_peng_stats %>% select(species, bill_ratio, n, median, max, species_num)
 
 ggplot(data=df_peng_stats, aes(x=bill_ratio, group=species, fill=species)) +
   geom_density(alpha=0.6) +
   scale_fill_manual(values = c("#3d6721", "#a86826", "#006c89"))  + 
   xlab("Bill ratio") + ylab("Density")
+
+
+# gg ridges
+# library
+library(ggridges)
+
+# Diamonds dataset is provided by R natively
+#head(diamonds)
+
+# basic example
+library(ggridges)
+ggplot(df_peng_stats, aes(x = bill_ratio, y = species, fill = species)) +
+  geom_density_ridges(scale = .9, alpha=.8) +
+  theme_ridges() + 
+  theme_minimal() +
+  scale_fill_manual(values = c("#3d6721", "#a86826", "#006c89")) +
+  scale_color_manual(values = c("#3d6721", "#a86826", "#006c89")) +
+  xlab("Bill ratio") +
+  ylab("Species")
+
+
 
 ## create a second chart with raincloud plots
 g1 = ggplot(df_peng_stats, aes(bill_ratio, species_num, color = species)) +
@@ -44,7 +139,7 @@ g1 = ggplot(df_peng_stats, aes(bill_ratio, species_num, color = species)) +
     .width = c(0, 1)
   ) +
   scale_color_manual(values = c("#3d6721", "#a86826", "#006c89"), guide = "none") 
-  
+g1  
 g2 = g1 +
   geom_text(
     aes(x = median, label = format(round(median, 2), nsmall = 2)),
@@ -68,7 +163,7 @@ g2 = g1 +
 
 g2
 
-g3 = g2 + +
+g3 = g2 + 
   coord_cartesian(clip = "off", expand = FALSE) +
   scale_x_continuous(
     limits = c(1.6, 3.8),
@@ -78,10 +173,9 @@ g3 = g2 + +
     limits = c(.55, NA),
     breaks = 1:3,
     labels = c("Gentoo", "Chinstrap", "Adélie")
-  ) +
-  scale_color_manual(values = c("#3d6721", "#a86826", "#006c89"), guide = "none") +
-  scale_fill_manual(values = c("#3d6721", "#a86826", "#006c89"), guide = "none") 
+  ) 
 
+g3
 g4 =  g3 +  labs(
   x = "Bill ratio",
   y = NULL,
@@ -98,7 +192,7 @@ g4 =  g3 +  labs(
     plot.margin = margin(10, 25, 10, 25)
   )
 
-
+g4
 
 
 

@@ -11,7 +11,9 @@ Let us consider the `penguins` dataset avaiable in the package `palmerpenguins`.
 We load the dataset and print the first rows.
 
 ```R
+library(ggplot2)
 library(palmerpenguins)
+library(tidyverse)  
 data("penguins")
 head(penguins)
 ```
@@ -30,12 +32,15 @@ head(penguins)
 ---
 
 
-<div style="text-align:center"><img src="penguins.gif" alt=" " width="25%"></div>
+<div style="text-align:center"><img src="penguins.gif" alt=" " width="35%"></div>
 
 ---
 
+Let's compute some variables that we will use to compare the densities of the bill ratio (bill_ratio) of penguins based on their species.
+
 ```R
-df_peng_stats <- penguins %>% 
+df_peng_stats <- 
+  penguins %>% 
   mutate(bill_ratio = bill_length_mm / bill_depth_mm) %>% 
   filter(!is.na(bill_ratio)) %>% 
   group_by(species) %>% 
@@ -45,26 +50,26 @@ df_peng_stats <- penguins %>%
     max = max(bill_ratio)
   ) %>% 
   ungroup() %>% 
-  mutate(species_num = as.numeric(fct_rev(species))) 
-  
+  mutate(species_num = as.numeric(fct_rev(species)))  %>% 
+  select(species, bill_length_mm, bill_depth_mm, bill_ratio, n, median, max, species_num)
+
 head(df_peng_stats)
 ```
 
 
 ```out
-  species island bill_length_mm bill_depth_mm flipper_length_… body_mass_g sex    year bill_ratio
-  <fct>   <fct>           <dbl>         <dbl>            <int>       <int> <fct> <int>      <dbl>
-1 Adelie  Torge…           39.1          18.7              181        3750 male   2007       2.09
-2 Adelie  Torge…           39.5          17.4              186        3800 fema…  2007       2.27
-3 Adelie  Torge…           40.3          18                195        3250 fema…  2007       2.24
-4 Adelie  Torge…           36.7          19.3              193        3450 fema…  2007       1.90
-5 Adelie  Torge…           39.3          20.6              190        3650 male   2007       1.91
-6 Adelie  Torge…           38.9          17.8              181        3625 fema…  2007       2.19
-
+  species bill_length_mm bill_depth_mm bill_ratio     n median   max species_num
+  <fct>            <dbl>         <dbl>      <dbl> <int>  <dbl> <dbl>       <dbl>
+1 Adelie            39.1          18.7       2.09   151   2.14  2.45           3
+2 Adelie            39.5          17.4       2.27   151   2.14  2.45           3
+3 Adelie            40.3          18         2.24   151   2.14  2.45           3
+4 Adelie            36.7          19.3       1.90   151   2.14  2.45           3
+5 Adelie            39.3          20.6       1.91   151   2.14  2.45           3
+6 Adelie            38.9          17.8       2.19   151   2.14  2.45           3
 ```
 ---
 
-
+We can easily produce a plot comparing densities of bill ratio by species as such:
 
 ```R
 ggplot(data=df_peng_stats, aes(x=bill_ratio, group=species, fill=species)) +
@@ -72,13 +77,34 @@ ggplot(data=df_peng_stats, aes(x=bill_ratio, group=species, fill=species)) +
   scale_fill_manual(values = c("#3d6721", "#a86826", "#006c89"))  + 
   xlab("Bill ratio") + ylab("Density")
 
-
-
 ```
 
 ---
-<div style="text-align:center"><img src="mdens1.png" alt=" " width="35%"></div>
+<div style="text-align:center"><img src="mdens1.png" alt=" " width="50%"></div>
 ---
+
+Or similarly, using `ggplot2` extension `ggridges`.
+
+```R
+library(ggridges)
+ggplot(df_peng_stats, aes(x = bill_ratio, y = species, fill = species)) +
+  geom_density_ridges(scale = .9, alpha=.8) +
+  theme_ridges() + 
+  theme_minimal() +
+  scale_fill_manual(values = c("#3d6721", "#a86826", "#006c89")) +
+  scale_color_manual(values = c("#3d6721", "#a86826", "#006c89")) +
+  xlab("Bill ratio") +
+  ylab("Species")
+```
+
+---
+
+<div style="text-align:center"><img src="mdens6.png" alt=" " width="50%"></div>
+
+---
+
+We can also consider a slightly more complex code to produce a considerably better-looking graph. Let's construct it gradually.
+
 
 ```R
 g1 = ggplot(df_peng_stats, aes(bill_ratio, species_num, color = species)) +
@@ -94,12 +120,10 @@ g1 = ggplot(df_peng_stats, aes(bill_ratio, species_num, color = species)) +
       color = species,
       fill = after_scale(colorspace::lighten(color, .5))
     ),
-    shape = 18,
-    point_size = 3,
-    interval_size = 1.8,
-    adjust = .5,
+    shape = 18, point_size = 3, interval_size = 1.8, adjust = .5,
     .width = c(0, 1)
   ) +
+  theme_minimal() +
   scale_color_manual(values = c("#3d6721", "#a86826", "#006c89"), guide = "none") 
 g1  
 ```
@@ -179,7 +203,13 @@ g4 =  g3 +  labs(
     axis.ticks.length = unit(0, "lines"),
     plot.title.position = 'plot',
     plot.subtitle = element_text(margin = margin(t = 5, b = 10)),
-    plot.margin = margin(10, 25, 10, 25)
+    plot.margin = margin(10, 25, 10, 25),
+    axis.ticks = element_line(color = "grey92"),
+    panel.grid.minor = element_blank(),
+    legend.title = element_text(size = 12),
+    legend.text = element_text(color = "grey30"),
+    plot.title = element_text(size = 18, face = "bold"),
+    plot.caption = element_text(size = 9, margin = margin(t = 15))
   )
 
 g4
@@ -188,4 +218,4 @@ g4
 
 ---
 
-<div style="text-align:center"><img src="mdens5.png" alt=" " width="35%"></div>
+<div style="text-align:center"><img src="mdens5.png" alt=" " width="45%"></div>
