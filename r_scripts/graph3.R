@@ -7,6 +7,180 @@ data(world)
 
 
 
+ggplot(murders, aes(region, total)) +
+  geom_bar(stat="identity")
+
+
+data(diamonds)
+
+ggplot(data=diamonds, aes(x=price)) +
+  geom_histogram()
+
+
+ggplot(data=diamonds, aes(x=price)) +
+  xlab("Price")+
+  ylab("Density") +
+  geom_histogram() +
+  theme_minimal() +
+  ggtitle("Histogram of price")
+
+
+
+
+ggplot(data=diamonds, aes(x=price, group=cut, fill=cut)) +
+  xlab("Price")+
+  ylab("Density") +
+  geom_density(adjust=1.5, alpha=.4) +
+  theme_minimal()
+
+
+ggplot(world, aes(x= literacy)) +
+  geom_ +
+  xlab("Literacy")+
+  theme_minimal() 
+
+ggplot(world, aes(x = "", y = literacy)) +
+  ylab("Literacy")+
+  geom_boxplot() +
+  theme_minimal() 
+
+
+ggplot(diamonds, aes(x = cut, y = depth)) +
+  geom_boxplot() +
+  theme_minimal() +
+  xlab("Cut") +
+  ylab("Depth")
+
+ggplot(diamonds, aes(x = carat, y = price)) +
+  geom_point() 
+
+
+df_tab = diamonds %>% group_by(cut, color) %>% tally()
+
+
+ggplot(df_tab) +
+  aes(x = cut, weight = n) +
+  geom_bar() +
+  theme_minimal()
+
+
+
+ggplot(df_tab) +
+  aes(x = color, weight = n) +
+  geom_bar() +
+  theme_minimal()
+
+
+
+
+reorder(day, -perc)ggplot(df_tab) +
+  aes(x = reorder(color, n), weight = n) +
+  geom_bar() +
+  theme_minimal()
+
+
+
+ggplot(df_sub) +
+  aes(x = country, weight = debt) +
+  geom_bar() +
+  coord_flip() +
+  theme_minimal() + 
+  theme(axis.text.y = element_text(size = 5))
+
+
+
+world$debt
+
+
+ggplot(df_sub) +
+  aes(x = reorder(country, debt), weight = debt) +
+  geom_bar() +
+  coord_flip() +
+  theme_minimal() + 
+  theme(axis.text.y = element_text(size = 5)) +
+  ylab("Country") +
+  xlab("Public debt as a percentage of GDP")
+
+
+
+
+world = world %>%
+  mutate(new_name = ifelse(as.character(country) %in% c("Canada", "India", "Thailand", "Switzerland"),
+                           as.character(country) ,"")) %>%
+  rename("Region" = regionun)
+
+world 
+
+ggplot(data = world, aes(x = gdp_10_thou, y = lifeex_total, 
+                         color = Region, shape = oecd)) +
+  geom_point(size = 4) +
+  ylab("Life expectancy") +
+  xlab("GDP per capita 10K US$") +
+  ggtitle("Life expectancy vs GDP per capita") +
+  geom_text(aes(label = new_name), size = 5, col ="black") +
+  theme_minimal()
+
+
+ggplot(data = world, aes(x = gdp_10_thou, y = lifeex_total, 
+                         color = Region, shape = oecd)) +
+  geom_point(size = 4) +
+  ylab("Life expectancy") +
+  xlab("GDP per capita 10K US$") +
+  ggtitle("Life expectancy vs GDP per capita") +
+  geom_text(aes(label = new_name), 
+            size = 5, col ="black",
+            nudge_x = .5, nudge_y = .5) +
+  theme_minimal()
+
+
+
+world = world %>% rename("Lifeexpectancy" = lifeex_total,
+                         "World Region" = regionun)
+
+world = world %>% mutate(new_name = ifelse(country %in% c("Belgium", "Canada", "Switzerland", "China"), country, ""))
+
+
+
+
+
+
+
+
+
+
+
+world$pop_total > quantile_pop
+
+world$country1
+
+# rename variable
+library(dplyr)
+rename()
+ggplot(world, aes(x = gdp_10_thou , 
+                  y = lifeex_total, 
+                  color = regionun, 
+                  shape = oecd,
+                  size = pop_total)) + 
+  geom_point() +
+  theme_minimal() +
+  ylab("Life expectancy") +
+  xlab("GDP per capita 10K US$") +
+  ggtitle("Life expectancy vs GDP per capita") +
+  scale_size(range=c(1,15)) 
+
+
+
+
+
++
+  
+  geom_text(aes(label = ifelse(pop_total > quantile_pop, world$country[country], "") 
+  ) , size=10) +
+  # ggrepel::geom_text_repel(aes(label=country), size=3)+
+  theme_minimal()
+
+
+
 ###### ammounts
 
 library(dplyr)
@@ -269,3 +443,69 @@ g3
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+#################### time series
+
+rm(list=ls())
+library(dslabs)
+data(gapminder)
+head(gapminder)
+library(tidyr)
+library(janitor)
+
+
+
+
+
+
+
+
+
+
+
+df_ch = gapminder %>% filter(country == "Switzerland")
+df_ch$year = as.Date(as.character(df_ch$year), format = "%Y")
+
+ggplot(df_ch, aes(year, life_expectancy)) +
+  geom_line() +
+  theme_minimal() +
+  labs(
+    title = "Life expectancy in Switzerland",
+    caption = "Data: Gapminder, Hans Rosling",
+    x = "Year (Year)", 
+    y = "Life expectancy") + 
+  scale_x_date(date_breaks = "5 year", date_labels = "%Y") +
+  theme(axis.title.y = element_text(margin = margin(t = 0, r = 20, b = 0, l = 0)),
+        axis.title.x = element_text(margin = margin(t = 20, r = 0, b = 0, l = 0)))
+  
+  
+
+
+gapminder %>%
+  filter(country %in% c("Switzerland", "Canada", "China", 
+                        "India", "Egypt", "Germany", "Nepal")) %>%
+  group_by(year, country) %>%
+  summarise(life_expectancy = mean(life_expectancy)) %>%
+  ggplot(aes(x=year, y=life_expectancy, color=country)) +
+  geom_line(size=1)+ 
+  theme_minimal() +
+  labs(
+    title = "Evolution of Life expectancy per continent",
+    caption = "Data: Gapminder, Gapminder Foundation",
+    x = "Year", 
+    y = "Life expectancy",
+    color = "Continent"
+  )
+  

@@ -73,7 +73,7 @@ Here is non-exhaustive lists of great resources on the topic:
 </exercise>
 
 <exercise id="8" title="Visualizing time series" type = "slides">
-<slides source="chapter5_05">
+<slides source="chapter5_06">
 </slides>
 </exercise>
 

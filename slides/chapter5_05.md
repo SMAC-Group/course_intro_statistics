@@ -1,7 +1,7 @@
 ---
   type: slides
 ---
-# Visualizing relationship numerical variables
+# Visualizing relationship between numerical variables
 
 ---
 
