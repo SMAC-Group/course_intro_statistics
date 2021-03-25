@@ -573,11 +573,11 @@ library(quantmod)
 library(janitor)
 library(ggplot2)
 
-getSymbols(c("AAPL", "TSLA", "GOOGL"), from = "2019-01-01")
+getSymbols(c("AAPL", "TSLA", "GOOGL", "BABA"), from = "2019-01-01")
 
 tsl_price_df = fortify(TSLA) %>% clean_names()
 
-myplot = ggplot(tsl_price_df, aes(index, tsla_close)) +
+tsla_plot = ggplot(tsl_price_df, aes(index, tsla_close)) +
   geom_line() +
   geom_point() +
   theme_minimal() +
@@ -594,6 +594,94 @@ anim_save("tsla.gif", animation = myplot)
 
 animate(tsla_plot, duration = 5, fps = 20, width = 200, height = 200, 
         renderer = gifski_renderer())
+
+
+# add other stock
+aapl_price_df = fortify(AAPL) %>% clean_names()
+googl_price_df = fortify(GOOGL) %>% clean_names()
+baba_price_df = fortify(BABA) %>% clean_names()
+df_1 = dplyr::left_join(tsl_price_df, aapl_price_df, by = "index")
+df_2 = dplyr::left_join(googl_price_df, df_1, by = "index")
+df_stocks = dplyr::left_join(df_2, baba_price_df, by = "index")
+df_stocks = df_stocks %>% select(index, aapl_close, googl_close, baba_close, tsla_close)
+head(df_stocks)
+df_stocks_long = tidyr::pivot_longer(df_stocks, col = !index)
+
+
+library(ggplot2)
+library(viridis)
+
+stocks_plot = ggplot(df_stocks_long, aes(x = index, y = value, color= name)) +
+  geom_line() +
+  theme_minimal() +
+  labs(
+    title = "Stock prices",
+    x = "Date", 
+    y = "Price ($)") + 
+  scale_x_date(date_breaks = "2 month", date_labels = "%m/%y") +
+  scale_fill_viridis(discrete = TRUE) +
+  scale_color_manual(labels = c("AAPL", "BABA", "GOOGL", "TSLA"),
+                     values = RColorBrewer::brewer.pal("Dark2", n = 4))+
+  theme(axis.title.y = element_text(margin = margin(t = 0, r = 20, b = 0, l = 0)),
+        axis.title.x = element_text(margin = margin(t = 20, r = 0, b = 0, l = 0))) 
+
+
+# +
+
+stocks_plot + geom_point() + transition_reveal(index)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# fancy graph
+install.packages("magick")
+
+
+
+
+
+mygraph = ggplot(df_murders) +
+  aes(x = reorder(region, total_murders), y = total_murders, fill = region) +
+  geom_bar(stat = "identity", width = .7) +
+  coord_flip()+
+  theme_minimal() +
+  xlab("") +
+  ylab("")+
+  geom_text(stat='identity', aes(label=total_murders), hjust=1.4, col ="white", size = 5)+
+  theme(
+    panel.grid.major.y = element_blank(),
+    panel.grid.minor.y = element_blank(),
+    axis.text = element_text(size = 13),
+    axis.text.y = element_text( color="black", 
+                                size=14)
+  ) + ggtitle("Total murders per US region")
+mygraph
+library(magick)
+library(grid)
+png = image_read("https://www.vividmaps.com/wp-content/uploads/2018/10/US-regions.jpg")
+img = grid::rasterGrob(png, interpolate = TRUE)
+mygraph = mygraph + annotation_custom(img, ymin = 2000, ymax = 4500, xmin = 0.5, xmax = 2.5)
+mygraph = mygraph + scale_fill_manual(values = c("South" = "#d4a770", 
+                                                 "West" = "#e8cb5b", 
+                                                 "Midwest" = "#aebc5b",
+                                                 "Northeast" = "#b49ebd"))
+mygraph
+
+
+
+
+
 
 
 
