@@ -1,5 +1,5 @@
 ---
-title: 'Chapter 4: Data manipulation'
+title: 'Chapter 4: Data Manipulation'
 description:
   'Transform and reshape data.'
 prev: /chapter3

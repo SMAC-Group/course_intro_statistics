@@ -1,5 +1,5 @@
 ---
-title: 'Chapter 5: Data visualization'
+title: 'Chapter 5: Data Visualization'
 description:
   'Represent data and communicate information graphically.'
 prev: /chapter4
@@ -12,28 +12,24 @@ id: 4
 
 <exercise id="1" title="General information">
 
-In this chapter we will discuss different elements regarding Data Visualization with `R`.
+In this chapter we will discuss how to visualize data with `R`.
 
-Once you performed a statistical analysis on a given set of data, you generally want to produce and transmits results and essential insights from you analysis with graphical means to support your claims. Creating communicative graphs that correctly represent that data can be challenging and one should be careful to avoid traps in order to represent the information as accurately as possible. 
+In general, after performing a statistical analysis on a given dataset, we will need to summarize our analysis and convert the results to provide essential insights, conclusions, or claims. In this stage of analysis, we generally use visual tools such as graphs or charts as supports. Therefore, creating visualizations that can correctly display the analysis results and highlight the crutial information from data has become one of the most important data analysis skills. 
 
-**Data Visualization** is the field that describe how to represent information and data with graphical elements. For example, we can mention boxplots, barplots, scatterplots, lines plots, etc. These various types of graphical representation of data are interchangeably referred to as plots, graphs or charts.
+**Data Visualization** is a general field that discusses how we can represent data analysis results and communicate information with graphical elements. These graphical elements include, for example, boxplots, barplots, scatterplots, lines plots. These various types of graphical representations are interchangeably referred to as plots, graphs or figures.
 
-`R` provides powerful tools to easily produce communicative and customizable charts. In the context of this website, we will focus on [`ggplot2`](https://ggplot2.tidyverse.org/) and its [extensions](https://exts.ggplot2.tidyverse.org/gallery/). Note that `ggplot2` is part of the  [`tidyverse`](https://www.tidyverse.org/) collection of `R` packages, such as `dplyr`and `tidyr` previously discussed. This is an advantage because it makes it easy to seamlessly combine the uses of these packages in the context of a statistical analysis. 
+`R` provides various powerful tools to easily produce communicative and customizable graphs. In this chapter, we will focus on [`ggplot2`](https://ggplot2.tidyverse.org/) and its [extensions](https://exts.ggplot2.tidyverse.org/gallery/). Note that the `ggplot2` package is a part of the  [`tidyverse`](https://www.tidyverse.org/) collection of `R` packages, like the `dplyr`and `tidyr` packages as discussed in previous chapters. This makes the `ggplot2` package easy to use and to seamlessly combine with other packages in a statistical analysis. As an illustration, you can access a gallery of graphs made with `ggplot2` [here](https://www.r-graph-gallery.com/index.html) with reproducible code available. 
 
-You can access a gallery of graphs made with `ggplot2` [here](https://www.r-graph-gallery.com/index.html) with reproducible code available.
-
-Furthermore, we suggest you to install `ggplot2` and `esquisse` with:
+To get started, we recommend you to install both `ggplot2` and `esquisse` packages with the following commands in `R`:
 
 ```R
 install.packages("ggplot2")
 install.packages("esquisse")
 ```
 
-There are plenty of interesting resources on Data Visualization and Data Vizualisation with `R`.
+For your reference, we also list some of the interesting resources regarding data visualization as follows:
 
-Here is non-exhaustive lists of great resources on the topic:
-
-- [ggplot2: elegant graphics for data analysis](https://ggplot2-book.org/)
+- [ggplot2: Elegant Graphics for Data Analysis](https://ggplot2-book.org/)
 
 - [Fundamentals of Data Visualization](https://clauswilke.com/dataviz/)
 
