@@ -520,8 +520,81 @@ unique(penguins$island)
 
 
 
+#############################
+### animations
+##########################
 
-#### ammounts
 
-data("ChickWeight")
+rm(list=ls())
+# libraries:
+library(ggplot2)
+library(gganimate)
+library(babynames)
+library(hrbrthemes)
+library(magrittr)
+library(dplyr)
+library(viridis)
+library(gifski)
+library(png)  
+
+# Keep only 3 names
+don <- babynames %>% 
+  filter(name %in% c("Ashley", "Patricia", "Helen")) %>%
+  filter(sex=="F")
+
+# Plot
+myplot = don %>%
+  ggplot( aes(x=year, y=n, group=name, color=name)) +
+  geom_line() +
+  geom_point() +
+  scale_color_viridis(discrete = TRUE) +
+  ggtitle("Popularity of American names in the previous 30 years") +
+  theme_ipsum() +
+  ylab("Number of babies born") +
+  transition_reveal(year)
+
+# Save at gif:
+animate(myplot, duration = 5, fps = 20, width = 200, height = 200, 
+        renderer = gifski_renderer())
+anim_save("out.gif",animation = myplot)
+
+
+# example
+
+data("AirPassengers")
+
+
+
+rm(list=ls())
+library(gifski)
+library(gganimate)
+library(ggfortify)
+library(quantmod)
+library(janitor)
+library(ggplot2)
+
+getSymbols(c("AAPL", "TSLA", "GOOGL"), from = "2019-01-01")
+
+tsl_price_df = fortify(TSLA) %>% clean_names()
+
+myplot = ggplot(tsl_price_df, aes(index, tsla_close)) +
+  geom_line() +
+  geom_point() +
+  theme_minimal() +
+  labs(
+    title = "TSLA",
+    x = "Date", 
+    y = "Price ($)") + 
+  scale_x_date(date_breaks = "2 month", date_labels = "%m/%y") +
+  theme(axis.title.y = element_text(margin = margin(t = 0, r = 20, b = 0, l = 0)),
+        axis.title.x = element_text(margin = margin(t = 20, r = 0, b = 0, l = 0))) +
+  transition_reveal(index)
+
+anim_save("tsla.gif", animation = myplot)
+
+animate(tsla_plot, duration = 5, fps = 20, width = 200, height = 200, 
+        renderer = gifski_renderer())
+
+
+
 

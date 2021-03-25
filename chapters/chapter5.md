@@ -79,9 +79,16 @@ Here is non-exhaustive lists of great resources on the topic:
 
 
 
+<exercise id="9" title="ggplot2 extensions" type = "slides">
+<slides source="chapter5_08">
+</slides>
+</exercise>
 
 
-<exercise id = "9" title ="Data visualization: Exercises">
+
+
+
+<exercise id = "10" title ="Data visualization: Exercises">
 
 ---
 
