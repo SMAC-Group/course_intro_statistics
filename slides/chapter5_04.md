@@ -226,3 +226,26 @@ g4
 ---
 
 <div style="text-align:center"><img src="mdens5.png" alt=" " width="50%"></div>
+
+---
+
+Lastly, we can add drawings of these penguin species to the graph.
+
+```R
+adelie = image_read("https://raw.githack.com/SMAC-Group/course_intro_ds/master/img/adelie.png")
+img_adelie = grid::rasterGrob(adelie, interpolate = TRUE)
+chinestrap = image_read("https://raw.githack.com/SMAC-Group/course_intro_ds/master/img/chinestrap.png")
+img_chinestrap = grid::rasterGrob(chinestrap, interpolate = TRUE)
+gentoo = image_read("https://raw.githack.com/SMAC-Group/course_intro_ds/master/img/gentoo.png")
+img_gentoo = grid::rasterGrob(gentoo, interpolate = TRUE)
+
+g5 = g4 + annotation_custom(img_adelie, ymin = 3.1, ymax = 3.7, xmin = 1.05, xmax = 2) + 
+  annotation_custom(img_chinestrap, ymin = 2.1, ymax = 2.7, xmin = 1.05, xmax = 2) + 
+  annotation_custom(img_gentoo, ymin = 1.1, ymax = 1.7, xmin = 1.0, xmax = 2)
+
+g5
+```
+
+---
+
+<div style="text-align:center"><img src="mdens8.png" alt=" " width="65%"></div>
