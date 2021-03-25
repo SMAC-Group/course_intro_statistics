@@ -45,7 +45,7 @@ For your reference, we also list some of the interesting resources regarding dat
 </slides>
 </exercise>
 
-<exercise id="3" title="Visualizing ammounts" type = "slides">
+<exercise id="3" title="Visualizing amounts" type = "slides">
 <slides source="chapter5_02">
 </slides>
 </exercise>

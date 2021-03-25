@@ -184,4 +184,4 @@ ggplot(data = world, aes(x = gdp_10_thou, y = lifeex_total,
 
 ---
 
-<div style="text-align:center"><img src="esquisse.gif" alt=" " width="70%"></div>
+<div style="text-align:center"><img src="esquisse.gif" alt=" " width="60%"></div>
