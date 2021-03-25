@@ -67,7 +67,7 @@ Here is non-exhaustive lists of great resources on the topic:
 </exercise>
 
 
-<exercise id="7" title="Visualizing the relationship between two numerical variables" type = "slides">
+<exercise id="7" title="Visualizing the relationship between numerical variables" type = "slides">
 <slides source="chapter5_05">
 </slides>
 </exercise>

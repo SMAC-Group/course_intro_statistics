@@ -198,86 +198,74 @@ g4
 
 
 
+################# ralationsip between numerical variables
+rm(list=ls())
+library(tidyverse)   ## data science package collection (incl. the ggplot2 package)
+library(systemfonts) ## use custom fonts (need to be installed on your OS)  
+library(scico)       ## scico color palettes(http://www.fabiocrameri.ch/colourmaps.php) in R 
+library(ggtext)      ## add improved text rendering to ggplot2
+library(ggforce)     ## add missing functionality to ggplot2
+library(ggdist)   
+data(iris)
+data(penguins)
 
+penguins = na.omit(penguins)
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-# Plot
-ggplot(penguins, aes(x = bill_length_mm, y = species, fill = ..x..)) +
-  geom_density_ridges_gradient(scale = 3, rel_min_height = 0.01) +
-  theme(
-    legend.position="none",
-    panel.spacing = unit(0.1, "lines"),
-    strip.text.x = element_text(size = 8)
-  )
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-# Plot
-library(ggridges)
-ggplot(penguins, aes(x=bill_length_mm, group=species, fill=species)) +
-  geom_density_ridges_gradient(scale = 3, rel_min_height = 0.01) +
-  scale_fill_viridis(name = "Temp. [F]", option = "C") +
-  labs(title = 'Temperatures in Lincoln NE in 2016') +
-  theme(
-    legend.position="none",
-    panel.spacing = unit(0.1, "lines"),
-    strip.text.x = element_text(size = 8)
-  )
-
-
-# first plot
-ggplot(data=penguins, aes(x=bill_length_mm, y=species, fill=species)) +
-  geom_density(adjust=1.5, alpha = .6) +
-  facet_wrap(~species) +
-  theme(
-    legend.position="none",
-    panel.spacing = unit(0.1, "lines"),
-    axis.ticks.x=element_blank()
+ggplot(penguins, aes(x = bill_length_mm, y = bill_depth_mm)) + 
+  
+  geom_point(aes(color = body_mass_g), alpha = .6, size = 3.5) +
+  
+  scico::scale_color_scico(palette = "bamako", direction = -1) +
+  coord_cartesian(xlim = c(25, 65), ylim = c(10, 25)) +
+  rcartocolor::scale_fill_carto_d(palette = "Bold") +
+  labs(
+    title = "Bill Dimensions of Brush-Tailed Penguins (*Pygoscelis*)",
+    subtitle = 'A scatter plot of bill depth versus bill length.',
+    caption = "Data: Gorman, Williams & Fraser (2014) *PLoS ONE*",
+    x = "**Bill Length** (mm)", 
+    y = "**Bill Depth** (mm)",
+    color = "Body mass (g)",
+    fill = "Species"
   ) +
-  scale_fill_manual(values = c("#3d6721", "#a86826", "#006c89"), guide = "none") 
+  ggforce::geom_mark_ellipse(
+    aes(fill = species, label = species), 
+    alpha = .15, show.legend = FALSE
+  ) 
 
+data(iris)
+iris = janitor::clean_names(iris)
 
-# basic example
-ggplot(diamonds, aes(x = price, y = cut, fill = cut)) +
-  geom_density_ridges() +
-  theme_ridges() + 
-  theme(legend.position = "none")
- 
-  
-  library(viridis)
-  library()
+g1 = ggplot(iris, aes(x = sepal_width, y = sepal_length)) + 
+  geom_point(aes(color = petal_width), alpha = .6, size = 3.5) +
+  theme_minimal() +
+  scico::scale_color_scico(palette = "bamako", direction = -1) 
+
+g1
+
+g2 = g1 + 
+  labs(
+    title = "Sepal and Petal dimensions of Iris",
+    subtitle = 'A scatter plot of Sepal Length vs Sepal Width',
+    caption = "Data: Iris flower dataset, Fisher, Anderson (1936)",
+    x = "Sepal Length (cm)", 
+    y = "Sepal Width (cm)",
+    fill = "Species",
+    color = "Petal Width (cm)"
     
-      
-  
+  ) + 
+  theme_minimal()
+
+g2
+
+g3 = g2 + 
+  coord_cartesian(xlim = c(1, 6), ylim = c(4, 9)) +
+  rcartocolor::scale_fill_carto_d(palette = "Bold")+
+  ggforce::geom_mark_ellipse(
+  aes(fill = species, label = species), 
+  alpha = .15, show.legend = FALSE)
+
+
+g3
+
+
+
