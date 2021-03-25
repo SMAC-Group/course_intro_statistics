@@ -6,7 +6,7 @@ type: slides
 
 ---
 
-When considering continuous numerical variable, you may to visualize the distribution of the data. Let's consider the price of diamonds in the dataset `diamonds` (`price`). 
+When considering continuous numerical variable, we typically want to visualize its distribution. As an example, let's consider the `diamonds` dataset in the `ggplot2` package and the variable of the price of the diamonds (`price`). 
 
 ```R
 ggplot(data=diamonds, aes(x=price)) +
@@ -16,12 +16,12 @@ ggplot(data=diamonds, aes(x=price)) +
 
 ---
 
-<div style="text-align:center"><img src="hist1.png" alt=" " width="50%"></div>
+<div style="text-align:center"><img src="hist1.png" alt=" " width="70%"></div>
 
 
 ---
 
-We add a title and consider a simpler theme. We alos increase distance and size of axis labels.
+To improve the graph, we can add a title and consider a simpler theme. We can also increase the distance and size of axis labels.
 
 ```R
 ggplot(data=diamonds, aes(x=price)) +
@@ -37,10 +37,12 @@ ggplot(data=diamonds, aes(x=price)) +
 
 ---
 
-<div style="text-align:center"><img src="hist2.png" alt=" " width="50%"></div>
+<div style="text-align:center"><img src="hist2.png" alt=" " width="70%"></div>
 
 
 ---
+
+Let's try to modify the graphs by considering a large number of bins. 
 
 ```R
 ggplot(data=diamonds, aes(x=price)) +
@@ -60,6 +62,7 @@ ggplot(data=diamonds, aes(x=price)) +
 <div style="text-align:center"><img src="histbin200.png" alt=" " width="50%"></div>
 
 ---
+As we can see, the previous histogram considers an extremely large number of bins, leading to a very wiggly density curve. Now let's consider the other extreme where only a very small amount of bins are considered. We will see that with a lack of bins, the density of the variable is harder to identify, although it looks much smoother.
 
 ```R
 ggplot(data=diamonds, aes(x=price)) +
@@ -83,7 +86,7 @@ ggplot(data=diamonds, aes(x=price)) +
 
 ---
 
-We could also consider using a Kernel Density Estimate (KDE) to vizualise the estimated density
+We can also consider a Kernel Density Estimate (KDE) to visualize the estimated density.
 
 ```R
 ggplot(data=diamonds, aes(x=price)) +
@@ -92,12 +95,12 @@ ggplot(data=diamonds, aes(x=price)) +
 
 ---
 
-<div style="text-align:center"><img src="dens1.png" alt=" " width="55%"></div>
+<div style="text-align:center"><img src="dens1.png" alt=" " width="65%"></div>
 
 
 ---
 
-We change the theme, add a centered title and specify a color with some transparency value. We also increase distance and size of axis labels.
+We can again change the theme, add a centered title and specify a color with some transparency level. We can again increase the distance and size of axis labels.
 
 ```R
 ggplot(data=diamonds, aes(x=price)) +
@@ -118,7 +121,7 @@ ggplot(data=diamonds, aes(x=price)) +
 
 ---
 
-We can consider varying the bandwidth of the kernel estimator in the KDE plot.
+We can consider the KDE with differnt bandwidth. For example, we first consider a KDE with an extremely small bandwidth (analogous to the histogram with 200 bins). The density, as expected, appears very wiggly although it highly approximates the data. 
 
 ```R
 ggplot(data=diamonds, aes(x=price)) +
@@ -141,7 +144,7 @@ ggplot(data=diamonds, aes(x=price)) +
 
 ---
 
-Similarly
+On the other hand, we can consider a relatively large bandwidth (analogous to the histogram with 5 bins). We can see that the estimated density appears much smoother yet showing big bias in estimation, resulting in a poor approximation of the density. 
 
 
 ```R

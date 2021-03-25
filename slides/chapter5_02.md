@@ -2,16 +2,16 @@
 type: slides
 ---
 
-# Visualizing ammounts
+# Visualizing amounts
 
 ---
 
 
-Let us consider the dataset `murders` in the `dslabs` package. Find the description of the dataset [here](https://www.rdocumentation.org/packages/dslabs/versions/0.7.3/topics/murders). 
+Let's consider the dataset `murders` in the `dslabs` package. You can find the description of this dataset [here](https://www.rdocumentation.org/packages/dslabs/versions/0.7.3/topics/murders). 
 
 
 
-Let's first load the data and `ggplot2` : 
+Let's first load the data and the `ggplot2` package: 
 
 
 ```R
@@ -35,7 +35,7 @@ head(murders)
 ---
 
 
-Using `dplyr`, we summarize the population and number of murders per region. We also compute the murder rate
+Using the `dplyr` package, we can summarize the population and number of murders per region. We can also compute the murder rate for each region as follows:
 
 ```R
 df_murders = murders %>%
@@ -64,7 +64,7 @@ head(df_murders)
 
 ---
 
-An adapted graphical representation to visualize counts are barplots.
+A graphical representation to visualize these counts is the barplot. We can generate a barplot with `ggplot2` as follows:
 
 ```R
 ggplot(df_murders) +
@@ -77,13 +77,13 @@ ggplot(df_murders) +
 ---
 
 
-<div style="text-align:center"><img src="bar1.png" alt=" " width="40%"></div>
+<div style="text-align:center"><img src="bar1.png" alt=" " width="50%"></div>
 
 
 
 ---
 
-Ordering the bars makes it easier to identify the structure of the data.
+We can arrange the bars in an increasing order so that it's easier to compare the data.
 
 ```R
 ggplot(df_murders) +
@@ -95,7 +95,7 @@ ggplot(df_murders) +
 ---
 
 
-<div style="text-align:center"><img src="bar3.png" alt=" " width="40%"></div>
+<div style="text-align:center"><img src="bar3.png" alt=" " width="50%"></div>
 
 ---
 
@@ -112,13 +112,13 @@ ggplot(df_murders) +
 ---
 
 
-<div style="text-align:center"><img src="bar10.png" alt=" " width="40%"></div>
+<div style="text-align:center"><img src="bar10.png" alt=" " width="50%"></div>
 
 
 ---
 
 
-We flip the coordinate system and remove horizontal grid lines. We also add the counts on each bar.
+Moreover, we can flip the coordinate system and remove the horizontal grid lines in light grey. We can also add the number of counts on each bar.
 
 ```R
 
@@ -143,9 +143,11 @@ ggplot(df_murders) +
 
 ---
 
-<div style="text-align:center"><img src="bar4.png" alt=" " width="40%"></div>
+<div style="text-align:center"><img src="bar4.png" alt=" " width="50%"></div>
 
 ---
+
+Now we can add some colors to each bar to make the graph look nicer. 
 
 ```R
 
@@ -170,9 +172,11 @@ mygraph
 
 ---
 
-<div style="text-align:center"><img src="bar11.png" alt=" " width="40%"></div>
+<div style="text-align:center"><img src="bar11.png" alt=" " width="50%"></div>
 
 ---
+
+We can also make the graph more informative, for example, by adding a map of the USA to better identify the locations of the regions. Moreover, we can match the colors of each bar to the same color used in the map of the USA so that the counts and the locations of regions are visually connected. 
 
 ```R
 library(magick)
@@ -191,18 +195,18 @@ mygraph
 ---
 
 
-<div style="text-align:center"><img src="bar12.png" alt=" " width="40%"></div>
+<div style="text-align:center"><img src="bar12.png" alt=" " width="65%"></div>
 
 
 
 
 ---
 
-We will now consider the dataset `world` available in the `poliscidata` package already discussed on the previous chapter. You can find a description of the dataset [here](https://rdrr.io/cran/poliscidata/man/world.html).
+We will now consider the dataset `world` in the `poliscidata` package. You can find a description of the dataset [here](https://rdrr.io/cran/poliscidata/man/world.html).
 
-Let's represent the Public debt as a percentage of GDP (CIA) (`debt`) for all countries in Africa and USA/Canada. Remove observations for which debt is not specified.
+Let's represent the public debt as a percentage of GDP (CIA) (`debt`) for all countries in Africa and North America (USA/Canada). We will remove observations whose debt is not specified.
 
-Using functions of `dplyr` discussed in chapter 4 we subset the data.
+We can use the functions of `dplyr` discussed in Chapter 4 to subset the data.
 
 ```R
 library(poliscidata)
@@ -223,11 +227,11 @@ ggplot(df_sub) +
 
 ---
 
-<div style="text-align:center"><img src="bar5.png" alt=" " width="40%"></div>
+<div style="text-align:center"><img src="bar5.png" alt=" " width="55%"></div>
 
 ---
 
-As discussed earlier, we suggest to order observations by their counts.
+Same as the previous analysis, we suggest to order observations by their counts.
 
 ```R
 ggplot(df_sub) +
@@ -242,11 +246,11 @@ ggplot(df_sub) +
 ---
 
 
-<div style="text-align:center"><img src="bar6.png" alt=" " width="40%"></div>
+<div style="text-align:center"><img src="bar6.png" alt=" " width="55%"></div>
 
 
 ---
-Consider a lolipop chart to reduce the graphic clutter
+We can alternatively consider a lolipop chart to simplify the graph. 
 
 ```R
 ggplot(df_sub) +
@@ -270,4 +274,4 @@ ggplot(df_sub) +
 
 ---
 
-<div style="text-align:center"><img src="bar22.png" alt=" " width="40%"></div>
+<div style="text-align:center"><img src="bar22.png" alt=" " width="50%"></div>
