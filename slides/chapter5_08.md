@@ -14,11 +14,11 @@ There exists multiple [`ggplot2` extensions](https://exts.ggplot2.tidyverse.org/
 
 Despite the ability to represent multiple variables in one graph by defining various geometric elements and aesthetics mappings, you may consider representing data with an animated graph. Such a representation enables to represent another dimension, for example time and are easy to embed in web-based report. You can package `gganimate` becomes useful.
 
-<div style="text-align:center"><img src="hexgganimate.png" alt=" " width="40%"></div>
+<div style="text-align:center"><img src="hexgganimate.png" alt=" " width="50%"></div>
 
 ---
 
-Let us consider the price of TSLA, AAPL and GOOGL for this example. We will load the time series using `quantmod` and convert the `xts` object to a `data.frame` using `ggfortify`. 
+Let us consider the price of TSLA, AAPL BABA and GOOGL for this example. We will load the time series using `quantmod` and convert the `xts` object to a `data.frame` using `ggfortify`. 
 
 
 ```R
@@ -78,6 +78,7 @@ library(gganimate)
 ```
 
 Display with and 
+
 ```R
 animate(tsla_plot, duration = 5, fps = 20, width = 200, height = 200, 
         renderer = gifski_renderer())
@@ -91,27 +92,104 @@ anim_save("tsla.gif", animation = tsla_price_anim)
 
 ---
 
-
+<div style="text-align:center"><img src="tsla.gif" alt=" " width="40%"></div>
 
 
 ---
+
+Let's now try to represent all three stocks price in a single plot an animate the resulting graph.
+
+
+```R
+# add other stock
+library(dplyr)
+library(tidyr)
+aapl_price_df = fortify(AAPL) %>% clean_names()
+googl_price_df = fortify(GOOGL) %>% clean_names()
+baba_price_df = fortify(BABA) %>% clean_names()
+df_1 = dplyr::left_join(tsl_price_df, aapl_price_df, by = "index")
+df_2 = dplyr::left_join(googl_price_df, df_1, by = "index")
+df_stocks = dplyr::left_join(df_2, baba_price_df, by = "index")
+df_stocks = df_stocks %>% select(index, aapl_close, googl_close, baba_close, tsla_close)
+head(df_stocks)
+df_stocks_long = tidyr::pivot_longer(df_stocks, col = !index)
+head(df_stocks_long)
+```
+
+```out
+  index      name         value
+  <date>     <chr>        <dbl>
+1 2019-01-02 aapl_close    39.5
+2 2019-01-02 googl_close 1055. 
+3 2019-01-02 baba_close   137. 
+4 2019-01-02 tsla_close    62.0
+5 2019-01-03 aapl_close    35.5
+6 2019-01-03 googl_close 1025. 
+```
+
+
+---
+
+Let's plot the stock's prices
+
+```R
+library(ggplot2)
+library(viridis)
+
+stocks_plot = ggplot(df_stocks_long, aes(x = index, y = value, color= name)) +
+  geom_line() +
+  theme_minimal() +
+  labs(
+    title = "Stock prices",
+    x = "Date", 
+    y = "Price ($)") + 
+  scale_x_date(date_breaks = "4 month", date_labels = "%m/%y") +
+  scale_fill_viridis(discrete = TRUE) +
+  scale_color_manual(labels = c("AAPL", "BABA", "GOOGL", "TSLA"),
+                     values = RColorBrewer::brewer.pal("Dark2", n = 4))+
+  theme(axis.title.y = element_text(margin = margin(t = 0, r = 20, b = 0, l = 0)),
+        axis.title.x = element_text(margin = margin(t = 20, r = 0, b = 0, l = 0))) +
+  labs(color = "Stocks")
+
+stocks_plot
+      
+``` 
+
+---
+
+
+<div style="text-align:center"><img src="stock1.png" alt=" " width="40%"></div>
+
 
 
 ---
 
 
 ```R
-
-
+(stocks_plot_anim = stocks_plot + geom_point() + transition_reveal(index))
 ```
   
 
+Display with and 
+
+```R
+animate(stocks_plot, duration = 5, fps = 20, width = 200, height = 200, 
+        renderer = gifski_renderer())
+
+```
+
+and save with
+```R
+anim_save("stocks.gif", animation = stocks_plot_anim)
+```
+
+---
 
 
+<div style="text-align:center"><img src="stocks.gif" alt=" " width="40%"></div>
 
 
-
-
+---
 
 
 Let us consider the `gapminder` dataset available in the package `dslabs` and already discussed in chapter 4. You can find a detailed description of the dataset [here](https://stat.ethz.ch/R-manual/R-devel/library/datasets/html/iris.html).
@@ -134,14 +212,3 @@ head(gapminder)
 6             Armenia 1960               NA           66.86      4.55    1867396           NA      Asia    Western Asia
 ``` 
 
-
----
-
-
-
-
----
-
-<div style="text-align:center"><img src="line1.png" alt=" " width="40%"></div>
-
----

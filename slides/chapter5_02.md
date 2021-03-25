@@ -97,6 +97,25 @@ ggplot(df_murders) +
 
 ---
 
+We can also consider the inverse ordering.
+
+```R
+ggplot(df_murders) +
+  aes(reorder(region, -total_murders), total_murders) +
+  geom_bar(stat="identity") +
+  theme_minimal() 
+```
+
+
+---
+
+
+<div style="text-align:center"><img src="bar10.png" alt=" " width="40%"></div>
+
+
+---
+
+
 We flip the coordinate system and remove horizontal grid lines. We also add the counts on each bar.
 
 ```R

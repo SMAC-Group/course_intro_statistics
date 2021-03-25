@@ -573,11 +573,11 @@ library(quantmod)
 library(janitor)
 library(ggplot2)
 
-getSymbols(c("AAPL", "TSLA", "GOOGL"), from = "2019-01-01")
+getSymbols(c("AAPL", "TSLA", "GOOGL", "BABA"), from = "2019-01-01")
 
 tsl_price_df = fortify(TSLA) %>% clean_names()
 
-myplot = ggplot(tsl_price_df, aes(index, tsla_close)) +
+tsla_plot = ggplot(tsl_price_df, aes(index, tsla_close)) +
   geom_line() +
   geom_point() +
   theme_minimal() +
@@ -596,5 +596,36 @@ animate(tsla_plot, duration = 5, fps = 20, width = 200, height = 200,
         renderer = gifski_renderer())
 
 
+# add other stock
+aapl_price_df = fortify(AAPL) %>% clean_names()
+googl_price_df = fortify(GOOGL) %>% clean_names()
+baba_price_df = fortify(BABA) %>% clean_names()
+df_1 = dplyr::left_join(tsl_price_df, aapl_price_df, by = "index")
+df_2 = dplyr::left_join(googl_price_df, df_1, by = "index")
+df_stocks = dplyr::left_join(df_2, baba_price_df, by = "index")
+df_stocks = df_stocks %>% select(index, aapl_close, googl_close, baba_close, tsla_close)
+head(df_stocks)
+df_stocks_long = tidyr::pivot_longer(df_stocks, col = !index)
 
+
+library(ggplot2)
+library(viridis)
+
+ggplot(df_stocks_long, aes(x = index, y = value, color= name)) +
+  geom_line() +
+  theme_minimal() +
+  labs(
+    title = "Stock prices",
+    x = "Date", 
+    y = "Price ($)") + 
+  scale_x_date(date_breaks = "2 month", date_labels = "%m/%y") +
+  scale_fill_viridis(discrete = TRUE) +
+  scale_color_manual(labels = c("AAPL", "BABA", "GOOGL", "TSLA"),
+                     values = RColorBrewer::brewer.pal("Dark2", n = 4))+
+  theme(axis.title.y = element_text(margin = margin(t = 0, r = 20, b = 0, l = 0)),
+        axis.title.x = element_text(margin = margin(t = 20, r = 0, b = 0, l = 0))) 
+
+
+# +
+  transition_reveal(index)
 
