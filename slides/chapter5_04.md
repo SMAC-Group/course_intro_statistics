@@ -32,7 +32,7 @@ head(penguins)
 ---
 
 
-<div style="text-align:center"><img src="penguins.gif" alt=" " width="35%"></div>
+<div style="text-align:center"><img src="penguins.gif" alt=" " width="60%"></div>
 
 ---
 
@@ -80,7 +80,7 @@ ggplot(data=df_peng_stats, aes(x=bill_ratio, group=species, fill=species)) +
 ```
 
 ---
-<div style="text-align:center"><img src="mdens1.png" alt=" " width="50%"></div>
+<div style="text-align:center"><img src="mdens1.png" alt=" " width="55%"></div>
 ---
 
 Or similarly, using `ggplot2` extension `ggridges`.
@@ -99,14 +99,14 @@ ggplot(df_peng_stats, aes(x = bill_ratio, y = species, fill = species)) +
 
 ---
 
-<div style="text-align:center"><img src="mdens6.png" alt=" " width="40%"></div>
+<div style="text-align:center"><img src="mdens6.png" alt=" " width="55%"></div>
 
 ---
 
 We can also consider a slightly more complex code to produce a considerably better-looking graph. Let's construct it gradually.
 
 
-<div style="text-align:center"><img src="ggplot2_better.png" alt=" " width="40%"></div>
+<div style="text-align:center"><img src="ggplot2_better.png" alt=" " width="55%"></div>
 
 
 ---
@@ -135,7 +135,7 @@ g1
 ```
 ---
 
-<div style="text-align:center"><img src="mdens2.png" alt=" " width="40%"></div>
+<div style="text-align:center"><img src="mdens2.png" alt=" " width="55%"></div>
 
 ---
 
@@ -167,7 +167,7 @@ g2
 
 ---
 
-<div style="text-align:center"><img src="mdens3.png" alt=" " width="40%"></div>
+<div style="text-align:center"><img src="mdens3.png" alt=" " width="55%"></div>
 
 ---
 
@@ -190,7 +190,7 @@ g3
 
 ---
 
-<div style="text-align:center"><img src="mdens4.png" alt=" " width="40%"></div>
+<div style="text-align:center"><img src="mdens4.png" alt=" " width="55%"></div>
 
 
 ---
@@ -200,7 +200,7 @@ g4 =  g3 +  labs(
   x = "Bill ratio",
   y = NULL,
   subtitle = "B. Raincloud plot showing the distribution of bill ratios, estimated as bill length divided by bill depth.",
-  caption = "Data: Gorman, Williams & Fraser (2014) *PLoS ONE* &bull; Illustration: Allison Horst"
+  caption = "Data: Gorman, Williams & Fraser (2014),PLoS ONE, Illustration: Allison Horst"
 ) +
   theme(
     panel.grid.major.x = element_line(size = .35),
@@ -222,6 +222,33 @@ g4
 
 ```
 
+
 ---
 
-<div style="text-align:center"><img src="mdens5.png" alt=" " width="40%"></div>
+<div style="text-align:center"><img src="mdens5.png" alt=" " width="55%"></div>
+
+
+---
+
+
+we now add drawings of these penguin species to the graphs
+
+```R
+adelie = image_read("https://raw.githack.com/SMAC-Group/course_intro_ds/master/img/adelie.png")
+img_adelie = grid::rasterGrob(adelie, interpolate = TRUE)
+chinestrap = image_read("https://raw.githack.com/SMAC-Group/course_intro_ds/master/img/chinestrap.png")
+img_chinestrap = grid::rasterGrob(chinestrap, interpolate = TRUE)
+gentoo = image_read("https://raw.githack.com/SMAC-Group/course_intro_ds/master/img/gentoo.png")
+img_gentoo = grid::rasterGrob(gentoo, interpolate = TRUE)
+
+g5 = g4 + annotation_custom(img_adelie, ymin = 3.1, ymax = 3.7, xmin = 1.05, xmax = 2) + 
+  annotation_custom(img_chinestrap, ymin = 2.1, ymax = 2.7, xmin = 1.05, xmax = 2) + 
+  annotation_custom(img_gentoo, ymin = 1.1, ymax = 1.7, xmin = 1.0, xmax = 2)
+
+g5
+```
+
+
+---
+
+<div style="text-align:center"><img src="mdens8.png" alt=" " width="55%"></div>
