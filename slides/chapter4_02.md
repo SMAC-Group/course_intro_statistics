@@ -152,6 +152,11 @@ iris %>% slice_tail(n = 3)
 
 ---
 
+<div style="text-align:center"><img src="dplyr_filter.jpg" alt=" " width="50%"></div>
+
+---
+
+
 # Filter observations
 
 

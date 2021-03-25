@@ -94,11 +94,11 @@ gapminder %>%
   geom_line(size=1)+ 
   theme_minimal() +
   labs(
-    title = "Evolution of Life expectancy per continent",
+    title = "Evolution of Life expectancy per country",
     caption = "Data: Gapminder, Gapminder Foundation",
     x = "Year", 
     y = "Life expectancy",
-    color = "Continent"
+    color = "Country"
   )
 ```
 

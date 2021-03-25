@@ -57,7 +57,10 @@ gg_miss_var(airquality, show_pct = T)
 
 <div style="text-align:center"><img src="var_miss_airquality.png" alt=" " width="40%">
 
+---
 
+
+<div style="text-align:center"><img src="janitor.png" alt=" " width="40%">
 
 ---
 We can also observe that the variables names of this dataset contain capitals letters and dots. When working with large datasets, it is preferred to avoid using capitals or punctuations in order to avoid potential errors in the future analysis. We suggest to follow the conventional [snake case](https://en.wikipedia.org/wiki/Snake_case) styling, which can be achieved using the `janitor` package.

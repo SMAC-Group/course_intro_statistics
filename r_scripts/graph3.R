@@ -509,3 +509,19 @@ gapminder %>%
     color = "Continent"
   )
   
+
+
+
+
+library(palmerpenguins)
+data("penguins")
+unique(penguins$island)
+
+
+
+
+
+#### ammounts
+
+data("ChickWeight")
+

@@ -6,6 +6,10 @@ type: slides
 
 ---
 
+<div style="text-align:center"><img src="ggplot2.png" alt=" " width="30%"></div>
+
+---
+
 ## Introducing ggplot2 and the grammar of graphics
 
 [`ggplot2`](https://ggplot2.tidyverse.org/) is a `R` package that provide a system to create graphics based on Wilkinson's [The Grammar of Graphics](https://www.springer.com/gp/book/9780387245447). 

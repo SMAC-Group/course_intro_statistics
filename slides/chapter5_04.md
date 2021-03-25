@@ -99,7 +99,7 @@ ggplot(df_peng_stats, aes(x = bill_ratio, y = species, fill = species)) +
 
 ---
 
-<div style="text-align:center"><img src="mdens6.png" alt=" " width="50%"></div>
+<div style="text-align:center"><img src="mdens6.png" alt=" " width="40%"></div>
 
 ---
 
@@ -218,4 +218,4 @@ g4
 
 ---
 
-<div style="text-align:center"><img src="mdens5.png" alt=" " width="45%"></div>
+<div style="text-align:center"><img src="mdens5.png" alt=" " width="35%"></div>
