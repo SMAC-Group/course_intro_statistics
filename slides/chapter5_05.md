@@ -30,7 +30,7 @@ head(iris)
 
 ---
 
-We often use scatterplot to represent relationship between numerical values.
+We often use scatterplots to represent relationships between numerical values.
 
 ```R
 iris = clean_names(iris)
@@ -48,6 +48,8 @@ g1
 
 
 ---
+
+We can further improve the graph, for example, by adding a title. 
 
 ```R
 g2 = g1 + 
@@ -74,6 +76,9 @@ g2
 
 
 ---
+
+We can also present the relationship differently with `ggforce` and `rcartocolor`.
+
 ```R
 library(rcartocolor)
 library(ggforce)
