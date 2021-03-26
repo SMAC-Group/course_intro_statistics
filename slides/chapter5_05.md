@@ -76,10 +76,11 @@ g2
 ---
 ```R
 library(rcartocolor)
+library(ggforce)
 g3 = g2 + 
   coord_cartesian(xlim = c(1, 6), ylim = c(4, 9)) +
   scale_fill_carto_d(palette = "Bold")+
-  ggforce::geom_mark_ellipse(
+  geom_mark_ellipse(
   aes(fill = species, label = species), 
   alpha = .15, show.legend = FALSE)
 
@@ -98,7 +99,7 @@ g3
 library(magick)
 iris_png = image_read("https://raw.githack.com/SMAC-Group/course_intro_ds/master/img/iris.png")
 img_iris_png = grid::rasterGrob(iris_png, interpolate = TRUE)
-g3 = g2 + 
+g4 = g2 + 
   coord_cartesian(xlim = c(1.5, 4.75), ylim = c(2.5, 9)) +
   rcartocolor::scale_fill_carto_d(palette = "Bold")+
   ggforce::geom_mark_ellipse(
@@ -109,13 +110,13 @@ g3 = g2 +
                                 barwidth = unit(20, "lines"), 
                                 barheight = unit(.5, "lines"))) +
   annotation_custom(img_iris_png, ymin = 2.5, ymax = 5.5, xmin = 3.95, xmax = 5.45)
-g3
-
+g4
 ```
 
 ---
   
-  <div style="text-align:center"><img src="sct4.png" alt=" " width="50%"></div>
+
+<div style="text-align:center"><img src="scatterimg.png" alt=" " width="50%"></div>
 
   
   
