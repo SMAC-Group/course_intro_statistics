@@ -64,7 +64,7 @@ head(df_murders)
 
 ---
 
-A graphical representation to visualize these counts is the barplot. We can generate a barplot with `ggplot2` as follows:
+A graphical representation to visualize these counts is the barplot, where the data is visualized with vertical bars. We can generate a barplot with `ggplot2` as follows:
 
 ```R
 ggplot(df_murders) +
@@ -82,6 +82,8 @@ ggplot(df_murders) +
 
 
 ---
+
+We should pay attention to the order in which the bars are arranged. In many cases, people do not pay attention to this aspect and arrange the bars arbitrarily or by some random criterion which is meaningless in the context of the corresponding analysis. For example, some people arrange the bars in alphabetic order of the labels or by the lengths of the labels. The resulting graphs then become unnecessarily confusing and less intuitive than the graphs where bars are arranged in order of their size.
 
 We can arrange the bars in an increasing order so that it's easier to compare the data.
 
@@ -118,7 +120,7 @@ ggplot(df_murders) +
 ---
 
 
-Moreover, we can flip the coordinate system and remove the horizontal grid lines in light grey. We can also add the number of counts on each bar.
+We notice that the names of regions in the x-axis are very small. However, when we try to make them bigger, they can easily take up a lot of horizontal space. To solve this problem, one solution is to flip the coordinate system, so that the bars run horizontally. We can also remove the horizontal grid lines in light grey and add the number of counts on the bars. As a result, the graph is much easier to read and more informative. 
 
 ```R
 
