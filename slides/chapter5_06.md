@@ -57,7 +57,7 @@ ggplot(df_ch, aes(year, life_expectancy)) +
 
 ---
 
-<div style="text-align:center"><img src="line1.png" alt=" " width="40%"></div>
+<div style="text-align:center"><img src="line1.png" alt=" " width="35%"></div>
 
 ---
 

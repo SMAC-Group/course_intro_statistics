@@ -92,7 +92,7 @@ anim_save("tsla.gif", animation = tsla_price_anim)
 
 ---
 
-<div style="text-align:center"><img src="tsla.gif" alt=" " width="40%"></div>
+<div style="text-align:center"><img src="tsla.gif" alt=" " width="35%"></div>
 
 
 ---
@@ -200,7 +200,7 @@ anim_save("stocks.gif", animation = stocks_plot_anim)
 ---
 
 
-<div style="text-align:center"><img src="stocks.gif" alt=" " width="40%"></div>
+<div style="text-align:center"><img src="stocks.gif" alt=" " width="35%"></div>
 
 
 ---
@@ -264,7 +264,7 @@ stocks_plot_2
 (stocks_plot_anim2 = stocks_plot_2 + geom_point() + transition_reveal(index))
 ```
 
-<div style="text-align:center"><img src="stocks3.gif" alt=" " width="40%"></div>
+<div style="text-align:center"><img src="stocks3.gif" alt=" " width="35%"></div>
 
 
 

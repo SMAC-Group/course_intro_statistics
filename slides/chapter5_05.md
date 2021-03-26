@@ -44,7 +44,7 @@ g1
 
 ---
 
-<div style="text-align:center"><img src="sct1.png" alt=" " width="50%"></div>
+<div style="text-align:center"><img src="sct1.png" alt=" " width="40%"></div>
 
 
 ---
@@ -70,7 +70,7 @@ g2
 
 ---
 
-<div style="text-align:center"><img src="sct2.png" alt=" " width="50%"></div>
+<div style="text-align:center"><img src="sct2.png" alt=" " width="40%"></div>
 
 
 ---
@@ -90,7 +90,7 @@ g3
 
 ---
 
-<div style="text-align:center"><img src="sct3.png" alt=" " width="50%"></div>
+<div style="text-align:center"><img src="sct3.png" alt=" " width="40%"></div>
 
   
 ---
@@ -116,7 +116,7 @@ g4
 ---
   
 
-<div style="text-align:center"><img src="scatterimg.png" alt=" " width="55%"></div>
+<div style="text-align:center"><img src="scatterimg.png" alt=" " width="40%"></div>
 
   
   
