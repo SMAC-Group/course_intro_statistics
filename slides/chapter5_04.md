@@ -32,7 +32,7 @@ head(penguins)
 ---
 
 
-<div style="text-align:center"><img src="penguins.gif" alt=" " width="60%"></div>
+<div style="text-align:center"><img src="penguins.gif" alt=" " width="35%"></div>
 
 ---
 
@@ -81,7 +81,7 @@ ggplot(data=df_peng_stats, aes(x=bill_ratio, group=species, fill=species)) +
 ```
 
 ---
-<div style="text-align:center"><img src="mdens1.png" alt=" " width="65%"></div>
+<div style="text-align:center"><img src="mdens1.png" alt=" " width="35%"></div>
 ---
 
 Similarly, we can use a `ggplot2` extension called `ggridges`.
@@ -100,14 +100,14 @@ ggplot(df_peng_stats, aes(x = bill_ratio, y = species, fill = species)) +
 
 ---
 
-<div style="text-align:center"><img src="mdens6.png" alt=" " width="50%"></div>
+<div style="text-align:center"><img src="mdens6.png" alt=" " width="35%"></div>
 
 ---
 
 We can also consider a slightly more complex code to produce a considerably more attractive graph. Let's construct it gradually.
 
 
-<div style="text-align:center"><img src="ggplot2_better.png" alt=" " width="50%"></div>
+<div style="text-align:center"><img src="ggplot2_better.png" alt=" " width="35%"></div>
 
 
 ---
@@ -136,7 +136,7 @@ g1
 ```
 ---
 
-<div style="text-align:center"><img src="mdens2.png" alt=" " width="50%"></div>
+<div style="text-align:center"><img src="mdens2.png" alt=" " width="35%"></div>
 
 ---
 
@@ -168,7 +168,7 @@ g2
 
 ---
 
-<div style="text-align:center"><img src="mdens3.png" alt=" " width="50%"></div>
+<div style="text-align:center"><img src="mdens3.png" alt=" " width="35%"></div>
 
 ---
 
@@ -191,7 +191,7 @@ g3
 
 ---
 
-<div style="text-align:center"><img src="mdens4.png" alt=" " width="50%"></div>
+<div style="text-align:center"><img src="mdens4.png" alt=" " width="35%"></div>
 
 
 ---
@@ -225,7 +225,7 @@ g4
 
 ---
 
-<div style="text-align:center"><img src="mdens5.png" alt=" " width="50%"></div>
+<div style="text-align:center"><img src="mdens5.png" alt=" " width="35%"></div>
 
 ---
 
@@ -248,4 +248,4 @@ g5
 
 ---
 
-<div style="text-align:center"><img src="mdens8.png" alt=" " width="65%"></div>
+<div style="text-align:center"><img src="mdens8.png" alt=" " width="40%"></div>

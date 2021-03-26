@@ -77,7 +77,7 @@ ggplot(df_murders) +
 ---
 
 
-<div style="text-align:center"><img src="bar1.png" alt=" " width="40%"></div>
+<div style="text-align:center"><img src="bar1.png" alt=" " width="30%"></div>
 
 
 
@@ -95,7 +95,7 @@ ggplot(df_murders) +
 ---
 
 
-<div style="text-align:center"><img src="bar3.png" alt=" " width="40%"></div>
+<div style="text-align:center"><img src="bar3.png" alt=" " width="30%"></div>
 
 ---
 
@@ -112,7 +112,7 @@ ggplot(df_murders) +
 ---
 
 
-<div style="text-align:center"><img src="bar10.png" alt=" " width="40%"></div>
+<div style="text-align:center"><img src="bar10.png" alt=" " width="30%"></div>
 
 
 ---
@@ -274,4 +274,4 @@ ggplot(df_sub) +
 
 ---
 
-<div style="text-align:center"><img src="bar22.png" alt=" " width="40%"></div>
+<div style="text-align:center"><img src="bar22.png" alt=" " width="35%"></div>

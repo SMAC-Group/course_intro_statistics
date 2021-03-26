@@ -16,7 +16,7 @@ ggplot(data=diamonds, aes(x=price)) +
 
 ---
 
-<div style="text-align:center"><img src="hist1.png" alt=" " width="70%"></div>
+<div style="text-align:center"><img src="hist1.png" alt=" " width="45%"></div>
 
 
 ---
@@ -37,7 +37,7 @@ ggplot(data=diamonds, aes(x=price)) +
 
 ---
 
-<div style="text-align:center"><img src="hist2.png" alt=" " width="70%"></div>
+<div style="text-align:center"><img src="hist2.png" alt=" " width="35%"></div>
 
 
 ---
@@ -59,7 +59,7 @@ ggplot(data=diamonds, aes(x=price)) +
 
 ---
 
-<div style="text-align:center"><img src="histbin200.png" alt=" " width="50%"></div>
+<div style="text-align:center"><img src="histbin200.png" alt=" " width="35%"></div>
 
 ---
 As we can see, the previous histogram considers an extremely large number of bins, leading to a very wiggly density curve. Now let's consider the other extreme where only a very small amount of bins are considered. We will see that with a lack of bins, the density of the variable is harder to identify, although it looks much smoother.
@@ -80,7 +80,7 @@ ggplot(data=diamonds, aes(x=price)) +
 
 ---
 
-<div style="text-align:center"><img src="histbin5.png" alt=" " width="50%"></div>
+<div style="text-align:center"><img src="histbin5.png" alt=" " width="35%"></div>
 
 
 
@@ -95,7 +95,7 @@ ggplot(data=diamonds, aes(x=price)) +
 
 ---
 
-<div style="text-align:center"><img src="dens1.png" alt=" " width="65%"></div>
+<div style="text-align:center"><img src="dens1.png" alt=" " width="35%"></div>
 
 
 ---
@@ -117,7 +117,7 @@ ggplot(data=diamonds, aes(x=price)) +
 
 ---
 
-<div style="text-align:center"><img src="dens2.png" alt=" " width="55%"></div>
+<div style="text-align:center"><img src="dens2.png" alt=" " width="35%"></div>
 
 ---
 
@@ -140,7 +140,7 @@ ggplot(data=diamonds, aes(x=price)) +
 
 ---
 
-<div style="text-align:center"><img src="largekde.png" alt=" " width="55%"></div>
+<div style="text-align:center"><img src="largekde.png" alt=" " width="35%"></div>
 
 ---
 
@@ -164,7 +164,7 @@ ggplot(data=diamonds, aes(x=price)) +
 
 ---
 
-<div style="text-align:center"><img src="smallkde.png" alt=" " width="55%"></div>
+<div style="text-align:center"><img src="smallkde.png" alt=" " width="35%"></div>
 
 
 
