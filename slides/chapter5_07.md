@@ -79,29 +79,62 @@ ggplot(df_ch, aes(year, life_expectancy)) +
 
 <div style="text-align:center"><img src="line2.png" alt=" " width="40%"></div>
 
+
 ---
 
 Let us now represent the Life expectancy over the years, comparing Canada, China, Egypt, Germany and Switzerland.
 
+We first define the following dataframe.
 
 ```R
-gapminder %>%
-  filter(country %in% c("Switzerland", "Canada", "China", 
-                        "India", "Egypt", "Germany", "Nepal")) %>%
-  group_by(year, country) %>%
-  summarise(life_expectancy = mean(life_expectancy)) %>%
-  ggplot(aes(x=year, y=life_expectancy, color=country)) +
-  geom_line(size=1)+ 
+df_sub = gapminder %>% filter(country %in% c("Switzerland", "Canada", "China", 
+                                    "India", "Egypt", "Germany", "Nepal"))
+df_life_exp =   df_sub %>% group_by(year, country) %>%
+  summarise(life_expectancy = mean(life_expectancy)) 
+head(df_life_exp)
+
+```
+
+```out
+   year country life_expectancy
+  <int> <fct>             <dbl>
+1  1960 Canada             71  
+2  1960 China              30.5
+3  1960 Egypt              48.3
+4  1960 Germany            69.3
+5  1960 India              41.3
+6  1960 Nepal              39.8
+```
+
+---
+
+
+```R
+ggplot(df_life_exp, aes(x = year, y = life_expectancy, color = country, group = country)) + 
+  geom_line() +
+  # Add labels at the end of the line
+  geom_text(data = filter(df_life_exp, year == max(df_life_exp$year)),
+            aes(label = country),
+            hjust = 0, nudge_x = 0.1) +
+  # Allow labels to bleed past the canvas boundaries
+  coord_cartesian(clip = 'off') +
   theme_minimal() +
+  # Remove legend & adjust margins to give more space for labels
+  # Remember, the margins are t-r-b-l
+  theme(legend.position = 'none',
+        plot.margin = margin(0.1, 2.6, 0.1, 0.1, "cm"))  +
   labs(
     title = "Evolution of Life expectancy per country",
     caption = "Data: Gapminder, Gapminder Foundation",
     x = "Year", 
     y = "Life expectancy",
     color = "Country"
-  )
-```
+  ) + 
+  theme(axis.title.y = element_text(margin = margin(t = 0, r = 30, b = 0, l = 0), size = 15),
+        axis.title.x = element_text(margin = margin(t = 40, r = 0, b = 0, l = 0), size = 15)
+        )
 
+```
 ---
 
 <div style="text-align:center"><img src="line3.png" alt=" " width="40%"></div>

@@ -201,7 +201,7 @@ g4 =  g3 +  labs(
   x = "Bill ratio",
   y = NULL,
   subtitle = "B. Raincloud plot showing the distribution of bill ratios, estimated as bill length divided by bill depth.",
-  caption = "Data: Gorman, Williams & Fraser (2014) *PLoS ONE* &bull; Illustration: Allison Horst"
+  caption = "Data: Gorman, Williams & Fraser (2014) PLoS ONE Illustration: Allison Horst"
 ) +
   theme(
     panel.grid.major.x = element_line(size = .35),

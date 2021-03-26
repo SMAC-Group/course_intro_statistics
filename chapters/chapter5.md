@@ -74,7 +74,6 @@ For your reference, we also list some of the interesting resources regarding dat
 </exercise>
 
 
-
 <exercise id="8" title="ggplot2 extensions" type = "slides">
 <slides source="chapter5_08">
 </slides>

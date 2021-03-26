@@ -275,6 +275,7 @@ Let us consider the `gapminder` dataset available in the package `dslabs` and al
 
 
 ```R
+library(dslabs)
 data(gapminder)
 head(gapminder)
 ``` 
