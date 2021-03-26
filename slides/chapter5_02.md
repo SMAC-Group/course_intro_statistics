@@ -77,7 +77,7 @@ ggplot(df_murders) +
 ---
 
 
-<div style="text-align:center"><img src="bar1.png" alt=" " width="50%"></div>
+<div style="text-align:center"><img src="bar1.png" alt=" " width="40%"></div>
 
 
 
@@ -95,7 +95,7 @@ ggplot(df_murders) +
 ---
 
 
-<div style="text-align:center"><img src="bar3.png" alt=" " width="50%"></div>
+<div style="text-align:center"><img src="bar3.png" alt=" " width="40%"></div>
 
 ---
 
@@ -112,7 +112,7 @@ ggplot(df_murders) +
 ---
 
 
-<div style="text-align:center"><img src="bar10.png" alt=" " width="50%"></div>
+<div style="text-align:center"><img src="bar10.png" alt=" " width="40%"></div>
 
 
 ---
@@ -143,7 +143,7 @@ ggplot(df_murders) +
 
 ---
 
-<div style="text-align:center"><img src="bar4.png" alt=" " width="50%"></div>
+<div style="text-align:center"><img src="bar4.png" alt=" " width="40%"></div>
 
 ---
 
@@ -172,7 +172,7 @@ mygraph
 
 ---
 
-<div style="text-align:center"><img src="bar11.png" alt=" " width="50%"></div>
+<div style="text-align:center"><img src="bar11.png" alt=" " width="40%"></div>
 
 ---
 
@@ -195,7 +195,7 @@ mygraph
 ---
 
 
-<div style="text-align:center"><img src="bar12.png" alt=" " width="65%"></div>
+<div style="text-align:center"><img src="bar12.png" alt=" " width="40%"></div>
 
 
 
@@ -227,7 +227,7 @@ ggplot(df_sub) +
 
 ---
 
-<div style="text-align:center"><img src="bar5.png" alt=" " width="55%"></div>
+<div style="text-align:center"><img src="bar5.png" alt=" " width="40%"></div>
 
 ---
 
@@ -246,7 +246,7 @@ ggplot(df_sub) +
 ---
 
 
-<div style="text-align:center"><img src="bar6.png" alt=" " width="55%"></div>
+<div style="text-align:center"><img src="bar6.png" alt=" " width="40%"></div>
 
 
 ---
@@ -274,4 +274,4 @@ ggplot(df_sub) +
 
 ---
 
-<div style="text-align:center"><img src="bar22.png" alt=" " width="50%"></div>
+<div style="text-align:center"><img src="bar22.png" alt=" " width="40%"></div>

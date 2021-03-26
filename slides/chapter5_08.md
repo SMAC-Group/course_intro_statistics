@@ -26,7 +26,7 @@ rm(list=ls())
 library(quantmod)
 library(ggfortify)
 library(janitor)
-getSymbols(c("AAPL", "TSLA", "GOOGL"), from = "2019-01-01")
+getSymbols(c("AAPL", "TSLA", "GOOGL", "BABA"), from = "2019-01-01")
 tsl_price_df = fortify(TSLA) %>% clean_names()
 head(tsl_price_df)
 ```
@@ -112,6 +112,21 @@ df_2 = dplyr::left_join(googl_price_df, df_1, by = "index")
 df_stocks = dplyr::left_join(df_2, baba_price_df, by = "index")
 df_stocks = df_stocks %>% select(index, aapl_close, googl_close, baba_close, tsla_close)
 head(df_stocks)
+```
+
+```out
+       index aapl_close googl_close baba_close tsla_close
+1 2019-01-02    39.4800     1054.68     136.70     62.024
+2 2019-01-03    35.5475     1025.47     130.60     60.072
+3 2019-01-04    37.0650     1078.07     139.75     63.538
+4 2019-01-07    36.9825     1075.92     143.10     66.992
+5 2019-01-08    37.6875     1085.37     146.79     67.070
+6 2019-01-09    38.3275     1081.65     151.92     67.706
+```
+
+---
+
+```R
 df_stocks_long = tidyr::pivot_longer(df_stocks, col = !index)
 head(df_stocks_long)
 ```
@@ -126,7 +141,6 @@ head(df_stocks_long)
 5 2019-01-03 aapl_close    35.5
 6 2019-01-03 googl_close 1025. 
 ```
-
 
 ---
 
@@ -187,6 +201,71 @@ anim_save("stocks.gif", animation = stocks_plot_anim)
 
 
 <div style="text-align:center"><img src="stocks.gif" alt=" " width="40%"></div>
+
+
+---
+
+We now resale the four time series by their first value, so we can compare their percent change since the first January 2019.
+
+```R
+df_stocks$aapl_close = df_stocks$aapl_close / df_stocks[1, "aapl_close"]
+df_stocks$googl_close = df_stocks$googl_close / df_stocks[1, "googl_close"]
+df_stocks$baba_close = df_stocks$baba_close / df_stocks[1, "baba_close"]
+df_stocks$tsla_close = df_stocks$tsla_close / df_stocks[1, "tsla_close"]
+df_stocks_long2 = tidyr::pivot_longer(df_stocks, col = !index)
+head(df_stocks_long2)
+```
+
+```out
+  index      name        value
+  <date>     <chr>       <dbl>
+1 2019-01-02 aapl_close  1    
+2 2019-01-02 googl_close 1    
+3 2019-01-02 baba_close  1    
+4 2019-01-02 tsla_close  1    
+5 2019-01-03 aapl_close  0.900
+6 2019-01-03 googl_close 0.972
+
+```
+
+---
+
+```R
+library(ggplot2)
+library(viridis)
+
+stocks_plot_2 = ggplot(df_stocks_long2, aes(x = index, y = value, color= name)) +
+  geom_line() +
+  theme_minimal() +
+  labs(
+    title = "Stock prices",
+    x = "Date", 
+    y = "Price ($)") + 
+  scale_x_date(date_breaks = "4 month", date_labels = "%m/%y") +
+  scale_fill_viridis(discrete = TRUE) +
+  scale_color_manual(labels = c("AAPL", "BABA", "GOOGL", "TSLA"),
+                     values = RColorBrewer::brewer.pal("Dark2", n = 4))+
+  theme(axis.title.y = element_text(margin = margin(t = 0, r = 20, b = 0, l = 0)),
+        axis.title.x = element_text(margin = margin(t = 20, r = 0, b = 0, l = 0))) +
+  labs(color = "Stocks")
+
+stocks_plot_2
+```
+
+---
+
+
+<div style="text-align:center"><img src="stocks2.png" alt=" " width="40%"></div>
+
+
+---
+
+```R
+(stocks_plot_anim2 = stocks_plot_2 + geom_point() + transition_reveal(index))
+```
+
+<div style="text-align:center"><img src="stocks3.gif" alt=" " width="40%"></div>
+
 
 
 ---

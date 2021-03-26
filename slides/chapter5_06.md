@@ -8,6 +8,7 @@ Let us consider the `gapminder` dataset available in the package `dslabs` and al
 
 
 ```R
+library(dslabs)
 data(gapminder)
 head(gapminder)
 ``` 
@@ -30,7 +31,7 @@ head(gapminder)
 Let us consider the life expectancy in Switzerland for a first example.
 
 ```R
-df_ch = gapminder %>% filter(country == "Switzerland")
+df_ch = gapminder[gapminder$country == "Switzerland", ]
 df_ch$year = as.Date(as.character(df_ch$year), format = "%Y")
 head(df_ch)
 ```
@@ -62,7 +63,7 @@ ggplot(df_ch, aes(year, life_expectancy)) +
 
 ```R
 ggplot(df_ch, aes(year, life_expectancy)) +
-  geom_line() +
+  geom_line(size = 1, color = "#0072B2") +
   theme_minimal() +
   labs(
     title = "Life expectancy in Switzerland",
@@ -71,17 +72,41 @@ ggplot(df_ch, aes(year, life_expectancy)) +
     y = "Life expectancy  (Year)") + 
   scale_x_date(date_breaks = "5 year", date_labels = "%Y") +
   theme(axis.title.y = element_text(margin = margin(t = 0, r = 20, b = 0, l = 0)),
-        axis.title.x = element_text(margin = margin(t = 20, r = 0, b = 0, l = 0)))
+        axis.title.x = element_text(margin = margin(t = 20, r = 0, b = 0, l = 0))) +
+  theme(plot.margin = margin(7, 7, 3, 1.5))
   
 ```
 
 ---
 
-<div style="text-align:center"><img src="line2.png" alt=" " width="40%"></div>
+<div style="text-align:center"><img src="line2.png" alt=" " width="45%"></div>
 
 ---
 
+```R
+ggplot(df_ch, aes(year, life_expectancy)) +
+  geom_line(size = 1, color = "#0072B2") +
+  scale_y_continuous(limits = c(55, 90), expand = c(0, 0),
+                     name = "preprints / month") + 
+  theme_minimal() +
+  labs(
+    title = "Life expectancy in Switzerland",
+    caption = "Data: Gapminder, Hans Rosling",
+    x = "Year", 
+    y = "Life expectancy  (Year)") + 
+  scale_x_date(date_breaks = "5 year", date_labels = "%Y") +
+  theme(axis.title.y = element_text(margin = margin(t = 0, r = 20, b = 0, l = 0)),
+        axis.title.x = element_text(margin = margin(t = 20, r = 0, b = 0, l = 0))) +
+  theme(plot.margin = margin(7, 7, 3, 1.5))
 Let us now represent the Life expectancy over the years, comparing Canada, China, Egypt, Germany and Switzerland.
+```
+
+---
+
+<div style="text-align:center"><img src="line4.png" alt=" " width="45%"></div>
+
+---
+
 
 
 ```R
@@ -104,4 +129,4 @@ gapminder %>%
 
 ---
 
-<div style="text-align:center"><img src="line3.png" alt=" " width="40%"></div>
+<div style="text-align:center"><img src="line3.png" alt=" " width="45%"></div>

@@ -97,7 +97,7 @@ g3
 
 ```R
 library(magick)
-iris_png = image_read("https://raw.githack.com/SMAC-Group/course_intro_ds/master/img/iris.png")
+iris_png = image_read("https://raw.githack.com/SMAC-Group/course_intro_ds/master/img/iris2.png")
 img_iris_png = grid::rasterGrob(iris_png, interpolate = TRUE)
 g4 = g2 + 
   coord_cartesian(xlim = c(1.5, 4.75), ylim = c(2.5, 9)) +
@@ -116,7 +116,7 @@ g4
 ---
   
 
-<div style="text-align:center"><img src="scatterimg.png" alt=" " width="50%"></div>
+<div style="text-align:center"><img src="scatterimg.png" alt=" " width="55%"></div>
 
   
   
