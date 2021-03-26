@@ -63,19 +63,19 @@ For your reference, we also list some of the interesting resources regarding dat
 </exercise>
 
 
-<exercise id="7" title="Visualizing the relationship between numerical variables" type = "slides">
+<exercise id="6" title="Visualizing the relationship between numerical variables" type = "slides">
 <slides source="chapter5_05">
 </slides>
 </exercise>
 
-<exercise id="8" title="Visualizing time series" type = "slides">
+<exercise id="7" title="Visualizing time series" type = "slides">
 <slides source="chapter5_06">
 </slides>
 </exercise>
 
 
 
-<exercise id="9" title="ggplot2 extensions" type = "slides">
+<exercise id="8" title="ggplot2 extensions" type = "slides">
 <slides source="chapter5_08">
 </slides>
 </exercise>
@@ -84,7 +84,7 @@ For your reference, we also list some of the interesting resources regarding dat
 
 
 
-<exercise id = "10" title ="Data visualization: Exercises">
+<exercise id = "9" title ="Data visualization: Exercises">
 
 ---
 
