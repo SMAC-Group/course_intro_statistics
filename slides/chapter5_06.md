@@ -4,7 +4,9 @@
 # Visualizing time series
 ---
 
-Let us consider the `gapminder` dataset available in the package `dslabs` and already discussed in chapter 4. You can find a detailed description of the dataset [here](https://stat.ethz.ch/R-manual/R-devel/library/datasets/html/iris.html).
+In the previous sections, we discuss graphs where we mainly plot one numerical variable against another. There are situations where one variable imposes a certain order on the other variable, for example when one variable is time. As time imposes an inherent order structure on the data, we need to arrange the points in order, for example, of increasing time. We often want to visualize this temporal order and this can be realized with line graphs.
+
+Let's consider the `gapminder` dataset available in the `dslabs` package. You can find a detailed description of the dataset [here](https://rdrr.io/cran/dslabs/man/gapminder.html).
 
 
 ```R
@@ -28,7 +30,7 @@ head(gapminder)
 
 ---
 
-Let us consider the life expectancy in Switzerland for a first example.
+Let's consider the life expectancy in Switzerland as an example.
 
 ```R
 df_ch = gapminder %>% filter(country == "Switzerland")
@@ -49,6 +51,7 @@ head(df_ch)
 
 ---
 
+As life expectancy depends on the year, we can plot the relation between life expectancy and year in a line graph to visualize this time series data.
 
 ```R
 ggplot(df_ch, aes(year, life_expectancy)) +
@@ -60,6 +63,8 @@ ggplot(df_ch, aes(year, life_expectancy)) +
 <div style="text-align:center"><img src="line1.png" alt=" " width="35%"></div>
 
 ---
+
+The line graph shows the temporal structure between the life expectancy and the year. Now we can further improve the graph, for example, by simplifying the theme, adding a title, specifying the labels of the axis, and adding more ticks on the x-axis, so that the graph is more understandable.
 
 ```R
 ggplot(df_ch, aes(year, life_expectancy)) +
@@ -83,7 +88,7 @@ ggplot(df_ch, aes(year, life_expectancy)) +
 
 ---
 
-Let us now represent the Life expectancy over the years, comparing Canada, China, Egypt, Germany and Switzerland.
+Let us now consider multiple time series data by comparing the life expectancy over the years in the following countries: Switzerland, Canada, China, India, Egypt, Germany, and Nepal.
 
 We first define the following dataframe.
 
