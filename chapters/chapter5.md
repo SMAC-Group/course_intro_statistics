@@ -87,7 +87,7 @@ For your reference, we also list some of the interesting resources regarding dat
 
 ---
 
-### 1) Consider the dataset `world` in the `poliscidata` package. Find the description of the dataset [here](https://rdrr.io/cran/poliscidata/man/world.html). Produce a graph presenting a boxplot for the distribution of Life expectancy (`lifeex_total`) per region (`regionun`).
+### 1) Consider the dataset `world` in the `poliscidata` package. Find the description of the dataset [here](https://rdrr.io/cran/poliscidata/man/world.html). Produce a boxplot for the distribution of the life expectancy (`lifeex_total`) per region (`regionun`).
 
 <div style="text-align:center">
 <img src="life_exp_region.png" alt="" width="100%">
@@ -100,7 +100,7 @@ For your reference, we also list some of the interesting resources regarding dat
 
 
 
-### 2) Consider the dataset `penguins` in the `palmerpenguins` package. Try to reproduce the following graph.
+### 2) Consider the dataset `penguins` in the `palmerpenguins` package. Try to reproduce the following scatterplot.
 
 <div style="text-align:center">
 <img src="plotex1.png" alt="" width="100%">
@@ -111,7 +111,7 @@ For your reference, we also list some of the interesting resources regarding dat
 </codeblock>
 
 
-### 3) Consider the dataset `penguins` in the `palmerpenguins` package. Try to reproduce the following graph.
+### 3) Consider the dataset `penguins` in the `palmerpenguins` package. Try to reproduce the following barplot.
 
 <div style="text-align:center">
 <img src="plotex2.png" alt="" width="100%">
@@ -122,7 +122,7 @@ For your reference, we also list some of the interesting resources regarding dat
 </codeblock>
 
 
-### 4) Consider the dataset `GlobTempAnom` in the `renpow` package. Try to reproduce the following graph.
+### 4) Consider the dataset `GlobTempAnom` in the `renpow` package. Try to reproduce the following line graph.
 
 <div style="text-align:center">
 <img src="plotex3.png" alt="" width="100%">
