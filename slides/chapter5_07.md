@@ -6,19 +6,19 @@
 
 ---
 
-There exists multiple [`ggplot2` extensions](https://exts.ggplot2.tidyverse.org/) available on [CRAN](https://cran.r-project.org/). We have already used some of them on the earlier part of this chapter, but we will explore more of capabilities in this chapter.
+There are multiple [`ggplot2` extensions](https://exts.ggplot2.tidyverse.org/) available on [CRAN](https://cran.r-project.org/). We have already used some of them in the previous sections of this chapter. In this section, we will explore more capabilities of these `ggplot2` extensions.
 
 ---
 
 # gganimate
 
-Despite the ability to represent multiple variables in one graph by defining various geometric elements and aesthetics mappings, you may consider representing data with an animated graph. Such a representation enables to represent another dimension, for example time and are easy to embed in web-based report. You can package `gganimate` becomes useful.
+Besides representing multiple variables in one graph by specifying various geometric elements and aesthetic mappings, we can also consider to represent the data with an animated graph. Such a representation allows to visualize the evolvement of the data, which is very useful, for example, when we consider time series data. Animated graphs can be constructed with the help of the `gganimate` package. Note that `gganimate` relies on some dependencies that may need to be installed outside of an R environment.
 
 <div style="text-align:center"><img src="hexgganimate.png" alt=" " width="50%"></div>
 
 ---
 
-Let us consider the price of TSLA, AAPL BABA and GOOGL for this example. We will load the time series using `quantmod` and convert the `xts` object to a `data.frame` using `ggfortify`. 
+As an illustration, let us consider the stock prices of four companies: TSLA, AAPL BABA and GOOGL. Our goal is to visualize these four time series data in an animated graph. We can load the time series using the `quantmod` package. We will start with one time series of TSLA and convert the corresponding `xts` object to a `data.frame` using the `ggfortify` package. 
 
 
 ```R
@@ -46,7 +46,7 @@ head(tsl_price_df)
 
 ---
 
-
+Let's first visualize the stock price of TSLA in a line graph. 
 
 ```R
 library(ggplot2)
@@ -69,7 +69,7 @@ tsla_plot = ggplot(tsl_price_df, aes(index, tsla_close)) +
 
 ---
 
-A gif is just a rendered collection of images. Therefore, you can easily create an animated gif of this plot by specifying the variable that could change with each images. Note that `gganimate` relies on some dependencies that may need to be installed outside of an R environment depending on the OS.
+Now we want to generate an animated graph for the time series data of TSLA. An animated graph (also known as a gif) is essentially a rendered collection of images. Therefore, we can easily create an animated gif for this time series by specifying the variable that is supposed to change across each image. 
 
 ```R
 library(gifski)
@@ -77,7 +77,7 @@ library(gganimate)
 (tsla_price_anim = tsla_plot + geom_point() + transition_reveal(index))
 ```
 
-Display with and 
+We can display the animated gif with:
 
 ```R
 animate(tsla_plot, duration = 5, fps = 20, width = 200, height = 200, 
@@ -85,7 +85,8 @@ animate(tsla_plot, duration = 5, fps = 20, width = 200, height = 200,
 
 ```
 
-and save with
+We can also save the generated animated gif with:
+
 ```R
 anim_save("tsla.gif", animation = tsla_price_anim)
 ```
@@ -97,7 +98,7 @@ anim_save("tsla.gif", animation = tsla_price_anim)
 
 ---
 
-Let's now try to represent all three stocks price in a single plot an animate the resulting graph.
+Let's now try to include the other three stocks into the previous animated gif. We first load the other three stocks, AAPL, GOOGL, and BABA, and combine all data into one dataframe. 
 
 
 ```R
@@ -144,7 +145,7 @@ head(df_stocks_long)
 
 ---
 
-Let's plot the stock's prices
+After loading the data, we can first visualize all four time series in one line graph.
 
 ```R
 library(ggplot2)
@@ -177,7 +178,7 @@ stocks_plot
 
 ---
 
-To animate the previous plot, we must slighlty change the code of the figure
+Now we want to generate one animated gif with all four time series data. 
 
 ```R
 library(ggplot2)
@@ -203,7 +204,7 @@ stocks_plot_2 = ggplot(df_stocks_long, aes(x = index, y = value, color = name, g
 
 ---
 
-We can then create, display and save the animation similarly as before with:
+We can then create, display and save the animation similarly as before.
 
 ```R
 (stocks_plot_anim = stocks_plot_2 + geom_point() + transition_reveal(index))
@@ -220,7 +221,7 @@ anim_save("stocks.gif", animation = stocks_plot_anim)
 
 ---
 
-We now resale the four time series by their first value, so we can compare their percent change since the first January 2019.
+We can further rescale the four time series by their first value, so that we can better compare their percent changes since January 1st, 2019.
 
 ```R
 df_stocks$AAPL = df_stocks$AAPL / df_stocks[1, "AAPL"]
@@ -276,7 +277,7 @@ stocks_plot_3
 
 ---
 
-We similarly slightly change the code for the animation
+We can then modify the code accordingly for the animation.
 
 ```R
 
@@ -301,7 +302,7 @@ stocks_plot_4 = ggplot(df_stocks_long2, aes(x = index, y = value, color = name, 
 
 ---
 
-You can then create and save the animation with
+We can then again create, display and save the animation as follows:
 
 ```R
 (stocks_plot_anim2 = stocks_plot_4 + geom_point() + transition_reveal(index))
@@ -312,30 +313,4 @@ anim_save("stocks3.gif", animation = stocks_plot_anim2)
 ---
 
 <div style="text-align:center"><img src="stocks3.gif" alt=" " width="35%"></div>
-
-
-
----
-
-
-Let us consider the `gapminder` dataset available in the package `dslabs` and already discussed in chapter 4. You can find a detailed description of the dataset [here](https://stat.ethz.ch/R-manual/R-devel/library/datasets/html/iris.html).
-
-
-```R
-library(dslabs)
-data(gapminder)
-head(gapminder)
-``` 
-
-
-
-```out
-              country year infant_mortality life_expectancy fertility population          gdp continent          region
-1             Albania 1960           115.40           62.87      6.19    1636054           NA    Europe Southern Europe
-2             Algeria 1960           148.20           47.50      7.65   11124892  13828152297    Africa Northern Africa
-3              Angola 1960           208.00           35.98      7.32    5270844           NA    Africa   Middle Africa
-4 Antigua and Barbuda 1960               NA           62.97      4.43      54681           NA  Americas       Caribbean
-5           Argentina 1960            59.87           65.39      3.11   20619075 108322326649  Americas   South America
-6             Armenia 1960               NA           66.86      4.55    1867396           NA      Asia    Western Asia
-``` 
 
