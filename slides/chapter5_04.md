@@ -249,3 +249,157 @@ g5
 ---
 
 <div style="text-align:center"><img src="mdens8.png" alt=" " width="40%"></div>
+
+
+---
+
+Let us now consider the data `lincoln_weather` which contain weather information from Lincoln, Nebraska, from 2016. The dataset is available in the package `ggridges`.
+
+```R
+library(ggridges)
+data("lincoln_weather")
+lincoln_weather = lincoln_weather %>% select(Month, `Mean Temperature [F]`)
+head(lincoln_weather)
+```
+
+```out
+  Month   `Mean Temperature [F]`
+  <fct>                    <int>
+1 January                     24
+2 January                     23
+3 January                     23
+4 January                     17
+5 January                     29
+6 January                     33
+
+```
+
+---
+
+We can start comparing temperatures per months using boxplots.
+
+```R
+ggplot(lincoln_weather, aes(x = `Month`, y = `Mean Temperature [F]`)) +
+  geom_boxplot(fill = 'grey90') + theme_light()
+```
+
+---
+
+<div style="text-align:center"><img src="temp1.png" alt=" " width="40%"></div>
+
+
+---
+
+We can also represents observations.
+
+```R
+ggplot(lincoln_weather, aes(x = `Month`, y = `Mean Temperature [F]`)) +
+  geom_point() + theme_light()
+```
+
+---
+
+<div style="text-align:center"><img src="temp2.png" alt=" " width="40%"></div>
+
+
+---
+
+Let's jitter a bit the observations
+
+```R
+ggplot(lincoln_weather, aes(x = `Month`, y = `Mean Temperature [F]`)) +
+  geom_point(position = position_jitter(width = .2, height = 0)) + theme_light()
+```
+
+---
+
+<div style="text-align:center"><img src="temp4.png" alt=" " width="40%"></div>
+
+
+---
+
+We now add an estimated density to the observations. This type of representations is called a viollin plot.
+
+```R
+ggplot(lincoln_weather, aes(x = `Month`, y = `Mean Temperature [F]`)) +
+  geom_violin(color = "transparent", fill = "gray90") + theme_light() +
+  geom_point(position = position_jitter(width = .2, height = 0))
+```
+
+---
+
+<div style="text-align:center"><img src="temp5.png" alt=" " width="40%"></div>
+
+
+
+---
+
+We can also represent it slightly differently.
+
+```R
+library(hrbrthemes)
+ggplot(lincoln_weather, aes(x = `Mean Temperature [F]`, y = `Month`)) +
+  geom_density_ridges(scale = 3, rel_min_height = 0.01,fill = "#00b3b3", color = "white") +
+  theme_ipsum()
+```
+
+---
+
+<div style="text-align:center"><img src="temp6.png" alt=" " width="40%"></div>
+
+
+---
+
+
+
+
+Some minor aesthetics modifications
+
+```R
+ggplot(lincoln_weather, aes(x = `Mean Temperature [F]`, y = `Month`)) +
+  geom_density_ridges(scale = 3, rel_min_height = 0.01,fill = "#00b3b3", color = "white") +
+  theme_ipsum() +
+  labs(title = 'Temperatures in Lincoln NE in 2016') +
+  scale_x_continuous(name = "Mean temperature (°F)", expand = c(0, 0), breaks = c(0, 25, 50, 75)) +
+  scale_y_discrete(name = NULL, expand = c(0, .2, 0, 2.6))
+```
+
+---
+
+<div style="text-align:center"><img src="temp7.png" alt=" " width="40%"></div>
+
+---
+
+We now fill the density with a color scale that represent the temperature.
+
+```R
+ggplot(lincoln_weather, aes(x = `Mean Temperature [F]`, y = `Month`, fill = ..x..)) +
+  geom_density_ridges_gradient(scale = 3, rel_min_height = 0.01) +
+  theme_ipsum()  +
+  labs(title = 'Temperatures in Lincoln NE in 2016') +
+  scale_x_continuous(name = "Mean temperature (°F)", expand = c(0, 0), breaks = c(0, 25, 50, 75)) +
+  scale_y_discrete(name = NULL, expand = c(0, .2, 0, 2.6))
+```
+
+---
+
+<div style="text-align:center"><img src="temp8.png" alt=" " width="40%"></div>
+
+
+
+---
+
+We change the color scale.
+
+```R
+ggplot(lincoln_weather, aes(x = `Mean Temperature [F]`, y = `Month`, fill = ..x..)) +
+  geom_density_ridges_gradient(scale = 3, rel_min_height = 0.01) +
+  theme_ipsum() + scale_fill_viridis(name = "Temp. [F]", option = "C")  +
+  labs(title = 'Temperatures in Lincoln NE in 2016') +
+  scale_x_continuous(name = "Mean temperature (°F)", expand = c(0, 0), breaks = c(0, 25, 50, 75)) +
+  scale_y_discrete(name = NULL, expand = c(0, .2, 0, 2.6))
+```
+
+---
+
+<div style="text-align:center"><img src="temp9.png" alt=" " width="40%"></div>
