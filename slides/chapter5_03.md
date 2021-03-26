@@ -24,10 +24,11 @@ ggplot(data=diamonds, aes(x=price)) +
 To improve the graph, we can add a title and consider a simpler theme. We can also increase the distance and size of axis labels.
 
 ```R
+library(ggplot2)
 ggplot(data=diamonds, aes(x=price)) +
   xlab("Price")+
   ylab("Count") +
-  geom_histogram() +
+  geom_histogram(fill = "#56B4E9", colour = "white") +
   theme_minimal() +
   ggtitle("Histogram of price") +
   theme(axis.title.y = element_text(margin = margin(t = 0, r = 30, b = 0, l = 0), size = 15),
@@ -45,10 +46,11 @@ ggplot(data=diamonds, aes(x=price)) +
 Let's try to modify the graphs by considering a large number of bins. 
 
 ```R
+library(ggplot2)
 ggplot(data=diamonds, aes(x=price)) +
   xlab("Price")+
   ylab("Count") +
-  geom_histogram(bins = 200) +
+  geom_histogram(fill = "#56B4E9", colour = "white", bins = 200) +
   theme_minimal() +
   ggtitle("Histogram of price") +
   theme(axis.title.y = element_text(margin = margin(t = 0, r = 30, b = 0, l = 0), size = 15),
@@ -65,10 +67,11 @@ ggplot(data=diamonds, aes(x=price)) +
 As we can see, the previous histogram considers an extremely large number of bins, leading to a very wiggly density curve. Now let's consider the other extreme where only a very small amount of bins are considered. We will see that with a lack of bins, the density of the variable is harder to identify, although it looks much smoother.
 
 ```R
+library(ggplot2)
 ggplot(data=diamonds, aes(x=price)) +
   xlab("Price")+
   ylab("Count") +
-  geom_histogram(bins = 5) +
+  geom_histogram(fill = "#56B4E9", colour = "white", bins = 5) +
   theme_minimal() +
   ggtitle("Histogram of price") +
   theme(axis.title.y = element_text(margin = margin(t = 0, r = 30, b = 0, l = 0), size = 15),
@@ -106,7 +109,7 @@ We can again change the theme, add a centered title and specify a color with som
 ggplot(data=diamonds, aes(x=price)) +
   xlab("Price")+
   ylab("Density") +
-  geom_density(adjust=1.5, alpha=.4, fill = "darkgrey") +
+  geom_density(adjust=1.5, alpha=.4, fill = "#56B4E9", color="darkblue") +
   theme_minimal() +
   ggtitle("Estimated density of price")  + 
   theme(plot.title = element_text(hjust = 0.5)) +
@@ -127,7 +130,7 @@ We can consider the KDE with differnt bandwidth. For example, we first consider 
 ggplot(data=diamonds, aes(x=price)) +
   xlab("Price")+
   ylab("Density") +
-  geom_density(adjust=.1, alpha=.4, fill = "darkgrey") +
+  geom_density(adjust=.1, alpha=.4, fill = "#56B4E9", color="darkblue") +
   theme_minimal() +
   ggtitle("Estimated density of price")  + 
   theme(plot.title = element_text(hjust = 0.5)) +
@@ -151,7 +154,7 @@ On the other hand, we can consider a relatively large bandwidth (analogous to th
 ggplot(data=diamonds, aes(x=price)) +
   xlab("Price")+
   ylab("Density") +
-  geom_density(adjust=20, alpha=.4, fill = "darkgrey") +
+  geom_density(adjust=20, alpha=.4, fill = "#56B4E9", color="darkblue") +
   theme_minimal() +
   ggtitle("Estimated density of price")  + 
   theme(plot.title = element_text(hjust = 0.5)) +

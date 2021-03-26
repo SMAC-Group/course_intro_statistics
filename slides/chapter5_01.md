@@ -6,7 +6,7 @@ type: slides
 
 ---
 
-<div style="text-align:center"><img src="ggplot2.png" alt=" " width="50%"></div>
+<div style="text-align:center"><img src="ggplot2.png" alt=" " width="40%"></div>
 
 ---
 
@@ -55,7 +55,7 @@ As you can see, we specify the data and the aesthetic mapping using the function
 ---
 ## Building a simple plot by layers
 
-<div style="text-align:center"><img src="boxplot_1.png" alt=" " width="40%"></div>
+<div style="text-align:center"><img src="boxplot_1.png" alt=" " width="35%"></div>
 
 We can see that the y-axis label should be corrected and that the plot does not have any title. Moreover, the grading scale at the bottom is redundant with no specific meanings. In addition, we can actually have a much simpler graph theme to minimize the graphical details so that we can focus more on the data itself. So let's correct the graph!
 
@@ -72,6 +72,7 @@ ggplot(data = world, aes(x = "", y = lifeex_total)) +
   theme_minimal()
 ```
 
+---
 
 <div style="text-align:center"><img src="boxplot_2.png" alt=" " width="30%"></div>
 
@@ -90,7 +91,9 @@ ggplot(data = world, aes(x = regionun, y = lifeex_total)) +
   theme_minimal()
 ``` 
 
-<div style="text-align:center"><img src="boxplot_3.png" alt=" " width="20%"></div>
+---
+
+<div style="text-align:center"><img src="boxplot_3.png" alt=" " width="35%"></div>
 
 
 ---
@@ -113,7 +116,7 @@ ggplot(data = world, aes(x = gdp_10_thou, y = lifeex_total)) +
 ---
 ## Building a more complex plot by layers
 
-<div style="text-align:center"><img src="scatterplot_1.png" alt=" " width="60%"></div>
+<div style="text-align:center"><img src="scatterplot_1.png" alt=" " width="35%"></div>
 
 ---
 # Building a more complex plot by layers
@@ -136,7 +139,7 @@ ggplot(data = world, aes(x = gdp_10_thou, y = lifeex_total,
 ```
 ---
 
-<div style="text-align:center"><img src="scatterplot_2.png" alt=" " width="60%"></div>
+<div style="text-align:center"><img src="scatterplot_2.png" alt=" " width="35%"></div>
 
 Note that the size of points is not large enough, which prevents us from clearly identifying members of the OECD. Also, the names of variables in the legend are not formalized. Finally, let's try to specifically identify the following countries: Canada, India, Thailand and Switzerland.
 
@@ -169,7 +172,7 @@ ggplot(data = world, aes(x = gdp_10_thou, y = lifeex_total,
 
 ---
 
-<div style="text-align:center"><img src="scatterplot_3.png" alt=" " width="65%"></div>
+<div style="text-align:center"><img src="scatterplot_3.png" alt=" " width="35%"></div>
 
 
 ---
@@ -184,4 +187,4 @@ ggplot(data = world, aes(x = gdp_10_thou, y = lifeex_total,
 
 ---
 
-<div style="text-align:center"><img src="esquisse.gif" alt=" " width="60%"></div>
+<div style="text-align:center"><img src="esquisse.gif" alt=" " width="40%"></div>

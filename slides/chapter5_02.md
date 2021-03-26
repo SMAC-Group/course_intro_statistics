@@ -143,7 +143,7 @@ ggplot(df_murders) +
 
 ---
 
-<div style="text-align:center"><img src="bar4.png" alt=" " width="40%"></div>
+<div style="text-align:center"><img src="bar4.png" alt=" " width="35%"></div>
 
 ---
 
@@ -172,7 +172,7 @@ mygraph
 
 ---
 
-<div style="text-align:center"><img src="bar11.png" alt=" " width="40%"></div>
+<div style="text-align:center"><img src="bar11.png" alt=" " width="35%"></div>
 
 ---
 
@@ -187,7 +187,8 @@ mygraph = mygraph + annotation_custom(img, ymin = 2000, ymax = 4500, xmin = 0.5,
 mygraph = mygraph + scale_fill_manual(values = c("South" = "#d4a770", 
                                                  "West" = "#e8cb5b", 
                                                  "Midwest" = "#aebc5b",
-                                                 "Northeast" = "#b49ebd"))
+                                                 "Northeast" = "#b49ebd")) +
+                                                 theme(legend.position="none")
 mygraph
 ```
 
