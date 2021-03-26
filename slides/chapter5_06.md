@@ -31,7 +31,7 @@ head(gapminder)
 Let us consider the life expectancy in Switzerland for a first example.
 
 ```R
-df_ch = gapminder[gapminder$country == "Switzerland", ]
+df_ch = gapminder %>% filter(country == "Switzerland")
 df_ch$year = as.Date(as.character(df_ch$year), format = "%Y")
 head(df_ch)
 ```
@@ -63,7 +63,7 @@ ggplot(df_ch, aes(year, life_expectancy)) +
 
 ```R
 ggplot(df_ch, aes(year, life_expectancy)) +
-  geom_line(size = 1, color = "#0072B2") +
+  geom_line() +
   theme_minimal() +
   labs(
     title = "Life expectancy in Switzerland",
@@ -72,61 +72,66 @@ ggplot(df_ch, aes(year, life_expectancy)) +
     y = "Life expectancy  (Year)") + 
   scale_x_date(date_breaks = "5 year", date_labels = "%Y") +
   theme(axis.title.y = element_text(margin = margin(t = 0, r = 20, b = 0, l = 0)),
-        axis.title.x = element_text(margin = margin(t = 20, r = 0, b = 0, l = 0))) +
-  theme(plot.margin = margin(7, 7, 3, 1.5))
+        axis.title.x = element_text(margin = margin(t = 20, r = 0, b = 0, l = 0)))
   
 ```
 
 ---
 
-<div style="text-align:center"><img src="line2.png" alt=" " width="45%"></div>
+<div style="text-align:center"><img src="line2.png" alt=" " width="40%"></div>
+
 
 ---
 
-```R
-ggplot(df_ch, aes(year, life_expectancy)) +
-  geom_line(size = 1, color = "#0072B2") +
-  scale_y_continuous(limits = c(55, 90), expand = c(0, 0),
-                     name = "preprints / month") + 
-  theme_minimal() +
-  labs(
-    title = "Life expectancy in Switzerland",
-    caption = "Data: Gapminder, Hans Rosling",
-    x = "Year", 
-    y = "Life expectancy  (Year)") + 
-  scale_x_date(date_breaks = "5 year", date_labels = "%Y") +
-  theme(axis.title.y = element_text(margin = margin(t = 0, r = 20, b = 0, l = 0)),
-        axis.title.x = element_text(margin = margin(t = 20, r = 0, b = 0, l = 0))) +
-  theme(plot.margin = margin(7, 7, 3, 1.5))
 Let us now represent the Life expectancy over the years, comparing Canada, China, Egypt, Germany and Switzerland.
+
+We first define the following dataframe.
+
+```R
+df_sub = gapminder %>% filter(country %in% c("Switzerland", "Canada", "China", 
+                                    "India", "Egypt", "Germany", "Nepal"))
+df_life_exp =   df_sub %>% group_by(year, country) %>%
+  summarise(life_expectancy = mean(life_expectancy)) 
+head(df_life_exp)
+
+```
+
+```out
+   year country life_expectancy
+  <int> <fct>             <dbl>
+1  1960 Canada             71  
+2  1960 China              30.5
+3  1960 Egypt              48.3
+4  1960 Germany            69.3
+5  1960 India              41.3
+6  1960 Nepal              39.8
 ```
 
 ---
 
-<div style="text-align:center"><img src="line4.png" alt=" " width="45%"></div>
-
----
-
-
 
 ```R
-gapminder %>%
-  filter(country %in% c("Switzerland", "Canada", "China", 
-                        "India", "Egypt", "Germany", "Nepal")) %>%
-  group_by(year, country) %>%
-  summarise(life_expectancy = mean(life_expectancy)) %>%
-  ggplot(aes(x=year, y=life_expectancy, color=country)) +
-  geom_line(size=1)+ 
+ggplot(df_life_exp, aes(x = year, y = life_expectancy, color = country, group = country)) + 
+  geom_line() +
+  geom_text(data = filter(df_life_exp, year == max(df_life_exp$year)),
+            aes(label = country),
+            hjust = 0, nudge_x = 0.1) +
+  coord_cartesian(clip = 'off') +
   theme_minimal() +
+  theme(legend.position = 'none',
+        plot.margin = margin(0.1, 2.6, 0.1, 0.1, "cm"))  +
   labs(
     title = "Evolution of Life expectancy per country",
     caption = "Data: Gapminder, Gapminder Foundation",
     x = "Year", 
     y = "Life expectancy",
     color = "Country"
-  )
-```
+  ) + 
+  theme(axis.title.y = element_text(margin = margin(t = 0, r = 30, b = 0, l = 0), size = 15),
+        axis.title.x = element_text(margin = margin(t = 40, r = 0, b = 0, l = 0), size = 15)
+        )
 
+```
 ---
 
-<div style="text-align:center"><img src="line3.png" alt=" " width="45%"></div>
+<div style="text-align:center"><img src="line3.png" alt=" " width="40%"></div>
