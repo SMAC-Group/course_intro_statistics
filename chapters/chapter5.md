@@ -97,3 +97,53 @@ For your reference, we also list some of the interesting resources regarding dat
 
 </codeblock>
 
+
+
+
+### 2) Consider the dataset `penguins` in the `palmerpenguins` package. Try to reproduce the following graph.
+
+<div style="text-align:center">
+<img src="plotex1.png" alt="" width="100%">
+</div>
+
+<codeblock id="05_02">
+
+</codeblock>
+
+
+### 3) Consider the dataset `penguins` in the `palmerpenguins` package. Try to reproduce the following graph.
+
+<div style="text-align:center">
+<img src="plotex2.png" alt="" width="100%">
+</div>
+
+<codeblock id="05_03">
+
+</codeblock>
+
+
+### 4) Consider the dataset `GlobTempAnom` in the `renpow` package. Try to reproduce the following graph.
+
+<div style="text-align:center">
+<img src="plotex3.png" alt="" width="100%">
+</div>
+
+<codeblock id="05_04">
+
+</codeblock>
+
+
+### 4) Consider the dataset `penguins` in the `palmerpenguins` package. Try to reproduce the following animated graph.
+
+<div style="text-align:center">
+<img src="giff_p.gif" alt="" width="100%">
+</div>
+
+<codeblock id="05_05">
+
+</codeblock>
+
+
+
+
+
