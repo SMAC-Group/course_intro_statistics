@@ -84,7 +84,9 @@ ggplot(data=df_peng_stats, aes(x=bill_ratio, group=species, fill=species)) +
 <div style="text-align:center"><img src="mdens1.png" alt=" " width="35%"></div>
 ---
 
-Similarly, we can use a `ggplot2` extension called `ggridges`.
+Besides visualizing distributions along the horizontal axis as in the previous graph, we can also stagger the distributions in the vertical direction. The resulting visualization is called a ridgeline plot, because these plots look like mountain ridgelines. Ridgeline plots are particularly useful when we want to show trends in distributions over time.
+
+We can easily produce a ridgeline plot to compare the densities of bill ratio by species with a `ggplot2` extension called `ggridges`.
 
 ```R
 library(ggridges)
@@ -253,7 +255,7 @@ g5
 
 ---
 
-Let us now consider the data `lincoln_weather` which contain weather information from Lincoln, Nebraska, from 2016. The dataset is available in the package `ggridges`.
+Let us now consider the data `lincoln_weather` which contain weather information from Lincoln, Nebraska, from 2016. The dataset is available in the `ggridges` package.
 
 ```R
 library(ggridges)
@@ -276,7 +278,7 @@ head(lincoln_weather)
 
 ---
 
-We can start comparing temperatures per months using boxplots.
+We can start our analysis by comparing temperatures per months using boxplots.
 
 ```R
 ggplot(lincoln_weather, aes(x = `Month`, y = `Mean Temperature [F]`)) +
@@ -290,7 +292,7 @@ ggplot(lincoln_weather, aes(x = `Month`, y = `Mean Temperature [F]`)) +
 
 ---
 
-We can also represents observations.
+We can also visualize the observations by directly plotting the points, leading to a strip chart.
 
 ```R
 ggplot(lincoln_weather, aes(x = `Month`, y = `Mean Temperature [F]`)) +
@@ -304,7 +306,7 @@ ggplot(lincoln_weather, aes(x = `Month`, y = `Mean Temperature [F]`)) +
 
 ---
 
-Let's jitter a bit the observations
+Strip charts generally work well as long as we don't have too many points to plot on top of each other. If too many points overlap in one strip chart, then we will be hardly able to distinguish the observations. In this case, a simple solution is to jitter a bit the observations, in the sense that we can spread out the points along the x-axis by adding some random noise in the horizontal direction.
 
 ```R
 ggplot(lincoln_weather, aes(x = `Month`, y = `Mean Temperature [F]`)) +
@@ -318,7 +320,7 @@ ggplot(lincoln_weather, aes(x = `Month`, y = `Mean Temperature [F]`)) +
 
 ---
 
-We now add an estimated density to the observations. This type of representations is called a viollin plot.
+We now add an estimated density to the observations with a viollin plot. A violin plot is equivalent to the density estimates but rotated by 90 degrees and then mirrored. 
 
 ```R
 ggplot(lincoln_weather, aes(x = `Month`, y = `Mean Temperature [F]`)) +
@@ -334,7 +336,7 @@ ggplot(lincoln_weather, aes(x = `Month`, y = `Mean Temperature [F]`)) +
 
 ---
 
-We can also represent it slightly differently.
+We can also represent it differently with a ridgeline plot.
 
 ```R
 library(hrbrthemes)
@@ -350,10 +352,7 @@ ggplot(lincoln_weather, aes(x = `Mean Temperature [F]`, y = `Month`)) +
 
 ---
 
-
-
-
-Some minor aesthetics modifications
+We can improve the ridgeline plot, for example, by adding a title. 
 
 ```R
 ggplot(lincoln_weather, aes(x = `Mean Temperature [F]`, y = `Month`)) +
@@ -370,7 +369,7 @@ ggplot(lincoln_weather, aes(x = `Mean Temperature [F]`, y = `Month`)) +
 
 ---
 
-We now fill the density with a color scale that represent the temperature.
+lastly, we can fill the density with a color scale that represents the temperature.
 
 ```R
 ggplot(lincoln_weather, aes(x = `Mean Temperature [F]`, y = `Month`, fill = ..x..)) +
@@ -389,7 +388,7 @@ ggplot(lincoln_weather, aes(x = `Mean Temperature [F]`, y = `Month`, fill = ..x.
 
 ---
 
-We change the color scale.
+We can also change the color scale.
 
 ```R
 ggplot(lincoln_weather, aes(x = `Mean Temperature [F]`, y = `Month`, fill = ..x..)) +
