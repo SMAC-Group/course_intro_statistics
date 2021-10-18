@@ -4,54 +4,50 @@ const autoprefixer = require('autoprefixer')
 module.exports = {
     siteMetadata: meta,
     plugins: [
-      
-        // add plugin for video
-          {
-            // Using gatsby-remark-embed-video before gatsby-remark-images & gatsby-remark-responsive-iframe plugins. 
-            // https://scotch.io/tutorials/embedding-videos-in-your-gatsbyjs-sites
-            resolve: `gatsby-remark-embed-video`,             options: {
-              maxWidth: 800,
-              ratio: 1.77,
-              height: 400,
-              related: false,
-              noIframerder: true,
-            },
-          },
-          
-             {
-                        resolve: `gatsby-remark-images`,
-                        options: {
-                            maxWidth: 790,
-                            linkImagesToOriginal: true,
-                            sizeByPixelDensity: false,
-                            showCaptions: true,
-                            quality: 80,
-                            withWebp: { quality: 80 },
-                        },
-                    },
-          
-             {
-            resolve: `gatsby-remark-responsive-iframe`,
-            options: {
-              wrapperStyle: `margin-bottom: 1.0725rem`,
-            },
-          },
+
           {
             resolve: `gatsby-transformer-remark`,
             options: {
               plugins: [
+                
+            // add plugin for video
                 {
-                  resolve: `gatsby-remark-katex`,
+                  // Using gatsby-remark-embed-video before gatsby-remark-images & gatsby-remark-responsive-iframe plugins. 
+                  // https://scotch.io/tutorials/embedding-videos-in-your-gatsbyjs-sites
+                  //https://www.gatsbyjs.com/plugins/gatsby-remark-embed-video/?=video
+                  resolve: `gatsby-remark-embed-video`,            
                   options: {
-                    strict: `ignore`
-                  }
+                    maxWidth: 800,
+                    ratio: 1.77,
+                    height: 400,
+                    related: false,
+                    noIframerder: true,
+                  },
                 },
-                                {
-                  resolve: `gatsby-remark-mathjax`,
-                  options: {
-                    strict: `ignore`
+                
+                {
+                    resolve: `gatsby-remark-images`,
+                    options: {
+                        maxWidth: 790,
+                        linkImagesToOriginal: true,
+                        sizeByPixelDensity: false,
+                        showCaptions: true,
+                        quality: 80,
+                        withWebp: { quality: 80 },
+                    },
+                  },
+                  {
+                        resolve: `gatsby-remark-katex`,
+                        options: {
+                          strict: `ignore`
+                        }
+                  },
+                  {
+                        resolve: `gatsby-remark-mathjax`,
+                        options: {
+                          strict: `ignore`
+                        }
                   }
-                }
               ],
             },
           },
