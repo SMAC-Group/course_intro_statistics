@@ -1,6 +1,6 @@
-[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/SMAC-Group/course_intro_ds/binder)
+[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/SMAC-Group/course_data_analytics/binder)
 
-[![Netlify Status](https://api.netlify.com/api/v1/badges/54375792-75b7-45b2-a46d-e489a6bf42e5/deploy-status)](https://app.netlify.com/sites/intro-to-ds/deploys)
+
 
 <p align="center">
 <img src="static/logo2.png" align="center" width="450px"/>
