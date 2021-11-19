@@ -3,7 +3,7 @@ title: 'Chapter 2: Control Structures'
 description:
   'Understand how control structures dictate the flow of execution of a sequence of operations.'
 prev: /chapter1
-next: /chapter3
+next: null
 type: chapter
 id: 2
 ---
