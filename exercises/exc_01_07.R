@@ -1,6 +1,0 @@
-data(___)
-par(mfrow=c(1,2))
-boxplot(___ ~ ___, las = 2, xlab = "")
-boxplot(___ ~ iris$Species, las = 2, xlab = "")
-par(mfrow=c(1,1))
-plot(iris$Sepal.Length, ___, col= ___, pch = 16)

@@ -1,20 +1,20 @@
-tofind = sample(x = 1:20, size = 1)
-print("Guess a integer between 1 and 20, you've got 5 trials")
+# Library package idar and load dataset diet first, and then do two sample test on 
+# whether there is gender difference take a diet B ("B" in var type) between male and female
+# using Two sample t test and Wilcoxon rank sum test
 
-for(i in seq(5)){
-  # print trial
-  print(paste("Trial: ", i))
-  # user enter guess
-  myguess = as.integer(readline(prompt="Enter an integer between 0 and 50: "))
-  # if guess is correct
-  if(myguess == tofind){
-    print(paste("You are right! The number was: " , tofind ))
-    break()
-  }else if(myguess != tofind & i == 5){
-    print(paste("You lost! The number to guess was: ", tofind))
-  }else if(myguess < tofind){
-    print("Too small. Try a larger number")
-  }else if(myguess > tofind){
-    print("Too large. Try a smaller number")
-  }
-}
+# load data and libraries
+library(idar)
+data(diet)
+
+# Compute weight loss
+diet$weight.loss = diet$initial.weight - diet$final.weight
+
+# Extract weight loss data for women who take diet B
+dietB_Female = diet[diet$gender =="Female" & diet$diet.type == "B", ]$weight.loss
+dietB_Male = diet[diet$gender =="Male" & diet$diet.type == "B", ]$weight.loss
+
+# t test
+t.test(dietB_Female, dietB_Male, var.equal = TRUE)
+
+# Wilcoxon test
+wilcox.test(dietB_Female, dietB_Male)

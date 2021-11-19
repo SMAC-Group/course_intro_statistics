@@ -1,11 +1,15 @@
-# Define x
-x = c(1, 2, 1, 4, 1, 3)
+# load data and libraries
+library(palmerpenguins)
+library(dplyr)
+library(ggplot2)
+data("penguins")
 
-# Select elements with positive indices
-x[___]
+# filter data to only keep Gentoo or Chinstrap
+penguins_sub = penguins %>% filter(species %in% c("Gentoo", "Chinstrap"))
 
-# Select elements with negative indices
-x[___]
+# boxplot
+ggplot(penguins_sub, aes(x=species, y=bill_length_mm)) + 
+  geom_boxplot()
 
-# Select elements with logical indices
-x[___]
+# t test
+t.test(formula = ___ ~ ___, alternative = ___)
