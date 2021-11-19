@@ -1,7 +1,3 @@
-# Library package idar and load dataset diet first, and then test on 
-# whether women ("Female" in var gender) take a diet B ("B" in var type) 
-# have a significant weight loss greater than 0
-
 # load data and libraries
 library(___)
 data(___)
