@@ -1,7 +1,7 @@
 ---
 title: 'Chapter 1: Introduction to Statistical Inference'
 description:
-  'Understand how control structures dictate the flow of execution of a sequence of operations.'
+  ''
 prev: null
 next: /chapter2
 type: chapter
@@ -30,9 +30,8 @@ View the slides directly in the browser or download the slides
 
 
 
-<slides source="chapter3_01">
+<slides source="chapter1_01">
 </slides>
-
 
 </exercise>
 
