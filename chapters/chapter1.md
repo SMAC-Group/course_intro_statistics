@@ -140,7 +140,7 @@ Check the argument `alternative` in the documentation of function `t.test` (You 
 </choice>
 
 
-### 9) Consider that you observe a total of 50 observations. You would like to test that the true center of the distribution from which the sample you observe is generated is greater than a given value $\mu_{H_0}$. How do you compute the correct critical value with a significance level of $\alpha = 0.05$? Hint: The degrees of freedom are given by $n-1$ where $n$ is the number of observations
+### 9) Consider that you observe a total of 50 observations. You would like to test that the true center of the distribution from which the sample you observe is generated is greater than a given value \\( \mu_{H0}\\). How do you compute the correct critical value with a significance level of \\( \alpha = 0.05 \\)? Hint: The degrees of freedom are given by \\( n-1 \\) where \\( n \\) is the number of observations
 
 
 
@@ -156,7 +156,7 @@ Check the argument `alternative` in the documentation of function `t.test` (You 
 </choice>
 
 
-### 10) Consider that you observe a total of 50 observations. You would like to test that the true center of the distribution from which the sample you observe is generated is not equal to a given value $\mu_{H_0}$. How do you compute the correct critical value with a significance level of $\alpha = 0.05$? Hint: The degrees of freedom are given by $n-1$ where $n$ is the number of observations
+### 10) Consider that you observe a total of 50 observations. You would like to test that the true center of the distribution from which the sample you observe is generated is not equal to a given value \\( \mu_{H0} \\). How do you compute the correct critical value with a significance level of \\( \alpha = 0.05\\)? Hint: The degrees of freedom are given by \\( n-1 \\) where \\( n\\) is the number of observations
 
 
 
@@ -172,7 +172,7 @@ Check the argument `alternative` in the documentation of function `t.test` (You 
 </choice>
 
 
-### 11) Consider that you observe a total of 30 observations. The estimated mean is 23.5 and the estimated standard deviation is 8.5. You would like to test that the true center of the distribution from which the sample you observe is generated is not equal to a given value $\mu_{H_0} = 20$. Compute the test statistic.
+### 11) Consider that you observe a total of 30 observations. The estimated mean is 23.5 and the estimated standard deviation is 8.5. You would like to test that the true center of the distribution from which the sample you observe is generated is not equal to a given value \\(\mu_{H0} = 20\\). Compute the test statistic. 
 
 
 <choice id="9">
