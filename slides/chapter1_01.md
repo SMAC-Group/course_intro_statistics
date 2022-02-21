@@ -1,4 +1,16 @@
+---
+type: slides
+---
+
 # One Sample t-test
+
+---
+
+<div style="text-align:center"><img src="mycat.jpg" alt=" " width="45%">
+
+
+---
+
 In this lecture, we discussed the one-sample Student's t-test for testing a simple null hypothesis. Here we would show how to use the null distribution of the statistics to determine the rejection region so as to achieve a desired significance level. The goal of statistical inference is to know whether the data come from a prescribed distribution. The hypothesis test is the tool to achieve this goal.
 
 There are measurements on the mineral content of bones by photon absorption-metric to study whether exercise or dietary supplements would slow bone loss within older women. Data were recorded for three bones on the dominant and non-dominant side.
@@ -14,6 +26,8 @@ colnames(mnr)[6] <- "Ulna"
 ```
 
 It is difficult to determine the probability distribution from data directly, therefore we need to propose a certain probability model for the data. Suppose the distribution of dominant radius is normal with the expectation .8 and the variance .16, we can denote the above statement as the following hypothesis:
+
+\\(H_0:  X_i \sim \mathcal{N}(\mu, \sigma))\\)
 
 <img src="https://render.githubusercontent.com/render/math?math=H_0: X_1,...,X_{n}\stackrel{iid}{\sim} \mathcal{N}(0.8,\,0.16)">
 
@@ -58,7 +72,7 @@ mean of x
 
 # Result analysis of t-test
                                       
-We can see from the result that the p-value is considerably smaller than the significance level 0.05. Therefore, it indicates strong evidence against <img src="https://render.githubusercontent.com/render/math?math=\mu=0.8">. However,the reliability of the t-test relies on the absence of outliers. It is necessary to check the data from histograms or QQ plot before applying the t-test for statistical inference.
+We can see from the result that the p-value is considerably smaller than the significance level 0.05. Therefore, it indicates strong evidence against \\(\mu = 0.8 \\). However,the reliability of the t-test relies on the absence of outliers. It is necessary to check the data from histograms or QQ plot before applying the t-test for statistical inference.
 
 ---
 
@@ -77,9 +91,9 @@ hist(V1)
 hist(V2)
 ```
 
-```out
+
 <div style="text-align:center"><img src="joke_date.png" alt=" " width="45%">
-```
+
 
 ---
 
