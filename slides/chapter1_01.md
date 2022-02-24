@@ -8,10 +8,10 @@ type: slides
 
 In this lecture, we discussed the one-sample Student's t-test for testing a simple null hypothesis. Here we would show how to use the null distribution of the statistics to determine the rejection region so as to achieve a desired significance level. The goal of statistical inference is to know whether the data come from a prescribed distribution. The hypothesis test is the tool to achieve this goal.
 
-There are measurements on the mineral content of bones by photon absorption-metric to study whether exercise or dietary supplements would slow bone loss within older women. Data were recorded for three bones on the dominant and non-dominant side.
+There are measurements on the mineral content of bones by photon absorption-metric to study whether exercise or dietary supplements would slow bone loss within older women. Data were recorded for three bones on the dominant and non-dominant side. (Data is available on http://users.stat.umn.edu/~kb/classes/5401/files/data/JWData5.txt)
 
 ```r
-mnr <- read.table("T1-6.DAT") # Import RDATA file named as "T1-6" and create it as a matrix named as "mnr"
+mnr <- read.table("T1-8.DAT") # Import RDATA file named as "T1-6" and create it as a matrix named as "mnr"
 colnames(mnr)[1] <- "Dominant radius" # Change the name of the variable in the first column as "Dominant radius"
 colnames(mnr)[2] <- "Radius"
 colnames(mnr)[3] <- "Dominant humerus"
