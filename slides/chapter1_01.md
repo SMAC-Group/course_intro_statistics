@@ -8,11 +8,17 @@ type: slides
 
 In this lecture, we discussed the one-sample Student's t-test for testing a simple null hypothesis. Here we would show how to use the null distribution of the statistics to determine the rejection region so as to achieve a desired significance level. The goal of statistical inference is to know whether the data come from a prescribed distribution. The hypothesis test is the tool to achieve this goal.
 
-There are measurements on the mineral content of bones by photon absorption-metric to study whether exercise or dietary supplements would slow bone loss within older women. Data were recorded for three bones on the dominant and non-dominant side. (Data is available on http://users.stat.umn.edu/~kb/classes/5401/files/data/JWData5.txt)
+There are measurements on the mineral content of bones by photon absorption-metric to study whether exercise or dietary supplements would slow bone loss within older women. Data were recorded for three bones on the dominant and non-dominant side. (Data is available on http://users.stat.umn.edu/~kb/classes/5401/files/data/JWData5.txt). Click on the link, then find and save the relevant data T01_08 in the format .txt.
 
 ```r
-mnr <- read.table("T1-8.DAT") # Import RDATA file named as "T1-6" and create it as a matrix named as "mnr"
-colnames(mnr)[1] <- "Dominant radius" # Change the name of the variable in the first column as "Dominant radius"
+# Set Working Directory
+setwd("C:/Intro_DS/")
+
+# Import txt file named as "T01_08" 
+mnr <- read.csv("T01_08.txt",sep = "",header = FALSE) 
+
+# # Change the name of the variable in the first column as "Dominant radius"
+colnames(mnr)[1] <- "Dominant radius" 
 colnames(mnr)[2] <- "Radius"
 colnames(mnr)[3] <- "Dominant humerus"
 colnames(mnr)[4] <- "Humerus"
@@ -20,11 +26,11 @@ colnames(mnr)[5] <- "Dominant ulna"
 colnames(mnr)[6] <- "Ulna"
 ```
 
+---
+
 It is difficult to determine the probability distribution from data directly, therefore we need to propose a certain probability model for the data. Suppose the distribution of dominant radius is normal with the expectation .8 and the variance .16, we can denote the above statement as the following hypothesis:
 
 \\(H_0:  X_1, X_2,...,X_n \sim \mathcal{N}(0.8, 0.16)\\)
-
----
 
 Based on this hypothesis, we would like to have a test statistic \\(T\\) such that extreme values of \\(T\\) provides evidence against \\(H_0\\). Moreover, by the Central Limit Theorem (CLT), we wish to make the statistic \\(T\\) have the average form.The following are possible test statistics:
 
@@ -34,7 +40,9 @@ Based on this hypothesis, we would like to have a test statistic \\(T\\) such th
 
 Values of \\(\bar{X}\\) much larger or smaller than .8, or values of \\(S^2\\) much larger or smaller than .16, provide evidence against \\(H_0\\) in favor of various alternatives \\(H_1\\).
 
-Recall that the if \\(X_1,...,X_n\stackrel{iid}{\sim} \mathcal{N}(\mu,\,\sigma^2), \bar{X}\stackrel{iid}{\sim} \mathcal{N}(\mu,\,\frac{\sigma^2}{n})\\). Therefore, the statistics \\(T=\frac{\bar{X_n}-\mu}{\sqrt{\sigma^2/n}}\stackrel{iid}{\sim}\mathcal{Student}(n-1)\rightarrow\stackrel{iid}{\sim}\mathcal{N}(0,\,1)\\)
+---
+
+Recall that the if \\(X_1,...,X_n\stackrel{iid}{\sim} \mathcal{N}(\mu,\ \sigma^2), \bar{X}\stackrel{iid}{\sim} \mathcal{N}(\mu,\ \frac{\sigma^2}{n})\\). Therefore, the statistics \\(T=\frac{\bar{X_n}-\mu}{\sqrt{\sigma^2/n}}\stackrel{iid}{\sim}\mathcal{Student}(n-1)\rightarrow\stackrel{iid}{\sim}\mathcal{N}(0,1)\\)
 
 might be an appropriate statistics for data since the estimator for the parameter can be obtained by sample mean and sample variance.
 
