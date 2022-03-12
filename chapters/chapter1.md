@@ -43,14 +43,7 @@ To install `RStudio` on Windows, download the Windows `.exe` installer the [RStu
 
 ### Installing `RStudio` in Ubuntu Linux
 
-To install `RStudio` on Ubuntu Linux, download the Ubuntu/Debian `.deb` installer the [RStudio’s products page](https://www.rstudio.com/products/rstudio/download/).
-
-Open the terminal and run
-
-```sh
-sudo dpkg -i rstudio-2022.02.0-443-amd64.deb
-```
-
+To install `RStudio` on Ubuntu Linux, download the Ubuntu/Debian `.deb` installer the [RStudio’s products page](https://www.rstudio.com/products/rstudio/download/). You can then install the `.deb` file.
 
 ### Installing `R` package `idar` 
 

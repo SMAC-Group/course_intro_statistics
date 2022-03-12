@@ -87,10 +87,18 @@ The `boxplot` function has many options which you can explore by having at the h
 <div style="text-align:center"><img src="fig3_chap1_diet.png" alt=" " width="60%">
 
 ---
- 
-TO MAKE YOUR LIFE PLUS COOL WE MADE: 
 
- boxplot_w_points
+
+In order to simplify the visualization of similar data in the context of the class, we propose the function `boxplot_w_points` in the package `idar`. You can use the following code for example:
+
+ 
+ 
+```r
+boxplot_w_points(dietB, main = "Diet B", horizontal = TRUE, xlab = "Weight loss (kg)")
+abline(v = 0)
+```
+
+<div style="text-align:center"><img src="boxplot_w_point_1.png" alt=" " width="60%">
 
 ---
 
@@ -98,7 +106,8 @@ TO MAKE YOUR LIFE PLUS COOL WE MADE:
 
 Suppose that we wish to assess how well diet B is working. One possible method is to use a t-test based on the hyptheses
 
-H0: mu = 0, HA: mu > 0 (comme dans les slides LIONEL!)
+\\(H_{0}: \mu=0\\) and \\(H_{a}: \mu>0\\)
+
 
 ```r
 t.test(dietB, alternative = "greater")
