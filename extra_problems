@@ -1,0 +1,6 @@
+### 1) Consider the dataset `palmerpenguins` in the packages `palmerpenguins`.Represent the bill length for species Gentoo and Chinstrap. We would like to test that the true difference in means for variable `bill_length_mm`
+between group Chinstrap and group Gentoo is greater than 0
+
+<codeblock id="01_01">
+Check the argument `alternative` in the documentation of function `t.test` (You can find the documentation with `?t.test` )
+</codeblock>
