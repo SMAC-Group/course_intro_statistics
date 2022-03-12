@@ -9,7 +9,35 @@ id: 1
 ---
 
 
-<exercise id="1" title="Theory">
+<exercise id="1" title="Installing R and RStudio">
+
+SOME INSTRUCTIONS TO INSTALL R AND RSTUDIO. 
+
+We have developed an R package for this class which is called `idar` and that you can install by running the following code in your R console:
+
+```r
+install.packages("devtools")
+devtools::install_github("https://github.com/SMAC-Group/idar", force = TRUE)
+```
+
+To test if the package was correctly installed you cans simply run
+
+```r
+library(idar)
+```
+
+if you see no error then the package was correctly installed! Below is a gif illustrating the install of the `idar` R package:
+
+<center>
+
+![](idar.gif)
+
+</center>
+
+</exercise>
+
+
+<exercise id="2" title="Lecture Slides">
 
 
 View the slides directly in the browser or download the slides
@@ -30,7 +58,7 @@ View the slides directly in the browser or download the slides
 
 </exercise>
 
-<exercise id="2" title="Application" type = "slides">
+<exercise id="3" title="Application" type = "slides">
 
 
 
