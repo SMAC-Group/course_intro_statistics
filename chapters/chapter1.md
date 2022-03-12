@@ -98,47 +98,34 @@ View the slides directly in the browser or download the slides
 
 </exercise>
 
-<exercise id = "5" title ="Exercises">
+<exercise id = "3" title ="Exercises">
 
+### 1. Which of the following statements are incorrect?
 
----
+<choice id="chap1_theo1">
+<opt text="Every decision based on statistical methods is associated to a risk of taking the wrong decision." > Sad but true... 😟  </opt>
+<opt text="Decisions based on p-values are not necessarily correct."> Sad but true... 😟 </opt>
+<opt text="A scientific result based on a statistical analysis cannot be wrong." correct = "true"> This is indeed quite wrong! </opt>
+<opt text="It is only when the null hypothesis is rejected that we are sure that our decision is correct." correct = "true"> This is wrong as there are both type I and II errors.</opt>
+<opt text="When the null hypothesis is rejected, it is still that our conclusion is incorrect."> </opt>
+<opt text="A scientific result based on statistical analyses allows to further our understanding of the studied phenomenon without being able to guarantee that the conclusions are 100% correct."> </opt>
+</choice>
 
-### 1) We saw previously, that diet B (in the dataset `diet` of the `idar` package) was effective in reducing the weights of the participents. Is it also the case when only the women in the study are considered? Complete the code below and comment on the results.
+### 2) In hypothesis testing, the type I error, correspond to:
 
-<codeblock id="01_02">
-
-</codeblock>
-
-
-
-### 3) In hypothesis testing, false positive also called type I error, which means
-<choice id="1">
-<opt text="the probability of rejecting null hypothesis when null hypothesis is true." correct="true">
+<choice id="chap1_theo2">
+<opt text="the probability of rejecting null hypothesis when null hypothesis is true." 👍 correct="true">
 </opt>
-<opt text="the probability of not rejecting null hypothesis when null hypothesis is false." >
+<opt text="the probability of not rejecting null hypothesis when null hypothesis is false." No, this is the type II error. >
 </opt>
-<opt text="the probability of rejecting alternative hypothesis when alternative hypothesis is true.">
-</opt>
-<opt text="the probability of not rejecting alternative hypothesis when alternative hypothesis is true.">
+<opt text="the probability of accepting the null hypothesis when alternative hypothesis is true." No... and we can never "accept" the null hypothesis!>
 </opt>
 </choice>
 
+### 3)  Which statement following is false?
 
-### 4) Which statements following is true?
-<choice id="2">
-<opt text="A test is of significant level alpha when the probability of making a type I error equals 1-alpha." >
-</opt>
-<opt text="A test is of power beta when the probability to make a type II error is 1-beta." correct="true">
-</opt>
-<opt text="A test is of significant level alpha when the probability of making a type II error equals 1-alpha.">
-</opt>
-<opt text="A test is of power beta when the probability to make a type II error is beta.">
-</opt>
-</choice>
-
-### 5)  Which statement following is false?
 <choice id="3">
-<opt text="Small p-value indicates strong evidence against null hypothesis." >
+<opt text="Small p-value indicates strong evidence against the alternative hypothesis." >
 </opt>
 <opt text="When the p-value is small enough, one says that the test based on the null and alternative hypothesis is significant." >
 </opt>
@@ -156,7 +143,7 @@ View the slides directly in the browser or download the slides
 </opt>
 <opt text="A Beta distribution.">
 </opt>
-<opt text="A normal distribution."correct="true">
+<opt text="A normal distribution." correct="true" >
 </opt>
 </choice>
 
@@ -169,27 +156,6 @@ View the slides directly in the browser or download the slides
 <opt text="the hypotheses of the Wilcoxon signed rank test are on the population standard deviation.">
 </opt>
 <opt text="the hypotheses of the Wilcoxon signed rank test are on the population mode.">
-</opt>
-</choice>
-
-
-
-
-
-### 1) Consider the boxplots of data associated with two groups: "treatment" and "control". Consider that you want to test the difference in the central value of both distributions. What test should you consider and why?
-
-<div style="text-align:center">
-<img src="plot1.png" alt=" " width="55%">
-</div>
-
-<choice id="6">
-<opt text="One should consider a t-test because we want to test the difference in their central value." >
-</opt>
-<opt text="We should consider a t-test because there are some extreme observations in the control group" >
-</opt>
-<opt text="We should consider a Wilcoxon rank test because the extreme observations in the control group suggest that the data are not normally distributed and we would prefer to rely on a non-parametric test" correct="true">
-</opt>
-<opt text="We don't need to test anything because it is clear on the graph that the median of the control group is above the median of the treatment group.">
 </opt>
 </choice>
 
@@ -245,14 +211,14 @@ View the slides directly in the browser or download the slides
 
 
 
-<exercise id="3" title="Example based on the Diet dataset 💻">
+<exercise id="4" title="Analysis of the Diet dataset">
 
 
 <slides source="chapter1_diet">
 </slides>
 </exercise>
 
-<exercise id="4" title="Exercises on the Diet dataset 💻">
+<exercise id="5" title="Exercises on the Diet dataset">
 
 Previously, we saw that Diet B was effective in reducing the weights of the participants. Is it also the case for Diet A?
 
@@ -309,7 +275,7 @@ Based on the test you performed and considering a type I error (i.e. "alpha") of
 
 </exercise>
 
-<exercise id="4" title="Example ?????? TO DO JUN 💻" type = "slides">
+<exercise id="6" title="Example ?????? TO DO JUN" type = "slides">
 
 
 <slides source="chapter1_01">
