@@ -58,7 +58,16 @@ View the slides directly in the browser or download the slides
 
 </exercise>
 
-<exercise id="3" title="Application" type = "slides">
+<exercise id="3" title="Diet Example - Univariate Analysis">
+
+
+<slides source="chapter1_diet">
+</slides>
+
+
+</exercise>
+
+<exercise id="4" title="Application" type = "slides">
 
 
 
@@ -68,7 +77,7 @@ View the slides directly in the browser or download the slides
 </exercise>
 
 
-<exercise id = "3" title ="Statistical Inference: Exercises">
+<exercise id = "5" title ="Statistical Inference: Exercises">
 
 
 ---
