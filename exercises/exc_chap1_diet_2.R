@@ -6,10 +6,10 @@ data(diet)
 diet$weight.loss = diet$initial.weight - diet$final.weight
 
 # Select diet
-posw = diet$diet.type=="C"
+posw = diet$diet.type=="A"
 
 # Variable of interest
-dietC = diet$weight.loss[posw]
+dietA = diet$weight.loss[posw]
 
 # Boxplot
-boxplot_w_points(dietC ??????)
+boxplot_w_points(dietA ??????)

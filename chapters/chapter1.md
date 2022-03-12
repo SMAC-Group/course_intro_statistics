@@ -108,14 +108,24 @@ View the slides directly in the browser or download the slides
 
 <exercise id="4" title="Exercises on the Diet dataset">
 
-Previously, we saw that Diet B was effective in reducing the weights of the participants. Is it also the case for C?
+Previously, we saw that Diet B was effective in reducing the weights of the participants. Is it also the case for Diet A?
 
 ### 1. How to get the data?
 
-Complete the code below to get the data for diet C:
+Complete the code below to get the data for Diet A:
 
 <codeblock id="chap1_diet_1">
 
 </codeblock>
+
+### 2. How to plot the data?
+
+Complete the code below to plot the data for Diet A:
+
+<codeblock id="chap1_diet_2">
+
+</codeblock>
+
+### 3. Which test should we use
 
 </exercise>
