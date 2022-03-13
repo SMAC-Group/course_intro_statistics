@@ -281,7 +281,11 @@ We consider data from Parisi, et al., 2021 which studies the applicability of pr
 2. Can we conclude that the admitted COVID 19 patients have an average oxygen saturation below 93%?
 3. Can we conclude that the COVID 19 patients admitted to an Intensive Care Unit (ICU) tend to have a lower oxygen saturation than the ones that are not? For example, is it reasonable to conclude that average oxygen saturation of ICU patients is lower than 92%? Similarly, is it reasonable to conclude that average oxygen saturation of non ICU patients is greater than 92%?
 
-The data can be downloaded 
+The data can be obtained as follows:
+
+```r
+
+```
 
 </exercise>
 
