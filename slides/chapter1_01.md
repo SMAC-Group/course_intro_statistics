@@ -5,122 +5,153 @@ type: slides
 # One Sample t-test
 
 ---
-modification
 
-In this lecture, we discussed the one-sample Student's t-test for testing a simple null hypothesis. Here we would show how to use the null distribution of the statistics to determine the rejection region so as to achieve a desired significance level. The goal of statistical inference is to know whether the data come from a prescribed distribution. The hypothesis test is the tool to achieve this goal.
+In this lecture, we discussed the one-sample Student's t-test for testing a simple null hypothesis. 
 
-There are measurements on the mineral content of bones by photon absorption-metric to study whether exercise or dietary supplements would slow bone loss within older women. Data were recorded for three bones on the dominant and non-dominant side. (Data is available on http://users.stat.umn.edu/~kb/classes/5401/files/data/JWData5.txt). Click on the link, then find and save the relevant data T01_08 in the format .txt.
+Please keep in mind the following steps to conduct t-test:
+1. Define hypothesis: \\(H_0: \mu=0\\) and \\(H_a: \mu > 0\\)
+2. Define \\(\alpha\\): we consider \\(\alpha=5\\)%
+3. Compare p-vale and \\(\alpha\\)
+4. Conclusion: if the p-value is much smaller than the significance level \\(\alpha\\), then it implies evidently that the null hypothesis should be rejected.
+
+
+---
+
+## Loading data
+
+In this set of slides we will continue to use the `diet` data to explain how can we test our hypothesis. Our first step is to import the data in your Rstudio.
 
 ```r
-# Set Working Directory
-setwd("C:/Intro_DS/")
-
-# Import txt file named as "T01_08" 
-mnr <- read.csv("T01_08.txt",sep = "",header = FALSE) 
-
-# # Change the name of the variable in the first column as "Dominant radius"
-colnames(mnr)[1] <- "Dominant radius" 
-colnames(mnr)[2] <- "Radius"
-colnames(mnr)[3] <- "Dominant humerus"
-colnames(mnr)[4] <- "Humerus"
-colnames(mnr)[5] <- "Dominant ulna"
-colnames(mnr)[6] <- "Ulna"
+# Import data
+library(idar)
+data(diet)
 ```
+We can have an overview for the data using the function `names` to see which variables included in the data set.
+```
+names(diet)
+```
+```out
+[1] "id"             "gender"         "age"           
+[4] "height"         "diet.type"      "initial.weight"
+[7] "final.weight"   
+```
+---
+
+## Weight loss for all diet
+
+```r
+diet$weight.loss = diet$initial.weight - diet$final.weight
+boxplot(diet$weight.loss, main = "Diet", ylab = "Weight loss (kg)")
+```
+<div style="text-align:center"><img src="weight_loss_1.png" alt=" " width="75%">
 
 ---
 
-It is difficult to determine the probability distribution from data directly, therefore we need to propose a certain probability model for the data. Suppose the distribution of dominant radius is normal with the expectation .8 and the variance .16, we can denote the above statement as the following hypothesis:
+## Step 1: Define hypothesis
+Here we are interested in exploring whether the weight loss follows a normal distribution with specific parameter. It is difficult to know the probability distribution from data directly, therefore we need to propose a certain probability model for the data. We can get some information from the `boxplot`, then it is reasonable to have a guess that the distribution of weight loss have the expectation within the range from 2 to 4, say 3.9. We can denote the above statement as the following hypothesis:
 
-\\(H_0:  X_1, X_2,...,X_n \sim \mathcal{N}(0.8, 0.16)\\)
+\\(H_0:  X_1, X_2,...,X_n \sim \mathcal{N}(3.9, \sigma^2)\\) 
 
-Based on this hypothesis, we would like to have a test statistic \\(T\\) such that extreme values of \\(T\\) provides evidence against \\(H_0\\). Moreover, by the Central Limit Theorem (CLT), we wish to make the statistic \\(T\\) have the average form.The following are possible test statistics:
-
-\\(\bar{X}=\frac{1}{n}(X_1+...+X_n)\\) (sample mean)
-
-\\(S^2=\frac{1}{n-1}[(X_1-0.8)^2+...+(X_n-0.8)^2]\\) (sample variance)
-
-Values of \\(\bar{X}\\) much larger or smaller than .8, or values of \\(S^2\\) much larger or smaller than .16, provide evidence against \\(H_0\\) in favor of various alternatives \\(H_1\\).
+Values of \\(\bar{X}\\) much larger or smaller than 3.9, provide evidence against \\(H_0\\) in favor of various alternatives \\(H_a\\).
 
 ---
+
+## Step 2: Define \\(\alpha\\)
 
 Recall that the if \\(X_1,...,X_n\stackrel{iid}{\sim} \mathcal{N}(\mu,\ \sigma^2), \bar{X}\stackrel{iid}{\sim} \mathcal{N}(\mu,\ \frac{\sigma^2}{n})\\). Therefore, the statistics \\(T=\frac{\bar{X_n}-\mu}{\sqrt{\sigma^2/n}}\stackrel{iid}{\sim}\mathcal{Student}(n-1)\rightarrow\stackrel{iid}{\sim}\mathcal{N}(0,1)\\)
 
-might be an appropriate statistics for data since the estimator for the parameter can be obtained by sample mean and sample variance.
+can used to be the estimator for our null hypothesis.
 
-For the null hypothesis \\(H_0: \mu=0.8\\) against the alternative hypothesis \\(H_a: \mu \neq 0.8\\), given a significance level \\(\alpha\\), since the t-distribution is symmetric thus in this setting, the rejection region is \\(\mid T \mid > t_{1-\alpha/2}(n-1)\\).                                                          
+For the null hypothesis \\(H_0: \mu=3.9\\) against the alternative hypothesis \\(H_a: \mu > 3.9\\), given a significance level \\(\alpha\\), say 5%, since the t-distribution is symmetric thus in this setting, the rejection region is \\(T > t_{1-\alpha/2}(n-1)\\). 
+
+## Step 3: Compare p-value and \\(\alpha\\)
+
+If p-value of t-test is much smaller than the significance level \\(\alpha\\), say 0.05, then the null hypothesis should be rejected.
 ---
 
-# Code for one sample t-test
+# Weight loss t-test
 
 ```r
-t.test(mnr$'Dominant radius') # We use the command t.test() to check the hypothesis                
+# Based on our null hypothesis, the data should have the expectation equals to 3.9. 
+# Equivalently, the result of sequence of t should have the mean equals to zero.
+t=diet$weight.loss-3.9 
+t.test(t,alternativ = "greater")               
 ```                               
 ```out
-One Sample t-test
+	One Sample t-test
 
-data:  mnr$`Dominant radius`
-t = 37.001, df = 24, p-value < 2.2e-16
-alternative hypothesis: true mean is not equal to 0
+data:  t
+t = 0.16022, df = 75, p-value = 0.4366
+alternative hypothesis: true mean is greater than 0
 95 percent confidence interval:
- 0.796733 0.890867
+ -0.4326495        Inf
 sample estimates:
-mean of x 
-   0.8438 
-
+ mean of x 
+0.04605263 
 ```
-
-# Result analysis of t-test
-                                      
-We can see from the result that the p-value is considerably smaller than the significance level 0.05. Therefore, it indicates strong evidence against \\(\mu = 0.8 \\). However,the reliability of the t-test relies on the absence of outliers. It is necessary to check the data from histograms or QQ plot before applying the t-test for statistical inference.
 
 ---
 
-# Test statistics from histograms
+## Step 4: Conclusion
+We can see from the result that the p-value is considerably larger than the significance level 0.05. Therefore, it indicates strong evidence against \\(\mu > 3.9 \\), which means in average, the participant loses weight 3.9 kg evidently. 
 
-Let \\(T_i=(X_i-0.8)^2\\). We are interested in testing whether \\(T_1,...,T_n\\) are distributed as \\(0.16 \times \chi_1^2\\) (their distribution under \\(H_0\\). We can see from the histogram that compared with the bars on the left side, the bars are smaller on the right side of the histogram which might be due to the outlier of the data.
+---
+
+# Normality test: histogram
+
+Based on the previous result, the reliability of the t-test relies on the normal distribution. It is necessary to check the data from histogram or QQ plot before applying the t-test for statistical inference. We can use the function `hist_compare_to_normal` to draw the plot.
                                       
 ```r  
-n <- nrow(mnr)
-V1 <- rep(NA,n)
-V2 <- rep(NA,n)
-for (i in 1:n){
-  V1[i] <- mnr[i,1] # Check the outlier with the null hypothesis that the "Dominan radius" is of mean .8 and variance 0.16 by histogram
-  V2[i] <- (mnr[i,1]-0.8)^2 
-  }
-hist(V1)
-hist(V2)
+t <- diet$weight.loss
+hist_compare_to_normal(t)
 ```
 
----
+<div style="text-align:center"><img src="hist_com.png" alt=" " width="40%">
 
-# Result of histogram test
-<div style="display:flex">
-     <div style="flex:1;padding-right:10px;">
-          <img src="histV1.png" width="500"/>
-     </div>
-     <div style="flex:1;padding-left:10px;">
-          <img src="histV2.png" width="500"/>
-     </div>
-</div>
+We can see from the histogram that basically, the data is distributed normally.
 
 ---
 
-## Test statistics from QQ plot
+## Normality test: QQ plot
 
-Let \\(\max_{i=1}^{n}\mid T_{(i)}-F^{-1}(i/(n+1))\mid\\)
-where \\(T_{(i)}\\) is the sorted values of \\(T_i\\). 
+As previously mentioned, the t-test is valid under strict parametric assumptions for it is dependent the normal distribution. We could check their empirical distribution and its theoretical normal distribution by their QQ plot.
+
+Suppose we would like the verify that whether the `weight.loss` follows the normal distribution with expectation 3.9 and variance 4. Now we could have the null hypothesis 
+\\(H_0:  X_1, X_2,...,X_n \sim \mathcal{N}(3.9,4)\\).
+
+Let \\(\max_{i=1}^{n}\mid T_{(i)}-F^{-1}(i/(n+1))\mid\\), where \\(T_{(i)}\\) is the sorted values of \\(T_i\\). 
 
 The theoretical value \\(F^{-1}(i/(n+1))\\)
 under the null hypothesis should be very close to the sorted value \\(T_{(i)}\\). 
-Therefore, the two values close to the line \\(y=x\\) indicate a good fit.     
-                    
-```r           
-x <- rnorm(n,0.8,0.4) # Check the null hypothesis that "Dominant radius" follow the normal distribution with 0.8 mean and 0.4 standard deviation by qqplot
-y <- mnr$'Dominant radius'
-qqplot(x,y)
-```
 
-<div style="text-align:center"><img src="qqplot.png" alt=" " width="15%">
+Therefore, the two values close to the line \\(y=x\\) indicate a good fit. We could use `qqplot` to have such test.
 
 ---
 
+## QQ plot
+
+```r
+x <- rnorm(n,3.9,2) 
+y <- diet$weight.loss
+qqplot(x,y)
+```
+<div style="text-align:center"><img src="qqplot2.png" alt=" " width="70%"> 
+
+---
+
+## Wilcoxon test
+
+In the setting of samples following the normal distribution, we could use t-test to test parameters. Whereas in the case of unknowing the distribution, there is a risk in using t-test. Thus, Wilcoxon test is considered to replace t-test. Suppose we do not know whether the `weight.loss` is normal distributed, then we could use `wilcox.test` to check if \\(\mu=3.9\\).
+```r
+wilcox.test(t, alternative = "greater")
+```
+```out
+	Wilcoxon signed rank test with continuity correction
+
+data:  t
+V = 1461, p-value = 0.5052
+alternative hypothesis: true location is greater than 0
+```
+The p-value is much larger than 0.05 which indicates the same conclusion as that with t-test.
+
+---
