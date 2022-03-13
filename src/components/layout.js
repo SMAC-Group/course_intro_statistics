@@ -57,7 +57,7 @@ const Layout = ({ isHome, title, description, children }) => {
                             <footer className={classes.footer}>
                             
                             <div align="center">
-                            <H3>About the course, the professor and the TAs</H3>
+                            <H3>About this course:</H3>
                             </div>
                                 <div className={classes.footerContent}>
                                
@@ -83,14 +83,12 @@ This course is intended to provide an introduction to the data analysis tools wi
                                             />
                                         )}
                                         <p>{meta.bio}</p>
-                                    
+                                    <img src="/licence_2.png" width = '100px' class = "center" />
                                     </section>
                                      
                                      
                                     
-                                  <center>
-                                    <img src="/licence_2.png" width = '100px'/>
-                                  </center>
+
                   
                                     
 

@@ -320,10 +320,3 @@ spo2_not_icu = spo2[icu == 0]
 
 </exercise>
 
-<exercise id="8" title="Example ?????? TO DO JUN">
-
-<slides source="chapter1_01">
-</slides>
-
-</exercise>
-
