@@ -234,27 +234,62 @@ Based on the test you performed and considering a type I error (i.e. "alpha") of
 </exercise>
 
 
-<exercise id="6" title="Exercises on the hospital length of stay of COVID 19 patients">
+<exercise id="6" title="Exercise on the dexamethasone dataset">
 
-We consider the data of an observational study conducted at 
-Geneva University Hospitals to assess the impact of weight 
+We consider data from Abouir, et al., (2022) which is an observational study conducted at Geneva University Hospitals to assess the impact of weight 
 on the pharmacokinetics of dexamethasone in normal-weight versus
 obese patients hospitalized for COVID-19. For the moment, we will only 
 consider the variable `lenght_hospital`, which corresponds to the
-length of hospitalization in days of the patients. Our goal is to conduct
-an analysis to assess 
+length of stay in days of the patients. Our goal is to conduct
+an analysis to assess if it can be concluded that the average length of stay is longer than 10 days. To analyze the data, we start loading the data as follows: 
 
-
+```r
 library(idar)
-boxplot_w_points(codex$lenght_hospital)
-hist(codex$lenght_hospital)
-mean(codex$lenght_hospital)
-wilcox.test(codex$lenght_hospital, mu = 10, alternative = "greater")
+data(codex)
+```
 
-Therefore, we cannot reject the null hypothesis and we don't enough evidence to
-conclude that the average length of hospitalization is longer than
-10 days
+and have a look at the data:
 
+```r
+boxplot_w_points(codex$lenght_hospital, horizontal = T, 
+    xlab = "Length of stay (day)")
+```
+
+<div style="text-align:center"><img src="chap1_length_of_stay_1.png" alt=" " width="70%"></div>
+
+```r
+hist_compare_to_normal(codex$lenght_hospital)(), horizontal = T, 
+    xlab = "Length of stay (day)")
+```
+
+<div style="text-align:center"><img src="chap1_length_of_stay_2.png" alt=" " width="70%"></div>
+
+Based on these graphs which test appears the most appropriate:
+
+<choice id="chap1_codex_2">
+<opt text="t-test."> The t-test doesn't appear to be an ideal choice in this case given the outliers that can be observed in the graph...</opt>
+<opt text="Wilcoxon test." correct = "true" > Given the outliers that can be observed this test appears to be a suitable choice. </opt>
+<opt text="other tests should be used here."> While it is true that other methods could be used here, one of the two tests above seems reasonable here. </opt>
+</choice>
+
+Using the test you selected what is the pvalue corresponding to the test of interest:
+
+<choice id="chap1_codex_3">
+<opt text="8.706e-07"> You may have used the wrong value for `mu`. </opt>
+<opt text="1.741e-06"> You may have used the wrong value for `mu` and the wrong alternative hypothesis. </opt>
+<opt text="0.08602" correct = "true"> Yay! 😉 </opt>
+<opt text="0.172"> You may have used  the wrong alternative hypothesis. </opt>
+<opt text="0.9177"> You may have used  the wrong alternative hypothesis. </opt>
+<opt text="Something else..."> You may have used the wrong value for `mu` and/or the wrong alternative hypothesis. </opt>
+</choice>
+
+Based on this p-value what can you conclude:
+
+<choice id="chap1_codex_4">
+<opt text="We can accept the null at 5% significance level and conclude that the average length of stay is equal to 10 days."> Actually, you can never accept the null 😒.</opt>
+<opt text="We fail to reject the null at 5% significance level." correct = "true" > </opt>
+<opt text="We can reject the null at 5% significance level and conclude that the average length of stay is equal to 10 days."> </opt>
+</choice>
 
 </exercise>
 
