@@ -285,7 +285,7 @@ The data can be downloaded
 
 </exercise>
 
-<exercise id="8" title="Example ?????? TO DO JUN" type = "slides">
+<exercise id="8" title="Example ?????? TO DO JUN">
 
 
 <slides source="chapter1_01">
