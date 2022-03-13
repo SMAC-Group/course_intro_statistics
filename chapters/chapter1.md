@@ -30,7 +30,7 @@ To install `R` on Ubuntu Linux, follow the procedure detailled [here](https://cr
 
 ## Installing `RStudio`
 
-RStudio is an Integrated Development Environment (IDE) for R. An Integrated Development Environment is a software application that provides comprehensive facilities to computer programmers for software development. An IDE normally consists of at least a source code editor, build automation tools and a debugger. We will be using RStudio Desktop throughout the semester. Please install it by going at [RStudio’s official webpage](https://www.rstudio.com/).
+RStudio is an Integrated Development Environment (IDE) for R. An IDE is a software application that provides comprehensive facilities to computer programmers for software development. An IDE normally consists of at least a source code editor, build automation tools and a debugger. We will be using RStudio Desktop throughout the semester. Please install it from the [RStudio’s official webpage](https://www.rstudio.com/).
 
 
 ### Installing `RStudio` on macOS
@@ -54,13 +54,13 @@ install.packages("devtools")
 devtools::install_github("https://github.com/SMAC-Group/idar", force = TRUE)
 ```
 
-To test if the package was correctly installed you cans simply run
+To test if the package is correctly installed you can simply run
 
 ```r
 library(idar)
 ```
 
-If you see no error then the package was correctly installed! Below is a gif illustrating the install of the `idar` `R` package:
+If you see no error then the package is correctly installed! Below is a gif illustrating the installation of the `idar` `R` package:
 
 <center>
 
