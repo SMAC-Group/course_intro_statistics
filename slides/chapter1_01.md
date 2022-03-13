@@ -111,14 +111,7 @@ where \\(T_{(i)}\\) is the sorted values of \\(T_i\\).
 
 The theoretical value \\(F^{-1}(i/(n+1))\\)
 under the null hypothesis should be very close to the sorted value \\(T_{(i)}\\). 
-Therefore, the two values close to the line \\(y=x\\) indicate a good fit.   
-
-
----
-
-
-You can produce a quantile-quantile (plot) to measure the adequacy of the fit with:
-
+Therefore, the two values close to the line \\(y=x\\) indicate a good fit.     
                     
 ```r           
 x <- rnorm(n,0.8,0.4) # Check the null hypothesis that "Dominant radius" follow the normal distribution with 0.8 mean and 0.4 standard deviation by qqplot
@@ -126,6 +119,7 @@ y <- mnr$'Dominant radius'
 qqplot(x,y)
 ```
 
-<div style="text-align:center"><img src="qqplot.png" alt=" " width="55%">
+<div style="text-align:center"><img src="qqplot.png" alt=" " width="15%">
 
+---
 
