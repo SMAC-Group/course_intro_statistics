@@ -24,7 +24,7 @@ To install `R` on Windows, download the `.exe` installer on the [CRAN website](h
 
 ### Installing `R` in Ubuntu Linux
 
-To install `R` on Ubuntu Linux, follow the procedure detailled [here](https://cran.r-project.org/).
+To install `R` on Ubuntu Linux, follow the procedure detailed [here](https://cran.r-project.org/).
 
 
 ## Installing `RStudio`
@@ -73,8 +73,7 @@ If you see no error then the package is correctly installed! Below is a gif illu
 <exercise id="2" title="Lecture Slides">
 
 
-View the slides directly in the browser or download the slides
-[here](https://github.com/SMAC-Group/course_data_analytics/raw/master/static/Lecture1.pdf). 
+You can view the slides directly in the browser below. To download the slides, please check [here](https://github.com/SMAC-Group/course_data_analytics/raw/master/static/Lecture1.pdf). 
 
 <iframe src="/Lecture1.html" width="710" height="530">
 </iframe>
@@ -97,13 +96,13 @@ View the slides directly in the browser or download the slides
 <choice id="chap1_theo1">
 <opt text="Every decision based on statistical methods is associated to a risk of taking the wrong decision." > Sad but true... 😟  </opt>
 <opt text="Decisions based on p-values are not necessarily correct."> Sad but true... 😟 </opt>
-<opt text="A scientific result based on a statistical analysis cannot be wrong." correct = "true"> This is indeed quite wrong! </opt>
+<opt text="A scientific result based on a statistical analysis cannot be wrong." correct = "true"> It can still go wrong! </opt>
 <opt text="It is only when the null hypothesis is rejected that we are sure that our decision is correct." correct = "true"> This is wrong as there are both type I and II errors.</opt>
-<opt text="When the null hypothesis is rejected, it is still that our conclusion is incorrect."> </opt>
-<opt text="A scientific result based on statistical analyses allows to further our understanding of the studied phenomenon without being able to guarantee that the conclusions are 100% correct."> </opt>
+<opt text="When the null hypothesis is rejected, our conclusion can still be incorrect."> </opt>
+<opt text="A scientific result based on statistical analyses allows to further our understanding on the studied phenomenon without being able to guarantee that the conclusions are 100% correct."> </opt>
 </choice>
 
-### 2) In hypothesis testing the type I error, corresponds to:
+### 2) In hypothesis testing, the type I error corresponds to:
 
 <choice id="chap1_theo2">
 <opt text="the probability of rejecting null hypothesis when null hypothesis is true."correct="true"> 👍 
@@ -114,10 +113,10 @@ View the slides directly in the browser or download the slides
 </opt>
 </choice>
 
-### 3)  Which statement following is false?
+### 3)  Which of the following statement is false?
 
 <choice id="3">
-<opt text="Small p-value indicates strong evidence against the alternative hypothesis." >
+<opt text="Small p-value indicates strong evidence against the null hypothesis." >
 </opt>
 <opt text="When the p-value is small enough, one says that the test based on the null and alternative hypothesis is significant." >
 </opt>
@@ -127,15 +126,15 @@ View the slides directly in the browser or download the slides
 </opt>
 </choice>
 
-### 6) When a measurement can be thought of as the average of numerous factors, its distribution tends to go to
+### 4) When a measurement can be thought of as the average of numerous factors, its distribution tends to go to
 <choice id="4">
 <opt text="A uniform distribution." >
 </opt>
-<opt text="A Poisson distribution." >
-</opt>
-<opt text="A Beta distribution.">
-</opt>
 <opt text="A normal distribution." correct="true" >
+</opt>
+<opt text="We can never know.">
+</opt>
+<opt text="It depends on the types of numerous factors." >
 </opt>
 </choice>
 
