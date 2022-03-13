@@ -272,7 +272,7 @@ Based on these graphs which test appears the most appropriate:
 <opt text="other tests should be used here."> While it is true that other methods could be used here, one of the two tests above seems reasonable here. </opt>
 </choice>
 
-Using the test you selected what is the pvalue corresponding to the test of interest:
+Using the test you selected, what is the p-value corresponding to the test of interest:
 
 <choice id="chap1_codex_3">
 <opt text="8.706e-07"> You may have used the wrong value for `mu`. </opt>
