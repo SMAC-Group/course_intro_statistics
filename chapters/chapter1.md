@@ -176,7 +176,7 @@ You can view the slides directly in the browser below. To download the slides, p
 </slides>
 </exercise>
 
-<exercise id="5" title="Exercises on the Diet dataset">
+<exercise id="5" title="Exercise on the Diet dataset">
 
 Previously, we saw that diet B is effective in reducing the weights of the participants. Is it also the case for diet A?
 
@@ -234,7 +234,27 @@ Based on the test you performed and considering a type I error (i.e. "alpha") of
 </exercise>
 
 
-<exercise id="6" title="Analysis of hospital length of stay of COVID 19 patients">
+<exercise id="6" title="Exercises on the hospital length of stay of COVID 19 patients">
+
+We consider the data of an observational study conducted at 
+Geneva University Hospitals to assess the impact of weight 
+on the pharmacokinetics of dexamethasone in normal-weight versus
+obese patients hospitalized for COVID-19. For the moment, we will only 
+consider the variable `lenght_hospital`, which corresponds to the
+length of hospitalization in days of the patients. Our goal is to conduct
+an analysis to assess 
+
+
+library(idar)
+boxplot_w_points(codex$lenght_hospital)
+hist(codex$lenght_hospital)
+mean(codex$lenght_hospital)
+wilcox.test(codex$lenght_hospital, mu = 10, alternative = "greater")
+
+Therefore, we cannot reject the null hypothesis and we don't enough evidence to
+conclude that the average length of hospitalization is longer than
+10 days
+
 
 </exercise>
 

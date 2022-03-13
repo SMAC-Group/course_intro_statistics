@@ -66,7 +66,7 @@ const Layout = ({ isHome, title, description, children }) => {
 
                                         
                                         <p> 
-                                        This course is intended to provide an introduction to data science using the <code>R</code> language. It will also provide students with notions of data management and manipulation, data analytics as well as of reproducible research, result-sharing and version control (using GitHub). At the end of the class, students should be able to automatically extract data from websites and create interactive web apps as well as dynamic reports to visualize and analyze them. Students should also be able to construct their own <code>R</code> packages, make them available on GitHub and document them using literate programming.
+This course is intended to provide an introduction to the data analysis tools with R. These tools include statistical hypothesis testing, (generalized) linear models, machine learning and semi-parametric methods. Applications of these statistical methods are provided in the context of Pharmaceutical Sciences. At the end of this class, students are expected to understand the underlying theoretical foundations and the computational issues of different statistical methods, as well as to communicate the practical interpretation of the data analysis results.
                                         </p>
                                             
                                     </section>
@@ -85,18 +85,14 @@ const Layout = ({ isHome, title, description, children }) => {
                                         <p>{meta.bio}</p>
                                     
                                     </section>
-                                     <div align="center">
-                                    <section>
-                                   
-                                    <img
-                                                src="/licence.png"
-                                                alt=""
-                                                
-                                            />
+                                     
+                                     
                                     
-
-                                    </section>
-                                    </div>
+                                  <center>
+                                    <img src="/licence_2.png" width = '100px'/>
+                                  </center>
+                  
+                                    
 
                                     {meta.footerLinks && (
                                         <ul className={classes.footerLinks}>
