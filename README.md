@@ -3,16 +3,16 @@
 [![Netlify Status](https://api.netlify.com/api/v1/badges/f47e6e2c-5355-449f-bba3-c4185249df33/deploy-status)](https://app.netlify.com/sites/intro-data-analytics/deploys)
 
 <p align="center">
-<img src="static/logo2.png" align="center" width="450px"/>
+<img src="static/logo.png" align="center" width="450px"/>
 </p>
 
 <p align="center">
-<h1>Introduction to Data Science with <code>R</code> </h1>
+<h1>Data Analytics for Pharmaceutical Sciences<code>R</code> </h1>
 </p>
 
-Welcome! This is the source repository for the exercice support website for the class **Introduction to Data Science** given on Spring semester 2020 at the University of Geneva. The website is hosted at: <https://github.com/SMAC-Group/course_intro_ds>.
+Welcome! This is the source repository for the exercice support website for the class **Modélisation et analyse de données** given on Spring semester 2022 at the University of Geneva. The website is hosted at: <https://intro-data-analytics.netlify.app/>.
 
-The [site](https://intro-to-ds.netlify.com/)  itself is built on an amazing framework created by <a href='https://ines.io/'>Ines Montani</a>, originally created for her [spaCy course](https://course.spacy.io).  The front-end is powered by
+The [site](https://intro-data-analytics.netlify.app/  itself is built on an amazing framework created by <a href='https://ines.io/'>Ines Montani</a>, originally created for her [spaCy course](https://course.spacy.io).  The front-end is powered by
 [Gatsby](http://gatsbyjs.org/) and [Reveal.js](https://revealjs.com) and the
 back-end code execution uses [Binder](https://mybinder.org). </p>
 
