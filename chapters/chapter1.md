@@ -8,7 +8,6 @@ type: chapter
 id: 1
 ---
 
-
 <exercise id="1" title="Installing R and RStudio">
 
 ## Installing `R`
@@ -268,8 +267,39 @@ Based on the test you performed and considering a type I error (i.e. "alpha") of
 
 </exercise>
 
-<exercise id="6" title="Example ?????? TO DO JUN" type = "slides">
 
+<exercise id="6" title="Analysis of hospital length of stay of COVID 19 patients">
+
+</exercise>
+
+<exercise id="7" title="Homework 1">
+
+We consider data from Parisi, et al., 2021 which studies the applicability of predictive models for intensive care admission of COVID-19 patients in a secondary care hospital in Belgium. Indeed, this study is based on data of patients admitted to an emergency department with a positive RT-PCR SARS-CoV-2 test. For the moment, the only variable we will consider is the oxygen saturation of the patients and your goal is to conduct an analysis based on this data to answer the following questions:
+
+1. Can we conclude that the admitted COVID 19 patients have an average oxygen saturation that can be considered low?
+2. Can we conclude that the admitted COVID 19 patients have an average oxygen saturation below 93%?
+3. Can we conclude that the COVID 19 patients admitted to an Intensive Care Unit (ICU) tend to have a lower oxygen saturation than the ones that are not? For example, is it reasonable to conclude that average oxygen saturation of ICU patients is lower than 92%? Similarly, is it reasonable to conclude that average oxygen saturation of non ICU patients is greater than 92%?
+
+The data can be obtained as follows:
+
+```r
+library(idar)
+data(covid)
+
+# SpO2
+spo2 = covid$spo2
+
+# SpO2 (in ICU)
+icu = covid$icu
+spo2_icu = spo2[icu == 1]
+
+# SpO2 (not in ICU)
+spo2_not_icu = spo2[icu == 0]
+```
+
+</exercise>
+
+<exercise id="8" title="Example ?????? TO DO JUN">
 
 <slides source="chapter1_01">
 </slides>
