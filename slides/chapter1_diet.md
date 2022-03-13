@@ -88,23 +88,20 @@ The `boxplot` function has many options which you can explore by having at the h
 
 ---
 
-
 In order to simplify the visualization of similar data in the context of the class, we propose the function `boxplot_w_points` in the package `idar`. You can use the following code for example:
-
- 
  
 ```r
 boxplot_w_points(dietB, main = "Diet B", horizontal = TRUE, xlab = "Weight loss (kg)")
 abline(v = 0)
 ```
 
-<div style="text-align:center"><img src="boxplot_w_point_1.png" alt=" " width="60%">
+<div style="text-align:center"><img src="boxplot_w_point_1.png" alt=" " width="65%">
 
 ---
 
 # Testing Diet B effictiness 
 
-Suppose that we wish to assess how well diet B is working. One possible method is to use a t-test based on the hyptheses
+Suppose that we wish to assess how well diet B is working. One possible method is to use a t-test based on the hypotheses
 
 \\(H_{0}: \mu=0\\) and \\(H_{a}: \mu>0\\)
 
@@ -131,7 +128,7 @@ mean of x
 This results implies that we can reject the null hypothesis at the significance level of 5% and conclude that the diet significantly reduces the weight of the participants. Interestingly, we can also run:
 
 ```r
-> t.test(dietB)
+t.test(dietB)
 ```
 
 ```out
@@ -147,11 +144,21 @@ mean of x
     3.268 
 ```
 
-which shows that we can expected a mean weigth loss for Diet B between 2.25 Kg and 4.29 Kg (at the 95% confidence level).     
+which shows that we can expected a mean weight loss for Diet B between 2.25 Kg and 4.29 Kg (at the 95% confidence level).     
 
 ---
 
-As previously, mentioned the t-test is valid under strict parametric assumptions. While there are no perfect way to do this but the `?????` in the `idar` can help with this by comparing the empirical distribution of the data and its theoretical normal distribution. This function can be used as follows:
+As previously, mentioned the t-test is valid under strict parametric assumptions (e.g. normal distribution). While there are no perfect way to check these assumptions, we create a simple function allowing to visually assess how close some data are to a normal distribution. This function is called `hist_compare_to_normal` and allows to compare the empirical distribution of the data and its theoretical normal distribution. The theoretical distribution is also estimated in a robust fashion (which is less influenced by outliers). Large differences between these distribution indicates that a t-test may not appropriate. Of course, what constitutes a "large" difference is rather subjective. This function can be used as follows:
+
+```r
+hist_compare_to_normal(dietB)
+```
+
+---
+
+<div style="text-align:center"><img src="chap1_dietB_hist.png" alt=" " width="70%">
+
+This graph together with the boxplots previously constructed could be used to argue that a t-test could a suitable option for this dataset. However, using a Wilcoxon test instead of t-test might always be a safer when the distribution appears symmetric (as is the case here).
 
 ---
 
