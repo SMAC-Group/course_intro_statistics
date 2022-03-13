@@ -268,7 +268,11 @@ Based on the test you performed and considering a type I error (i.e. "alpha") of
 
 </exercise>
 
-<exercise id="6" title="Example ?????? TO DO JUN" type = "slides">
+
+
+
+
+<exercise id="6" title="Example ?????? TO DO JUN">
 
 
 <slides source="chapter1_01">
