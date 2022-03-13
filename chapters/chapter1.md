@@ -178,11 +178,11 @@ You can view the slides directly in the browser below. To download the slides, p
 
 <exercise id="5" title="Exercises on the Diet dataset">
 
-Previously, we saw that Diet B was effective in reducing the weights of the participants. Is it also the case for Diet A?
+Previously, we saw that diet B is effective in reducing the weights of the participants. Is it also the case for diet A?
 
 ### 1. How to get the data?
 
-Complete the code below to get the data for Diet A:
+Complete the code below to get the data for diet A:
 
 <codeblock id="chap1_diet_1">
 
@@ -192,7 +192,7 @@ The variable `posw` allows to select the diet we are interested in.
 
 ### 2. How to plot the data?
 
-Complete the code below to plot the data for Diet A:
+Complete the code below to plot the data for diet A:
 
 <codeblock id="chap1_diet_2">
 
@@ -202,7 +202,7 @@ You can use the functions `boxplot_w_points` and `hist_compare_to_normal`.
 
 ### 3. Which test should we use?
 
-Based on the graph you produced which test appears the most appropriate to test if Diet A leads to a significant weight loss:
+Based on the graph you produce, which test appears the most appropriate to test if diet A leads to a significant weight loss:
 
 <choice id="chap1_diet_1">
 <opt text="t-test."> The t-test doesn't appear to be an ideal choice in this case given the outliers that can be observed in the graph...</opt>
@@ -212,23 +212,23 @@ Based on the graph you produced which test appears the most appropriate to test 
 
 ### 4. How to perform the test you selected?
 
-Complete the code below to test if Diet A is effective in reducing the weights of the participants:
+Complete the code below to test if diet A is effective in reducing the weights of the participants:
 
 <codeblock id="chap1_diet_3">
 
-Remember to we are interested in testing if the participants are losing weight, so we should use `alternative = "greater"` 
+Remember that we are interested in testing if the participants are losing weights, so we should use `alternative = "greater"`. 
 
 </codeblock>
 
 ### 5. What can we conclude?
 
-Based on the test you performed and considering a type I error (i.e. "alpha") of 5%, what can you conclude:
+Based on the test you performed and considering a type I error (i.e. "alpha") of 5%, we can conclude that:
 
 <choice id="chap1_diet_2">
-<opt text="The test shows that it is sure that Diet A significantly reduces the weight of the participants." > Sadly, we can never be sure with statistical methods... </opt>
-<opt text="We don't really know..."> In some sense, this is correct... 😉  However, the statistical method you selected indicates that it is very likely that the Diet is working. </opt>
-<opt text="We can reject the null hypothesis at the significance level of 5% and conclude that Diet A significantly reduces the weight of the participants." correct = "true"> Yay! 👍 </opt>
-<opt text="We cannot reject the null hypothesis at the significance level of 5%."> Actually, in this case the p-value is smaller that 5% as it is 0.00101%, so we can reject the null.</opt>
+<opt text="We can be sure that diet A significantly reduces the weights of the participants." > Sadly, we can never be sure with statistical methods... </opt>
+<opt text="We don't really know..."> In some sense, this is correct... 😉  However, the statistical method you selected indicates that it is very likely that the diet is working. </opt>
+<opt text="We can reject the null hypothesis at the significance level of 5% and conclude that diet A significantly reduces the weights of the participants." correct = "true"> Yay! 👍 </opt>
+<opt text="We cannot reject the null hypothesis at the significance level of 5%."> Actually, in this case the p-value is smaller than 5% as it is 0.00101%, so we can reject the null hypothesis.</opt>
 </choice>
 
 </exercise>
