@@ -120,13 +120,27 @@ You can view the slides directly in the browser below. To download the slides, p
 </opt>
 <opt text="When the p-value is small enough, one says that the test based on the null and alternative hypothesis is significant." >
 </opt>
-<opt text="When the p-value is not small enough, with the available data, we can reject the null hypothesis."correct="true">
+<opt text="When the p-value is not small enough, with the available data, we can reject the null hypothesis."correct="true"> We can only reject the null hypothesis when the p-value is smaller than a certain threshold. 
 </opt>
 <opt text="The obtained p-value summarizes the incompatibility between the data and the model constructed under the set of assumptions.">
 </opt>
 </choice>
 
-### 4) When a measurement can be thought of as the average of numerous factors, its distribution tends to go to
+
+### 4) Which of the following statement is true?
+<choice id="4">
+<opt text="A p-value of 1% is significant." >
+</opt>
+<opt text="A p-value of 5% is significant." >
+</opt>
+<opt text="A p-value of 8% is significant.">
+</opt>
+<opt text="None of the above statement is true." correct="true" > A p-value can only be considered as significant in comparison to a certain significance level. 
+</opt>
+</choice>
+
+
+### 5) When a measurement can be thought of as the average of numerous factors, its distribution tends to go to
 <choice id="4">
 <opt text="A uniform distribution." >
 </opt>
@@ -138,65 +152,18 @@ You can view the slides directly in the browser below. To download the slides, p
 </opt>
 </choice>
 
-### 7)  Which following statement is true?
-<choice id="5">
-<opt text="the hypotheses of the Wilcoxon signed rank test are on the population mean." >
+
+### 6) Which of the following statement is true?
+<choice id="4">
+<opt text="One-sample t-test can be used as long as there is no outlier in the sample." > T-test should be used when the data have no outlier AND are approximately normally distributed. 
 </opt>
-<opt text="the hypotheses of the Wilcoxon signed rank test are on the population median." correct="true">
+<opt text="T-test states the hypothesis on the sample mean and Wilcoxon signed rank test states the hypothesis in terms of sample median." > The hypothesis statement is always with respect to a population level quantity.
 </opt>
-<opt text="the hypotheses of the Wilcoxon signed rank test are on the population standard deviation.">
+<opt text="Wilcoxon signed rank test is always better than the t-test."> The Wilcoxon signed rank test may lose some power than the t-test if the data have no outlier and are approximately normally distributed.
 </opt>
-<opt text="the hypotheses of the Wilcoxon signed rank test are on the population mode.">
+<opt text="T-test is a parametric test whereas Wilcoxon signed rank test is a nonparametric test." correct="true" > 
 </opt>
 </choice>
-
-
-### 9) Consider that you observe a total of 50 observations. You would like to test that the true center of the distribution from which the sample you observe is generated is greater than a given value \\( \mu_{H0}\\). How do you compute the correct critical value with a significance level of \\( \alpha = 0.05 \\)? Hint: The degrees of freedom are given by \\( n-1 \\) where \\( n \\) is the number of observations
-
-
-
-<choice id="7">
-<opt text="<code>qt(p = 0.05, df = 49, lower.tail = FALSE)</code>" correct="true">
-</opt>
-<opt text="<code>qt(p = 0.05/2, df = 49, lower.tail = FALSE)</code>" >
-</opt>
-<opt text="<code>pt(q = .95, df = 49)</code>" >
-</opt>
-<opt text="<code>qt(p=.05, df=49, lower.tail=TRUE)</code>" >
-</opt>
-</choice>
-
-
-### 10) Consider that you observe a total of 50 observations. You would like to test that the true center of the distribution from which the sample you observe is generated is not equal to a given value \\( \mu_{H0} \\). How do you compute the correct critical value with a significance level of \\( \alpha = 0.05\\)? Hint: The degrees of freedom are given by \\( n-1 \\) where \\( n\\) is the number of observations
-
-
-
-<choice id="8">
-<opt text="<code>qt(p = 0.05, df = 49, lower.tail = FALSE)</code>">
-</opt>
-<opt text="<code>qt(p = 0.05/2, df = 49, lower.tail = FALSE)</code>" correct="true">
-</opt>
-<opt text="<code>pt(q = .95, df = 49)</code>" >
-</opt>
-<opt text="<code>qt(p=.05, df=49, lower.tail=TRUE)</code>" >
-</opt>
-</choice>
-
-
-### 11) Consider that you observe a total of 30 observations. The estimated mean is 23.5 and the estimated standard deviation is 8.5. You would like to test that the true center of the distribution from which the sample you observe is generated is not equal to a given value \\(\mu_{H0} = 20\\). Compute the test statistic. 
-
-
-<choice id="9">
-<opt text="<code>sqrt(30)*(23.5 - 20) / 8.5</code>" correct="true">
-</opt>
-<opt text="<code>sqrt(29)*(23.5 - 20) / 8.5</code>" >
-</opt>
-<opt text="<code>sqrt(29)*((23.5 - 20) / 8.5)</code>" >
-</opt>
-<opt text="<code>1-pt(sqrt(30)*(23.5 - 20) / 8.5, df = 29)</code>" >
-</opt>
-</choice>
-
 
 </exercise>
 
