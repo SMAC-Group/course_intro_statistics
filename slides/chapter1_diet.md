@@ -57,7 +57,7 @@ dietB = diet$weight.loss[posw]
 
 # Plot the data
 
-For continuous data, a common method to visualize them the boxplot. The default `R`  function for boxplot can be used as follows:
+For continuous data, a common method to visualize them is the boxplot. The default `R` function for boxplot can be used as follows:
 
 ```r
 boxplot(dietB, main = "Diet B", ylab = "Weight loss (kg)")
@@ -67,7 +67,7 @@ boxplot(dietB, main = "Diet B", ylab = "Weight loss (kg)")
 
 ---
 
-To have something closer to the graph presented in the lecture slides can use the following code instead:
+To have something closer to the graph presented in the lecture slides, we can use the following code instead:
 
 ```r
 boxplot(dietB, main = "Diet B", xlab = "Weight loss (kg)", horizontal = TRUE)
@@ -78,7 +78,7 @@ abline(v = 0)
 
 ---
 
-The `boxplot` function has many options which you can explore by having at the help page dedicated to this function by running:
+The `boxplot` function has many options which you can explore by looking at the help page dedicated to this function by running:
 
 ```r
 ?boxplot
@@ -88,7 +88,7 @@ The `boxplot` function has many options which you can explore by having at the h
 
 ---
 
-In order to simplify the visualization of similar data in the context of the class, we propose the function `boxplot_w_points` in the package `idar`. You can use the following code for example:
+In order to simplify the visualization of similar data in the context of the class, we propose to use the function `boxplot_w_points` in the `idar` package. The following code can be used:
  
 ```r
 boxplot_w_points(dietB, main = "Diet B", horizontal = TRUE, xlab = "Weight loss (kg)")
@@ -99,7 +99,7 @@ abline(v = 0)
 
 ---
 
-# Testing Diet B effictiness 
+# Testing Diet B effectiveness 
 
 Suppose that we wish to assess how well diet B is working. One possible method is to use a t-test based on the hypotheses
 
@@ -125,7 +125,7 @@ mean of x
 
 ---
 
-This results implies that we can reject the null hypothesis at the significance level of 5% and conclude that the diet significantly reduces the weight of the participants. Interestingly, we can also run:
+This result implies that we can reject the null hypothesis at the significance level of 5% and conclude that diet B significantly reduces the weight of the participants. Interestingly, we can also run:
 
 ```r
 t.test(dietB)
@@ -144,11 +144,11 @@ mean of x
     3.268 
 ```
 
-which shows that we can expected a mean weight loss for Diet B between 2.25 Kg and 4.29 Kg (at the 95% confidence level).     
+which shows that we can expect a mean weight loss for diet B between 2.25 Kg and 4.29 Kg (at the 95% confidence level).     
 
 ---
 
-As previously, mentioned the t-test is valid under strict parametric assumptions (e.g. normal distribution). While there are no perfect way to check these assumptions, we create a simple function allowing to visually assess how close some data are to a normal distribution. This function is called `hist_compare_to_normal` and allows to compare the empirical distribution of the data and its theoretical normal distribution. The theoretical distribution is also estimated in a robust fashion (which is less influenced by outliers). Large differences between these distribution indicates that a t-test may not appropriate. Of course, what constitutes a "large" difference is rather subjective. This function can be used as follows:
+As previously mentioned, the t-test is valid under strict parametric assumptions (e.g. normal distribution). While there are no perfect way to check these assumptions, we create a simple function allowing to visually assess how close some data are to a normal distribution. This function is called `hist_compare_to_normal` and allows to compare the empirical distribution of the data to its theoretical normal distribution. The theoretical distribution is also estimated in a robust fashion (which is less influenced by outliers). Large difference between these distributions indicates that a t-test may not be appropriate. Of course, what constitutes a "large" difference is rather subjective. This function can be used as follows:
 
 ```r
 hist_compare_to_normal(dietB)
@@ -156,13 +156,15 @@ hist_compare_to_normal(dietB)
 
 ---
 
-<div style="text-align:center"><img src="chap1_dietB_hist.png" alt=" " width="70%">
+<div style="text-align:center"><img src="chap1_dietB_hist.png" alt=" " width="70%"></div>
 
-This graph together with the boxplots previously constructed could be used to argue that a t-test could a suitable option for this dataset. However, using a Wilcoxon test instead of t-test might always be a safer when the distribution appears symmetric (as is the case here).
+This graph together with the boxplots previously constructed could be used to argue that a t-test could be a suitable option for this dataset. However, using a Wilcoxon test instead of t-test might always be a safer choice when the distribution appears symmetric (as is the case here).
+
+
 
 ---
 
-An non-parametric alternative to the t-test is the Wilcoxon signed rank test (which we often simply call "Wilcoxon test") which in this case can be used as follows:
+An non-parametric alternative to the t-test is the Wilcoxon signed rank test (often simply called "Wilcoxon test") which in this case can be used as follows:
 
 ```r
 wilcox.test(dietB, alternative = "greater")
@@ -176,4 +178,4 @@ V = 313, p-value = 2.71e-05
 alternative hypothesis: true location is greater than 0
 ```
 
-This test provides a similar conclusion to the one obtain with the t-test and we can reject the null hypothesis at the significance level of 5% and conclude that Diet B significantly reduces the weight of the participants.
+This test provides a similar conclusion to the one obtained with the t-test. We can reject the null hypothesis at the significance level of 5% and conclude that diet B significantly reduces the weight of the participants.
