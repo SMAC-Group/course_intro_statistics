@@ -8,7 +8,6 @@ type: chapter
 id: 1
 ---
 
-
 <exercise id="1" title="Installing R and RStudio">
 
 ## Installing `R`
@@ -284,13 +283,23 @@ We consider data from Parisi, et al., 2021 which studies the applicability of pr
 The data can be obtained as follows:
 
 ```r
+library(idar)
+data(covid)
 
+# SpO2
+spo2 = covid$spo2
+
+# SpO2 (in ICU)
+icu = covid$icu
+spo2_icu = spo2[icu == 1]
+
+# SpO2 (not in ICU)
+spo2_not_icu = spo2[icu == 0]
 ```
 
 </exercise>
 
 <exercise id="8" title="Example ?????? TO DO JUN">
-
 
 <slides source="chapter1_01">
 </slides>
