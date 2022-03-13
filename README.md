@@ -3,7 +3,7 @@
 [![Netlify Status](https://api.netlify.com/api/v1/badges/f47e6e2c-5355-449f-bba3-c4185249df33/deploy-status)](https://app.netlify.com/sites/intro-data-analytics/deploys)
 
 <p align="center">
-<img src="static/logo.png" align="center" width="450px"/>
+<img src="static/logo_data_analytics.png" align="center" width="450px"/>
 </p>
 
 <p align="center">
