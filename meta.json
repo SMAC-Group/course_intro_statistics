@@ -3,7 +3,7 @@
     "title": "Introduction to Data Analytics",
     "slogan": "A free online course",
     "description": "This course will presents an Introduction to Data Analytics with R",
-    "bio": "Stéphane Guerrier is an Assistant Professor of Statistics and Data Science at the University of Geneva. Lionel Voirol, Yuming Zhang, Wenfei Chu and Jun Wu are PhD Candidates in Statistics at the University of Geneva.",
+    "bio": "The material presented in this website was mainly developed by Stéphane Guerrier, Lionel Voirol and Yuming Zhang (University of Geneva). Moreover, we thank Julien Boccard (University of Geneva), Wenfei Chu (University of Geneva), Dominique-Laurent Couturier (University of Cambridge) and Jun Wu (University of Geneva) for their help and valuable contributions.",
     "siteUrl": "https://intro-to-analytics.netlify.com/",
     "twitter": "spacy_io",
     "fonts": "IBM+Plex+Mono:500|IBM+Plex+Sans:700|Lato:400,400i,700,700i",
