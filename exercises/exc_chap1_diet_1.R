@@ -9,4 +9,4 @@ diet$weight.loss = diet$initial.weight - diet$final.weight
 posw = diet$diet.type=="_"
 
 # Variable of interest
-dietC = diet$weight.loss[____]
+dietA = diet$weight.loss[____]

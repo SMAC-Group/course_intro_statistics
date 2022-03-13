@@ -12,7 +12,7 @@ posw = diet$diet.type=="A"
 dietA = diet$weight.loss[posw]
 
 # Boxplot
-boxplot_w_points(dietA)
+______(dietA)
 
 # Histogram
-hist_compare_to_normal(dietA)
+______(dietA)
