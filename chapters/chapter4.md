@@ -1,5 +1,5 @@
 ---
-title: 'Chapter 4: Generalized Linear Models 🚧🔨 (in construction)'
+title: 'Chapter 4: Generalized Linear Models 🚧🔨 (under construction)'
 description:
   ''
 prev: /chapter3

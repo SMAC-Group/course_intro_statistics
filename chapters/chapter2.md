@@ -1,5 +1,5 @@
 ---
-title: 'Chapter 2: Analysis of Variance 🚧🔨 (in construction)'
+title: 'Chapter 2: Analysis of Variance 🚧🔨 (under construction)'
 description:
   ''
 prev: /chapter1

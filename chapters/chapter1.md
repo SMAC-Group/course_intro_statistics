@@ -24,12 +24,12 @@ To install `R` on Windows, download the `.exe` installer on the [CRAN website](h
 
 ### Installing `R` in Ubuntu Linux
 
-To install `R` on Ubuntu Linux, follow the procedure detailled [here](https://cran.r-project.org/).
+To install `R` on Ubuntu Linux, follow the procedure detailed [here](https://cran.r-project.org/).
 
 
 ## Installing `RStudio`
 
-RStudio is an Integrated Development Environment (IDE) for R. An Integrated Development Environment is a software application that provides comprehensive facilities to computer programmers for software development. An IDE normally consists of at least a source code editor, build automation tools and a debugger. We will be using RStudio Desktop throughout the semester. Please install it by going at [RStudio’s official webpage](https://www.rstudio.com/).
+RStudio is an Integrated Development Environment (IDE) for R. An IDE is a software application that provides comprehensive facilities to computer programmers for software development. An IDE normally consists of at least a source code editor, build automation tools and a debugger. We will be using RStudio Desktop throughout the semester. Please install it from the [RStudio’s official webpage](https://www.rstudio.com/).
 
 
 ### Installing `RStudio` on macOS
@@ -53,13 +53,13 @@ install.packages("devtools")
 devtools::install_github("https://github.com/SMAC-Group/idar", force = TRUE)
 ```
 
-To test if the package was correctly installed you cans simply run
+To test if the package is correctly installed you can simply run
 
 ```r
 library(idar)
 ```
 
-If you see no error then the package was correctly installed! Below is a gif illustrating the install of the `idar` `R` package:
+If you see no error then the package is correctly installed! Below is a gif illustrating the installation of the `idar` `R` package:
 
 <center>
 
@@ -73,8 +73,7 @@ If you see no error then the package was correctly installed! Below is a gif ill
 <exercise id="2" title="Lecture Slides">
 
 
-View the slides directly in the browser or download the slides
-[here](https://github.com/SMAC-Group/course_data_analytics/raw/master/static/Lecture1.pdf). 
+You can view the slides directly in the browser below. To download the slides, please check [here](https://github.com/SMAC-Group/course_data_analytics/raw/master/static/Lecture1.pdf). 
 
 <iframe src="/Lecture1.html" width="710" height="530">
 </iframe>
@@ -97,13 +96,13 @@ View the slides directly in the browser or download the slides
 <choice id="chap1_theo1">
 <opt text="Every decision based on statistical methods is associated to a risk of taking the wrong decision." > Sad but true... 😟  </opt>
 <opt text="Decisions based on p-values are not necessarily correct."> Sad but true... 😟 </opt>
-<opt text="A scientific result based on a statistical analysis cannot be wrong." correct = "true"> This is indeed quite wrong! </opt>
+<opt text="A scientific result based on a statistical analysis cannot be wrong." correct = "true"> It can still go wrong! </opt>
 <opt text="It is only when the null hypothesis is rejected that we are sure that our decision is correct." correct = "true"> This is wrong as there are both type I and II errors.</opt>
-<opt text="When the null hypothesis is rejected, it is still that our conclusion is incorrect."> </opt>
-<opt text="A scientific result based on statistical analyses allows to further our understanding of the studied phenomenon without being able to guarantee that the conclusions are 100% correct."> </opt>
+<opt text="When the null hypothesis is rejected, our conclusion can still be incorrect."> </opt>
+<opt text="A scientific result based on statistical analyses allows to further our understanding on the studied phenomenon without being able to guarantee that the conclusions are 100% correct."> </opt>
 </choice>
 
-### 2) In hypothesis testing the type I error, corresponds to:
+### 2) In hypothesis testing, the type I error corresponds to:
 
 <choice id="chap1_theo2">
 <opt text="the probability of rejecting null hypothesis when null hypothesis is true."correct="true"> 👍 
@@ -114,90 +113,57 @@ View the slides directly in the browser or download the slides
 </opt>
 </choice>
 
-### 3)  Which statement following is false?
+### 3)  Which of the following statement is false?
 
 <choice id="3">
-<opt text="Small p-value indicates strong evidence against the alternative hypothesis." >
+<opt text="Small p-value indicates strong evidence against the null hypothesis." >
 </opt>
 <opt text="When the p-value is small enough, one says that the test based on the null and alternative hypothesis is significant." >
 </opt>
-<opt text="When the p-value is not small enough, with the available data, we can reject the null hypothesis."correct="true">
+<opt text="When the p-value is not small enough, with the available data, we can reject the null hypothesis."correct="true"> We can only reject the null hypothesis when the p-value is smaller than a certain threshold. 
 </opt>
 <opt text="The obtained p-value summarizes the incompatibility between the data and the model constructed under the set of assumptions.">
 </opt>
 </choice>
 
-### 6) When a measurement can be thought of as the average of numerous factors, its distribution tends to go to
+
+### 4) Which of the following statement is true?
+<choice id="4">
+<opt text="A p-value of 1% is significant." >
+</opt>
+<opt text="A p-value of 5% is significant." >
+</opt>
+<opt text="A p-value of 8% is significant.">
+</opt>
+<opt text="None of the above statement is true." correct="true" > A p-value can only be considered as significant in comparison to a certain significance level. 
+</opt>
+</choice>
+
+
+### 5) When a measurement can be thought of as the average of numerous factors, its distribution tends to go to
 <choice id="4">
 <opt text="A uniform distribution." >
 </opt>
-<opt text="A Poisson distribution." >
-</opt>
-<opt text="A Beta distribution.">
-</opt>
 <opt text="A normal distribution." correct="true" >
 </opt>
-</choice>
-
-### 7)  Which following statement is true?
-<choice id="5">
-<opt text="the hypotheses of the Wilcoxon signed rank test are on the population mean." >
+<opt text="We can never know.">
 </opt>
-<opt text="the hypotheses of the Wilcoxon signed rank test are on the population median." correct="true">
-</opt>
-<opt text="the hypotheses of the Wilcoxon signed rank test are on the population standard deviation.">
-</opt>
-<opt text="the hypotheses of the Wilcoxon signed rank test are on the population mode.">
+<opt text="It depends on the types of numerous factors." >
 </opt>
 </choice>
 
 
-### 9) Consider that you observe a total of 50 observations. You would like to test that the true center of the distribution from which the sample you observe is generated is greater than a given value \\( \mu_{H0}\\). How do you compute the correct critical value with a significance level of \\( \alpha = 0.05 \\)? Hint: The degrees of freedom are given by \\( n-1 \\) where \\( n \\) is the number of observations
-
-
-
-<choice id="7">
-<opt text="<code>qt(p = 0.05, df = 49, lower.tail = FALSE)</code>" correct="true">
+### 6) Which of the following statement is true?
+<choice id="4">
+<opt text="One-sample t-test can be used as long as there is no outlier in the sample." > T-test should be used when the data have no outlier AND are approximately normally distributed. 
 </opt>
-<opt text="<code>qt(p = 0.05/2, df = 49, lower.tail = FALSE)</code>" >
+<opt text="T-test states the hypothesis on the sample mean and Wilcoxon signed rank test states the hypothesis in terms of sample median." > The hypothesis statement is always with respect to a population level quantity.
 </opt>
-<opt text="<code>pt(q = .95, df = 49)</code>" >
+<opt text="Wilcoxon signed rank test is always better than the t-test."> The Wilcoxon signed rank test may lose some power than the t-test if the data have no outlier and are approximately normally distributed.
 </opt>
-<opt text="<code>qt(p=.05, df=49, lower.tail=TRUE)</code>" >
+<opt text="T-test is a parametric test whereas Wilcoxon signed rank test is a nonparametric test." correct="true" > 
 </opt>
 </choice>
-
-
-### 10) Consider that you observe a total of 50 observations. You would like to test that the true center of the distribution from which the sample you observe is generated is not equal to a given value \\( \mu_{H0} \\). How do you compute the correct critical value with a significance level of \\( \alpha = 0.05\\)? Hint: The degrees of freedom are given by \\( n-1 \\) where \\( n\\) is the number of observations
-
-
-
-<choice id="8">
-<opt text="<code>qt(p = 0.05, df = 49, lower.tail = FALSE)</code>">
-</opt>
-<opt text="<code>qt(p = 0.05/2, df = 49, lower.tail = FALSE)</code>" correct="true">
-</opt>
-<opt text="<code>pt(q = .95, df = 49)</code>" >
-</opt>
-<opt text="<code>qt(p=.05, df=49, lower.tail=TRUE)</code>" >
-</opt>
-</choice>
-
-
-### 11) Consider that you observe a total of 30 observations. The estimated mean is 23.5 and the estimated standard deviation is 8.5. You would like to test that the true center of the distribution from which the sample you observe is generated is not equal to a given value \\(\mu_{H0} = 20\\). Compute the test statistic. 
-
-
-<choice id="9">
-<opt text="<code>sqrt(30)*(23.5 - 20) / 8.5</code>" correct="true">
-</opt>
-<opt text="<code>sqrt(29)*(23.5 - 20) / 8.5</code>" >
-</opt>
-<opt text="<code>sqrt(29)*((23.5 - 20) / 8.5)</code>" >
-</opt>
-<opt text="<code>1-pt(sqrt(30)*(23.5 - 20) / 8.5, df = 29)</code>" >
-</opt>
-</choice>
-
 
 </exercise>
 
