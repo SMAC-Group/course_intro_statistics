@@ -7,7 +7,7 @@
 </p>
 
 <p align="center">
-<h1>Data Analytics for Pharmaceutical Sciences<code>R</code> </h1>
+<h1>Data Analytics for Pharmaceutical Sciences</h1>
 </p>
 
 Welcome! This is the source repository for the exercice support website for the class **Modélisation et analyse de données** given on Spring semester 2022 at the University of Geneva. The website is hosted at: <https://intro-data-analytics.netlify.app/>.
