@@ -70,7 +70,7 @@ If you see no error then the package is correctly installed! Below is a gif illu
 </exercise>
 
 
-<exercise id="2" title="Lecture Slides">
+<exercise id="2" title="Lecture slides">
 
 
 You can view the slides directly in the browser below. To download the slides, please check [here](https://github.com/SMAC-Group/course_data_analytics/raw/master/static/Lecture1.pdf). 
@@ -115,7 +115,7 @@ You can view the slides directly in the browser below. To download the slides, p
 
 ### 3)  Which of the following statement is false?
 
-<choice id="3">
+<choice id="chap1_theo3">
 <opt text="Small p-value indicates strong evidence against the null hypothesis." >
 </opt>
 <opt text="When the p-value is small enough, one says that the test based on the null and alternative hypothesis is significant." >
@@ -128,20 +128,20 @@ You can view the slides directly in the browser below. To download the slides, p
 
 
 ### 4) Which of the following statement is true?
-<choice id="4">
+<choice id="chap1_theo4">
 <opt text="A p-value of 1% is significant." >
 </opt>
 <opt text="A p-value of 5% is significant." >
 </opt>
 <opt text="A p-value of 8% is significant.">
 </opt>
-<opt text="None of the above statement is true." correct="true" > A p-value can only be considered as significant in comparison to a certain significance level. 
+<opt text="None of the above statements is true." correct="true" > A p-value can only be considered as significant in comparison to a certain significance level. 
 </opt>
 </choice>
 
 
 ### 5) When a measurement can be thought of as the average of numerous factors, its distribution tends to go to
-<choice id="4">
+<choice id="chap1_theo5">
 <opt text="A uniform distribution." >
 </opt>
 <opt text="A normal distribution." correct="true" >
@@ -154,7 +154,7 @@ You can view the slides directly in the browser below. To download the slides, p
 
 
 ### 6) Which of the following statement is true?
-<choice id="4">
+<choice id="chap1_theo6">
 <opt text="One-sample t-test can be used as long as there is no outlier in the sample." > T-test should be used when the data have no outlier AND are approximately normally distributed. 
 </opt>
 <opt text="T-test states the hypothesis on the sample mean and Wilcoxon signed rank test states the hypothesis in terms of sample median." > The hypothesis statement is always with respect to a population level quantity.
