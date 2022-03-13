@@ -104,14 +104,14 @@ View the slides directly in the browser or download the slides
 <opt text="A scientific result based on statistical analyses allows to further our understanding of the studied phenomenon without being able to guarantee that the conclusions are 100% correct."> </opt>
 </choice>
 
-### 2) In hypothesis testing the type I error corresponds to:
+### 2) In hypothesis testing, the type I error, correspond to:
 
 <choice id="chap1_theo2">
-<opt text="the probability of rejecting null hypothesis when null hypothesis is true." correct="true"> 👍
+<opt text="the probability of rejecting null hypothesis when null hypothesis is true." 👍 correct="true">
 </opt>
-<opt text="the probability of not rejecting null hypothesis when null hypothesis is false."> No, this is the type II error. 
+<opt text="the probability of not rejecting null hypothesis when null hypothesis is false." No, this is the type II error. >
 </opt>
-<opt text="the probability of accepting the null hypothesis when alternative hypothesis is true."> No... and we can never "accept" the null hypothesis!
+<opt text="the probability of accepting the null hypothesis when alternative hypothesis is true." No... and we can never "accept" the null hypothesis!>
 </opt>
 </choice>
 
