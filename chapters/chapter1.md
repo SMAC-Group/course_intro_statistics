@@ -8,7 +8,7 @@ type: chapter
 id: 1
 ---
 
-<exercise id="1" title="Installing R, RStudio and Rtools/Xcode">
+<exercise id="1" title="Installing R, RStudio, Rtools/Xcode and idar">
 
 ## Installing `R`
 
@@ -46,7 +46,7 @@ To install `RStudio` on Ubuntu Linux, download the Ubuntu/Debian `.deb` installe
 
 ## Installing `R` package `idar` 
 
-We have developed an `R` package for this class which is called `idar` (Introduction to Data Analytics with `R` - `idar`). In order to install the `idar` package, you will have to first install the tools required to install `idar` directly from its [GitHub repository](https://github.com/SMAC-Group/idar).
+We have developed an `R` package for this class which is called `idar` (which stands for Introduction to Data Analytics with `R`, `idar`). In order to install the `idar` package, you will have to first install the tools required to install `idar` directly from its [GitHub repository](https://github.com/SMAC-Group/idar).
 
 To do so, you will first need to install a `C++` compiler in your installation. The steps to do so are the following:
 
@@ -80,6 +80,7 @@ install.packages("devtools")
 Make sure that the installation succeeded by looking at the last lines of the log. You should see something like:
 
 ```out
+...
 ** testing if installed package can be loaded from final location
 ** testing if installed package keeps a record of temporary installation path
 * DONE (devtools)
@@ -91,13 +92,32 @@ Once this is done, you can install the `idar` package with:
 devtools::install_github("https://github.com/SMAC-Group/idar")
 ```
 
+You should see something like:
+
+```out
+...
+** testing if installed package can be loaded from final location
+** testing if installed package keeps a record of temporary installation path
+* DONE (idar)
+```
+
 To test if the package is correctly installed you can simply run
 
 ```r
 library(idar)
 ```
 
-If you see no error then the package is correctly installed! Below is a gif illustrating the installation of the `idar` `R` package:
+If you see no error, which means an output like this when the previous command is run:
+
+
+```out
+> library(idar)
+> 
+```
+
+then the package is correctly installed! Congratulations!
+
+Below is a gif illustrating the installation of the `idar` `R` package:
 
 <center>
 
