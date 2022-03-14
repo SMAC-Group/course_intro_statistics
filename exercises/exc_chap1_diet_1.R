@@ -10,3 +10,4 @@ posw = diet$diet.type=="_"
 
 # Variable of interest
 dietA = diet$weight.loss[____]
+dietA

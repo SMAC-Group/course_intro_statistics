@@ -205,9 +205,9 @@ You can use the functions `boxplot_w_points` and `hist_compare_to_normal`.
 Based on the graph you produce, which test appears the most appropriate to test if diet A leads to a significant weight loss:
 
 <choice id="chap1_diet_1">
-<opt text="t-test."> The t-test doesn't appear to be an ideal choice in this case given the outliers that can be observed in the graph...</opt>
+<opt text="T-test."> The t-test doesn't appear to be an ideal choice in this case given the outliers that can be observed in the graph...</opt>
 <opt text="Wilcoxon test." correct = "true" > Given the outliers that can be observed this test appears to be a suitable choice. </opt>
-<opt text="other tests should be used here."> While it is true that other methods could be used here, one of the two tests above seems reasonable here. </opt>
+<opt text="Other tests should be used here."> While it is true that other methods could be used here, one of the two tests above seems reasonable here. </opt>
 </choice>
 
 ### 4. How to perform the test you selected?
@@ -267,9 +267,9 @@ hist_compare_to_normal(codex$lenght_hospital)(), horizontal = T,
 Based on these graphs which test appears the most appropriate:
 
 <choice id="chap1_codex_2">
-<opt text="t-test."> The t-test doesn't appear to be an ideal choice in this case given the outliers that can be observed in the graph...</opt>
+<opt text="T-test."> The t-test doesn't appear to be an ideal choice in this case given the outliers that can be observed in the graph...</opt>
 <opt text="Wilcoxon test." correct = "true" > Given the outliers that can be observed this test appears to be a suitable choice. </opt>
-<opt text="other tests should be used here."> While it is true that other methods could be used here, one of the two tests above seems reasonable here. </opt>
+<opt text="Other tests should be used here."> While it is true that other methods could be used here, one of the two tests above seems reasonable here. </opt>
 </choice>
 
 Using the test you selected, what is the p-value corresponding to the test of interest:
