@@ -14,7 +14,7 @@ id: 2
 View the slides directly in the browser or download the slides
 [here](https://github.com/SMAC-Group/course_data_analytics/raw/master/static/Lecture2.pdf). 
 
-<iframe src="/Lecture2.html" width="710" height="530">
+<iframe src="https://raw.githack.com/stephaneguerrier/data_analytics/master/Lecture2.html#1" width="710" height="530">
 </iframe>
 
 
@@ -23,7 +23,7 @@ View the slides directly in the browser or download the slides
 
 
 
-<exercise id="2" title="Application" type = "slides">
+<exercise id="2" title="Application">
 
 <slides source="chapter2_01">
 </slides>
