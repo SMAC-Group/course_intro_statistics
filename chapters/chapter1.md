@@ -105,11 +105,11 @@ You can view the slides directly in the browser below. To download the slides, p
 ### 2) In hypothesis testing, the type I error corresponds to:
 
 <choice id="chap1_theo2">
-<opt text="the probability of rejecting null hypothesis when null hypothesis is true."correct="true"> 👍 
+<opt text="The probability of rejecting the null hypothesis when the null hypothesis is true."correct="true"> 👍 
 </opt>
-<opt text="the probability of not rejecting null hypothesis when null hypothesis is false."> No, this is the type II error. 
+<opt text="The probability of not rejecting the null hypothesis when the null hypothesis is false."> No, this is the type II error. 
 </opt>
-<opt text="the probability of accepting the null hypothesis when alternative hypothesis is true."> No... and we can never "accept" the null hypothesis!
+<opt text="The probability of accepting the null hypothesis when the alternative hypothesis is true."> No... and we can never "accept" the null hypothesis!
 </opt>
 </choice>
 
