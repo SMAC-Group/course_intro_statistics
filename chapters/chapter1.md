@@ -8,7 +8,7 @@ type: chapter
 id: 1
 ---
 
-<exercise id="1" title="Installing R and RStudio">
+<exercise id="1" title="Installing R, RStudio and Rtools/Xcode">
 
 ## Installing `R`
 
