@@ -66,7 +66,7 @@ const Layout = ({ isHome, title, description, children }) => {
 
                                         
                                         <p> 
-This course is intended to provide an introduction to the data analysis tools with R. These tools include statistical hypothesis testing, (generalized) linear models, machine learning and semi-parametric methods. Applications of these statistical methods are provided in the context of Pharmaceutical Sciences. At the end of this class, students are expected to understand the underlying theoretical foundations and the computational issues of different statistical methods, as well as to communicate the practical interpretation of the data analysis results.
+This course is intended to provide an introduction to the data analysis tools with <code>R</code>. These tools include statistical hypothesis testing, (generalized) linear models, machine learning and semi-parametric methods. Applications of these statistical methods are provided in the context of Pharmaceutical Sciences. At the end of this class, students are expected to understand the underlying theoretical foundations and the computational issues of different statistical methods, as well as to communicate the practical interpretation of the data analysis results.
                                         </p>
                                             
                                     </section>
