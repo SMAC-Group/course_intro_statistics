@@ -8,7 +8,7 @@ type: slides
 
 # Getting the data
 
-In this set of slides we will replicate the "diet" data analysis presented in the lectures slides. Our first step is to download the data which are available in the `idar` R package. Assuming that this package is installed (if not please refer to Section 1 of this chapter), we can load the data as follows:
+In this set of slides we will replicate the `diet` data analysis presented in the lectures slides. Our first step is to download the data which are available in the `idar` R package. Assuming that this package is installed (if not please refer to Section 1 of this chapter), we can load the data as follows:
 
 ```r
 # Import data
@@ -148,15 +148,22 @@ which shows that we can expect a mean weight loss for diet B between 2.25 Kg and
 
 ---
 
-As previously mentioned, the t-test is valid under strict parametric assumptions (e.g. normal distribution). While there are no perfect way to check these assumptions, we create a simple function allowing to visually assess how close some data are to a normal distribution. This function is called `hist_compare_to_normal` and allows to compare the empirical distribution of the data to its theoretical normal distribution. The theoretical distribution is also estimated in a robust fashion (which is less influenced by outliers). Large difference between these distributions indicates that a t-test may not be appropriate. Of course, what constitutes a "large" difference is rather subjective. This function can be used as follows:
+As previously mentioned, the t-test is valid under strict parametric assumptions (e.g. normal distribution). While there are no perfect way to check these assumptions, we create a simple function allowing to visually assess how close some data are to a normal distribution. 
+
+This function available in `idar` is called `hist_compare_to_normal` and allows to compare the empirical distribution of the data to its theoretical normal distribution. The theoretical distribution is also estimated in a robust fashion (which is less influenced by outliers). 
+
+Large difference between these distributions indicates that a t-test may not be appropriate. Of course, what constitutes a "large" difference is rather subjective. 
+
+
+---
+
+This function can be used as follows:
 
 ```r
 hist_compare_to_normal(dietB)
 ```
 
----
-
-<div style="text-align:center"><img src="chap1_dietB_hist.png" alt=" " width="70%"></div>
+<div style="text-align:center"><img src="chap1_dietB_hist.png" alt=" " width="50%"></div>
 
 This graph together with the boxplots previously constructed could be used to argue that a t-test could be a suitable option for this dataset. However, using a Wilcoxon test instead of t-test might always be a safer choice when the distribution appears symmetric (as is the case here).
 
