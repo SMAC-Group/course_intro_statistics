@@ -12,7 +12,7 @@ id: 2
 <exercise id="1" title="Theory">
 
 View the slides directly in the browser or download the slides
-[here](https://github.com/SMAC-Group/course_data_analytics/raw/master/static/Lecture2.pdf). 
+[here](https://raw.githack.com/stephaneguerrier/data_analytics/master/Lecture3.html#1). 
 
 <iframe src="https://raw.githack.com/stephaneguerrier/data_analytics/master/Lecture3.html#1" width="710" height="530">
 </iframe>

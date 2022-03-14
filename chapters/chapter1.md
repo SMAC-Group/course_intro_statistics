@@ -111,7 +111,7 @@ If you see no error then the package is correctly installed! Below is a gif illu
 <exercise id="2" title="Lecture slides">
 
 
-You can view the slides directly in the browser below. To download the slides, please check [here](https://github.com/SMAC-Group/course_data_analytics/raw/master/static/Lecture1.pdf). 
+You can view the slides directly in the browser below. To download the slides, please check [here](https://raw.githack.com/stephaneguerrier/data_analytics/master/Lecture1.html#1). 
 
 <iframe src="https://raw.githack.com/stephaneguerrier/data_analytics/master/Lecture1.html#1" width="710" height="530">
 </iframe>
