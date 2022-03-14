@@ -50,7 +50,7 @@ We have developed an `R` package for this class which is called `idar` (Introduc
 
 ```r
 install.packages("devtools")
-devtools::install_github("https://github.com/SMAC-Group/idar", force = TRUE)
+devtools::install_github("https://github.com/SMAC-Group/idar")
 ```
 
 To test if the package is correctly installed you can simply run
