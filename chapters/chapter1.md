@@ -316,7 +316,7 @@ boxplot_w_points(codex$lenght_hospital, horizontal = T,
 <div style="text-align:center"><img src="chap1_length_of_stay_1.png" alt=" " width="70%"></div>
 
 ```r
-hist_compare_to_normal(codex$lenght_hospital)(), horizontal = T, 
+hist_compare_to_normal(codex$lenght_hospital, horizontal = T, 
     xlab = "Length of stay (day)")
 ```
 
