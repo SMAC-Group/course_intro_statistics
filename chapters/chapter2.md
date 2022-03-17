@@ -122,10 +122,82 @@ Then, the (second) consultant claims that diet C leads an average weight loss th
 
 </exercise>
 
-<exercise id = "9" title="Analysis of the Diet dataset - Part I">
+<exercise id = "6" title="Exercise on the pharmacy attendance dataset">
+
+We consider data from a study conducted in a pharmacy in Geneva where the number of clients per hour was recorded over a period of two years. We wish to assess if it is reasonable to believe that Tuesday is busiest day of the week for this pharmacy. It is important to notice but unlike our previous example, this dataset is very large with over 17 thousands observations. This will important later on...
+
+We start by importing the data and creating the variables of interest:
+
+```r
+# Load data
+library(idar)
+data("pharmacy")
+
+# Construct attendance by day
+monday = na.omit(pharmacy$attendance[pharmacy$weekday == "Monday"])
+tuesday = na.omit(pharmacy$attendance[pharmacy$weekday == "Tuesday"])
+wednesday = na.omit(pharmacy$attendance[pharmacy$weekday == "Wednesday"])
+thursday = na.omit(pharmacy$attendance[pharmacy$weekday == "Thursday"])
+friday = na.omit(pharmacy$attendance[pharmacy$weekday == "Friday"])
+saturday = na.omit(pharmacy$attendance[pharmacy$weekday == "Saturday"])
+sunday = na.omit(pharmacy$attendance[pharmacy$weekday == "Sunday"])
+```
+
+Since the dataset is so large the function `boxplot_w_points` is not appropriate. Indeed, if we were to use this function we would obtain the following result:
+
+```r
+boxplot_w_points(monday, tuesday, wednesday, thursday,
+                 friday, saturday, sunday,
+                 names = c("Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"),
+                 xlab = "Number of customers per hour",
+                 horizontal = TRUE)
+```
+
+<div style="text-align:center"><img src="chap2_pharma_1.png" alt=" " width="90%"></div>
+
+Instead we prefer in this case the default `R` function `boxplot` which can be used as follows:
+
+```r
+boxplot(monday, tuesday, wednesday, thursday,
+                 friday, saturday, sunday,
+                 names = c("Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"),
+                 xlab = "Number of customers per hour",
+                 horizontal = TRUE)
+```
+
+<div style="text-align:center"><img src="chap2_pharma_2.png" alt=" " width="90%"></div>
+
+It can be observed that the distributions don't appear to be symmetric rendering a nonparametric based on Kruskal-Wallis and/or Wilcoxon tests potentially inadequate as it would concern the median rather than the mean (as postulate in the claim we wish to investigate). Consequently, we opt for using Welch's t-tests. If you are curious why the assumption of having approximately normally distributed data is less important (due to the central limit theorem 😎 ) when the sample size is **large** you can have this paper 👇
+
+<div style="text-align:center"><img src="paper.png" alt=" " width="80%"></div>
+
+Link to the paper: [here](https://www.annualreviews.org/doi/abs/10.1146/annurev.publhealth.23.100901.140546) and the first sentence of the abstract tells you a lot: "*It is widely but incorrectly believed that the t-test and linear regression are valid only for Normally distributed outcomes.*" 
+
+Using the test we selected, complete the code below to obtain the p-values associated the tests required to assess the validity of our claim:
+
+<codeblock id="chapter2_pharma">
+
+Remember that we are comparing `sunday` to all other days.
+
+</codeblock>
+
+Based on these p-values and consider a standard value of \\( \alpha \\) what can you conclude:
+
+<choice id="chap2_pharma">
+<opt text="The claim is correct since all p-values are smaller than alpha."> Yes... but we are considering many test here... 😕 </opt>
+<opt text="The claim is correct and we are now certain that the average number of customer is higher on Sundays"> Nope, we can never be sure! </opt>
+<opt text="The claim is incorrect we cannot reject the null hypothesis for all tests."> Yay! 😆 </opt>
+<opt text="The claim is correct because we can reject the null hypothesis for most of tests."> Nope, the claim was that this was the case of all days. </opt>
+</choice>
+
 </exercise>
 
-<exercise id = "10" title="Application">
+
+
+<exercise id = "100" title="Analysis of the Diet dataset - Part I">
+</exercise>
+
+<exercise id = "101" title="Application">
 
 <slides source="chapter2_01">
 </slides>
@@ -134,7 +206,7 @@ Then, the (second) consultant claims that diet C leads an average weight loss th
 </exercise>
 
 
-<exercise id = "11" title ="Analysis of Variance: Exercises">
+<exercise id = "102" title ="Analysis of Variance: Exercises">
 
 ### 1) Consider that you want to compare several means of diffferent populations (\\( >2 \\)). The distribution of the variable of interest seems to be aproximately normally distributed, but you note that the variance of the variable of interest seems to be different between groups. What test should you consider and why?
 
