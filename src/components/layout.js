@@ -38,7 +38,7 @@ const Layout = ({ isHome, title, description, children }) => {
                             {!isHome && (
                                 <h1 className={classes.logo}>
                                     <Link hidden to="/">
-                                        <Logo width={150} height={150} aria-label={meta.title} />
+                                        <Logo width={50} height={50} aria-label={meta.title} />
                                     </Link>
                                 </h1>
                             )}
