@@ -194,10 +194,10 @@ Based on these p-values and consider a standard value of \\( \alpha \\) what can
 
 
 
-<exercise id = "100" title="Analysis of the Diet dataset - Part I">
+<exercise id = "7" title="Analysis of the Diet dataset - Part I">
 </exercise>
 
-<exercise id = "101" title="Application">
+<exercise id = "8" title="Application">
 
 <slides source="chapter2_01">
 </slides>
@@ -206,7 +206,7 @@ Based on these p-values and consider a standard value of \\( \alpha \\) what can
 </exercise>
 
 
-<exercise id = "102" title ="Analysis of Variance: Exercises">
+<exercise id = "9" title ="Analysis of Variance: Exercises">
 
 ### 1) Consider that you want to compare several means of diffferent populations (\\( >2 \\)). The distribution of the variable of interest seems to be aproximately normally distributed, but you note that the variance of the variable of interest seems to be different between groups. What test should you consider and why?
 
@@ -257,3 +257,74 @@ Consider the variance and the distribution of the variable `Urine Cortisol (pg/m
 
 
 </exercise>
+
+
+
+<exercise id="11" title="Homework 2">
+
+We consider data from Abouir, et al., (2022) which is an observational study conducted at Geneva University Hospitals to assess the impact of weight on the pharmacokinetics of dexamethasone in normal-weight versus obese patients hospitalized for COVID-19. 
+
+We first consider the variable `cmax`, which represents the ... . Regarding the variable `cmax`,
+
+1. Can we conclude that the mean of the variable `cmax` is lower in the group men than in the group women?
+2. Can we conclude that the mean of the variable `cmax` is lower in the group obese than in the group non-obese?
+
+In order to subset the data and retrieve the corresponding groups, you can run the following lines of code:
+
+```R
+library(idar)
+data(codex)
+men <- codex[codex$gender == 1, ]
+women <- codex[codex$gender == 0, ]
+obese <- codex[codex$obese == 1, ]
+non_obese <- codex[codex$obese == 0, ]
+```
+
+You can then represent the data graphically with:
+
+```R
+par(mfrow = c(1,2))
+boxplot(obese$cmax, non_obese$cmax, las=1, names = c("Obese", "Non Obese"), main="cmax")
+boxplot(men$cmax, women$cmax, las=1, names = c("Men", "Women"), main="cmax")
+par(mfrow = c(1,1))
+```
+
+<div style="text-align:center"><img src="boxplot_cmax.png" alt=" " width="70%"></div>
+
+
+We then consider the variable `tmax`, which represents the ... . Regarding the variable `tmax`,
+
+1. Can we conclude that the mean of the variable `tmax` is lower in the group men than in the group women?
+2. Can we conclude that the mean of the variable `tmax` is lower in the group obese than in the group non-obese?
+
+You can represent the data graphically with:
+
+```R
+par(mfrow = c(1,2))
+boxplot(obese$tmax, non_obese$tmax, las=1, names = c("Obese", "Non Obese"), main="tmax")
+boxplot(men$tmax, women$tmax, las=1, names = c("Men", "Women"), main="tmax")
+par(mfrow = c(1,1))
+```
+
+<div style="text-align:center"><img src="boxplot_tmax.png" alt=" " width="70%"></div>
+
+
+We then consider the variable `auc`, which represents the ... . Regarding the variable `tmax`,
+
+1. Can we conclude that the mean of the variable `auc` is lower in the group men than in the group women?
+2. Can we conclude that the mean of the variable `auc` is lower in the group obese than in the group non-obese?
+
+You can represent the data graphically with:
+
+```R
+par(mfrow = c(1,2))
+boxplot(obese$auc, non_obese$auc, las=1, names = c("Obese", "Non Obese"), main="auc")
+boxplot(men$auc, women$auc, las=1, names = c("Men", "Women") , main="auc")
+par(mfrow = c(1,1))
+```
+
+<div style="text-align:center"><img src="boxplot_auc.png" alt=" " width="70%"></div>
+
+</exercise>
+
+
