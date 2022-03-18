@@ -1,0 +1,97 @@
+---
+title: "In class examples - 15.03.2022"
+output: html_document
+---
+
+```{r}
+# install.packages("devtools")
+# devtools::install_github("https://github.com/SMAC-Group/idar")
+
+# Import data
+library(idar) 
+data(diet)
+
+# Compute weight loss
+diet$weight.loss = diet$initial.weight - diet$final.weight
+
+# Select diet
+posw = diet$diet.type=="B"
+
+# Variable of interest
+X = diet$weight.loss[posw]
+
+# A first look...
+head(X)
+
+# Let's see the data...
+boxplot_w_points(X, horizontal = T)
+abline(v = 0)
+```
+
+## T-test
+
+Then, we consider the test:
+
+$$H_0: \;\; \mu = 0,\;\;\; H_a: \;\; \mu > 0$$
+
+based on $\alpha = 0.05$:
+
+```{r}
+t.test(X, mu = 0, alternative = "greater")
+```
+
+Based on the p-value we obtained, we can reject the null and accept the alternative.
+
+We can also consider the following test:
+
+$$H_0: \;\; \mu = 2,\;\;\; H_a: \;\; \mu > 2$$
+
+```{r}
+t.test(X, mu = 2, alternative = "greater")
+```
+
+In this case, we can also reject the null and accept the alternative, however, this is not the case if we consider:
+
+$$H_0: \;\; \mu = 3,\;\;\; H_a: \;\; \mu > 3$$
+
+```{r}
+t.test(X, mu = 3, alternative = "greater")
+```
+
+## Wilcoxon test
+
+In this example we obtain very similar results by using Wilcoxon test instead of the t-test:
+
+```{r, warning=F}
+wilcox.test(X, mu = 0, alternative = "greater")
+wilcox.test(X, mu = 2, alternative = "greater")
+wilcox.test(X, mu = 3, alternative = "greater")
+```
+
+## Illustration of the difference between t-test and Wilcoxon test
+
+To illustrate the difference between the two tests, we artificially change the smallest value (which `r min(X)`) to -20. This can be done as follows:
+
+```{r}
+X[which.min(X)] = -20 
+```
+
+By doing so, we introduce one outlier in the data as can be observed in the graph below:
+
+```{r}
+boxplot_w_points(X, horizontal = T)
+abline(v = 0)
+```
+
+Suppose we consider the hypotheses:
+
+$$H_0: \;\; \mu = 2,\;\;\; H_a: \;\; \mu > 2$$
+
+and recall that before adding one artificial "outlier" the p-values of both t-test and Wilcoxon test were smaller than $\alpha$ (0.8355% and 1.126% respectively). Let's see if this is still case now:
+
+```{r, warning=F}
+t.test(X, mu = 2, alternative = "greater")
+wilcox.test(X, mu = 2, alternative = "greater")
+```
+
+As expected the p-value based on the t-test is heavily influenced by the outlier (changing from 0.8355% to 29.97%) while this is not the case for Wilcoxon test (only changing from 1.126% to 1.318%).
