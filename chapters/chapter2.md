@@ -284,8 +284,14 @@ You can then represent the data graphically with:
 
 ```R
 par(mfrow = c(1,2))
-boxplot(obese$cmax, non_obese$cmax, las=1, names = c("Obese", "Non Obese"), main="cmax")
-boxplot(men$cmax, women$cmax, las=1, names = c("Men", "Women"), main="cmax")
+boxplot(obese$cmax, non_obese$cmax,
+  las=1, 
+  names = c("Obese", "Non Obese"),
+  main="cmax")
+boxplot(men$cmax, women$cmax, 
+  las=1, 
+  names = c("Men", "Women"), 
+  main="cmax")
 par(mfrow = c(1,1))
 ```
 
@@ -301,8 +307,14 @@ You can represent the data graphically with:
 
 ```R
 par(mfrow = c(1,2))
-boxplot(obese$tmax, non_obese$tmax, las=1, names = c("Obese", "Non Obese"), main="tmax")
-boxplot(men$tmax, women$tmax, las=1, names = c("Men", "Women"), main="tmax")
+boxplot(obese$tmax, non_obese$tmax, 
+  las=1, 
+  names = c("Obese", "Non Obese"), 
+  main="tmax")
+boxplot(men$tmax, women$tmax,
+  las=1,
+  names = c("Men", "Women"),
+  main="tmax")
 par(mfrow = c(1,1))
 ```
 
@@ -318,8 +330,15 @@ You can represent the data graphically with:
 
 ```R
 par(mfrow = c(1,2))
-boxplot(obese$auc, non_obese$auc, las=1, names = c("Obese", "Non Obese"), main="auc")
-boxplot(men$auc, women$auc, las=1, names = c("Men", "Women") , main="auc")
+boxplot(obese$auc, 
+  non_obese$auc,
+  las=1,
+  names = c("Obese", "Non Obese"),
+  main="auc")
+boxplot(men$auc, women$auc,
+  las=1,
+  names = c("Men", "Women"),
+  main="auc")
 par(mfrow = c(1,1))
 ```
 
