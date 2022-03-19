@@ -6,5 +6,9 @@ https://pandoc.org/try/
 - run the following command to convert it in html : 
 - copy the html fragment in your website
 
+## INLINE EQUATIONS
 
+see example below:
 
+<p>In this exercise, we revisit the data from Parisi, et al., (2021) which studies the applicability of predictive models for intensive care admission of COVID-19 patients in a secondary care hospital in Belgium. In this exercise, we wish to evaluate if the claim that the average oxygen saturation of the patients admitted to an ICU is lower than the ones that are not. For this purpose, we will conduct a statistical analysis and our questions concerns the hypotheses we should use. Let <span class="math inline">\(\mu_{i}\)</span> and <span class="math inline">\(\mu_{n}\)</span> denote the mean oxygen saturation
+of the patients admitted to an ICU and the ones that are not admitted to an ICU, respectively.</p>
