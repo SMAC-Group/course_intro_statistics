@@ -225,7 +225,7 @@ The function `wilcox.test` can be used for Wilcoxon test.
 
 <p>Based on the p-value you obtained, what can you conclude (assuming <span class="math inline">\(\alpha = 0.05\)</span>):</p>
 
-<choice id="chap2_icu2">
+<choice id="chap2_icu3">
 <opt text="Accept the null hypothesis."> Nope you can never accept the null!</opt>
 <opt text="Reject the alternative hypothesis." > Nope you can never reject the alternative!</opt>
 <opt text="Reject the null and accept the alternative hypothesis." correct = "true" > 👍 </opt>
@@ -234,7 +234,7 @@ The function `wilcox.test` can be used for Wilcoxon test.
 
 Therefore, we should conclude regarding the claim that the average oxygen saturation of the patients admitted to an ICU is lower than the ones that are not:
 
-<choice id="chap2_icu3">
+<choice id="chap2_icu4">
 <opt text="Since we were able to accept the alternative hypothesis it is certain that the claim is correct."> Nope, we can never be sure! 😉 </opt>
 <opt text="Since we were able to accept the alternative hypothesis we can't conclude anything." > It is when we fail to reject the null that we can't really conclude anything. </opt>
 <opt text="Since we were able the accept the null hypothesis it is plausible that the claim is correct." > Are you sure you can accept the null? </opt>
