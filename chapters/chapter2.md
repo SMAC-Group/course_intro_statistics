@@ -138,7 +138,7 @@ Based on this test, we obtain a p-value of 5.747% (which could make you think th
 <opt text="The consultant is correct, there is indeed not much difference between the two diets." >  </opt>
 <opt text="The claim of the consultant is incorrect for the following reasons. First, there is no good reason to compare a difference of one kg and second, we can never accept the null hypothesis!" correct = "true"> Yay! 👍 </opt>
 <opt text="The consultant showed that the average difference in terms of weight loss is equal to one kg, so his claim is correct."> Nope, we can never "accept" the null. </opt>
-
+</choice>
 
 The competing company that promotes diet C is unhappy about the claims made by the consultant. So they hire their own consultant, who selects a difference of 950 grams. Which test should this second consultant perform:
 
