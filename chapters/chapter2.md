@@ -337,10 +337,10 @@ To perform the analysis we will need to construct the different groups we wish t
 library(idar)
 data(codex)
 
-Cmax_men = codex$cmax[codex$gender == 1]
-Cmax_women = codex$cmax[codex$gender == 0]
-Cmax_obese = codex$cmax[codex$obese == 1]
+Cmax_men = codex$cmax[codex$gender == 0]
+Cmax_women = codex$cmax[codex$gender == 1]
 Cmax_non_obese = codex$cmax[codex$obese == 0]
+Cmax_obese = codex$cmax[codex$obese == 1]
 ```
 
 Then we can make comparisons between groups. For example, to compare the `cmax` between men and women we can use the following code:
