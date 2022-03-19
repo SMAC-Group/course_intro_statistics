@@ -24,48 +24,47 @@ You can view the slides directly in the browser below. To download the slides, p
 
 <exercise id = "2" title ="Exercises">
 
-### 1) Suppose that you want to compare the means of more than 2 groups. The variable of interest seems to be aproximately normally distributed, but you notice that its variances are different between groups. In this case, which test should you consider and why?
+### 1) Suppose that you want to compare the means of 2 groups. In which situation is Student's t-test a good approach:
 
-
-
-<choice id="1">
-<opt text="You should consider the two independent sample Student's t-test because the data are approximately normally distributed."> 
+<choice id="chap2_exc1">
+<opt text="We need the following: (1) it is reasonable to assume that there no outliers and (2) for moderate and small sample sizes the sample distribution should be at least approximately normal."> Nope, we always the variances to be the same.
 </opt>
-<opt text="Because you want to compare more than 2 groups, the data seem to be approximately normally distributed, and the variances between groups are different, you should consider the Welch's one-way ANOVA." correct="true">
-</opt>
-<opt text="You should consider the two independent sample Welch's t-test because the variances are different between groups." >
-</opt>
-<opt text="As you compare more than 2 groups and that the data seem to be approximately normally distributed, you should consider the Fisher one-way ANOVA." >
+<opt text="We need the following: (1) it is reasonable to assume that there no outliers and (2) for moderate and small sample sizes the sample distribution should be at least approximately normal. If these criteria are met then we should test if the variances are the same and if we can't reject the null, then we should use Student's t-test."> Nope, we can't accept the null 😉. </opt>
+<opt text="We should do four tests: (1) test if there are no outliers, (2) test is the data are distribution (one test per sample) and (3) test if the variances are the same. If we can't reject the null for all tests, then we should use Student's t-test."> Nope, we can't accept the null 😉. </opt>
+<opt text="We need the following: (1) it is reasonable to assume that there no outliers, (2) the variances of the two groups are known to be the same (or at least it is reasonable to assume that this is the case) and (3) for moderate and small sample sizes the sample distribution should be at least approximately normal." correct="true"> Yes! 😎
 </opt>
 </choice>
 
-### 2) Load the package `idar` and the dataset `cortisol` with `data(cortisol)`. Consider the variable `Urine Cortisol (pg/mg)` and represent the variable graphically. Consider that you would like to test if there is evidence of a difference in the means of the variable `Urine Cortisol (pg/mg)` between the groups `C` and `NC`. Perform the adapted test given the distribution of the variable and interpret the result.
+### 2) Suppose that you want to compare the means of 2 groups. In which situation is Welsh's t-test a good approach:
 
-
-<codeblock id="02_01">
-Check the distribution and the variance of the variable `Urine Cortisol (pg/mg)` to decide which test to apply.
-</codeblock>
-
-
-### 3) Which of the following statement is true?
-
-<choice id="3">
-<opt text="As the probability of failing to reject a null hypothesis that is actually false (type I error) increases with the number of tests, one should consider the corrected p-values that are larger than the uncorrected ones.">
-</opt>
-<opt text="As the probability of rejecting a null hypothesis that is actually true (type I error) increases with the number of tests, one should consider the corrected p-values that are larger than the uncorrected ones." correct="true">
-</opt>
-<opt text="As the probability of rejecting a null hypothesis that is actually true (type I error) increases with the number of tests, one should consider the corrected p-values that are smaller than the uncorrected ones." >
-</opt>
-<opt text="There is no need to correct p-values when performing multiple testing." >
+<choice id="chap2_exc2">
+<opt text="When it is reasonable to assume that there no outliers."> Nope, if the sample size is small we also need the empirical distribution to be reasonably close to a normal distribution. </opt>
+<opt text="When it is reasonable to assume that are the sample distribution is at least approximately normal with no more than a few outliers."> Nope, these outliers can potentially have a very large impact! </opt>
+<opt text="When it is reasonable to assume that there no outliers and the sample size is sufficiently large" correct="true"> Indeed, if the sample size is large we don't require the sample distribution to be close to a normal. </opt>
+<opt text="We need the following: (1) it is reasonable to assume that there no outliers, (2) the variances of the two groups are known to be the same (or at least it is reasonable to assume that this is the case)."> Nope, if the sample size is small we also need the empirical distribution to be reasonably close to a normal distribution. The assumption that the variances are to same is not needed.
 </opt>
 </choice>
 
+### 3) Suppose that you want to compare the means of 2 groups. In which situation is Wilcoxon rank sum test inadequate:
 
-### 4) Load the package `palmerpenguins` and the dataset `penguins` with `df = palmerpenguins::penguins`. Consider the variable `bill_length_mm` and represent the variable graphically. Use the appropriate test to check if there is evidence of difference in the location of the distributions of the variable `bill_length_mm` between species. Correct the resulting p-values with the function `p.adjust` and interpret the results.
+<choice id="chap2_exc3">
+<opt text="When there are no outliers."> Nope! 😆
+</opt>
+<opt text="When the distribution is not symmetric and the sample is large." correct="true"> Yes! In this case, this test concerns the median and not the mean, which are be quite different when the distribution is not symmetric.
+</opt>
+<opt text="When it is reasonable to assume that there no outliers and the sample distribution should be at least approximately normal."> Nope, it will very well in this case. > </opt>
+<opt text="When it is reasonable to assume that there no outliers and the variances are the same."> Nope, it will very well in this case. > </opt>
+</choice>
 
-<codeblock id="02_02">
-We should first check if there is significant difference in the location of `bill_length_mm` for all species. If so, then we should test in pairs to compare the location of `bill_length_mm` between each pair of species.
-</codeblock>
+
+### 4) A researcher administers many hypothesis tests as part of a research project, and finds that, of 250 tests 11 were significant at the 5% level. The researcher feels very proud of this fact and is ready to make a big deal about it. What do you think of this situation:
+
+<choice id="chap2_exc4">
+<opt text="It is very interesting that 11 tests are significant."> Nope, because we did many tests... </opt>
+<opt text="It is interesting that 11 tests are significant but since we did many tests we should find a theoretical argument for our analysis."> Finding a posteriori argument is always dangerous. ⚠️ </opt>
+<opt text="One would expect 12.5 (5% of 250) significant tests even in the purely null case, merely by chance, so we should find at 13 significant tests for the result to be interesting."> No, actually we would need at lot more... In fact, there is a probability 49%  that one would obtain 13 or more significant test by pure luck. 🤔 </opt>
+<opt text="One would expect 12.5 (5% of 250) significant tests even in the purely null case, merely by chance. So, finding only 11 significant results is actually somewhat disappointing." correct="true"> Yes! In his class notes John Wilder Tukey (who is famous statistician and the inventor of many statistical methods, including the boxplot!) used this example at Princeton University in 1976 to highlight the dangers of multiple testing (and introduce the idea of higher criticism) 🤔. [fg](fg) </opt>
+</choice>
 
 </exercise>
 
