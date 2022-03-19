@@ -327,12 +327,12 @@ Based on these p-values and consider a standard value of 5% for \\( \alpha \\), 
 
 We consider data from Abouir, et al., (2022) which is an observational study conducted at Geneva University Hospitals to assess the impact of weight on the pharmacokinetics of dexamethasone in normal-weight versus obese patients hospitalized for COVID-19. 
 
-**Question I:** We consider the variable `cmax` (in ng/ml) which corresponds to the maximum concentration that the drug achieves in the blood after it has been administered. Regarding the variable `cmax`, we wish to assess the validity of the following claims:
+**Question I:** We consider the variable `cmax` (in ng/ml) which corresponds to the maximum concentration that the drug can achieve in the blood after it is administered. We wish to assess the validity of the following claims:
 
 1. Can we conclude that the mean of the variable `cmax` is lower in the group men than in the group women?
 2. Can we conclude that the mean of the variable `cmax` is lower in the group obese than in the group non-obese?
 
-To perform the analysis you will to construct the different groups we wish to compare and for this purpose we can use the following code:
+To perform the analysis we will need to construct the different groups we wish to compare. We can use the following code:
 
 ```r
 library(idar)
@@ -344,7 +344,7 @@ Cmax_obese = codex$cmax[codex$obese == 1]
 Cmax_non_obese = codex$cmax[codex$obese == 0]
 ```
 
-Then, we can compare the group and, for example, to compare the `cmax` between men and women we can use the following code:
+Then we can make comparisons between groups. For example, to compare the `cmax` between men and women we can use the following code:
 
 ```r
 boxplot_w_points(Cmax_women, Cmax_men,
@@ -354,14 +354,14 @@ boxplot_w_points(Cmax_women, Cmax_men,
 
 <div style="text-align:center"><img src="HW2_boxplot.png" alt=" " width="70%"></div>
 
-Perform a statistical analysis to assess the validity of the previously mentioned claims.
+Please perform a statistical analysis to assess the validity of the previously mentioned claims.
 
 **Question II:** We now consider the variable `tmax` (in hour) which corresponds to the time it takes for the drug to reach the maximum concentration (i.e. Cmax) after its administration. Similarly, we wish to examine the following claims:
 
 1. Can we conclude that the mean of the variable `tmax` is lower in the group men than in the group women?
 2. Can we conclude that the mean of the variable `tmax` is lower in the group obese than in the group non-obese?
 
-To perform the analysis you will to construct the different groups we wish to compare and for this purpose we can use the following code:
+To perform the analysis we will need to construct the different groups we wish to compare. We can use the following code:
 
 ```r
 Tmax_men = codex$tmax[codex$gender == 1]
@@ -370,13 +370,14 @@ Tmax_obese = codex$tmax[codex$obese == 1]
 Tmax_non_obese = codex$tmax[codex$obese == 0]
 ```
 
-Based on this group, perform a statistical analysis to assess the validity of the previously mentioned claims.
+Based on these groups, please perform a statistical analysis to assess the validity of the previously mentioned claims.
+
 
 **Question III:** Finally, we consider the variable `auc` (in ng.h/ml) which corresponds to the integral (from 0 to 8 hours) of a curve that describes the variation of the drug concentration as a function of time. Similarly, we wish to examine the following claims:
 
 1. Can we conclude that the mean of the variable `auc` is lower in the group men than in the group women?
 2. Can we conclude that the mean of the variable `auc` is lower in the group obese than in the group non-obese?
 
-Perform a statistical analysis to assess the validity of the previously mentioned claims.
+Please perform a statistical analysis to assess the validity of the previously mentioned claims.
 
 </exercise>
