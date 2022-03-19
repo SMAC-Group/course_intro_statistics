@@ -3,7 +3,8 @@ title: "Homework 2"
 output: html_document
 ---
 
-In this homework, we wish to investigate 
+In this homework, we wish to investigate
+
 ```{r}
 library(idar)
 data(codex)
