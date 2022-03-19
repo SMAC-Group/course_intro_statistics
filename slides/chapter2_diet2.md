@@ -137,15 +137,15 @@ alternative hypothesis: true location shift is not equal to 0
 
 ```r
 # Test II
-wilcox.test(dietA, dietC, alternative = "two.sided")
+wilcox.test(dietA, dietC, alternative = "less")
 ```
 
 ```out
 	Wilcoxon rank sum test with continuity correction
 
 data:  dietA and dietC
-W = 180.5, p-value = 0.006938
-alternative hypothesis: true location shift is not equal to 0
+W = 180.5, p-value = 0.003469
+alternative hypothesis: true location shift is less than 0
 ```
 
 ---
