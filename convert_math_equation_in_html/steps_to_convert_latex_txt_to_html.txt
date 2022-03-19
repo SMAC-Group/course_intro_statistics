@@ -1,4 +1,10 @@
-- save in a .txt file the latex code of your equation
-- run the following command to convert it in html : pandoc myTexFile.tex -f latex -t html -s -o myHtmlFile.html
+## AUTOMATIC OPTION
+https://pandoc.org/try/
+
+## COMMAND LINE OPTION
+- save in a .tex file the latex code of your equation
+- run the following command to convert it in html : 
 - copy the html fragment in your website
+
+
 
