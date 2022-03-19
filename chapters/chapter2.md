@@ -1,5 +1,5 @@
 ---
-title: 'Chapter 2: Analysis of Variance 🚧🔨 (under construction)'
+title: 'Chapter 2: Analysis of Variance'
 description:
   ''
 prev: /chapter1
@@ -63,7 +63,7 @@ You can view the slides directly in the browser below. To download the slides, p
 <opt text="It is very interesting that 11 tests are significant."> Nope, because we did many tests... </opt>
 <opt text="It is interesting that 11 tests are significant but since we did many tests we should find a theoretical argument for our analysis."> Finding a posteriori argument is always dangerous. ⚠️ </opt>
 <opt text="One would expect 12.5 (5% of 250) significant tests even in the purely null case, merely by chance, so we should find at 13 significant tests for the result to be interesting."> No, actually we would need at lot more... In fact, there is a probability 49%  that one would obtain 13 or more significant test by pure luck. 🤔 </opt>
-<opt text="One would expect 12.5 (5% of 250) significant tests even in the purely null case, merely by chance. So, finding only 11 significant results is actually somewhat disappointing." correct="true"> Yes! In his class notes John Wilder Tukey (who is famous statistician and the inventor of many statistical methods, including the boxplot!) used this example at Princeton University in 1976 to highlight the dangers of multiple testing (and introduce the idea of higher criticism) 🤔. [fg](fg) </opt>
+<opt text="One would expect 12.5 (5% of 250) significant tests even in the purely null case, merely by chance. So, finding only 11 significant results is actually somewhat disappointing." correct="true"> Yes! In his class notes John Wilder Tukey (who is famous statistician and the inventor of many statistical methods, including the boxplot!) used this example at Princeton University in 1976 to highlight the dangers of multiple testing (and introduce the idea of higher criticism) 🤔. </opt>
 </choice>
 
 </exercise>
