@@ -28,7 +28,7 @@ Before performing our statistical analysis to evaluate the validity of the above
 boxplot_w_points(spo2, ylab = "Oxygen saturation (%)")
 ```
 
-Based on this graph, it clearly appears that t-test doesn't may not be suitable solution and we select instead a Wilcoxon test. Assuming that an average oxygen saturation below 95 can be considered as "low", we perform the following analysis:
+Based on this graph, it clearly appears that t-test may not be suitable solution and we select instead a Wilcoxon test. Assuming that an average oxygen saturation below 95 can be considered as "low", we perform the following analysis:
 
 Therefore, at 5\% confidence level, we can reject the null hypothesis: $H_0: \;\; \mu = 95$ and accept the alternative that the average oxygen saturation is below 95 for the admitted COVID-19 patients. Similar results would be obtained considering 94 as a cutoff:
 
@@ -60,10 +60,10 @@ Before performing our statistical analyses, we start by visualizing the empirica
 
 ```{r}
 # Check empirical distribution
-boxplot_w_points(spo2_icu, spo2_not_icu, ylab = "Oxygen saturation (%)")
-```
+boxplot_w_points(spo2_icu, spo2_not_icu, names=c("spo2_icu","spo2_not_icu"),ylab = "Oxygen saturation (%)")
+``` 
 
-To investigate if the COVID-19 patients admitted to an Intensive Care Unit (ICU) tend to have a lower oxygen saturation than the ones that are not we perform a similar analysis:
+To investigate if the COVID-19 patients admitted to an Intensive Care Unit (ICU) tend to have a lower oxygen saturation than the ones that are not, we perform a similar analysis:
 
 ```{r, warning = FALSE}
 wilcox.test(spo2_icu, mu = 92, alternative = "less")
