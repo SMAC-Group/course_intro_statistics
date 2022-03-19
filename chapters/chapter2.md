@@ -40,7 +40,7 @@ You can view the slides directly in the browser below. To download the slides, p
 <choice id="chap2_exc2">
 <opt text="When it is reasonable to assume that there are no outliers."> Nope, if the sample size is small we also need the empirical distribution to be reasonably close to a normal distribution. </opt>
 <opt text="When it is reasonable to assume that the sample distribution is at least approximately normal with not many outliers."> Nope, these outliers can potentially have a very large impact! </opt>
-<opt text="When it is reasonable to assume that there are no outliers and the sample size is sufficiently large" correct="true"> Indeed, if the sample size is large enough, then we don't require the sample distribution to be close to a normal because of the Central Limit Theorem. </opt>
+<opt text="When it is reasonable to assume that there are no outliers and the sample size is sufficiently large" correct="true"> Indeed, if the sample size is large enough, then we don't require the sample distribution to be close to a normal because of the central limit theorem. </opt>
 <opt text="We need the following: (1) it is reasonable to assume that there are no outliers, (2) the variances of the two groups are known to be the same (or at least it is reasonable to assume that this is the case)."> Nope, if the sample size is small we also need the empirical distribution to be reasonably close to a normal distribution. The assumption that the variances are the same is not needed.
 </opt>
 </choice>
@@ -131,7 +131,7 @@ Since diet A is put first, we should consider a negative difference.
 
 </codeblock>
 
-Based on this test, we obtain a p-value of 5.747% (which could make you think that the consultant picked one kg for a good reason...🤔). Therefore, the consultant claims that it is statistically proven that the two diets are the equally effective in terms of weights loss. What do you think of this argument?
+Based on this test, we obtain a p-value of 5.747% (which could make you think that the consultant picked one kg for a good reason...🤔). Therefore, the consultant claims that it is statistically proven that the two diets are equally effective in terms of weights loss. What do you think of this argument?
 
 <choice id="chap2_diet_3">
 <opt text="The consultant showed that the average difference in terms of weight loss is equal to one kg, so his claim is incorrect."> Nope, we can never "accept" the null. </opt>
@@ -140,7 +140,7 @@ Based on this test, we obtain a p-value of 5.747% (which could make you think th
 <opt text="The consultant showed that the average difference in terms of weight loss is equal to one kg, so his claim is correct."> Nope, we can never "accept" the null. </opt>
 </choice>
 
-The competing company that promotes diet C is unhappy about the claims made by the consultant. So they hire their own consultant, who selects a difference of 950 grams. Which test should this second consultant perform:
+The competing company that promotes diet C is unhappy about the claims made by the consultant. So they hire their own consultant, who selects a difference of 950 grams. Please complete the following test this second consultant wants to perform:
 
 <codeblock id="chap2_diet4">
 
@@ -148,7 +148,7 @@ Since diet A becomes first we should consider a negative difference.
 
 </codeblock>
 
-Then, the (second) consultant claims that diet C leads an average weight loss that is significantly larger by 950 grams than diet A. What do you think of this argument:
+Then, the (second) consultant claims that diet C leads to an average weight loss that is significantly larger by 950 grams than diet A. What do you think of this argument:
 
 <choice id="chap2_diet_4">
 <opt text="The claim is correct because the p-value is smaller than 5%."> In some sense, this answer is correct... but why did the consultant pick 950 grams? </opt>
@@ -203,7 +203,7 @@ Next, we wish to visualize the empirical distribution of the data in order to se
 
 <codeblock id="chap2_covid2">
 
-Which function in the `idar` R package that allows to construct boxplots of two groups?
+Which function in the `idar` R package allows to construct boxplots of two groups?
 
 </codeblock>
 
@@ -315,7 +315,7 @@ Based on these p-values and consider a standard value of 5% for \\( \alpha \\), 
 <choice id="chap2_pharma">
 <opt text="The claim is correct since all p-values are smaller than alpha."> Yes... but we are considering many test here... 😕 </opt>
 <opt text="The claim is correct and we are now certain that the average number of customers is higher on Sundays."> Nope, we can never be sure! </opt>
-<opt text="The claim is incorrect as we fail to reject the null hypotheses for all tests."> Yay! 😆 </opt>
+<opt text="The claim is incorrect as we fail to reject the null hypotheses for all tests." correct = "true"> Yay! 😆 </opt>
 <opt text="The claim is correct because we can reject the null hypotheses for most tests."> Nope, our claim was that Sunday has larger average number of customers compared to all the other days. </opt>
 </choice>
 
