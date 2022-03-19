@@ -70,7 +70,7 @@ abline(v = 0)
 
 Based on the previous boxplot, Welch's t-test or Wilcoxon rank sum test are both reasonable choices. For this example we will use the Welch's t-test. To compare the effectiveness of diets A and B we start by defining the hypotheses:
 
-\\( H_{0}: \mu_A=\mu_B \\), \\( H_{a}: \mu_A\neq\mu_B, \\)
+\\( H_{0}: \mu_A=\mu_B \\) and \\( H_{a}: \mu_A\neq\mu_B, \\)
 
 where \\( \mu_A \\) and \\( \mu_B \\) denote the mean weight loss for diets A and B, respectively. We consider \\(\alpha \\) = 0.05 and compute the p-value as follows:
 

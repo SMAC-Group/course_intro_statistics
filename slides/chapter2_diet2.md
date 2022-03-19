@@ -73,7 +73,7 @@ Based on the previous graph, we decide to first employ a Kruskal-Wallis test to 
 
 We start with a Kruskal-Wallis test with the following hypotheses:
 
-\\( H_{0}: \mu_A=\mu_B=\mu_B \\), \\( H_{a}: H_0\\) is false. 
+\\( H_{0}: \mu_A=\mu_B=\mu_B \\) and \\( H_{a}: H_0\\) is false. 
 
 where \\( \mu_A \\), \\( \mu_B \\)  and \\( \mu_C \\) denote the mean weight loss for diets A, B and C, respectively. As usual, we consider \\(\alpha \\) = 0.05.
 
