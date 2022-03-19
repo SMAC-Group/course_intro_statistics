@@ -23,6 +23,50 @@ You can view the slides directly in the browser below. To download the slides, p
 
 
 <exercise id = "2" title ="Exercises">
+
+### 1) Consider that you want to compare several means of diffferent populations (\\( >2 \\)). The distribution of the variable of interest seems to be aproximately normally distributed, but you note that the variance of the variable of interest seems to be different between groups. What test should you consider and why?
+
+
+
+<choice id="1">
+<opt text="You should consider the two independent sample Student's t-test because the data seems to be approximately normally distributed.">
+</opt>
+<opt text="As you compare more than 2 groups, that the data seems to be approximately normally distributed and that variance between groups seems to be different, you should consider the Welsch one-way ANOVA." correct="true">
+</opt>
+<opt text="You should consider the two independent sample Welsch's t-test because there is evidence that the variance is different between groups." >
+</opt>
+<opt text="As you compare more than 2 groups and that the data seems to be approximately normally distributed, you should consider the Fisher one-way ANOVA." >
+</opt>
+</choice>
+
+### 2) Load the package `idar` and load the dataset `cortisol` (with `data(cortisol)`). Consider the variable `Urine Cortisol (pg/mg)` and represent the variable graphically. Consider that you would like to test if there is evidence of a difference in the means of the variable `Urine Cortisol (pg/mg)` between the group `C` and `NC`. Perform the adapted test given the distribution of the variable and interpret the result.
+
+
+<codeblock id="02_01">
+Consider the variance and the distribution of the variable `Urine Cortisol (pg/mg)` to decide which test to apply.
+</codeblock>
+
+
+### 3) Consider the following statements on multiple testing and on how multiple testing affects the probability of committing a type I and type II error. Select the true statement.
+
+<choice id="3">
+<opt text="As the the probability of failing to reject a null hypothesis that is actually false (type II error) increases with the number of tests, one should correct the p-values with corrected p-values larger than the uncorrected ones.">
+</opt>
+<opt text="As the the probability of rejecting a null hypothesis that is actually true (type I error) increases with the number of tests, one should correct the p-values with corrected p-values larger than the uncorrected ones." correct="true">
+</opt>
+<opt text="There is no need to correct p-values when performing multiple testing." >
+</opt>
+<opt text="As the the probability of rejecting a null hypothesis that is actually true (type I error) increases with the number of tests, one should correct the p-values with corrected p-values smaller than the uncorrected ones." >
+</opt>
+</choice>
+
+
+### 4) Load the package `palmerpenguins` and load the dataset `penguins` (with `df = palmerpenguins::penguins`). Consider the variable `bill_length_mm` and represent the variable graphically. Test with the appropriate test if there are evidences of differences in the location of the distribution of the variable `bill_length_mm` between species. Consider the three pairs of species that can be composed and for each pair, test if there are evidences of differences in the means between species. Correct the resulting p-values with the function `p.adjust` and interpret the results.
+
+<codeblock id="02_02">
+Consider the variance and the distribution of the variable `Urine Cortisol (pg/mg)` to decide which test to apply.
+</codeblock>
+
 </exercise>
 
 <exercise id = "3" title="Analysis of the Diet dataset - Part I">
@@ -114,15 +158,100 @@ Then, the (second) consultant claims that diet C leads an average weight loss th
 
 </exercise>
 
+<exercise id = "5" title="Exercise on the COVID dataset">
 
-<exercise id = "5" title="Analysis of the Diet dataset - Part II">
+<p>In this exercise, we revisit the data from Parisi, et al., (2021) which studies the applicability of predictive models for intensive care admission of COVID-19 patients in a secondary care hospital in Belgium. In this exercise, we wish to evaluate if the claim that the average oxygen saturation of the patients admitted to an ICU is lower than the ones that are not. For this purpose, we will conduct a statistical analysis and our first question concerns the hypotheses we should use. Let <span class="math inline">\(\mu_{I}\)</span> and <span class="math inline">\(\mu_{N}\)</span> denote the mean oxygen saturation
+of the patients admitted to an ICU and the ones that are not admitted to an ICU, respectively. Consider the following four sets of hypotheses:</p>
+
+<p><strong>A. </strong><span class="math inline">\(H_0\)</span>: <span
+class="math inline">\(\mu_I = \mu_N\)</span>, <span
+class="math inline">\(H_a\)</span>: <span class="math inline">\(\mu_I \neq \mu_N\)</span></p>
+
+<p><strong>B. </strong><span class="math inline">\(H_0\)</span>: <span
+class="math inline">\(\mu_I = \mu_N\)</span>, <span
+class="math inline">\(H_a\)</span>: <span class="math inline">\(\mu_I > \mu_N\)</span></p>
+
+<p><strong>C. </strong><span class="math inline">\(H_0\)</span>: <span
+class="math inline">\(\mu_I = \mu_N\)</span>, <span
+class="math inline">\(H_a\)</span>: <span class="math inline">\(\mu_I < \mu_N\)</span></p>
+
+<p><strong>D. </strong><span class="math inline">\(H_0\)</span>: <span
+class="math inline">\(\mu_I < \mu_N\)</span>, <span
+class="math inline">\(H_a\)</span>: <span class="math inline">\(\mu_I = \mu_N\)</span></p>
+
+Which hypotheses should you consider to assess the validity of the previously mentioned claim:
+
+
+<choice id="chap2_icu1">
+<opt text="We should use A."> No, we would use A to test if there is a difference. </opt>
+<opt text="We should use B."> No, we would use B to test if the mean is higher for ICU patients compared to non-ICU patients. </opt>
+<opt text="We should use C." correct = "true"> Well done! 😄  </opt>
+<opt text="We should use D."> No, there is a problem with these hypotheses. </opt>
+<opt text="Both C and D are correct and can used."> No, there is a problem with D. </opt>
+<opt text="None of them are correct."> No, one of them seems to be OK here! </opt>
+</choice>
+
+As previously mentioned, we are interested in comparing if there is a difference in the mean of oxygen saturation of the patients (corresponding to the variable `spo2`) depending on their admission to an ICU (corresponding to the variable `icu`). The variable `icu` is divided into `1` (for patients that are admitted to an ICU) and `0` (for patients that are not admitted to an ICU) groups. Using this information, complete the code below to construct the variables of interest:
+
+<codeblock id="chap2_covid1">
+
+Remember that `icu` is `1` for the patients that are admitted and `0` otherwise.
+
+</codeblock>
+
+Next, we wish to visualize the empirical distribution of the data in order the select a suitable test. Complete the code below to construct boxplots comparing the two groups:
+
+<codeblock id="chap2_covid2">
+
+You can use the function `boxplot_w_points`...
+
+</codeblock>
+
+Based on this graph, which of the following tests appears to be the most suitable:
+
+<choice id="chap2_icu2">
+<opt text="Student t-test."> The student t-test assume that the variances of the two groups are same. This is very hard to verify in practice and for this reason, it is preferable to avoid using this test.</opt>
+<opt text="Welch t-test." > The outliers that ca be observed in the previous graph tend to indicate that this choice is dangerous. </opt>
+<opt text="Wilcoxon test." correct = "true" > This is arguably the best choice for this problem. </opt>
+</choice>
+
+Based on the test and hypotheses you selected, complete the code below to obtain the desired p-value:
+
+<codeblock id="chap2_covid3">
+
+You can use the function `wilcox.test`...
+
+</codeblock>
+
+<p>Based on the p-value you obtained, what should you do (assuming <span class="math inline">\(\alpha = 0.05\)</span>):</p>
+
+<choice id="chap2_icu2">
+<opt text="Accept the null hypothesis."> Nope you can never do that!</opt>
+<opt text="Reject the alternative hypothesis." > Nope you can never do that!</opt>
+<opt text="Reject the null and accepted the alternative hypothesis." correct = "true" > 👍 </opt>
+<opt text="Fail to reject the null hypothesis." > Since the p-value is smaller than alpha, this is not correct. </opt>
+</choice>
+
+Therefore, we should conclude regarding the claim that the average oxygen saturation of the patients admitted to an ICU is lower than the ones that are not:
+
+<choice id="chap2_icu3">
+<opt text="Since we were able the accept the alternative hypothesis it is certain that the claim is correct."> Nope, we can never be sure! 😉 </opt>
+<opt text="Since we were able the accept the alternative hypothesis we can't conclude anything." > It is when we fail to reject the null that we can't really conclude anything. </opt>
+<opt text="Since we were able the accept the null hypothesis it is plausible that the claim is correct." > Are you sure you can accept the null? </opt>
+<opt text="Since we were able the accept the alternative hypothesis it is plausible that the claim is correct." correct = "true" > 👍 </opt>
+</choice>
+
+</exercise>
+
+
+<exercise id = "6" title="Analysis of the Diet dataset - Part II">
 
 <slides source="chapter2_diet2">
 </slides>
 
 </exercise>
 
-<exercise id = "6" title="Exercise on the pharmacy attendance dataset">
+<exercise id = "7" title="Exercise on the Pharmacy Attendance dataset">
 
 We consider data from a study conducted in a pharmacy in Geneva where the number of clients per hour was recorded over a period of two years. We wish to assess if it is reasonable to believe that Tuesday is busiest day of the week for this pharmacy. It is important to notice but unlike our previous example, this dataset is very large with over 17 thousands observations. This will important later on...
 
@@ -194,81 +323,9 @@ Based on these p-values and consider a standard value of \\( \alpha \\) what can
 
 
 
-<exercise id = "7" title="Analysis of the Diet dataset - Part I">
-</exercise>
-
-<exercise id = "8" title="Application">
-
-<slides source="chapter2_01">
-</slides>
-
-
-</exercise>
-
-
-<exercise id = "9" title ="Analysis of Variance: Exercises">
-
-### 1) Consider that you want to compare several means of diffferent populations (\\( >2 \\)). The distribution of the variable of interest seems to be aproximately normally distributed, but you note that the variance of the variable of interest seems to be different between groups. What test should you consider and why?
-
-
-
-<choice id="1">
-<opt text="You should consider the two independent sample Student's t-test because the data seems to be approximately normally distributed.">
-</opt>
-<opt text="As you compare more than 2 groups, that the data seems to be approximately normally distributed and that variance between groups seems to be different, you should consider the Welsch one-way ANOVA." correct="true">
-</opt>
-<opt text="You should consider the two independent sample Welsch's t-test because there is evidence that the variance is different between groups." >
-</opt>
-<opt text="As you compare more than 2 groups and that the data seems to be approximately normally distributed, you should consider the Fisher one-way ANOVA." >
-</opt>
-</choice>
-
-### 2) Load the package `idar` and load the dataset `cortisol` (with `data(cortisol)`). Consider the variable `Urine Cortisol (pg/mg)` and represent the variable graphically. Consider that you would like to test if there is evidence of a difference in the means of the variable `Urine Cortisol (pg/mg)` between the group `C` and `NC`. Perform the adapted test given the distribution of the variable and interpret the result.
-
-
-<codeblock id="02_01">
-Consider the variance and the distribution of the variable `Urine Cortisol (pg/mg)` to decide which test to apply.
-</codeblock>
-
-
-### 3) Consider the following statements on multiple testing and on how multiple testing affects the probability of committing a type I and type II error. Select the true statement.
-
-<choice id="3">
-<opt text="As the the probability of failing to reject a null hypothesis that is actually false (type II error) increases with the number of tests, one should correct the p-values with corrected p-values larger than the uncorrected ones.">
-</opt>
-<opt text="As the the probability of rejecting a null hypothesis that is actually true (type I error) increases with the number of tests, one should correct the p-values with corrected p-values larger than the uncorrected ones." correct="true">
-</opt>
-<opt text="There is no need to correct p-values when performing multiple testing." >
-</opt>
-<opt text="As the the probability of rejecting a null hypothesis that is actually true (type I error) increases with the number of tests, one should correct the p-values with corrected p-values smaller than the uncorrected ones." >
-</opt>
-</choice>
-
-
-### 4) Load the package `palmerpenguins` and load the dataset `penguins` (with `df = palmerpenguins::penguins`). Consider the variable `bill_length_mm` and represent the variable graphically. Test with the appropriate test if there are evidences of differences in the location of the distribution of the variable `bill_length_mm` between species. Consider the three pairs of species that can be composed and for each pair, test if there are evidences of differences in the means between species. Correct the resulting p-values with the function `p.adjust` and interpret the results.
-
-<codeblock id="02_02">
-Consider the variance and the distribution of the variable `Urine Cortisol (pg/mg)` to decide which test to apply.
-</codeblock>
-
-
-
-
-
-
-</exercise>
-
-
-
-<exercise id="11" title="Homework 2">
+<exercise id="8" title="Homework 2">
 
 We consider data from Abouir, et al., (2022) which is an observational study conducted at Geneva University Hospitals to assess the impact of weight on the pharmacokinetics of dexamethasone in normal-weight versus obese patients hospitalized for COVID-19. 
-
-
-
-Cmax is the maximum concentration that achieves in the blood after the drug has been administered
-The AUC is the integral (from 0 to 8 hours) of a curve that describes the variation of a drug concentration in the blood as a function of time
-Tmax corresponds to the time it takes for a drug to reach the maximum concentration (Cmax) after administration of a drug
 
 **Question I:** We consider the variable `cmax` (in ng/ml) which corresponds to the maximum concentration that the drug achieves in the blood after it has been administered. Regarding the variable `cmax`, we wish to assess the validity of the following claims:
 
