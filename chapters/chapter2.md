@@ -52,7 +52,8 @@ You can view the slides directly in the browser below. To download the slides, p
 </opt>
 <opt text="When the distribution is not symmetric and the sample is large." correct="true"> Yes! Since this test concerns the median and not the mean, the result can be quite different when the distribution is not symmetric.
 </opt>
-<opt text="When it is reasonable to assume that there are no outliers and the sample distribution should be at least approximately normal."> Nope, it can still perform very well in this case. > </opt>
+<opt text="When it is reasonable to assume that there are no outliers and the sample distribution should be at least approximately normal."> Nope, it can still perform very well in this case. 
+</opt>
 <opt text="When it is reasonable to assume that there are no outliers and the variances are the same."> Nope, it can still perform very well in this case. > </opt>
 </choice>
 
