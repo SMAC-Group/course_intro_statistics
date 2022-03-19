@@ -3,7 +3,7 @@ title: "Homework 2"
 output: html_document
 ---
 
-In this homework, we wish to investigate Abouir, et al., (2022) to assess the validity of several claims. First of all, we need to select the observations out for different analysis.
+In this homework, we wish to investigate Abouir, et al., (2022) to assess the validity of several claims. First of all, we need to select the observations for different analysis.
 
 ```{r}
 library(idar)
@@ -27,10 +27,10 @@ AUC_women = codex$auc[codex$gender == 0]
 AUC_obese = codex$auc[codex$obese == 1]
 AUC_non_obese = codex$auc[codex$obese == 0]
 ```
-### Question 1
-1. The first step is still to check the empirical distribution. 
 
-# $C_{\max}$ 
+### Question 1: Difference between groups for $C_{\max}$
+
+Let's have a look at the empirical distributions:
 
 ```{r, fig.align='center', fig.height=6, fig.width=12}
 par(mfrow = c(1, 2))
@@ -39,12 +39,14 @@ boxplot_w_points(Cmax_women, Cmax_men, names = c("Women", "Men"),
 boxplot_w_points(Cmax_obese, Cmax_non_obese, names = c("Obese", "Non-obese"), ylab = "Cmax (ng/ml)")
 ```
 
-From the result, we can see that outliers are there. Thus consider the Wilcoxon test to compare the mean in different groups. 
+Based on these graphs, it is reasonable to believe that some outliers are present. Thus, we select Wilcoxon test to compare the mean in different groups. 
 ```{r}
 wilcox.test(Cmax_women, Cmax_men, alternative = "less")
 wilcox.test(Cmax_obese, Cmax_non_obese, alternative = "less")
 ```
-From the result we can see that the p-value = 0.001661 in the first test is much smaller than 0.05, which indicates there is a strong evidence against the null hypotheses in favor of the alternative. We could believe the `cmax` in group of `women` is less than that in `men`. However, for the second test, there isn't an evidence to reject the null hypotheses in which we assert that there is no obvious difference in `cmax` between group of `obese` and `non_obese`.
+
+From the result we can see that the p-value = 0.001661 in the first test is smaller than 0.05, which indicates there are some evidence against the null hypotheses in favor of the alternative. Therefore, at the 95% confidence level, we reject the null and accept the alternative hypothesis that the mean of the variable `cmax` in group of `women` is less than that in `men`. However, for the second test, there isn't an evidence to reject the null hypotheses in which we assert that there is no obvious difference in `cmax` between group of `obese` and `non_obese`.
+
 ```{r}
 t.test(Cmax_women, Cmax_men, alternative = "less")
 t.test(Cmax_obese, Cmax_non_obese, alternative = "less")

@@ -25,7 +25,7 @@ spo2_not_icu = spo2[icu == 0]
 Before performing our statistical analysis to evaluate the validity of the above claim, we start by visualizing the empirical distribution of the data as follows:
 
 ```{r}
-boxplot_w_points(spo2, ylab = "Oxygen saturation (%)")
+boxplot_w_points(spo2, ylab = "Oxygen saturation (%)", xlab = "All patients")
 ```
 
 Based on this graph, it clearly appears that t-test may not be suitable solution and we select instead a Wilcoxon test. Assuming that an average oxygen saturation below 95 can be considered as "low", we perform the following analysis:
@@ -60,7 +60,9 @@ Before performing our statistical analyses, we start by visualizing the empirica
 
 ```{r}
 # Check empirical distribution
-boxplot_w_points(spo2_icu, spo2_not_icu, names=c("spo2_icu","spo2_not_icu"),ylab = "Oxygen saturation (%)")
+boxplot_w_points(spo2_icu, spo2_not_icu, 
+                 names=c("ICU admitted","not admitted to ICU"), 
+                 ylab = "Oxygen saturation (%)")
 ``` 
 
 To investigate if the COVID-19 patients admitted to an Intensive Care Unit (ICU) tend to have a lower oxygen saturation than the ones that are not, we perform a similar analysis:
