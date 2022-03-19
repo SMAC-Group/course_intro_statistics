@@ -54,7 +54,7 @@ You can view the slides directly in the browser below. To download the slides, p
 </opt>
 <opt text="When it is reasonable to assume that there are no outliers and the sample distribution should be at least approximately normal."> Nope, it can still perform very well in this case. 
 </opt>
-<opt text="When it is reasonable to assume that there are no outliers and the variances are the same."> Nope, it can still perform very well in this case. > </opt>
+<opt text="When it is reasonable to assume that there are no outliers and the variances are the same."> Nope, it can still perform very well in this case. </opt>
 </choice>
 
 
