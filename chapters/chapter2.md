@@ -252,7 +252,7 @@ Therefore, we should conclude regarding the claim that the average oxygen satura
 
 <exercise id = "7" title="Exercise on the Pharmacy Attendance dataset">
 
-We consider data from a study conducted in a pharmacy in Geneva where the number of clients per hour was recorded over a period of two years. We wish to assess if it is reasonable to believe that Tuesday is busiest day of the week for this pharmacy. It is important to notice but unlike our previous example, this dataset is very large with over 17 thousands observations. This will important later on...
+We consider data from a study conducted in a pharmacy in Geneva where the number of clients per hour was recorded over a period of two years. We wish to assess if it is reasonable to believe that Sunday is the busiest day of the week for this pharmacy. It is important to notice that unlike our previous example, this dataset is very large with over 17 thousands observations. This is an important observation as we will see later on...
 
 We start by importing the data and creating the variables of interest:
 
@@ -271,7 +271,7 @@ saturday = na.omit(pharmacy$attendance[pharmacy$weekday == "Saturday"])
 sunday = na.omit(pharmacy$attendance[pharmacy$weekday == "Sunday"])
 ```
 
-Since the dataset is so large the function `boxplot_w_points` is not appropriate. Indeed, if we were to use this function we would obtain the following result:
+Since the dataset is very large, the function `boxplot_w_points` is not applicable. Indeed, if we were to use this function we would obtain the following result:
 
 ```r
 boxplot_w_points(monday, tuesday, wednesday, thursday,
@@ -283,7 +283,7 @@ boxplot_w_points(monday, tuesday, wednesday, thursday,
 
 <div style="text-align:center"><img src="chap2_pharma_1.png" alt=" " width="90%"></div>
 
-Instead we prefer in this case the default `R` function `boxplot` which can be used as follows:
+So instead, in this case we prefer to use the default `R` function `boxplot` which can be used as follows:
 
 ```r
 boxplot(monday, tuesday, wednesday, thursday,
@@ -295,13 +295,13 @@ boxplot(monday, tuesday, wednesday, thursday,
 
 <div style="text-align:center"><img src="chap2_pharma_2.png" alt=" " width="90%"></div>
 
-It can be observed that the distributions don't appear to be symmetric rendering a nonparametric based on Kruskal-Wallis and/or Wilcoxon tests potentially inadequate as it would concern the median rather than the mean (as postulate in the claim we wish to investigate). Consequently, we opt for using Welch's t-tests. If you are curious why the assumption of having approximately normally distributed data is less important (due to the central limit theorem 😎 ) when the sample size is **large** you can have this paper 👇
+It can be observed that the distributions don't appear to be symmetric, rendering that the nonparametric Kruskal-Wallis and/or Wilcoxon tests are potentially inadequate as they concern the median rather than the mean (as postulated in the claim we wish to investigate). Consequently, we opt for using Welch's t-tests. If you are curious why the assumption of having approximately normally distributed data is less important when the sample size is **large** (due to the central limit theorem 😎), you can have a look at this paper 👇
 
 <div style="text-align:center"><img src="paper.png" alt=" " width="80%"></div>
 
-Link to the paper: [here](https://www.annualreviews.org/doi/abs/10.1146/annurev.publhealth.23.100901.140546) and the first sentence of the abstract tells you a lot: "*It is widely but incorrectly believed that the t-test and linear regression are valid only for Normally distributed outcomes.*" 
+The link to this paper is [here](https://www.annualreviews.org/doi/abs/10.1146/annurev.publhealth.23.100901.140546). The first sentence of the abstract already tells you a lot: "*It is widely but incorrectly believed that the t-test and linear regression are valid only for Normally distributed outcomes.*" 
 
-Using the test we selected, complete the code below to obtain the p-values associated the tests required to assess the validity of our claim:
+Using the test we selected, complete the code below to obtain the p-values associated to the tests required to assess the validity of our claim:
 
 <codeblock id="chapter2_pharma">
 
@@ -309,13 +309,13 @@ Remember that we are comparing `sunday` to all other days.
 
 </codeblock>
 
-Based on these p-values and consider a standard value of \\( \alpha \\) what can you conclude:
+Based on these p-values and consider a standard value of 5% for \\( \alpha \\), what can you conclude:
 
 <choice id="chap2_pharma">
 <opt text="The claim is correct since all p-values are smaller than alpha."> Yes... but we are considering many test here... 😕 </opt>
-<opt text="The claim is correct and we are now certain that the average number of customer is higher on Sundays"> Nope, we can never be sure! </opt>
-<opt text="The claim is incorrect we cannot reject the null hypothesis for all tests."> Yay! 😆 </opt>
-<opt text="The claim is correct because we can reject the null hypothesis for most of tests."> Nope, the claim was that this was the case of all days. </opt>
+<opt text="The claim is correct and we are now certain that the average number of customers is higher on Sundays."> Nope, we can never be sure! </opt>
+<opt text="The claim is incorrect as we fail to reject the null hypotheses for all tests."> Yay! 😆 </opt>
+<opt text="The claim is correct because we can reject the null hypotheses for most tests."> Nope, our claim was that Sunday has larger average number of customers compared to all the other days. </opt>
 </choice>
 
 </exercise>
@@ -326,12 +326,12 @@ Based on these p-values and consider a standard value of \\( \alpha \\) what can
 
 We consider data from Abouir, et al., (2022) which is an observational study conducted at Geneva University Hospitals to assess the impact of weight on the pharmacokinetics of dexamethasone in normal-weight versus obese patients hospitalized for COVID-19. 
 
-**Question I:** We consider the variable `cmax` (in ng/ml) which corresponds to the maximum concentration that the drug achieves in the blood after it has been administered. Regarding the variable `cmax`, we wish to assess the validity of the following claims:
+**Question I:** We consider the variable `cmax` (in ng/ml) which corresponds to the maximum concentration that the drug can achieve in the blood after it is administered. We wish to assess the validity of the following claims:
 
 1. Can we conclude that the mean of the variable `cmax` is lower in the group men than in the group women?
 2. Can we conclude that the mean of the variable `cmax` is lower in the group obese than in the group non-obese?
 
-To perform the analysis you will to construct the different groups we wish to compare and for this purpose we can use the following code:
+To perform the analysis we will need to construct the different groups we wish to compare. We can use the following code:
 
 ```r
 library(idar)
@@ -343,7 +343,7 @@ Cmax_obese = codex$cmax[codex$obese == 1]
 Cmax_non_obese = codex$cmax[codex$obese == 0]
 ```
 
-Then, we can compare the group and, for example, to compare the `cmax` between men and women we can use the following code:
+Then we can make comparisons between groups. For example, to compare the `cmax` between men and women we can use the following code:
 
 ```r
 boxplot_w_points(Cmax_women, Cmax_men,
@@ -353,14 +353,14 @@ boxplot_w_points(Cmax_women, Cmax_men,
 
 <div style="text-align:center"><img src="HW2_boxplot.png" alt=" " width="70%"></div>
 
-Perform a statistical analysis to assess the validity of the previously mentioned claims.
+Please perform a statistical analysis to assess the validity of the previously mentioned claims.
 
 **Question II:** We now consider the variable `tmax` (in hour) which corresponds to the time it takes for the drug to reach the maximum concentration (i.e. Cmax) after its administration. Similarly, we wish to examine the following claims:
 
 1. Can we conclude that the mean of the variable `tmax` is lower in the group men than in the group women?
 2. Can we conclude that the mean of the variable `tmax` is lower in the group obese than in the group non-obese?
 
-To perform the analysis you will to construct the different groups we wish to compare and for this purpose we can use the following code:
+To perform the analysis we will need to construct the different groups we wish to compare. We can use the following code:
 
 ```r
 Tmax_men = codex$tmax[codex$gender == 1]
@@ -369,13 +369,14 @@ Tmax_obese = codex$tmax[codex$obese == 1]
 Tmax_non_obese = codex$tmax[codex$obese == 0]
 ```
 
-Based on this group, perform a statistical analysis to assess the validity of the previously mentioned claims.
+Based on these groups, please perform a statistical analysis to assess the validity of the previously mentioned claims.
+
 
 **Question III:** Finally, we consider the variable `auc` (in ng.h/ml) which corresponds to the integral (from 0 to 8 hours) of a curve that describes the variation of the drug concentration as a function of time. Similarly, we wish to examine the following claims:
 
 1. Can we conclude that the mean of the variable `auc` is lower in the group men than in the group women?
 2. Can we conclude that the mean of the variable `auc` is lower in the group obese than in the group non-obese?
 
-Perform a statistical analysis to assess the validity of the previously mentioned claims.
+Please perform a statistical analysis to assess the validity of the previously mentioned claims.
 
 </exercise>
