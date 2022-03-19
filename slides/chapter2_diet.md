@@ -2,13 +2,14 @@
 type: slides
 ---
 
-# Comparing Diet A and B
+# Comparing Diets A and B
 
 ---
 
 # Getting the data
 
-In this set of slides we will replicate the `diet` data analysis example where diet A and B are compared which is presented in the lectures slides. Our first step is to download the data which are available in the `idar` R package. Assuming that this package is installed (if not please refer to Section 1 of this chapter), we can load the data as follows:
+In this set of slides, we will replicate the `diet` data analysis example
+presented in the lectures slides, and we will compare diets A and B. Our first step is to load the data which is available in the `idar` R package. Assuming that this package is installed (if not, please refer to Section 1 of Chapter 1), we can load the data as follows:
 
 ```r
 # Import data
@@ -43,7 +44,7 @@ To compare the effectiveness of the diets, we first compute the weight loss of t
 diet$weight.loss = diet$initial.weight - diet$final.weight
 ```
 
-For this example, we consider diet A and B so we construct our "variables of interest", say `dietA` and `dietB`, by only selecting these diets. This can be done in `R` as follows:
+For this example, we consider diets A and B so we construct our "variables of interest", say `dietA` and `dietB`, by only selecting these diets. This can be done in `R` as follows:
 
 ```r
 # Variables of interest
@@ -67,11 +68,11 @@ abline(v = 0)
 
 ---
 
-Based on the previous graph Welch's t-test or Wilcoxon rank sum test are both reasonable choices and for this example we will use Welch's t-test. To compare the effectiveness of diet A and B we start by defining the hypotheses :
+Based on the previous boxplot, Welch's t-test or Wilcoxon rank sum test are both reasonable choices. For this example we will use the Welch's t-test. To compare the effectiveness of diets A and B we start by defining the hypotheses:
 
-\\( H_{0}: \mu_A=\mu_B \\) and \\( H_{a}: \mu_A\neq\mu_B, \\)
+\\( H_{0}: \mu_A=\mu_B \\), \\( H_{a}: \mu_A\neq\mu_B, \\)
 
-where \\( \mu_A \\) and \\( \mu_B \\) denote the mean weight loss for diet A and B, respectively. We consider \\(\alpha \\) = 0.05 and compute the p-value as follows:
+where \\( \mu_A \\) and \\( \mu_B \\) denote the mean weight loss for diets A and B, respectively. We consider \\(\alpha \\) = 0.05 and compute the p-value as follows:
 
 ---
 
@@ -92,6 +93,6 @@ mean of x mean of y
     3.300     3.268 
 ```
 
-Therefore, at the 95% confidence level, we fail to reject the null hypothesis.
+Since the p-value is equal to 96.22% which is larger than 5%, we fail to reject the null hypothesis at the 95% confidence level.
 
 
