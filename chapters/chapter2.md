@@ -158,9 +158,9 @@ Then, the (second) consultant claims that diet C leads an average weight loss th
 
 </exercise>
 
-<exercise id = "5" title="Exercise on the COVID dataset">
+<exercise id = "5" title="Exercise on the COVID-19 dataset">
 
-<p>In this exercise, we revisit the data from Parisi, et al., (2021) which studies the applicability of predictive models for intensive care admission of COVID-19 patients in a secondary care hospital in Belgium. In this exercise, we wish to evaluate if the claim that the average oxygen saturation of the patients admitted to an ICU is lower than the ones that are not. For this purpose, we will conduct a statistical analysis and our first question concerns the hypotheses we should use. Let <span class="math inline">\(\mu_{I}\)</span> and <span class="math inline">\(\mu_{N}\)</span> denote the mean oxygen saturation
+<p>In this section, we revisit the data from Parisi, et al., (2021) which studies the applicability of predictive models for intensive care admission of COVID-19 patients in a secondary care hospital in Belgium. In this exercise, we wish to evaluate whether the average oxygen saturation of the patients admitted to an ICU is lower than the ones that are not. For this purpose, we will conduct a statistical analysis and our first question concerns the hypotheses we should use. Let <span class="math inline">\(\mu_{I}\)</span> and <span class="math inline">\(\mu_{N}\)</span> denote the mean oxygen saturation
 of the patients admitted to an ICU and the ones that are not admitted to an ICU, respectively. Consider the following four sets of hypotheses:</p>
 
 <p><strong>A. </strong><span class="math inline">\(H_0\)</span>: <span
@@ -191,54 +191,54 @@ Which hypotheses should you consider to assess the validity of the previously me
 <opt text="None of them are correct."> No, one of them seems to be OK here! </opt>
 </choice>
 
-As previously mentioned, we are interested in comparing if there is a difference in the mean of oxygen saturation of the patients (corresponding to the variable `spo2`) depending on their admission to an ICU (corresponding to the variable `icu`). The variable `icu` is divided into `1` (for patients that are admitted to an ICU) and `0` (for patients that are not admitted to an ICU) groups. Using this information, complete the code below to construct the variables of interest:
+As previously mentioned, we are interested in testing if ICU patients have lower mean of oxygen saturation (corresponding to the variable `spo2`) compared to the non-ICU patients. The variable `icu` has values of `1` (for patients that are admitted to an ICU) and `0` (for patients that are not admitted to an ICU). Using this information, please complete the code below to construct the variables of interest:
 
 <codeblock id="chap2_covid1">
 
-Remember that `icu` is `1` for the patients that are admitted and `0` otherwise.
+Remember that `icu` is `1` for the patients that are admitted to an ICU and `0` otherwise.
 
 </codeblock>
 
-Next, we wish to visualize the empirical distribution of the data in order the select a suitable test. Complete the code below to construct boxplots comparing the two groups:
+Next, we wish to visualize the empirical distribution of the data in order to select a suitable test. Complete the code below to construct boxplots comparing the two groups:
 
 <codeblock id="chap2_covid2">
 
-You can use the function `boxplot_w_points`...
+Which function in the `idar` R package that allows to construct boxplots of two groups?
 
 </codeblock>
 
-Based on this graph, which of the following tests appears to be the most suitable:
+Based on this graph, which of the following test appears to be the most suitable?
 
 <choice id="chap2_icu2">
-<opt text="Student t-test."> The student t-test assume that the variances of the two groups are same. This is very hard to verify in practice and for this reason, it is preferable to avoid using this test.</opt>
-<opt text="Welch t-test." > The outliers that ca be observed in the previous graph tend to indicate that this choice is dangerous. </opt>
+<opt text="Student's t-test."> The student's t-test assumes that the variances of the two groups are the same. This is very hard to verify in practice and thus, it is preferable to avoid using this test.</opt>
+<opt text="Welch's t-test." > The outliers observed in this graph tend to indicate that this choice can be problematic. </opt>
 <opt text="Wilcoxon test." correct = "true" > This is arguably the best choice for this problem. </opt>
 </choice>
 
-Based on the test and hypotheses you selected, complete the code below to obtain the desired p-value:
+Based on the test and hypotheses you selected, complete the code below to obtain the p-value for the test of interest.
 
 <codeblock id="chap2_covid3">
 
-You can use the function `wilcox.test`...
+The function `wilcox.test` can be used for Wilcoxon test. 
 
 </codeblock>
 
-<p>Based on the p-value you obtained, what should you do (assuming <span class="math inline">\(\alpha = 0.05\)</span>):</p>
+<p>Based on the p-value you obtained, what can you conclude (assuming <span class="math inline">\(\alpha = 0.05\)</span>):</p>
 
 <choice id="chap2_icu2">
-<opt text="Accept the null hypothesis."> Nope you can never do that!</opt>
-<opt text="Reject the alternative hypothesis." > Nope you can never do that!</opt>
-<opt text="Reject the null and accepted the alternative hypothesis." correct = "true" > 👍 </opt>
+<opt text="Accept the null hypothesis."> Nope you can never accept the null!</opt>
+<opt text="Reject the alternative hypothesis." > Nope you can never reject the alternative!</opt>
+<opt text="Reject the null and accept the alternative hypothesis." correct = "true" > 👍 </opt>
 <opt text="Fail to reject the null hypothesis." > Since the p-value is smaller than alpha, this is not correct. </opt>
 </choice>
 
 Therefore, we should conclude regarding the claim that the average oxygen saturation of the patients admitted to an ICU is lower than the ones that are not:
 
 <choice id="chap2_icu3">
-<opt text="Since we were able the accept the alternative hypothesis it is certain that the claim is correct."> Nope, we can never be sure! 😉 </opt>
-<opt text="Since we were able the accept the alternative hypothesis we can't conclude anything." > It is when we fail to reject the null that we can't really conclude anything. </opt>
+<opt text="Since we were able to accept the alternative hypothesis it is certain that the claim is correct."> Nope, we can never be sure! 😉 </opt>
+<opt text="Since we were able to accept the alternative hypothesis we can't conclude anything." > It is when we fail to reject the null that we can't really conclude anything. </opt>
 <opt text="Since we were able the accept the null hypothesis it is plausible that the claim is correct." > Are you sure you can accept the null? </opt>
-<opt text="Since we were able the accept the alternative hypothesis it is plausible that the claim is correct." correct = "true" > 👍 </opt>
+<opt text="Since we were able to accept the alternative hypothesis it is plausible that the claim is correct." correct = "true" > 👍 </opt>
 </choice>
 
 </exercise>
