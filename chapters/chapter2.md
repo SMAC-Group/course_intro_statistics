@@ -266,11 +266,11 @@ We consider data from Abouir, et al., (2022) which is an observational study con
 
 
 
-Cmax co the maximum concentration that  achieves in the blood after the drug has been administered
+Cmax is the maximum concentration that achieves in the blood after the drug has been administered
 The AUC is the integral (from 0 to 8 hours) of a curve that describes the variation of a drug concentration in the blood as a function of time
 Tmax corresponds to the time it takes for a drug to reach the maximum concentration (Cmax) after administration of a drug
 
-**Question I:** We consider the variable `cmax` (in ng/ml) which corresponds to the maximum concentration that the drug achieves in the blood after it has been administered. Regarding the variable `cmax`, we wish to assess the valididty of the following claims:
+**Question I:** We consider the variable `cmax` (in ng/ml) which corresponds to the maximum concentration that the drug achieves in the blood after it has been administered. Regarding the variable `cmax`, we wish to assess the validity of the following claims:
 
 1. Can we conclude that the mean of the variable `cmax` is lower in the group men than in the group women?
 2. Can we conclude that the mean of the variable `cmax` is lower in the group obese than in the group non-obese?
@@ -290,7 +290,8 @@ Cmax_non_obese = codex$cmax[codex$obese == 0]
 Then, we can compare the group and, for example, to compare the `cmax` between men and women we can use the following code:
 
 ```r
-boxplot_w_points(Cmax_women, Cmax_men, names = c("Women", "Men"),
+boxplot_w_points(Cmax_women, Cmax_men,
+                 names = c("Women", "Men"),
                  ylab = "Cmax (ng/ml)")
 ```
 
