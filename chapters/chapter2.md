@@ -136,7 +136,7 @@ Based on this test, we obtain a p-value of 5.747% (which could make you think th
 <choice id="chap2_diet_3">
 <opt text="The consultant showed that the average difference in terms of weight loss is equal to one kg, so his claim is incorrect."> Nope, we can't "accept" the null. </opt>
 <opt text="The consultant is correct, there is not much difference..." >  </opt>
-<opt text="The claim of the consultant is incorrect since, first, there no reason to compare a difference of one kg and, second, we can never accept the null hypothesis! correct = "true"> Yay! 👍 </opt>
+<opt text="The claim of the consultant is incorrect since, first, there no reason to compare a difference of one kg and, second, we can never accept the null hypothesis!" correct = "true"> Yay! 👍 </opt>
 <opt text="The consultant showed that the average difference in terms of weight loss is equal to one kg, so his claim is correct."> Nope, we can't "accept" the null. </opt>
 </choice>
 
