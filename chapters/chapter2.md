@@ -284,7 +284,7 @@ data(codex)
 Cmax_men = codex$cmax[codex$gender == 1]
 Cmax_women = codex$cmax[codex$gender == 0]
 Cmax_obese = codex$cmax[codex$obese == 1]
-Cmax_non_obese = codex$cmax[codex$obese == 1]
+Cmax_non_obese = codex$cmax[codex$obese == 0]
 ```
 
 Then, we can compare the group and, for example, to compare the `cmax` between men and women we can use the following code:
@@ -309,7 +309,7 @@ To perform the analysis you will to construct the different groups we wish to co
 Tmax_men = codex$tmax[codex$gender == 1]
 Tmax_women = codex$tmax[codex$gender == 0]
 Tmax_obese = codex$tmax[codex$obese == 1]
-Tmax_non_obese = codex$tmax[codex$obese == 1]
+Tmax_non_obese = codex$tmax[codex$obese == 0]
 ```
 
 Based on this group, perform a statistical analysis to assess the validity of the previously mentioned claims.
@@ -322,5 +322,3 @@ Based on this group, perform a statistical analysis to assess the validity of th
 Perform a statistical analysis to assess the validity of the previously mentioned claims.
 
 </exercise>
-
-

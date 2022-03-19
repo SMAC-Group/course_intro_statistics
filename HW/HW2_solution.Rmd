@@ -1,0 +1,87 @@
+---
+title: "Homework 2"
+output: html_document
+---
+
+In this homework, we wish to investigate 
+```{r}
+library(idar)
+data(codex)
+
+# Cmax
+Cmax_men = codex$cmax[codex$gender == 1]
+Cmax_women = codex$cmax[codex$gender == 0]
+Cmax_obese = codex$cmax[codex$obese == 1]
+Cmax_non_obese = codex$cmax[codex$obese == 0]
+
+# Tmax
+Tmax_men = codex$tmax[codex$gender == 1]
+Tmax_women = codex$tmax[codex$gender == 0]
+Tmax_obese = codex$tmax[codex$obese == 1]
+Tmax_non_obese = codex$tmax[codex$obese == 0]
+
+# AUC
+AUC_men = codex$auc[codex$gender == 1]
+AUC_women = codex$auc[codex$gender == 0]
+AUC_obese = codex$auc[codex$obese == 1]
+AUC_non_obese = codex$auc[codex$obese == 0]
+```
+
+# $C_{\max}$ 
+
+```{r, fig.align='center', fig.height=6, fig.width=12}
+par(mfrow = c(1, 2))
+boxplot_w_points(Cmax_women, Cmax_men, names = c("Women", "Men"),
+                 ylab = "Cmax (ng/ml)")
+boxplot_w_points(Cmax_obese, Cmax_non_obese, names = c("Obese", "Non-obese"), ylab = "Cmax (ng/ml)")
+```
+
+```{r}
+wilcox.test(Cmax_women, Cmax_men, alternative = "less")
+wilcox.test(Cmax_obese, Cmax_non_obese, alternative = "less")
+```
+
+```{r}
+t.test(Cmax_women, Cmax_men, alternative = "less")
+t.test(Cmax_obese, Cmax_non_obese, alternative = "less")
+```
+
+# $T_{\max}$
+
+```{r, fig.align='center', fig.height=6, fig.width=12}
+par(mfrow = c(1, 2))
+boxplot_w_points(Tmax_women, Tmax_men, names = c("Women", "Men"),
+                 ylab = "Cmax (ng/ml)")
+boxplot_w_points(Tmax_obese, Tmax_non_obese, names = c("Obese", "Non-obese"), ylab = "Cmax (ng/ml)")
+```
+
+```{r}
+wilcox.test(Tmax_women, Tmax_men, alternative = "less")
+wilcox.test(Tmax_obese, Tmax_non_obese, alternative = "less")
+```
+
+```{r}
+t.test(Tmax_women, Tmax_men, alternative = "less")
+t.test(Tmax_obese, Tmax_non_obese, alternative = "less")
+```
+
+# AUC
+
+```{r, fig.align='center', fig.height=6, fig.width=12}
+par(mfrow = c(1, 2))
+boxplot_w_points(AUC_women, AUC_men, names = c("Women", "Men"),
+                 ylab = "Cmax (ng/ml)")
+boxplot_w_points(AUC_obese, AUC_non_obese, names = c("Obese", "Non-obese"), ylab = "Cmax (ng/ml)")
+```
+
+```{r}
+wilcox.test(Cmax_women, Cmax_men, alternative = "less")
+wilcox.test(Cmax_obese, Cmax_non_obese, alternative = "less")
+```
+
+```{r}
+t.test(AUC_women, AUC_men, alternative = "less")
+t.test(AUC_obese, AUC_non_obese, alternative = "less")
+```
+
+
