@@ -24,46 +24,46 @@ You can view the slides directly in the browser below. To download the slides, p
 
 <exercise id = "2" title ="Exercises">
 
-### 1) Suppose that you want to compare the means of 2 groups. In which situation is Student's t-test a good approach:
+### 1) Suppose that you want to compare the means of 2 groups, in which situation is Student's t-test a good approach:
 
 <choice id="chap2_exc1">
-<opt text="We need the following: (1) it is reasonable to assume that there no outliers and (2) for moderate and small sample sizes the sample distribution should be at least approximately normal."> Nope, we always the variances to be the same.
+<opt text="We need the following: (1) it is reasonable to assume that there are no outliers and (2) for moderate and small sample sizes the sample distribution should be at least approximately normal."> Not enough! We also need that the variances are the same between groups.
 </opt>
-<opt text="We need the following: (1) it is reasonable to assume that there no outliers and (2) for moderate and small sample sizes the sample distribution should be at least approximately normal. If these criteria are met then we should test if the variances are the same and if we can't reject the null, then we should use Student's t-test."> Nope, we can't accept the null 😉. </opt>
-<opt text="We should do four tests: (1) test if there are no outliers, (2) test is the data are distribution (one test per sample) and (3) test if the variances are the same. If we can't reject the null for all tests, then we should use Student's t-test."> Nope, we can't accept the null 😉. </opt>
-<opt text="We need the following: (1) it is reasonable to assume that there no outliers, (2) the variances of the two groups are known to be the same (or at least it is reasonable to assume that this is the case) and (3) for moderate and small sample sizes the sample distribution should be at least approximately normal." correct="true"> Yes! 😎
+<opt text="We need the following: (1) it is reasonable to assume that there are no outliers and (2) for moderate and small sample sizes the sample distribution should be at least approximately normal. If these criteria are met then we should test if the variances are the same between groups. If we can't reject the null, then we can use Student's t-test."> Nope, even though we can't reject the null, we are still not sure if the null is correct 😉. </opt>
+<opt text="We should do the following tests: (1) test if there are no outliers, (2) test if the data are normally distributed (one test per sample) and (3) test if the variances are the same. If we can't reject the null for all tests, then we should use Student's t-test."> Nope, even though we can't reject the null, we are still not sure if the null is correct 😉. </opt>
+<opt text="We need the following: (1) it is reasonable to assume that there are no outliers, (2) the variances of the two groups are known to be the same (or at least it is reasonable to assume that this is the case) and (3) for moderate and small sample sizes the sample distribution should be at least approximately normal." correct="true"> Yes! 😎
 </opt>
 </choice>
 
-### 2) Suppose that you want to compare the means of 2 groups. In which situation is Welsh's t-test a good approach:
+### 2) Suppose that you want to compare the means of 2 groups, in which situation is Welsh's t-test a good approach:
 
 <choice id="chap2_exc2">
-<opt text="When it is reasonable to assume that there no outliers."> Nope, if the sample size is small we also need the empirical distribution to be reasonably close to a normal distribution. </opt>
-<opt text="When it is reasonable to assume that are the sample distribution is at least approximately normal with no more than a few outliers."> Nope, these outliers can potentially have a very large impact! </opt>
-<opt text="When it is reasonable to assume that there no outliers and the sample size is sufficiently large" correct="true"> Indeed, if the sample size is large we don't require the sample distribution to be close to a normal. </opt>
-<opt text="We need the following: (1) it is reasonable to assume that there no outliers, (2) the variances of the two groups are known to be the same (or at least it is reasonable to assume that this is the case)."> Nope, if the sample size is small we also need the empirical distribution to be reasonably close to a normal distribution. The assumption that the variances are to same is not needed.
+<opt text="When it is reasonable to assume that there are no outliers."> Nope, if the sample size is small we also need the empirical distribution to be reasonably close to a normal distribution. </opt>
+<opt text="When it is reasonable to assume that the sample distribution is at least approximately normal with not many outliers."> Nope, these outliers can potentially have a very large impact! </opt>
+<opt text="When it is reasonable to assume that there are no outliers and the sample size is sufficiently large" correct="true"> Indeed, if the sample size is large enough, then we don't require the sample distribution to be close to a normal because of the Central Limit Theorem. </opt>
+<opt text="We need the following: (1) it is reasonable to assume that there are no outliers, (2) the variances of the two groups are known to be the same (or at least it is reasonable to assume that this is the case)."> Nope, if the sample size is small we also need the empirical distribution to be reasonably close to a normal distribution. The assumption that the variances are the same is not needed.
 </opt>
 </choice>
 
-### 3) Suppose that you want to compare the means of 2 groups. In which situation is Wilcoxon rank sum test inadequate:
+### 3) Suppose that you want to compare the means of 2 groups, in which situation is Wilcoxon rank sum test inadequate:
 
 <choice id="chap2_exc3">
 <opt text="When there are no outliers."> Nope! 😆
 </opt>
-<opt text="When the distribution is not symmetric and the sample is large." correct="true"> Yes! In this case, this test concerns the median and not the mean, which are be quite different when the distribution is not symmetric.
+<opt text="When the distribution is not symmetric and the sample is large." correct="true"> Yes! Since this test concerns the median and not the mean, the result can be quite different when the distribution is not symmetric.
 </opt>
-<opt text="When it is reasonable to assume that there no outliers and the sample distribution should be at least approximately normal."> Nope, it will very well in this case. > </opt>
-<opt text="When it is reasonable to assume that there no outliers and the variances are the same."> Nope, it will very well in this case. > </opt>
+<opt text="When it is reasonable to assume that there are no outliers and the sample distribution should be at least approximately normal."> Nope, it can still perform very well in this case. > </opt>
+<opt text="When it is reasonable to assume that there are no outliers and the variances are the same."> Nope, it can still perform very well in this case. > </opt>
 </choice>
 
 
-### 4) A researcher administers many hypothesis tests as part of a research project, and finds that, of 250 tests 11 were significant at the 5% level. The researcher feels very proud of this fact and is ready to make a big deal about it. What do you think of this situation:
+### 4) A researcher administers many hypothesis tests as part of a research project. He finds that, of 250 tests 11 were significant at the 5% level. The researcher feels very proud of this fact and thinks that he makes a big discovery. What do you think of this situation?
 
 <choice id="chap2_exc4">
 <opt text="It is very interesting that 11 tests are significant."> Nope, because we did many tests... </opt>
 <opt text="It is interesting that 11 tests are significant but since we did many tests we should find a theoretical argument for our analysis."> Finding a posteriori argument is always dangerous. ⚠️ </opt>
-<opt text="One would expect 12.5 (5% of 250) significant tests even in the purely null case, merely by chance, so we should find at 13 significant tests for the result to be interesting."> No, actually we would need at lot more... In fact, there is a probability 49%  that one would obtain 13 or more significant test by pure luck. 🤔 </opt>
-<opt text="One would expect 12.5 (5% of 250) significant tests even in the purely null case, merely by chance. So, finding only 11 significant results is actually somewhat disappointing." correct="true"> Yes! In his class notes John Wilder Tukey (who is famous statistician and the inventor of many statistical methods, including the boxplot!) used this example at Princeton University in 1976 to highlight the dangers of multiple testing (and introduce the idea of higher criticism) 🤔. </opt>
+<opt text="One would expect 12.5 (5% of 250) significant tests even in the purely null case, merely by chance, so we should find at least 13 significant tests for the result to be interesting."> No, actually we would need a lot more... In fact, there is a probability of 49% that one would obtain 13 or more significant test by pure luck. 🤔 </opt>
+<opt text="One would expect 12.5 (5% of 250) significant tests even in the purely null case, merely by chance. So, finding only 11 significant results is actually somewhat disappointing." correct="true"> Yes! In the class notes of John Wilder Tukey (who is a famous statistician and the inventor of many statistical methods, including the boxplot!), he used this example at Princeton University in 1976 to highlight the dangers of multiple testing (and introduce the idea of higher criticism) 🤔. </opt>
 </choice>
 
 </exercise>
@@ -157,7 +157,7 @@ Then, the (second) consultant claims that diet C leads an average weight loss th
 
 </exercise>
 
-<exercise id = "5" title="Exercise on the COVID-19 dataset">
+<exercise id = "5" title="Exercises on the COVID-19 dataset">
 
 <p>In this section, we revisit the data from Parisi, et al., (2021) which studies the applicability of predictive models for intensive care admission of COVID-19 patients in a secondary care hospital in Belgium. In this exercise, we wish to evaluate whether the average oxygen saturation of the patients admitted to an ICU is lower than the ones that are not. For this purpose, we will conduct a statistical analysis and our first question concerns the hypotheses we should use. Let <span class="math inline">\(\mu_{I}\)</span> and <span class="math inline">\(\mu_{N}\)</span> denote the mean oxygen saturation
 of the patients admitted to an ICU and the ones that are not admitted to an ICU, respectively. Consider the following four sets of hypotheses:</p>
@@ -250,7 +250,7 @@ Therefore, we should conclude regarding the claim that the average oxygen satura
 
 </exercise>
 
-<exercise id = "7" title="Exercise on the Pharmacy Attendance dataset">
+<exercise id = "7" title="Exercises on the Pharmacy Attendance dataset">
 
 We consider data from a study conducted in a pharmacy in Geneva where the number of clients per hour was recorded over a period of two years. We wish to assess if it is reasonable to believe that Sunday is the busiest day of the week for this pharmacy. It is important to notice that unlike our previous example, this dataset is very large with over 17 thousands observations. This is an important observation as we will see later on...
 
