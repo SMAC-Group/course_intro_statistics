@@ -62,7 +62,7 @@ You can view the slides directly in the browser below. To download the slides, p
 <choice id="chap2_exc4">
 <opt text="It is very interesting that 11 tests are significant."> Nope, because we did many tests... </opt>
 <opt text="It is interesting that 11 tests are significant but since we did many tests we should find a theoretical argument for our analysis."> Finding a posteriori argument is always dangerous. ⚠️ </opt>
-<opt text="One would expect 12.5 (5% of 250) significant tests even in the purely null case, merely by chance, so we should find at least 13 significant tests for the result to be interesting."> No, actually we would need a lot more... In fact, there is a probability of 49% that one would obtain 13 or more significant test by pure luck. 🤔 </opt>
+<opt text="One would expect 12.5 (5% of 250) significant tests even in the purely null case, merely by chance, so we should find at least 13 significant tests for the result to be interesting."> No, actually we would need a lot more... In fact, there is a probability of 48% that one would obtain 13 or more significant test by pure luck. 🤔 </opt>
 <opt text="One would expect 12.5 (5% of 250) significant tests even in the purely null case, merely by chance. So, finding only 11 significant results is actually somewhat disappointing." correct="true"> Yes! In the class notes of John Wilder Tukey (who is a famous statistician and the inventor of many statistical methods, including the boxplot!), he used this example at Princeton University in 1976 to highlight the dangers of multiple testing (and introduce the idea of higher criticism) 🤔. </opt>
 </choice>
 
