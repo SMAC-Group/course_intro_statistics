@@ -11,27 +11,24 @@ id: 2
 
 <exercise id="1" title="Theory">
 
-View the slides directly in the browser or download the slides
+You can view the slides directly in the browser below. To download the slides, please check
 [here](https://raw.githack.com/stephaneguerrier/data_analytics/master/Lecture3.html#1). 
 
 <iframe src="https://raw.githack.com/stephaneguerrier/data_analytics/master/Lecture3.html#1" width="710" height="530">
 </iframe>
 
-
-
 </exercise>
 
 
 
-<exercise id="2" title="Application" type = "slides">
+<exercise id="2" title="Exercises">
 
-<slides source="chapter2_01">
+</exercise>
+
+
+<exercise id = "3" title ="Analysis of the Reading dataset">
+
+<slides source="chapter3_reading">
 </slides>
-
-
-</exercise>
-
-
-<exercise id = "3" title ="Analysis of Variance: Exercises">
 
 </exercise>
