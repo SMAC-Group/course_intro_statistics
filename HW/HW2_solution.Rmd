@@ -73,7 +73,7 @@ wilcox.test(Tmax_obese, Tmax_non_obese, alternative = "less")
 
 Thus, we fail the reject the null hypothesis at the 95% confidence level for both tests.
 
-# ### Question 3: Difference between groups for AUC
+### Question 3: Difference between groups for AUC
 
 We proceed similarly for the last question:
 
