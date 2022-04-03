@@ -26,9 +26,34 @@ You can view the slides directly in the browser below. To download the slides, p
 </exercise>
 
 
-<exercise id = "3" title ="Analysis of the Reading dataset">
+<exercise id = "3" title ="Analysis of the Reading dataset: Estimation">
 
-<slides source="chapter3_reading">
+<slides source="chapter3_reading_estimation">
 </slides>
 
 </exercise>
+
+<exercise id = "4" title ="Analysis of the Reading dataset: Prediction">
+
+<slides source="chapter3_reading_prediction">
+</slides>
+
+</exercise>
+
+
+<exercise id = "5" title ="Analysis of the Reading dataset: Model diagnostic">
+
+<slides source="chapter3_reading_model_diagnostic">
+</slides>
+
+</exercise>
+
+<exercise id = "6" title ="Analysis of the Reading dataset: Improving our model">
+
+<slides source="chapter3_reading_complexify_model">
+</slides>
+
+</exercise>
+
+
+
