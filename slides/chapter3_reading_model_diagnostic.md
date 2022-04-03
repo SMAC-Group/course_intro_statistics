@@ -8,7 +8,6 @@ type: slides
 
 # Model diagnostic
 
-
 In this section, we consider the construction of model diagnostic graphs discussed in the lecture slides. The first graph compares the fitted values (i.e the predictions) with the residuals of the model. The fitted values and the residuals of the model can be computed as follows:
 
 ```r
