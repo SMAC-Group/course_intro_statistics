@@ -1,5 +1,5 @@
 ---
-title: 'Chapter 3: Linear Regression 🚧🔨 (under construction)'
+title: 'Chapter 3: Linear Regression'
 description:
   ''
 prev: /chapter2
@@ -21,19 +21,14 @@ You can view the slides directly in the browser below. To download the slides, p
 
 
 
-<exercise id="2" title="Exercises">
-
-</exercise>
-
-
-<exercise id = "3" title ="Analysis of the Reading dataset: Estimation">
+<exercise id = "2" title ="Analysis of the Reading dataset: Estimation">
 
 <slides source="chapter3_reading_estimation">
 </slides>
 
 </exercise>
 
-<exercise id = "4" title ="Analysis of the Reading dataset: Prediction">
+<exercise id = "3" title ="Analysis of the Reading dataset: Prediction">
 
 <slides source="chapter3_reading_prediction">
 </slides>
@@ -41,14 +36,14 @@ You can view the slides directly in the browser below. To download the slides, p
 </exercise>
 
 
-<exercise id = "5" title ="Analysis of the Reading dataset: Model diagnostic">
+<exercise id = "4" title ="Analysis of the Reading dataset: Model diagnostic">
 
 <slides source="chapter3_reading_model_diagnostic">
 </slides>
 
 </exercise>
 
-<exercise id = "6" title ="Analysis of the Reading dataset: Improving our model">
+<exercise id = "5" title ="Analysis of the Reading dataset: Improving our model">
 
 <slides source="chapter3_reading_complexify_model">
 </slides>
@@ -56,4 +51,14 @@ You can view the slides directly in the browser below. To download the slides, p
 </exercise>
 
 
+<exercise id = "6" title ="Analysis of the Reading dataset: Confidence intervals for predictions">
 
+<slides source="chapter3_reading_ci">
+</slides>
+
+</exercise>
+
+
+<exercise id="7" title="To be continued...  🚧🔨 (under construction)">
+
+</exercise>

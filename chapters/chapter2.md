@@ -9,7 +9,7 @@ id: 2
 ---
 
 
-<exercise id="1" title="Theory">
+<exercise id="1" title="Lecture slides">
 
 You can view the slides directly in the browser below. To download the slides, please check
 [here](https://raw.githack.com/stephaneguerrier/data_analytics/master/Lecture2.html#1) for the .html version or [here](https://raw.githack.com/stephaneguerrier/data_analytics/master/Lecture2.pdf) for the .pdf version.
