@@ -589,5 +589,52 @@ Scientist B thinks that this is a better model leading to different conclusions.
 
 
 
+In this problem, we will consider the data from Can, et al., (2022). If you would like to know about the context of this study, here is the [reference](https://www.nature.com/articles/s42003-021-02978-2). You can load the data considered in one part of this study as follows:
+
+```{r}
+library(idar)
+data("HP13Cbicarbonate")
+```
+
+We can have a first look at the data by using
+
+```{r, eval = F}
+head(HP13Cbicarbonate)
+```
+
+```{out}
+      signal    dose group
+1 0.24134760 0.01496   Fed
+2 0.27495350 0.01406   Fed
+3 0.04328066 0.01872   Fed
+4 0.07457924 0.02183   Fed
+5 0.13268619 0.02574   Fed
+6 0.03746000 0.02103   Fed
+```
+
+<p> This dataset corresponds to an experiment conducted on rats which were divided in two groups (encoded in the variable <code>group</code>). In the first group, the rats were fed before the experiment while in the second group they were in the fasted state (i.e. overnight-fasted). The variable <code>signal</code> corresponds to the hyperpolarized [<span class="math inline">\(^{13}\)</span>C]bicarbonate signal intensities normalized to the total sum of metabolites. Moreover, the variable  <code>dose</code> corresponds to the initial reaction rate as a function of the injected dose of hyperpolarized [1-<span class="math inline">\(^{13}\)</span>C]pyruvate. The model we would like to consider is given by:</p> 
+
+
+<p><span class="math display">\[\log(\text{signal}_i) = \beta_0 +
+\beta_1 \text{group}_i + \beta_2 \text{dose}_i + \beta_3
+\text{group}_i  \text{dose}_i + \varepsilon_i\]</span></p>
+
+<p>where the variable <span
+class="math inline">\(\text{group}_i\)</span> is equal to 0 if the <span
+class="math inline">\(i\)</span>-th rat is in fasted state and 1
+otherwise. The scientists working on this study want to verify the
+following claims:</p>
+
+- In the "fasted" group, the variable dose has no impact on the signal.
+- In the "fed" group, the variable dose has an impact on the signal (and we expect that the higher is the dose, the lower is the signal).
+
+Based on this information:
+
+- Estimate the model described above.
+- Construct a graph to compare the predictions for this model with the data (make sure to highlight the two groups with different colors).
+- Construct model diagnostic graphs for this model.
+- Comment on the adequacy of this model to the data.
+- What can we comment/conclude regarding the scientists claims?
+
 
 </exercise>
