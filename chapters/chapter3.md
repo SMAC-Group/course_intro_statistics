@@ -59,6 +59,19 @@ You can view the slides directly in the browser below. To download the slides, p
 </exercise>
 
 
-<exercise id="7" title="To be continued...  🚧🔨 (under construction)">
+<exercise id="7" title="Exercise: Pharmacokinetics of Indomethacin">
+
+</exercise>
+
+<exercise id="8" title="Exercise: Pharmacokinetics of dexamethasone">
+
+</exercise>
+
+<exercise id="9" title="Homework">
+
+</exercise>
+
+
+<exercise id="9" title="Optional Homework">
 
 </exercise>
