@@ -85,7 +85,7 @@ age_to_predict
 ---
 Then, using the output of the model we have that the predictions for the group "Control" are given by:
 
-<div style="text-align:center"><img src="eq_mdl_2.png" alt=" " width="40%"></div>
+<div style="text-align:center"><img src="eq_mdl_new_1.png" alt=" " width="40%"></div>
 
 This can be done as follows:
 
