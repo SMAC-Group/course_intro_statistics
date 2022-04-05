@@ -1,0 +1,1 @@
+predict(mod, data.frame(bmi = 28, gender = 1), interval = "prediction")

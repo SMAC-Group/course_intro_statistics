@@ -239,7 +239,232 @@ Finally, the scientists notice that our data consider the same subject several t
 
 
 
+
+
 <exercise id="8" title="Exercise: Pharmacokinetics of dexamethasone">
+
+In this exercise, we will consider the data from Abouir, et al. (2022), which is an observational study conducted at Geneva University Hospitals to assess the impact of weight on the pharmacokinetics of dexamethasone in normal-weight versus obese patients hospitalized for COVID-19. The data can be loaded as follows:
+
+```r
+library(idar)
+data("codex")
+```
+
+Our objective is to estimate the following model:
+
+<p><span class="math display">\[\log (C_{\max, i}) = \beta_0 + \beta_1
+\text{Gender}_i + \beta_2 \text{BMI}_i + \varepsilon_i,\]</span></p>
+
+<p>where <span class="math inline">\(C_{\max, i}\)</span>, <span
+class="math inline">\(\text{Gender}_i\)</span> and <span
+class="math inline">\(\text{BMI}_i\)</span> correspond, respectively, to
+the measured <span class="math inline">\(C_\max\)</span> for individual
+<span class="math inline">\(i\)</span>, its gender (0 for men and 1 for
+women) and its BMI. Naturally, we want to assess if this model appears
+to be suitable to describe the data. Moreover, we would like to evaluate
+the validity of the following claims:</p>
+
+
+<p>- Women have a higher <span class="math inline">\(C_\max\)</span>
+than men.</p>
+<p>- Individuals with a higher BMI have a lower <span
+class="math inline">\(C_\max\)</span>.</p>
+
+
+Complete the code below to estimate this model:
+
+<codeblock id="chap3_ex_2_1">
+ We are interested in the log of Cmax.
+</codeblock>
+
+To assess the adequacy of our model to the data, we consider the following graph:
+
+```r
+colors = c("red", "blue")
+col_index = as.numeric(codex$gender == 1) + 1
+plot(codex$bmi, codex$log_cmax, col = colors[col_index],
+     xlab = "BMI", ylab = "Cmax - log scale")
+
+bmi_to_predict = 19:40
+pred_men   = predict(mod, data.frame(bmi = bmi_to_predict, 
+                                      gender = rep(0, length(bmi_to_predict))), 
+                     interval = "confidence")
+pred_women = predict(mod, data.frame(bmi = bmi_to_predict, 
+                                      gender = rep(1, length(bmi_to_predict))), 
+                     interval = "confidence")
+
+lines(bmi_to_predict, pred_men[,1], col = colors[1])
+lines(bmi_to_predict, pred_men[,2], col = colors[1], lty = 2)
+lines(bmi_to_predict, pred_men[,3], col = colors[1], lty = 2)
+lines(bmi_to_predict, pred_women[,1], col = colors[2])
+lines(bmi_to_predict, pred_women[,2], col = colors[2], lty = 2)
+lines(bmi_to_predict, pred_women[,3], col = colors[2], lty = 2)
+legend("bottomleft", c("Men", "Women"), col = colors, pch = 1)
+```
+
+<div style="text-align:center"><img src="plot_chap_3_ex_2_1.png" alt=" " width="90%"></div>
+
+Based on this graph, does the model appears to be suitable to describe the data?
+
+
+<choice id="chap3_exc6">
+<opt text="No because the relationship between the BMI and the (log of) Cmax is not linear."> A linear relationship appears to be reasonable with this dataset.
+</opt>
+<opt text="No because there is one outlier.">  It is true that there is an outlier (see the man with a BMI of about 31) but this value is still arguably acceptable. Naturally, a "robust" linear regression could be more appropriate in this case but these methods are beyond the scope of this class.
+</opt>
+<opt text="No because the data are not independent."> In this case each individual was measured once and there is no a priori reason to believe that there is any form of dependence in the data.
+</opt>
+<opt text="Yes, the model appears to be a reasonable approximation." correct="true">  It is not perfect but reasonable...
+</opt>
+</choice>
+
+Based on this model, we obtain the following output:
+
+```r
+summary(mod)
+```
+
+```out
+Call:
+lm(formula = log_cmax ~ gender + bmi, data = codex)
+
+Residuals:
+     Min       1Q   Median       3Q      Max 
+-1.47722 -0.26049  0.01147  0.35029  0.76580 
+
+Coefficients:
+            Estimate Std. Error t value Pr(>|t|)    
+(Intercept)  5.79742    0.47785  12.132 1.93e-12 ***
+gender       0.75372    0.19354   3.894 0.000585 ***
+bmi         -0.04175    0.01685  -2.477 0.019786 *  
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+Residual standard error: 0.5166 on 27 degrees of freedom
+Multiple R-squared:    0.4,	Adjusted R-squared:  0.3555 
+F-statistic: 8.999 on 2 and 27 DF,  p-value: 0.001012
+```
+
+Consider the following four sets of hypotheses:
+
+
+
+<p><strong>A. </strong><span class="math inline">\(H_0: \; \beta_1 &lt; 0\)</span>, <span
+class="math inline">\(H_a: \; \beta_1 = 0\)</span></p>
+
+<p><strong>B. </strong><span class="math inline">\(H_0: \; \beta_1 = 0\)</span>, <span
+class="math inline">\(H_a: \; \beta_1 &gt; 0\)</span></p>
+
+<p><strong>C. </strong><span class="math inline">\(H_0: \; \beta_1 = 0\)</span>, <span
+class="math inline">\(H_a: \; \beta_1 &lt; 0\)</span></p>
+
+<p><strong>D. </strong><span class="math inline">\(H_0: \; \beta_2 = 0\)</span>, <span
+class="math inline">\(H_a: \; \beta_2 &gt; 0\)</span></p>
+
+<p><strong>E. </strong><span class="math inline">\(H_0: \; \beta_2 = 0\)</span>, <span
+class="math inline">\(H_a: \; \beta_2 &lt; 0\)</span></p>
+
+
+
+<p>Considering the first claim (i.e. women have a higher <span
+class="math inline">\(C_\max\)</span> than men), what are the hypotheses
+we should consider to evaluate its validity:</p>
+
+
+<choice id="chap3_exc7">
+<opt text="Hypothesis A"> The alternative is (normally) what we want to prove...
+</opt>
+<opt text="Hypothesis B" correct="true"> Yay! 😆
+</opt>
+<opt text="Hypothesis C"> This would be true if the variable gender was changed to 0 for women and 1 for men.
+</opt>
+<opt text="Hypothesis D"> The first claim is not about the BMI. 🤔
+</opt>
+<opt text="Hypothesis E"> The first claim is not about the BMI. 🤔
+</opt>
+</choice>
+
+
+Using the hypotheses you selected, what is the associated p-value?
+
+<choice id="chap3_exc8">
+<opt text="1.93e-12"> No that's the intercept.
+</opt>
+<opt text="0.000585"> This is not the correct alternative hypothesis. 🤔
+</opt>
+<opt text="0.019786">  No that's for the BMI.
+</opt>
+<opt text="0.0002925" correct="true"> 👍
+</opt>
+<opt text="0.9997075"> This is not the correct alternative hypothesis. 🤔
+</opt>
+<opt text="0.009893"> No that's for the BMI.
+</opt>
+<opt text="0.990107"> No that's for the BMI.
+</opt>
+</choice>
+
+
+Based on this p-value what can you conclude?
+
+<choice id="chap3_exc9">
+<opt text="At the 95% confidence level, we can reject the null and accept the alternative. Therefore, women have a statistically significantly higher Cmax than men." correct="true"> 👍
+</opt>
+<opt text="At the 95% confidence level, we don't have enough evidence to reject the null hypothesis."> No, the p-value is smaller than alpha.
+</opt>
+<opt text="At the 95% confidence level, we can accept the null hypothesis."> Are you sure you can accept the null? 😏
+</opt>
+</choice>
+
+
+Similarly, what can you conclude for the second claim?
+
+<choice id="chap3_exc10">
+<opt text="At the 95% confidence level, we can reject the null and accept the alternative. Therefore, an increase in BMI is statistically significantly associated to a decrease in Cmax." correct="true"> 👍 Just to be sure, you found a p-value of 0.009893 right?
+</opt>
+<opt text="At the 95% confidence level, we don't have enough evidence to reject the null hypothesis."> No, the p-value is smaller than alpha.
+</opt>
+<opt text="At the 95% confidence level, we can accept the null hypothesis."> Are you sure you can accept the null? 😏
+</opt>
+</choice>
+
+
+<p>Finally, one subject (which was not included in the original study)
+is measured with a <span class="math inline">\(C_\max\)</span> of 40.3.
+This subject is a female of age 58 with a BMI of 28. We are suspecting
+that this subject is reacting differently than the subjects in our
+study. Complete the code below to compute a confidence interval
+(at the 95% confidence level) for <span class="math inline">\(C_\max\)</span> of an individual having these characteristics:</p>
+
+
+<codeblock id="chap3_ex_2_2">
+We want to compute a prediction confidence interval.
+</codeblock>
+
+
+<p>Based on this code, we obtain a 95% confidence interval for the log
+<span class="math inline">\(C_\max\)</span> of (4.283257, 6.48104). What
+is this telling us?</p>
+
+<choice id="chap3_exc11">
+<opt text="The subject has a suspiciously high Cmax of 40.3 while our confidence intervals is (4.283257, 6.48104)."> Did you forget a log somewhere?
+</opt>
+<opt text="The subject has a suspiciously low Cmax of 40.3 (corresponding to a logarithm value of 3.696) as our confidence interval is (4.283257, 6.48104)." correct="true"> 👍
+</opt>
+<opt text="The subject has a reasonable Cmax value."> Wrong 😏
+</opt>
+</choice>
+
+
+
+
+
+
+
+
+
+
+
 
 </exercise>
 
