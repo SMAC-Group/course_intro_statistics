@@ -442,7 +442,7 @@ We want to compute a prediction confidence interval.
 </codeblock>
 
 
-<p>Based on this code, we obtain a 95% confidence interval for the log
+<p>Based on this code, you should obtain a 95% confidence interval for the logarithm of
 <span class="math inline">\(C_\max\)</span> of (4.283257, 6.48104). What
 is this telling us?</p>
 
@@ -557,17 +557,11 @@ F-statistic: 26.68 on 2 and 58 DF,  p-value: 6.082e-09
 
 Scientist B thinks that this is a better model leading to different conclusions.
 
-- For the first model:
-    1. Construct a graph comparing the predictions with the data (make sure to highlight the two groups with different colors).
-    2. Construct model diagnostic graphs.
-    3. Compute the AIC.
-- For the second model:
-    1. Construct a graph comparing the predictions with the data (make sure to highlight the two groups with different colors).
-    2. Construct model diagnostic graphs.
-    3. Compute the AIC.
-- Based on this analysis, which model should you consider and why?
-- Based on the model you selected, what can you say about the claims of the scientists?
-- Read the Wikipedia page on the [Simpson paradox](https://en.wikipedia.org/wiki/Simpson%27s_paradox). Explain how this paradox is related to your analysis.
+1. For the first model: *(a)* construct a graph comparing the predictions with the data (make sure to highlight the two groups with different colors); *(b)* construct model diagnostic graphs; *(c)* compute the AIC.
+2. For the second model: *(a)* construct a graph comparing the predictions with the data (make sure to highlight the two groups with different colors); *(b)* construct model diagnostic graphs; *(c)* compute the AIC.
+3. Based on this analysis, which model should you consider and why?
+4. Based on the model you selected, what can you say about the claims of the scientists?
+5. Read the Wikipedia page on the [Simpson paradox](https://en.wikipedia.org/wiki/Simpson%27s_paradox). Explain how this paradox is related to your analysis.
 
 
 </exercise>
@@ -583,7 +577,7 @@ Scientist B thinks that this is a better model leading to different conclusions.
 
 
 
-<exercise id="10" title="Optional Homework">
+<exercise id="10" title="Optional Homework 🤓">
 
 
 
@@ -630,11 +624,11 @@ following claims:</p>
 
 Based on this information:
 
-- Estimate the model described above.
-- Construct a graph to compare the predictions for this model with the data (make sure to highlight the two groups with different colors).
-- Construct model diagnostic graphs for this model.
-- Comment on the adequacy of this model to the data.
-- What can we comment/conclude regarding the scientists claims?
+1. Estimate the model described above.
+2. Construct a graph to compare the predictions for this model with the data (make sure to highlight the two groups with different colors).
+3. Construct model diagnostic graphs for this model.
+4. Comment on the adequacy of this model to the data.
+5. What can we comment/conclude regarding the scientists claims?
 
 
 </exercise>

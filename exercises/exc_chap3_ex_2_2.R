@@ -1,1 +1,5 @@
+library(idar)
+data("codex")
+codex$log_cmax = log(codex$cmax)
+mod = lm(log_cmax ~ gender + bmi, data = codex)
 predict(mod, data.frame(bmi = __, gender = 1), interval = _______)
