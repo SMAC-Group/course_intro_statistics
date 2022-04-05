@@ -345,7 +345,7 @@ Multiple R-squared:    0.4,	Adjusted R-squared:  0.3555
 F-statistic: 8.999 on 2 and 27 DF,  p-value: 0.001012
 ```
 
-Consider the following four sets of hypotheses:
+Consider the following five sets of hypotheses:
 
 
 
