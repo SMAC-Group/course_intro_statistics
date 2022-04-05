@@ -8,3 +8,4 @@ Indometh$log_time = log(Indometh$time)
 
 # Fit model 3
 mod3 = lm(log_conc ~ log_time, data = Indometh)
+summary(mod3)
