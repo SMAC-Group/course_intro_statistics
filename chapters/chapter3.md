@@ -478,6 +478,98 @@ is this telling us?</p>
 
 <exercise id="9" title="Homework">
 
+We consider synthetic data based on Charepalli et al. (2018) where the impact on important biomarkers of different diets was studied. One of the experiments was conducted on pigs which were divided into two treatment groups, "C" and "NC", corresponding to two dietary compositions. The first group "C" contains 20% of deep fried potatoes (i.e. chips) while this is not the case in the group "NC" which doesn't contain any fried food. Caloric intake was measured weekly until the end of the study. The objective of our study is to evaluate the possible link existing between fried food consumption and its effects on inflammatory response. For this purpose, we will model the logarithm of the cortisol levels (in pg/mg) as a function of other variables (e.g. diet, caloric intake and so on). You can load the data as follows (make sure to update `idar`):
+
+```r
+library(idar)
+data("cortisol")
+
+# Log transform
+cortisol$log_cortisol = log(cortisol$cortisol)
+```
+
+
+
+
+
+
+
+Two scientists working on this project have different (and contradicting) theories regarding the inflammatory response induced by fried food. Your objective is to model the data in a suitable way to assess the validity of their claims.
+
+1. **Scientist A**: There is no connection between fried food consumption and cortisol levels. However, caloric intake has a significant impact on cortisol levels (i.e. the scientist believes that a higher caloric intake leads to a lower cortisol level).
+2. **Scientist B**: Fried food consumption as well as caloric intake have significant impact on cortisol levels. Higher amount of fried food consumption corresponds to higher cortisol levels.
+
+
+Scientist A considers the following model:
+
+```r
+mod_scientist_A = lm(log_cortisol ~ caloric, data = cortisol)
+summary(mod_scientist_A)
+```
+
+```out
+Call:
+lm(formula = log_cortisol ~ caloric, data = cortisol)
+
+Residuals:
+    Min      1Q  Median      3Q     Max 
+-1.8395 -0.5889  0.1799  0.6998  1.8756 
+
+Coefficients:
+              Estimate Std. Error t value Pr(>|t|)    
+(Intercept)  8.7732375  0.5228605  16.779  < 2e-16 ***
+caloric     -0.0006702  0.0001683  -3.983  0.00019 ***
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+Residual standard error: 0.8741 on 59 degrees of freedom
+Multiple R-squared:  0.2119,	Adjusted R-squared:  0.1985 
+F-statistic: 15.86 on 1 and 59 DF,  p-value: 0.0001895
+```
+
+This scientist claims that this model verifies the claim that higher caloric intake is significantly associated to a lower cortisol level. However, the second scientist considers the following model:
+
+```r
+mod_scientist_B = lm(log_cortisol ~ caloric + group, data = cortisol)
+summary(mod_scientist_B)
+```
+
+```out
+Call:
+lm(formula = log_cortisol ~ caloric + group, data = cortisol)
+
+Residuals:
+    Min      1Q  Median      3Q     Max 
+-2.0341 -0.4551  0.2124  0.4368  1.5076 
+
+Coefficients:
+              Estimate Std. Error t value Pr(>|t|)    
+(Intercept)  5.0968675  0.7986440   6.382 3.17e-08 ***
+caloric      0.0010089  0.0003373   2.991  0.00407 ** 
+groupNC     -2.4746749  0.4535788  -5.456 1.05e-06 ***
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+Residual standard error: 0.7167 on 58 degrees of freedom
+Multiple R-squared:  0.4792,	Adjusted R-squared:  0.4612 
+F-statistic: 26.68 on 2 and 58 DF,  p-value: 6.082e-09
+```
+
+Scientist B thinks that this is a better model leading to different conclusions.
+
+- For the first model:
+    1. Construct a graph comparing the predictions with the data (make sure to highlight the two groups with different colors).
+    2. Construct model diagnostic graphs.
+    3. Compute the AIC.
+- For the second model:
+    1. Construct a graph comparing the predictions with the data (make sure to highlight the two groups with different colors).
+    2. Construct model diagnostic graphs.
+    3. Compute the AIC.
+- Based on this analysis, which model should you consider and why?
+- Based on the model you selected, what can you say about the claims of the scientists?
+- Read the Wikipedia page on the [Simpson paradox](https://en.wikipedia.org/wiki/Simpson%27s_paradox). Explain how this paradox is related to your analysis.
+
+
 </exercise>
 
 
@@ -491,6 +583,11 @@ is this telling us?</p>
 
 
 
-<exercise id="9" title="Optional Homework">
+<exercise id="10" title="Optional Homework">
+
+
+
+
+
 
 </exercise>
