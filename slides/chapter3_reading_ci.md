@@ -11,7 +11,9 @@ type: slides
 
 In the previous section, we saw that the third model appears to be the most adequate among all three models we have considered. The prediction for this model can be expressed as follows:
 
-<div style="text-align:center"><img src="eq_mdl_5.png" alt=" " width="70%"></div>
+<div style="text-align:center"><img src="eq_mdl_new_2.png" alt=" " width="70%"></div>
+
+
 
 which corresponds to the expected (or average) score for a child of a certain age in a certain group. But how certain are we about this expected score? To answer this question, we can compute confidence intervals (typically at the 95% confidence level) for our predicted scores. This can be done very similarly to what we did before using the function `predict`. First, we recall how the third model is estimated:
 
