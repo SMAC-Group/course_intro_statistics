@@ -238,7 +238,7 @@ What could we conclude for this test (considering $\alpha = 0.05$):
 </opt>
 <opt text="We can reject the null and accept the alternative. Therefore, men are statistically significantly more likely to be admitted to an ICU among the COVID-19 patients." correct = "true"> Well done! 👍
 </opt>
-<opt text="I don't know! 😢"> Don't worry... 
+<opt text="I don't know! 😢"> Don't worry... 🤗
 </opt>
 </choice>
 
@@ -285,7 +285,7 @@ Based on the hypotheses you selected, what is the p-value associated to this tes
 </opt>
 <opt text="0.00270"> You are considering a different alternative hypothesis. 🤔
 </opt>
-<opt text="0.9973">  You are considering a different alternative hypothesis. 🤔
+<opt text="0.99730">  You are considering a different alternative hypothesis. 🤔
 </opt>
 <opt text="0.02359">  Our test is not about this variable.
 </opt>
@@ -321,7 +321,7 @@ In order to evaluate visually the impact of the two variables in our model, we w
 
 <codeblock id="chap4_ex_1_3">
 
-We only need the fact that the patient is a women and that her measured lhd is equal to 645.
+Make sure to place `ldh_to_predict` in `data.frame` used to predict...
 
 </codeblock>
 
