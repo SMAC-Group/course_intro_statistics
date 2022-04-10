@@ -12,17 +12,12 @@ To better understand the estimated coefficients, we can compute the probability 
 predict(mod1, data.frame(cigs = 0), type = "response")
 ```
 
-```{out
+```{out}
 0.09245818
 ```
 
 
----
-
-
-
 This prediction can be compared with the probability that a person consuming a certain number of daily cigarettes is diagnosed with bronchitis. For example, considering 5, 10, 20 and 30 daily cigarettes, we obtain the following predictions:
-
 
 
 ```r
