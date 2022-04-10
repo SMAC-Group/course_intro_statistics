@@ -40,7 +40,8 @@ The relationship between daily cigarettes and the probability of being diagnosed
 ```{r}
 cigs_to_predict = 0:30
 pred = predict(mod1, data.frame(cigs = cigs_to_predict), type = "response")
-plot(cigs_to_predict, pred, type = "l", xlab = "Daily number of cigarettes", ylab = "Predicted Bronchitis probability", ylim = c(0, 1))     
+plot(cigs_to_predict, pred, type = "l", xlab = "Daily number of cigarettes", 
+ylab = "Predicted Bronchitis probability", ylim = c(0, 1))     
 grid()
 ```
 
@@ -54,7 +55,8 @@ It is also possible to add the data to this graph, although this is not always v
 ```{r}
 cigs_to_predict = 0:30
 pred = predict(mod1, data.frame(cigs = cigs_to_predict), type = "response")
-plot(cigs_to_predict, pred, type = "l", xlab = "Daily number of cigarettes", ylab = "Predicted Bronchitis probability", ylim = c(0, 1))     
+plot(cigs_to_predict, pred, type = "l", xlab = "Daily number of cigarettes",
+ylab = "Predicted Bronchitis probability", ylim = c(0, 1))     
 grid()
 points(bronchitis$cigs, bronchitis$bron)
 ```
@@ -68,7 +70,8 @@ points(bronchitis$cigs, bronchitis$bron)
 In some cases, we may also be interested in assessing the uncertainty associated to our predicted probabilities. For this purpose, we can compute the (estimated) standard deviation of our predictions. Then we can construct a confidence interval using this standard deviation (often we simply consider plus or minus one standard deviation) as follows:
 
 ```{r}
-pred = predict(mod1, data.frame(cigs = cigs_to_predict), type = "response", se.fit = TRUE)
+pred = predict(mod1, data.frame(cigs = cigs_to_predict),
+type = "response", se.fit = TRUE)
 
 plot(bronchitis$cigs, bronchitis$bron, 
      xlab = "Daily number of cigarettes",

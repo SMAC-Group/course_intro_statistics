@@ -66,7 +66,8 @@ AIC(mod2)
 Based on this second model, we can also compute predictions. For example, we can consider `poll = 55` (i.e. low pollution index) and different daily cigarettes consumption (i.e. `cigs = c(0, 15, 30)`) as follows:
 
 ```r
-predict(mod2, data.frame(cigs = c(0, 15, 30), poll = c(55, 55, 55)), type = "response")
+predict(mod2, data.frame(cigs = c(0, 15, 30), poll = c(55, 55, 55)),
+type = "response")
 ```
 
 ```out
@@ -79,7 +80,8 @@ predict(mod2, data.frame(cigs = c(0, 15, 30), poll = c(55, 55, 55)), type = "res
 Similarly, we can consider a higher pollution index, say `poll = 65`:
 
 ```r
-predict(mod2, data.frame(cigs = c(0, 15, 30), poll = c(65, 65, 65)), type = "response")
+predict(mod2, data.frame(cigs = c(0, 15, 30), poll = c(65, 65, 65)), 
+type = "response")
 ```
 
 ```out
@@ -92,8 +94,11 @@ predict(mod2, data.frame(cigs = c(0, 15, 30), poll = c(65, 65, 65)), type = "res
 Graphically, the predictions from these two values of the pollution indices can be represented as follows:
 
 ```r
-pred_poll_low = predict(mod2, data.frame(cigs = cigs_to_predict, poll = rep(55, length(cigs_to_predict))), type = "response")
-pred_poll_high = predict(mod2, data.frame(cigs = cigs_to_predict, poll = rep(70, length(cigs_to_predict))), type = "response")
+pred_poll_low = predict(mod2, data.frame(cigs = cigs_to_predict, 
+poll = rep(55, length(cigs_to_predict))), type = "response")
+
+pred_poll_high = predict(mod2, data.frame(cigs = cigs_to_predict, 
+poll = rep(70, length(cigs_to_predict))), type = "response")
 
 plot(bronchitis$cigs, bronchitis$bron, 
      xlab = "Daily number of cigarettes",
@@ -102,7 +107,8 @@ grid()
 lines(cigs_to_predict, pred_poll_high, col = "#F8766D")
 lines(cigs_to_predict, pred_poll_low, col = "#00BFC4")
 
-legend(x = 18, y = 0.4, c("High pollution index", "Low pollution index"), col = c("#F8766D", "#00BFC4"), lwd = 1)
+legend(x = 18, y = 0.4, c("High pollution index", "Low pollution index"), 
+col = c("#F8766D", "#00BFC4"), lwd = 1)
 ```
 
 ---
