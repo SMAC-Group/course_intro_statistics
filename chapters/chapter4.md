@@ -54,7 +54,7 @@ You can view the slides directly in the browser below. To download the slides, p
 
 
 
-<exercise id = "5" title ="Analysis of the bronchitis dataset: How good is our model? (optional 🤓)">
+<exercise id = "5" title ="Analysis of the bronchitis dataset: How good is our model?">
 
 
 <slides source="chapter4_bronchitis_how_good_model">
@@ -62,8 +62,6 @@ You can view the slides directly in the browser below. To download the slides, p
 
 
 </exercise>
-
-
 
 
 <exercise id = "6" title ="Analysis of the bronchitis dataset: Prediction - Part II">

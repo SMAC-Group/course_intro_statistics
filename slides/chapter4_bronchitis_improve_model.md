@@ -10,7 +10,7 @@ type: slides
 In the lecture slides, we consider an alternative model which accounts for pollution:
 
 
-<div style="text-align:center"><img src="chap4_eq_mdl_2.png" alt=" " width="70%"></div>
+<div style="text-align:center"><img src="chap4_eq_mdl_2.png" alt=" " width="85%"></div>
 
 
 This second model (i.e. "Model 2") can be estimated using the function `glm` as follows:
@@ -112,8 +112,6 @@ col = c("#F8766D", "#00BFC4"), lwd = 1)
 ```
 
 ---
-
-
 
 
 <div style="text-align:center"><img src="plot_chap4_4.png" alt=" " width="70%"></div>

@@ -22,7 +22,9 @@ in_accuracy
 In this case, we have 80.19% in-sample classification accuracy. 
 
 ---
-# Out-of-sample prediction performance
+# Out-of-sample prediction performance 😱
+
+Understanding the details behind cross-validation is beyond the scope of this class. However, for the curious students we provide some explanations here... We use the symbol 😱 to highlight such more advanced content.
 
 We will now consider and estimate the out-of-sample classification accuracy. To do so, we will use a technique called 10-fold cross-validation, see [here](https://en.wikipedia.org/wiki/Cross-validation_(statistics)#k-fold_cross-validation) for more details).
 
@@ -58,34 +60,32 @@ In this case, we have 79.43% out-of-sample classification accuracy, which is ver
 
 ---
 
-# k-folds Cross-validation
+# k-folds Cross-validation 😱
 
-Cross-validation is a model validation techniques for assessing how the results of a statistical analysis will generalize to an independent data set. Cross-validation is a resampling method that uses different portions of the data to test and train a model on different iterations. 
+Cross-validation is a model validation techniques for assessing how the results of a statistical analysis will generalize to an independent data set. Cross-validation is a resampling method that uses different portions of the data to test and train a model on different iterations.
 
 
 Steps in a procedure of k-folds cross validation procedure:
 
 
-- Shuffle the dataset randomly.
-- Split the dataset into k groups
-- For each unique group:
-    - Take the group as a hold out or test data set
-    - Take the remaining groups as a training data set
-    - Fit the model on the training set and evaluate it on the test set
-    - Save the evaluation metric 
-- Summarize the skill of the model using the sample of model evaluation scores
-
-
+1. Shuffle the dataset randomly.
+2. Split the dataset into k groups (typically we consider 10 groups).
+3. For each unique group:
+    - Take the group as a hold out or test data set.
+    - Take the remaining groups as a training data set.
+    - Fit the model on the training set and evaluate it on the test set.
+    - Save the evaluation metric.
+4. Summarize the skill of the model using the sample of model evaluation scores.
 
 ---
-# k-folds Cross-validation
+
+# k-folds Cross-validation 😱
 
 <div style="text-align:center"><img src="cv_fold.png" alt=" " width="80%"></div>
 
-
 ---
 
-# Manual implementation of the Cross-Validation 😱
+# Manual implementation of Cross-Validation 😱
 
 We can easily reproduce a the procedure carried out with `cv.glm()` using a manual implementation of a 10 folds cross-validation procedure on the accuracy of predictions made with the model `mod2`.
 
