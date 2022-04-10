@@ -377,9 +377,7 @@ Number of Fisher Scoring iterations: 5
 We can see that among these 4 variables, some appear not significant, implying that we may be able to find a smaller model with less variables which is more adequate (hopefully the model we considered previously). Indeed, we could actually wonder what is the "best" model to describe our data or at least the model with the smallest AIC. By comparing the AIC of the two models, it seems that the first one is more adequate. <p>However, is it the "best" model? Since our dataset has four variables
 (i.e. <code>sex</code>, <code>age</code>, <code>ldh</code> and
 <code>spo2</code>), we can actually construct <span
-class="math inline">\(2^4 = 16\)</span> models (why? 🤔). Therefore, we could
-construct all 16 models and find the one with the smallest AIC. This can
-be done as follows:</p>
+class="math inline">\(2^4 = 16\)</span> models (why? 🤔). Therefore, we could manually construct these 16 models and find the one with the smallest AIC. This can be done as follows:</p>
 
 ```r
 # Empty model (i.e. intercept only)
@@ -611,7 +609,9 @@ In this example, we can see that this approach is able to find the model with th
 
 
 
-<exercise id = "9" title ="Exercise: Framingham Heart Study">
+<exercise id = "9" title ="Homework">
+
+# Problem I: Framingham Heart Study
 
 In this first exercise, we consider the data from the Framingham Heart Study which is a long term prospective study of the etiology of cardiovascular disease among a population of subjects in the community of Framingham, Massachusetts. More precisely, we are interested in the following model:
 
@@ -674,13 +674,7 @@ data(framingham)
 The variables needed for your analysis are called: `PREVCHD`, `AGE`, `SYSBP`, `DIABP`, `BMI` and `SEX`.
 
 
-
-</exercise>
-
-
-
-<exercise id = "10" title ="Exercise: Pima Indians Diabetes">
-
+# Problem II: Pima Indians Diabetes
 
 In this second exercise, we will consider a dataset on diabetes where 768 women of at least 21 years old of the Pima Indian heritage were considered. This dataset includes the following variables:
 
