@@ -85,7 +85,7 @@ Steps in a procedure of k-folds cross validation procedure:
 
 ---
 
-# Manual implementation of the Cross-Validation
+# Manual implementation of the Cross-Validation 😱
 
 We can easily reproduce a the procedure carried out with `cv.glm()` using a manual implementation of a 10 folds cross-validation procedure on the accuracy of predictions made with the model `mod2`.
 
