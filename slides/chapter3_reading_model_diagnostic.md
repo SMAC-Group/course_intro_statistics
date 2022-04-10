@@ -23,7 +23,7 @@ residuals = resid(mod1)
 Then, we can construct the graph using the function `plot` as follows:
 
 ```r
-plot(fitted_values, residuals, xlab = "Fitted values", ylab = "Residuals
+plot(fitted_values, residuals, xlab = "Fitted values", ylab = "Residuals")
 ```
 
 
