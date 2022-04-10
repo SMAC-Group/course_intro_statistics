@@ -202,7 +202,7 @@ What is the corresponding set of hypotheses associated to this question:
 </opt>
 <opt text="Hypothesis E" correct="true"> Well done! 👍
 </opt>
-<opt text="Hypothesis F" correct="true"> Are you sure? 😅
+<opt text="Hypothesis F"> Are you sure? 😅
 </opt>
 </choice>
 
