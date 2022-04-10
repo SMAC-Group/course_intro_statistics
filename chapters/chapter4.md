@@ -374,10 +374,10 @@ AIC: 68.501
 Number of Fisher Scoring iterations: 5
 ```
 
-We can see that among these 4 variables, some appear not significant, implying that we may be able to find a smaller model with less variables which is more adequate (hopefully the model we considered previously). Indeed, we could actually wonder what is the "best" model to describe our data or at least the model with the smallest AIC. By comparing the AIC of the two models, it seems that the first one is more adequate. <p>However, is it the “best” model? Since our dataset has four variables
+We can see that among these 4 variables, some appear not significant, implying that we may be able to find a smaller model with less variables which is more adequate (hopefully the model we considered previously). Indeed, we could actually wonder what is the "best" model to describe our data or at least the model with the smallest AIC. By comparing the AIC of the two models, it seems that the first one is more adequate. <p>However, is it the "best" model? Since our dataset has four variables
 (i.e. <code>sex</code>, <code>age</code>, <code>ldh</code> and
 <code>spo2</code>), we can actually construct <span
-class="math inline">\(2^4\)</span> models (why? 🤔). Therefore, we could
+class="math inline">\(2^4 = 16\)</span> models (why? 🤔). Therefore, we could
 construct all 16 models and find the one with the smallest AIC. This can
 be done as follows:</p>
 
