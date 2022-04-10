@@ -19,25 +19,33 @@ in_accuracy
 0.8018868
 ```
 
+In this case, we have 80.19% in-sample classification accuracy. 
+
 ---
+# Out-of-sample prediction performance
 
-In this case, we have 80.19% in-sample classification accuracy. We will now consider and estimate the out-of-sample classification accuracy. To do so, we will use a technique called 10-fold cross-validation, see [here](https://en.wikipedia.org/wiki/Cross-validation_(statistics)#k-fold_cross-validation) for more details).
+We will now consider and estimate the out-of-sample classification accuracy. To do so, we will use a technique called 10-fold cross-validation, see [here](https://en.wikipedia.org/wiki/Cross-validation_(statistics)#k-fold_cross-validation) for more details).
 
 
-Cross-validation, sometimes called rotation estimation or out-of-sample testing, is a model validation techniques for assessing how the results of a statistical analysis will generalize to an independent data set. Cross-validation is a resampling method that uses different portions of the data to test and train a model on different iterations. 
+Cross-validation is a model validation techniques for assessing how the results of a statistical analysis will generalize to an independent data set. Cross-validation is a resampling method that uses different portions of the data to test and train a model on different iterations. 
 
 ---
 
 # k-folds Cross-validation
 
 
-Steps in a procedure of cross validation:
+Steps in a procedure of k-folds cross validation procedure:
 
-1- Split the data into train and test sets and evaluate the model’s performance as ‘Measure 1’. 
 
-2- Split the data and split into new train and test sets. Re-evaluate model’s performance. As we ‘Measure 1’ in similar way we measures ‘Measure 2’ , ‘Measure 3’ and so on.
+- Shuffle the dataset randomly.
+- Split the dataset into k groups
+- For each unique group:
+    - Take the group as a hold out or test data set
+    - Take the remaining groups as a training data set
+    - Fit the model on the training set and evaluate it on the test set
+    - Save the evaluation metric 
+- Summarize the skill of the model using the sample of model evaluation scores
 
-3- To get the actual performance metric , take the average of all measures.
 
 
 ---
@@ -75,5 +83,53 @@ In this case, we have 79.43% out-of-sample classification accuracy, which is ver
 
 Manual implementation of the Cross-Validation
 
+We can easily reproduce a the procedure carried out with `cv.glm()` using a manual implementation of a 10 folds cross-validation procedure on the accuracy of predictions made with the model `mod2`.
 
+We first create a vector that assign each observation to a fold:
 
+```r
+# define number of fold
+fold = 10
+# define vector to save accuracy for each fold
+cv_accuracy = vector(mode = "numeric", length = fold)
+# define fold id vector
+n <-  dim(bronchitis)[1]
+prop <- n%/%fold
+set.seed(123)
+newseq <- rank(runif(n))
+fold_id <- as.factor((newseq - 1)%/%prop + 1)
+fold_id[1:10]
+```
+
+```out
+ [1] 3  9  5  9  10 1  6  10 6  5 
+Levels: 1 2 3 4 5 6 7 8 9 10 11
+```
+
+---
+
+We can then run the procedure for each fold:
+
+```r
+# run cv procedure
+for(fold_i in seq(fold)){
+  # identify id train and test
+  id_test = which(fold_id == fold_i)
+  id_train = which(!fold_id == fold_i)
+  # fit model on training and rate accuracy on test set
+  fit = glm(bron ~ cigs + poll, data = bronchitis[id_train, ], family = binomial())
+  y_pred_test = predict(fit, newdata = bronchitis[id_test, ], type = "response")
+  y_pred_test_bin = ifelse(y_pred_test > 0.5, 1,0) 
+  # compute accuracy on test set 
+  cv_accuracy[fold_i] = mean(y_pred_test_bin == bronchitis[id_test, "bron"])
+}
+# Compute estimated cv accuracy
+mean(cv_accuracy)
+
+``` 
+
+```out
+0.8047619
+```
+
+In this case, we obtain an estimated cross-validation accuracy of 80.47%. Due to the stochastic process of assigning observations to folds, this procedure return different cross-validation metrics depending on the specified allocation of observations. When the process is repeated and the computed measures averaged, the procedure is called repeated cross validation. 
