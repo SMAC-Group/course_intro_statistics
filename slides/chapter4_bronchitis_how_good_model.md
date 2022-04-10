@@ -29,7 +29,10 @@ Understanding the details behind cross-validation is beyond the scope of this cl
 We will now consider and estimate the out-of-sample classification accuracy. To do so, we will use a technique called 10-fold cross-validation, see [here](https://en.wikipedia.org/wiki/Cross-validation_(statistics)#k-fold_cross-validation) for more details).
 
 
-<div style="text-align:center"><img src="img_cv.png" alt=" " width="70%"></div>
+<div style="text-align:center"><img src="img_cv.png" alt=" " width="60%"></div>
+
+<small>adapted from https://commons.wikimedia.org/wiki/File:K-fold_cross_validation_EN.svg</small>
+
 
 ---
 
@@ -81,7 +84,10 @@ Steps in a procedure of k-folds cross validation procedure:
 
 # k-folds Cross-validation 😱
 
-<div style="text-align:center"><img src="cv_fold.png" alt=" " width="80%"></div>
+<div style="text-align:center"><img src="cv_fold.png" alt=" " width="70%"></div>
+
+<small>adapted from https://blog.ineuron.ai/K-Fold-Cross-Validation-Technique-NCaSQ8Kmfh</small>
+
 
 ---
 
