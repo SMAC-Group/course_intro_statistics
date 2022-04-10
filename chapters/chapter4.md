@@ -230,7 +230,8 @@ This p-value is telling us that we cannot reject the null but also that we might
 &lt; 0\]</span></p>
 
 
-What could we conclude for this test (considering $\alpha = 0.05$):
+<p>What could we conclude for this test (considering <span
+class="math inline">\(\alpha = 0.05\)</span>):</p>
 
 
 <choice id="chap4_exc3">
