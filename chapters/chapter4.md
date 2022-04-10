@@ -64,9 +64,9 @@ You can view the slides directly in the browser below. To download the slides, p
 </exercise>
 
 
-<exercise id = "6" title ="Analysis of the bronchitis dataset: Prediction - Part II">
+<exercise id = "6" title ="Analysis of the bronchitis dataset: Prediction - Part II 😱">
 
-
+*Similarly, to our discussion on cross-validation the content of this section is more advanced and aimed at the motivated/curious students... explaining the symbol:* 😱.
 
 In this section we consider different approaches to present the predictions that can be made using the second model by constructing an interactive 3D plot. For this purpose, we will use the R package `plotly` which can be installed  as follows:
 
@@ -101,7 +101,7 @@ add_surface()
 
 
 <div align="center">
-<iframe src="p_1.html" width="500" height="500" ></iframe> 
+<iframe src="p_1.html" width="750" height="500" ></iframe> 
 </div>
  
 Or if we want something a little better:
@@ -129,7 +129,7 @@ fig
 
 
 <div align="center">
-<iframe src="p_2.html" width="500" height="500" ></iframe> 
+<iframe src="p_2.html" width="750" height="500" ></iframe> 
 </div>
 
 </exercise>
