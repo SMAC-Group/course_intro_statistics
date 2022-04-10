@@ -110,7 +110,8 @@ add_surface()
 Or if we want something a little better:
 
 ```r
-fig = plot_ly(x = poll_to_predict, y = cigs_to_predict, z = predicted_prob) %>% add_surface(
+fig = plot_ly(x = poll_to_predict, y = cigs_to_predict, z = predicted_prob) %>% 
+add_surface(
   contours = list(
     y = list( 
       highlight = TRUE,
@@ -121,9 +122,10 @@ fig = plot_ly(x = poll_to_predict, y = cigs_to_predict, z = predicted_prob) %>% 
       highlightcolor = "#41a7b3"
     ),
   z = list(highlight = FALSE)))
-fig = fig %>% layout(scene = list(xaxis = list(title = "Pollution index"),
-                                  yaxis = list(title = "Daily number of cigarettes"),
-                                  zaxis = list(title = "Predicted probability of Bronchitis")))
+fig = fig %>% 
+layout(scene = list(xaxis = list(title = "Pollution index"),
+                    yaxis = list(title = "Daily number of cigarettes"),
+                    zaxis = list(title = "Predicted probability of Bronchitis")))
 fig = fig %>% colorbar(title = "Estimated \n probability")
 fig
 ```
