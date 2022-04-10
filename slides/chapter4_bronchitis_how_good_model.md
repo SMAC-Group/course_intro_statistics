@@ -24,14 +24,14 @@ In this case, we have 80.19% in-sample classification accuracy.
 ---
 # Out-of-sample prediction performance 😱
 
-Understanding the details behind cross-validation is beyond the scope of this class. However, for the curious students we provide some explanations here... We use the symbol 😱 to highlight such more advanced content.
+*Understanding the details behind cross-validation is beyond the scope of this class. However, for the curious students we provide some explanations here... We use the symbol* 😱 *to highlight such content.*
 
 We will now consider and estimate the out-of-sample classification accuracy. To do so, we will use a technique called 10-fold cross-validation, see [here](https://en.wikipedia.org/wiki/Cross-validation_(statistics)#k-fold_cross-validation) for more details).
 
 
 <div style="text-align:center"><img src="img_cv.png" alt=" " width="60%"></div>
 
-<small>adapted from https://commons.wikimedia.org/wiki/File:K-fold_cross_validation_EN.svg</small>
+<small>Adapted from https://commons.wikimedia.org/wiki/File:K-fold_cross_validation_EN.svg</small>
 
 
 ---
@@ -86,7 +86,7 @@ Steps in a procedure of k-folds cross validation procedure:
 
 <div style="text-align:center"><img src="cv_fold.png" alt=" " width="70%"></div>
 
-<small>adapted from https://blog.ineuron.ai/K-Fold-Cross-Validation-Technique-NCaSQ8Kmfh</small>
+<small>Adapted from https://blog.ineuron.ai/K-Fold-Cross-Validation-Technique-NCaSQ8Kmfh</small>
 
 
 ---
