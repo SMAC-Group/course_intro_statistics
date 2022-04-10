@@ -609,3 +609,125 @@ In this example, we can see that this approach is able to find the model with th
 
 
 </exercise>
+
+
+
+
+<exercise id = "9" title ="Exercise: Framingham Heart Study">
+
+In this first exercise, we consider the data from the Framingham Heart Study which is a long term prospective study of the etiology of cardiovascular disease among a population of subjects in the community of Framingham, Massachusetts. More precisely, we are interested in the following model:
+
+<div style="text-align:center"><img src="chap4_eq_mdl_4.png" alt=" " width="100%"></div>
+
+where
+
+<p>- <span class="math inline">\(g(x) = \exp(x)/(1 +
+\exp(x))\)</span>;</p>
+<p>- <span class="math inline">\(\color{#e64173}{\text{CHD}_i}\)</span>:
+corresponds to the presence of Coronary Heart Disease defined as
+pre-existing Angina Pectoris, Myocardial Infarction (hospitalized,
+silent or unrecognized), or Coronary Insufficiency for subject <span
+class="math inline">\(i\)</span> (0 = Free of disease; 1 = Prevalent
+disease);</p>
+<p>- <span class="math inline">\(\color{#6A5ACD}{\text{BMI}_i}\)</span>:
+Body Mass Index of subject <span class="math inline">\(i\)</span>;</p>
+<p>- <span class="math inline">\(\color{#20B2AA}{\text{SEX}_i}\)</span>:
+Gender of subject <span class="math inline">\(i\)</span> (1 = Male, 2 =
+Female);</p>
+<p>- <span class="math inline">\(\color{#FFA500}{\text{AGE}_i}\)</span>:
+Age at exam (in year) of subject <span
+class="math inline">\(i\)</span>;</p>
+<p>- <span
+class="math inline">\(\color{#8bb174}{\text{SYSBP}_i}\)</span>: Systolic
+Blood Pressure (mmHg) of subject <span
+class="math inline">\(i\)</span>;</p>
+<p>- <span
+class="math inline">\(\color{#314f4f}{\text{DIABP}_i}\)</span>:
+Diastolic Blood Pressure (mmHg) of subject <span
+class="math inline">\(i\)</span>.</p>
+
+
+
+We are interested in estimating the parameters associated to this model and assessing the validity of the following claims:
+
+- Men are more likely than women to be affected by a coronary heart disease.
+
+- Individuals with a higher systolic blood pressure are more likely to be affected by a coronary heart disease.
+
+- Individuals with a higher body mass index are more likely to be affected by a coronary heart disease.
+
+- Individuals with a lower diastolic blood pressure are more likely to be affected by a coronary heart disease.
+
+Based on this model, what is the probability that a 50 years old men with a BMI of 25, systolic blood pressure of 120 and diastolic blood pressure of 85 is affected by a coronary heart disease? How would this probability change if we consider a person with a BMI of 50 instead (with other variables being the same)? 
+
+To obtain the data, you first need to install the `riskCommunicator` R package as follows:
+
+```r
+install.packages("riskCommunicator")
+```
+
+Then you can obtain the data by running:
+ 
+```r
+library("riskCommunicator")
+data(framingham)
+```
+
+The variables needed for your analysis are called: `PREVCHD`, `AGE`, `SYSBP`, `DIABP`, `BMI` and `SEX`.
+
+
+
+</exercise>
+
+
+
+<exercise id = "10" title ="Exercise: Pima Indians Diabetes">
+
+
+In this second exercise, we will consider a dataset on diabetes where 768 women of at least 21 years old of the Pima Indian heritage were considered. This dataset includes the following variables:
+
+- `pregnant`: Number of times pregnant
+- `glucose`: Plasma glucose concentration in an oral glucose tolerance test
+- `pressure`: Diastolic blood pressure (mm Hg)
+- `triceps`: Triceps skin fold thickness (mm)
+- `insulin`: 2-Hour serum insulin (mu U/ml)
+- `mass`: Body mass index (weight in kg/(height in m)^2)
+- `pedigree`: Diabetes pedigree function
+- `age`: Age of the patients (years)
+- `diabetes`: Class variable (test for diabetes)
+
+The dataset is stored in the `mlbench` R package which you can install as follows:
+
+```{r, eval = FALSE}
+install.packages(mlbench)
+```
+
+Then, you can load the data as:
+
+```{r}
+library(mlbench)
+data(PimaIndiansDiabetes)
+head(PimaIndiansDiabetes)
+```
+
+
+```out
+  pregnant glucose pressure triceps insulin mass pedigree age diabetes
+1        6     148       72      35       0 33.6    0.627  50      pos
+2        1      85       66      29       0 26.6    0.351  31      neg
+3        8     183       64       0       0 23.3    0.672  32      pos
+4        1      89       66      23      94 28.1    0.167  21      neg
+5        0     137       40      35     168 43.1    2.288  33      pos
+6        5     116       74       0       0 25.6    0.201  30      neg
+```
+
+- Given these variables, what is the largest model (which we will call "Model 1") that you can fit to predict the possibility of a woman (Pima Indian heritage) being diagnosed with diabetes?
+- Based on Model 1 we would like to assess the validity of the following claims:
+    - Women with a higher body mass index are more likely to be affected by diabetes.
+    - Older women are more likely to be affected by diabetes.
+    - Is Model 1 the best possible model to describe the data at hand? Is it the model with the smallest AIC? In order to find the model with the smallest AIC, is it feasible to explore all models? Why or why not?
+    - Apply the "stepwise forward AIC" approach and describe the model you obtain (which we will call "Model 2"). Based on Model 2, re-assess the validity of the previous claims. Do you obtain different conclusions?
+    - Compare the in-sample and out-of-sample classification accuracy of Models 1 and 2? Which model appears to be better?
+
+
+</exercise>

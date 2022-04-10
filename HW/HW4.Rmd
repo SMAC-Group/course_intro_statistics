@@ -1,0 +1,89 @@
+---
+title: "Exercises on Generalized Linear Models"
+output: html_document
+---
+
+# Exercise 1: Framingham Heart Study
+
+In this first exercise, we consider the data from the Framingham Heart Study which is a long term prospective study of the etiology of cardiovascular disease among a population of subjects in the community of Framingham, Massachusetts. More precisely, we are interested in the following model:
+
+$$\small \Pr(\color{#e64173}{\text{CHD}_i} = 1| \color{#6A5ACD}{\text{BMI}_i}, \color{#20B2AA}{\text{SEX}_i}, \color{#FFA500}{\text{AGE}_i}, \color{#8bb174}{\text{SYSBP}_i},  \color{#314f4f}{\text{DIABP}_i}) = g\left(\beta_0 + \beta_1\color{#6A5ACD}{\text{BMI}_i} + \beta_2 \color{#20B2AA}{\text{SEX}_i} + \beta_3 \color{#FFA500}{\text{AGE}_i} + \beta_4 \color{#8bb174}{\text{SYSBP}_i} + \beta_5 \color{#314f4f}{\text{DIABP}_i}\right),$$
+where:
+
+- $g(x) = \exp(x)/(1 + \exp(x))$;
+
+- $\color{#e64173}{\text{CHD}_i}$: corresponds to the presence of Coronary Heart Disease defined as pre-existing Angina Pectoris, Myocardial Infarction (hospitalized, silent or unrecognized), or Coronary Insufficiency for subject $i$ (0 = Free of disease; 1 = Prevalent disease);
+
+- $\color{#6A5ACD}{\text{BMI}_i}$: Body Mass Index of subject $i$;
+
+- $\color{#20B2AA}{\text{SEX}_i}$: Gender of subject $i$ (1 = Male, 2 = Female);
+
+- $\color{#FFA500}{\text{AGE}_i}$: Age at exam (in year) of subject $i$;
+
+- $\color{#8bb174}{\text{SYSBP}_i}$: Systolic Blood Pressure (mmHg) of subject $i$;
+
+- $\color{#314f4f}{\text{DIABP}_i}$: Diastolic Blood Pressure (mmHg) of subject $i$.
+
+We are interested in estimating the parameters associated to this model and assessing the validity of the following claims:
+
+- Men are more likely than women to be affected by a coronary heart disease.
+- Individuals with a higher systolic blood pressure are more likely to be affected by a coronary heart disease.
+- Individuals with a higher body mass index are more likely to be affected by a coronary heart disease.
+- Individuals with a lower diastolic blood pressure are more likely to be affected by a coronary heart disease.
+
+Based on this model, what is the probability that a 50 years old men with a BMI of 25, systolic blood pressure of 120 and diastolic blood pressure of 85 is affected by a coronary heart disease? How would this probability change if we consider a person with a BMI of 50 instead (with other variables being the same)? 
+
+To obtain the data, you first need to install the `riskCommunicator` R package as follows:
+
+```{r, eval = FALSE}
+install.packages("riskCommunicator")
+```
+
+Then you can obtain the data by running:
+ 
+```{r}
+library("riskCommunicator")
+data(framingham)
+```
+
+The variables needed for your analysis are called: `PREVCHD`, `AGE`, `SYSBP`, `DIABP`, `BMI` and `SEX`.
+
+
+
+# Exercise 2: Pima Indians Diabetes
+
+In this second exercise, we will consider a dataset on diabetes where 768 women of at least 21 years old of the Pima Indian heritage were considered. This dataset includes the following variables:
+
+- `pregnant`: Number of times pregnant
+- `glucose`: Plasma glucose concentration in an oral glucose tolerance test
+- `pressure`: Diastolic blood pressure (mm Hg)
+- `triceps`: Triceps skin fold thickness (mm)
+- `insulin`: 2-Hour serum insulin (mu U/ml)
+- `mass`: Body mass index (weight in kg/(height in m)^2)
+- `pedigree`: Diabetes pedigree function
+- `age`: Age of the patients (years)
+- `diabetes`: Class variable (test for diabetes)
+
+The dataset is stored in the `mlbench` R package which you can install as follows:
+
+```{r, eval = FALSE}
+install.packages(mlbench)
+```
+
+Then, you can load the data as:
+
+```{r}
+library(mlbench)
+data(PimaIndiansDiabetes)
+head(PimaIndiansDiabetes)
+```
+
+- Given these variables, what is the largest model (which we will call "Model 1") that you can fit to predict the possibility of a woman (Pima Indian heritage) being diagnosed with diabetes?
+- Based on Model 1 we would like to assess the validity of the following claims:
+    - Women with a higher body mass index are more likely to be affected by diabetes.
+    - Older women are more likely to be affected by diabetes.
+- Is Model 1 the best possible model to describe the data at hand? Is it the model with the smallest AIC? In order to find the model with the smallest AIC, is it feasible to explore all models? Why or why not?
+- Apply the "stepwise forward AIC" approach and describe the model you obtain (which we will call "Model 2"). Based on Model 2, re-assess the validity of the previous claims. Do you obtain different conclusions?
+- Compare the in-sample and out-of-sample classification accuracy of Models 1 and 2? Which model appears to be better?
+
+
