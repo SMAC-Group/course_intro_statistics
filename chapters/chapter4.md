@@ -374,10 +374,11 @@ AIC: 68.501
 Number of Fisher Scoring iterations: 5
 ```
 
-We can see that among these 4 variables, some appear not significant, implying that we may be able to find a smaller model with less variables which is more adequate (hopefully the model we considered previously). Indeed, we could actually wonder what is the "best" model to describe our data or at least the model with the smallest AIC. By comparing the AIC of the two models, it seems that the first one is more adequate. <p>However, is it the "best" model? Since our dataset has four variables
-(i.e. <code>sex</code>, <code>age</code>, <code>ldh</code> and
-<code>spo2</code>), we can actually construct <span
-class="math inline">\(2^4 = 16\)</span> models (why? 🤔). Therefore, we could manually construct these 16 models and find the one with the smallest AIC. This can be done as follows:</p>
+We can see that among these 4 variables, some appear not significant, implying that we may be able to find a smaller model with less variables which is more adequate (hopefully the model we considered previously). Indeed, we could actually wonder what is the "best" model to describe our data or at least the model with the smallest AIC. By comparing the AIC of the two models, it seems that the first one is more adequate. 
+
+
+<p>However, is it the "best" model? Since our dataset has four variables (i.e. <code>sex</code>, <code>age</code>, <code>ldh</code> and <code>spo2</code>),
+we can actually construct <span class="math inline">\(2^4 = 16\)</span> models (why? 🤔). Therefore, we could manually construct these 16 models and find the one with the smallest AIC. This can be done as follows:</p>
 
 
 
@@ -425,6 +426,12 @@ abline(h = min(AIC_vector)+2, lty=2)
 
 
 <div style="text-align:center"><img src="plot_aic_2.png" alt=" " width="70%"></div>
+
+<p> 😱 <em> A more advanced remark for the curious/interested students: When we are comparing the AIC of different models it is practical to consider the following difference: <span class="math inline">\(\Delta_i = \text{AIC}_i -
+\text{AIC}_{\min}\)</span> where <span class="math inline">\( \text{AIC}_i\)</span> denotes the AIC of the i-th model and  <span class="math inline">\(\text{AIC}_{\min}\)</span> denotes the smallest AIC among the set of models examined. In practice, selecting the model with the smallest AIC may not be the best approach and one may decide to consider a different model in some cases. For example, Burnham & Anderson 2004 suggested that any model having a difference <span class="math inline">\(\Delta_i < 2\)</span> has no substantial difference with the model with the smallest AIC. Other researchers have suggested to consider <span class="math inline">\(\Delta_i < 4\)</span>. These numbers are actually associated to estimation error of the AIC. In our example, we can see that Models 7, 12, 15 and 16 are such that <span class="math inline">\(\Delta_i < 2\)</span> and therefore we can consider that there are no substantial differences between them. However, Models 12, 15 and 16 are based three variables while Model 7 is only based on two variables. Thus, it is reasonable to consider either Model 7 or Model 15 (which has the smallest AIC) and to assume that these models are quite comparable.</em></p> 
+
+
+
 
 
 We can see on the graph that two models have an AIC that appears smaller than the ones of the other models. Indeed, Models 7 and 15 seem to be interesting candidates. Let's have a look at these models:
