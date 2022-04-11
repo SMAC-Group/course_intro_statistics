@@ -379,6 +379,8 @@ We can see that among these 4 variables, some appear not significant, implying t
 <code>spo2</code>), we can actually construct <span
 class="math inline">\(2^4 = 16\)</span> models (why? 🤔). Therefore, we could manually construct these 16 models and find the one with the smallest AIC. This can be done as follows:</p>
 
+
+
 ```r
 # Empty model (i.e. intercept only)
 mod1 = glm(icu ~ 1, data = covid, family = binomial())
@@ -417,10 +419,12 @@ AIC_vector = c(AIC(mod1), AIC(mod2), AIC(mod3), AIC(mod4), AIC(mod5),
                AIC(mod16))
 plot(AIC_vector, xlab = "Model index", ylab = "AIC", type = "b", pch = 16)
 grid()
+abline(h = min(AIC_vector), lty=2)
+abline(h = min(AIC_vector)+2, lty=2)
 ```
 
 
-<div style="text-align:center"><img src="chap4_plot_aic.png" alt=" " width="70%"></div>
+<div style="text-align:center"><img src="plot_aic_2.png" alt=" " width="70%"></div>
 
 
 We can see on the graph that two models have an AIC that appears smaller than the ones of the other models. Indeed, Models 7 and 15 seem to be interesting candidates. Let's have a look at these models:
