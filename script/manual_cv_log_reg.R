@@ -12,8 +12,10 @@ prop <- n%/%fold
 set.seed(123)
 newseq <- rank(runif(n))
 fold_id <- as.factor((newseq - 1)%/%prop + 1)
+table(fold_id)
 # run cv procedure
 for(fold_i in seq(fold)){
+
   # identify id train and test
   id_test = which(fold_id == fold_i)
   id_train = which(!fold_id == fold_i)
