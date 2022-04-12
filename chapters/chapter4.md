@@ -71,7 +71,7 @@ You can view the slides directly in the browser below. To download the slides, p
 In this section we consider different approaches to present the predictions that can be made using the second model by constructing an interactive 3D plot. For this purpose, we will use the R package `plotly` which can be installed  as follows:
 
 ```r
-install.packages(plotly)
+install.packages("plotly")
 ```
 
 Then, we can compute a prediction "matrix" as follows:
@@ -745,7 +745,7 @@ In this second exercise, we will consider a dataset on diabetes where 768 women 
 The dataset is stored in the `mlbench` R package which you can install as follows:
 
 ```{r, eval = FALSE}
-install.packages(mlbench)
+install.packages("mlbench")
 ```
 
 Then, you can load the data as:
