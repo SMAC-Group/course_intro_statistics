@@ -340,7 +340,71 @@ t(A)
 </exercise>
 
 
-<exercise id="4" title="Working with data.frames">
+<exercise id="4" title="Working with dataframes">
+
+A dataframe is the most common way of storing data in `R` and, generally, is the data structure most often used for data analyses. A dataframe structure features associated with observations in a tabular format.
+
+One can create a dataframe using the function `data.frame()`. For example, let us create a dataframe of students for which is recorded the name, age, weight (in kg), height (in cm) and favorite sport.
+
+```R
+df = data.frame("name" = c("Florian", "Kevin", "Sadri", "Caroline"), 
+                "age" = c(21, 24, 26, 28), 
+                "weight" = c(75, 65, 78, 65),
+                "height" = c(180, 165, 172, 165),
+                "sport" = c("running", "boxing", "tennis", "swimming"))
+``` 
+
+As it can be observed, the dataset is created by combining vectors of equal length. 
+
+One can inspect the structure of the dataset with the function `str()`.
+
+```R
+str(df)
+```
+
+returns:
+
+```out
+'data.frame':	4 obs. of  5 variables:
+ $ name  : chr  "Florian" "Kevin" "Sadri" "Caroline"
+ $ age   : num  21 24 26 28
+ $ weight: num  75 65 78 65
+ $ height: num  180 165 172 165
+ $ sport : chr  "running" "boxing" "tennis" "swimming"
+```
+
+One can print the first or last rows of the dataset with respectively the function `head()` and `tail()` and print the name of the columns with the function `colnames()`. For example:
+
+```R
+colnames(df)
+```
+
+returns
+
+```out
+[1] "name"   "age"    "weight" "height" "sport" 
+```
+
+You can access a specific column with the `$` operator. For example, you cna subset the column `weight` as such:
+
+``` 
+df$weight
+```
+
+returns:
+
+```out
+[1] 75 65 78 65
+``` 
+
+Similarly, consider that you want to add a new column `bmi` which is equal to the weight in kilograms divided by the height in meters squared. You can create this new variable using the `$` operator as such: 
+
+```R
+df$bmi = df$weight / (df$height / 100)^2
+```
+
+
+
 </exercise>
 
 <exercise id="5" title="Basic data visualization">
