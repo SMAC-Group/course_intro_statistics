@@ -126,3 +126,222 @@ Below is a gif illustrating the installation of the `idar` `R` package:
 </center>
 
 </exercise>
+
+
+
+<exercise id="2" title="Basic arithmetic and logical computations">
+
+`R` can be used for arithmetic and logical computations. `R` provides the following standard arithmetic operators:
+
+<div style="text-align:center"><img src="arithmetic_op.png" alt=" " width="70%"> </div>
+
+For example, if you want to compute the following expression: \\(6\times3 + \frac{3^2}{2} +2 \\), you can execute the following command:
+
+```R
+6*3 + 3^2/2 + 1
+``` 
+
+which will return, when executed:
+
+```out
+[1] 23.5
+``` 
+
+Similarly, `R` provides the following standard logical operators:
+
+<div style="text-align:center"><img src="logical_op.png" alt=" " width="70%"> </div>
+
+For example, if you want to compare two numbers, say \\(9\\) and \\(12\\), you could run the following code:
+
+
+```R
+a = 9
+b = 12
+a > b
+a == b
+a < b
+```
+
+which will return, when executed:
+
+```
+> a = 9
+> b = 12
+> a > b
+[1] FALSE
+> a == b
+[1] FALSE
+> a < b
+[1] TRUE
+```
+
+Try the following commands on your console and be sure to understand how they operate and what they
+return.
+
+```R
+a = 5
+b = 10
+a + b 
+b - a
+a * b
+b / a
+a^2
+a == b
+a != b
+a > b
+a < b
+a %% 2
+a %/% 2
+d = TRUE
+e = NA
+d == TRUE
+d == e
+```
+
+</exercise>
+
+
+
+<exercise id="3" title="Working with vectors and matrices">
+
+
+You can easily create vectors and matrices in `R` and performs vectors and/or matrices computations.
+
+## Vectors
+
+You can create a vector in different ways. For example, you can create a sequence from \\(0\\) to \\(12\\) by \\(1\\) with the following command:
+
+```R
+0:12
+```
+
+Similarly, you can use the function `seq()` or the function `c()`:
+
+```
+seq(0, 12, by = 1)
+c(0,1,2,3,4,5,6,7,8,9,10,11,12)
+```
+
+All commands returns:
+
+```out
+ [1]  0  1  2  3  4  5  6  7  8  9 10 11 12
+```
+
+The operation of extracting a value from a `R` object is called <b>subsetting </b>. To subset a vector, you can use the `[]` operator. ⚠ Note that in `R` the index starts at 1.
+
+For example, you can extract the fifth element from the previous sequence with the following command:
+
+``` 
+mysequence = seq(0, 12, by = 1)
+mysequence[5]
+```
+
+```out
+[1] 4
+```
+
+## Matrices
+
+You can define a matrix in `R` with the function `matrix()`. For example, 
+
+```R
+matrix(seq(4), ncol=2, nrow=2)
+```
+
+create the following matrix:
+
+```out
+     [,1] [,2]
+[1,]    1    3
+[2,]    2    4
+```
+
+Similarly as for vectors, you can subset matrices with the `[]` operator. For example, we can subset the element of the first row and of the second column of the matrix previously defined with:
+
+```R
+mymat = matrix(seq(4), ncol=2)
+mymat[1,2]
+```
+
+which returns:
+
+```
+[1] 3
+```
+
+## Operations on vectors and matrices
+
+Once that a vector or a matrix is defined, one can then perform various vectorized operations and matrix calculations. Some simple examples include:
+
+```R
+b= c(1,2,3,4)
+b * 2
+``` 
+
+returns:
+
+```out
+[1]  2  4  6  8
+```
+
+Similarly,
+
+```R
+sqrt(b)
+``` 
+
+returns:
+
+```out
+[1]  1.000000 1.414214 1.732051 2.000000
+```
+
+Alternatively,
+
+```R
+A = matrix(seq(4), ncol= 2)
+C = matrix(c(5:8), ncol =2)
+A %*% C
+``` 
+returns:
+
+```
+     [,1] [,2]
+[1,]   23   31
+[2,]   34   46
+```
+
+One can compute the inverse of the matrix \\(A\\) with the following command:
+
+```
+D = solve(A)
+```
+
+Therefore resulting in the identity matrix if matrix  \\(A\\) is multiplied by matrix \\(D\\)
+
+```R
+A %*% D
+``` 
+
+```out
+      [,1] [,2]
+[1,]    1    0
+[2,]    0    1
+``` 
+
+One can also calculate the determinant or the transpose of a given matrix using respectively the following commands:
+
+```R
+det(A)
+t(A)
+```
+
+</exercise>
+
+
+<exercise id="4" title="Working with data.frames">
+</exercise>
+
+<exercise id="5" title="Basic data visualization">
+</exercise>
