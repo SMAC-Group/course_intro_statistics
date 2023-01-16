@@ -1,634 +1,383 @@
 ---
-title: 'Chapter 3: Linear Regression'
+title: 'Chapter 3: Analysis of Variance'
 description:
   ''
 prev: /chapter2
 next: /chapter4
 type: chapter
-id: 2
+id: 3
 ---
 
 
 <exercise id="1" title="Lecture slides">
 
 You can view the slides directly in the browser below. To download the slides, please check
-[here](https://raw.githack.com/stephaneguerrier/data_analytics/master/Lecture3.html#1) for the .html version or [here](https://raw.githack.com/stephaneguerrier/data_analytics/master/Lecture3.pdf) for the .pdf version. 
+[here](https://raw.githack.com/stephaneguerrier/data_analytics/master/Lecture2.html#1) for the .html version or [here](https://raw.githack.com/stephaneguerrier/data_analytics/master/Lecture2.pdf) for the .pdf version.
 
-<iframe src="https://raw.githack.com/stephaneguerrier/data_analytics/master/Lecture3.html#1" width="710" height="530">
+<iframe src="https://raw.githack.com/stephaneguerrier/data_analytics/master/Lecture2.html#1" width="710" height="530">
 </iframe>
 
-</exercise>
 
-
-
-<exercise id = "2" title ="Analysis of the Reading dataset: Estimation">
-
-<slides source="chapter3_reading_estimation">
-</slides>
-
-</exercise>
-
-<exercise id = "3" title ="Analysis of the Reading dataset: Prediction">
-
-<slides source="chapter3_reading_prediction">
-</slides>
 
 </exercise>
 
 
-<exercise id = "4" title ="Analysis of the Reading dataset: Model diagnostic">
+<exercise id = "2" title ="Exercises">
 
-<slides source="chapter3_reading_model_diagnostic">
-</slides>
+### 1) Suppose that you want to compare the means of 2 groups, in which situation is Student's t-test a good approach:
 
-</exercise>
-
-<exercise id = "5" title ="Analysis of the Reading dataset: Improving our model">
-
-<slides source="chapter3_reading_complexify_model">
-</slides>
-
-</exercise>
-
-
-<exercise id = "6" title ="Analysis of the Reading dataset: Confidence intervals for predictions">
-
-<slides source="chapter3_reading_ci">
-</slides>
-
-</exercise>
-
-
-<exercise id="7" title="Exercise: Pharmacokinetics of Indomethacin">
-
-
-In this exercise, we will consider a dataset on the pharmacokinetics of indomethacin which is an anti-inflammatory drug commonly used as a prescription medication to reduce fever, pain, stiffness, and swelling from inflammation. This dataset can be downloaded as follows:
-
-```r
-data(Indometh)
-```
-
-We can have a first look at the data by using
-
-```r
-head(Indometh)
-```
-
-```out
-  Subject time conc
-1       1 0.25 1.50
-2       1 0.50 0.94
-3       1 0.75 0.78
-4       1 1.00 0.48
-5       1 1.25 0.37
-6       1 2.00 0.19
-```
-
-Our objective is to model the concentration (i.e. plasma concentrations of indomethacin measured in mcg/ml) as a function of the times at which blood samples were drawn (in hr). In particular, we are interested in estimating the mean concentration after 1 hour. The first variable corresponds to `Indometh$conc` and the second to `Indometh$time`.
-
-We can visualize the relationship between these two variables by creating a scatter plot with:
-
-```r
-plot(Indometh$time, Indometh$conc, xlab = "Time (hr)", ylab = "Concentration (mcg/ml)")
-```
-
-<div style="text-align:center"><img src="plot_chap_3_ex_1_1.png" alt=" " width="90%"></div>
-
-One scientist thinks that the following model will a good approximation:
-
-<p><span class="math display">\[\text{Concentration}_i = \beta_0 +
-\beta_1 \text{Time}_i + \varepsilon_i\]</span></p>
-
-which we can estimate as follows:
-
-```r
-mod1 = lm(conc ~ time, data = Indometh)
-```
-
-When comparing the predictions of the model with the data, he obtains the following graph using the following code:
-
-```r
-plot(Indometh$time, Indometh$conc, xlab = "Time (hr)", ylab = "Concentration (mcg/ml)")
-time_to_predict = seq(from = 0.25, to = 8, length.out = 100)
-data_to_predict = data.frame(time = time_to_predict)
-predict_concentration = predict(mod1, data_to_predict, interval = "confidence")
-lines(time_to_predict, predict_concentration[,1])
-lines(time_to_predict, predict_concentration[,2], lty = 2)
-lines(time_to_predict, predict_concentration[,3], lty = 2)
-``` 
-
-
-<div style="text-align:center"><img src="plot_chap_3_ex_1_2.png" alt=" " width="90%"></div>
-
-
-Based on this graph, the scientist asks for your opinion on his model:
-
-<choice id="chap3_exc1">
-<opt text="The model seems appropriate as there is a good match between our model and the data."> No, the fit is actually quite poor as the data don't exhibit a linear relationship between the time and the concentration.
+<choice id="chap2_exc1">
+<opt text="We need the following: (1) it is reasonable to assume that there are no outliers and (2) for moderate and small sample sizes the sample distribution should be at least approximately normal."> Not enough! We also need that the variances are the same between groups.
 </opt>
-<opt text=" I don't know!"> 😉 </opt>
-<opt text="The adequacy between our model and the data is quite poor, indicating that we should look for another model." correct="true">  Yay! 😆 </opt>
-<opt text="The model is not perfect but nevertheless the adequacy is reasonable between our model and the data.">  Well a model will never be perfect but here we can see that the data exhibit a nonlinear relationship while our model is linear.
+<opt text="We need the following: (1) it is reasonable to assume that there are no outliers and (2) for moderate and small sample sizes the sample distribution should be at least approximately normal. If these criteria are met then we should test if the variances are the same between groups. If we can't reject the null, then we can use Student's t-test."> Nope, even though we can't reject the null, we are still not sure if the null is correct 😉. </opt>
+<opt text="We should do the following tests: (1) test if there are no outliers, (2) test if the data are normally distributed (one test per sample) and (3) test if the variances are the same. If we can't reject the null for all tests, then we should use Student's t-test."> Nope, even though we can't reject the null, we are still not sure if the null is correct 😉. </opt>
+<opt text="We need the following: (1) it is reasonable to assume that there are no outliers, (2) the variances of the two groups are known to be the same (or at least it is reasonable to assume that this is the case) and (3) for moderate and small sample sizes the sample distribution should be at least approximately normal." correct="true"> Yes! 😎
 </opt>
 </choice>
 
+### 2) Suppose that you want to compare the means of 2 groups, in which situation is Welsh's t-test a good approach:
 
-Another scientist suggests to transform the data and he proposes to consider the following model instead:
-
-<p><span class="math display">\[\log(\text{Concentration}_i) = \beta_0 +
-\beta_1 \text{Time}_i + \varepsilon_i\]</span></p>
-
-
-and therefore he refits this model as follows:
-
-```r
-# Add log concentration
-Indometh$log_conc = log(Indometh$conc)
-
-# Fit model 2
-mod2 = lm(log_conc ~ time, data = Indometh)
-```
-
-When considering the model diagnostic plots associated to this model, he obtains the following results:
-
-```r
-plot(fitted(mod2), residuals(mod2), xlab = "Fitted values", ylab = "Residuals")
-```
-
-<div style="text-align:center"><img src="plot_chap_3_ex_1_3.png" alt=" " width="90%"></div>
-
-
-Based on this graph, the scientist asks for your opinion on his model:
-
-<choice id="chap3_exc2">
-<opt text="This graph indicates that the model is not adequate for the data we are considering." correct="true"> Yay! 😆
+<choice id="chap2_exc2">
+<opt text="When it is reasonable to assume that there are no outliers."> Nope, if the sample size is small we also need the empirical distribution to be reasonably close to a normal distribution. </opt>
+<opt text="When it is reasonable to assume that the sample distribution is at least approximately normal with not many outliers."> Nope, these outliers can potentially have a very large impact! </opt>
+<opt text="When it is reasonable to assume that there are no outliers and the sample size is sufficiently large" correct="true"> Indeed, if the sample size is large enough, then we don't require the sample distribution to be close to a normal because of the central limit theorem. </opt>
+<opt text="We need the following: (1) it is reasonable to assume that there are no outliers, (2) the variances of the two groups are known to be the same (or at least it is reasonable to assume that this is the case)."> Nope, if the sample size is small we also need the empirical distribution to be reasonably close to a normal distribution. The assumption that the variances are the same is not needed.
 </opt>
-<opt text="The model suggests that there is nothing wrong."> We can see a clear "U" shape in the residuals. </opt>
-<opt text="I don't know!"> 😉 </opt>
+</choice>
 
+### 3) Suppose that you want to compare the means of 2 groups, in which situation is Wilcoxon rank sum test inadequate:
+
+<choice id="chap2_exc3">
+<opt text="When there are no outliers."> Nope! 😆
+</opt>
+<opt text="When the distribution is not symmetric and the sample is large." correct="true"> Yes! Since this test concerns the median and not the mean, the result can be quite different when the distribution is not symmetric.
+</opt>
+<opt text="When it is reasonable to assume that there are no outliers and the sample distribution should be at least approximately normal."> Nope, it can still perform very well in this case. 
+</opt>
+<opt text="When it is reasonable to assume that there are no outliers and the variances are the same."> Nope, it can still perform very well in this case. </opt>
 </choice>
 
 
-A third scientist thinks that we should further modify our model and she proposes to consider the following model instead:
+### 4) A researcher administers many hypothesis tests as part of a research project. He finds that, of 250 tests 11 were significant at the 5% level. The researcher feels very proud of this fact and thinks that he makes a big discovery. What do you think of this situation?
 
-<p><span class="math display">\[\log(\text{Concentration}_i) = \beta_0 +
-\beta_1 \log(\text{Time}_i) + \varepsilon_i\]</span></p>
+<choice id="chap2_exc4">
+<opt text="It is very interesting that 11 tests are significant."> Nope, because we did many tests... </opt>
+<opt text="It is interesting that 11 tests are significant but since we did many tests we should find a theoretical argument for our analysis."> Finding a posteriori argument is always dangerous. ⚠️ </opt>
+<opt text="One would expect 12.5 (5% of 250) significant tests even in the purely null case, merely by chance, so we should find at least 13 significant tests for the result to be interesting."> No, actually we would need a lot more... In fact, there is a probability of 48% that one would obtain 13 or more significant tests by pure luck. 🤔 </opt>
+<opt text="One would expect 12.5 (5% of 250) significant tests even in the purely null case, merely by chance. So, finding only 11 significant results is actually somewhat disappointing." correct="true"> Yes! In the class notes of John Wilder Tukey (who is a famous statistician and the inventor of many statistical methods, including the boxplot!), he used this example at Princeton University in 1976 to highlight the dangers of multiple testing (and introduce the idea of higher criticism) 🤔. </opt>
+</choice>
 
-Complete the code below to estimate the parameters of this model:
+</exercise>
 
-<codeblock id="chap3_ex_1_1">
+<exercise id = "3" title="Analysis of the Diet dataset - Part I">
 
-Remember we want to compute the log of the variable time.
+<slides source="chapter2_diet">
+</slides>
+
+</exercise>
+
+<exercise id="4" title="Exercises on the Diet dataset">
+
+In the previous section, we compared diets A and B. In this section, we will consider the difference of the average weight loss between diets A and C. In particular, we are interested in testing whether diet C leads to a larger average weight loss than diet A.
+
+### 1. How to plot the data?
+
+Complete the code below to obtain the boxplot to compare the empirical distributions of the weight loss of the two diets:
+
+<codeblock id="chap2_diet1">
+
+In the function `boxplot_w_points`, you should put the names of the variables we are interested in.
 
 </codeblock>
 
-Complete the code below to compare the predictions of the model with the data:
+### 2. Which test should we use?
 
-<codeblock id="chap3_ex_1_2">
+Based on the graph you produce, which test appears to be the most appropriate to test if diet C leads to a larger average weight loss than diet A?
+
+<choice id="chap2_diet_1">
+<opt text="Student's t-test."> The student t-test assumes that the variances of the two groups are the same. This is very hard to verify in practice and thus, it is preferable to avoid using this test.</opt>
+<opt text="Welch's t-test."> This is probably a suitable choice but one can argue that outliers are present in diet A so this may not be the optimal choice. </opt>
+<opt text="Wilcoxon test." correct = "true" > This is arguably the best choice for this problem. </opt>
+</choice>
+
+### 3. How to perform the test you selected?
+
+Complete the code below to test if diet C leads to a larger average weight loss than diet A:
+
+<codeblock id="chap2_diet2">
+
+Remember that we are interested in testing if diet C leads to a larger weight loss than diet A, which implies that we should use `alternative = "less"` since diet A is first.
 
 </codeblock>
 
-Based on the graph you obtain, the scientist asks for your opinion on her model:
+### 4. What can we conclude?
 
+Based on the test you performed and considering a significance level of 5%, we can conclude that:
 
-<choice id="chap3_exc3">
-<opt text="The model seems appropriate as there is a good match between the model and the data." correct="true"> 👍
-</opt>
-<opt text="The adequacy between the model and the data is quite poor, indicating that we should look for another model.">  Nope, this seems quite reasonable. </opt>
+<choice id="chap2_diet_2">
+<opt text="We can reject the null hypothesis at the significance level of 5% and conclude that diet A leads to a larger average weight loss than diet C."> Be careful with the order of the diets used in the statement. </opt>
+<opt text="We can be sure that diet C leads to a larger average weight loss than diet A." > Sadly, we can never be sure with statistical methods. </opt>
+<opt text="We can reject the null hypothesis at the significance level of 5% and conclude that diet C leads to a larger average weight loss than diet A." correct = "true"> Yay! 👍 </opt>
+<opt text="We cannot reject the null hypothesis at the significance level of 5%."> In this case the p-value is smaller than 5% so we can reject the null hypothesis.</opt>
 </choice>
 
+### 5. Is diet A really so bad?
 
-Based on this model, the scientist would like to estimate the mean concentration after 1 hour. Which one of the followings is the correct answer?
+A consultant who is hired by the company and promotes diet A is unhappy about your analysis as it indicates that diet C (promoted by a competing firm) is better in terms of weight loss. Thus the consultant constructs the following argument: to claim that a diet is more effective in terms of weight loss, we should have at least an average difference larger than one kg, otherwise the statistical difference is meaningless. Below we perform the test that the consultant is interested in:
 
-<choice id="chap3_exc4">
-<opt text="-1.0317"> A negative number may not make sense...
-</opt>
-<opt text="-0.5058">  A negative number may not make sense...
-</opt>
-<opt text="0.35640">  You should consider using log(1) instead of 1...
-</opt>
-<opt text="0.60302" correct="true">  Well done! 👍 Note that this answer is actually only an approximation due to Jensen's inequality... But this will be beyond the scope of this class. Just to be clear, the way to compute this result is with <p><span class="math inline">exp(-0.5058)</span></p>
-</opt>
+<codeblock id="chap2_diet3">
 
+Since diet A is put first, we should consider a negative difference.
+
+</codeblock>
+
+Based on this test, we obtain a p-value of 5.747% (which could make you think that the consultant picked one kg for a good reason...🤔). Therefore, the consultant claims that it is statistically proven that the two diets are equally effective in terms of weights loss. What do you think of this argument?
+
+<choice id="chap2_diet_3">
+<opt text="The consultant showed that the average difference in terms of weight loss is equal to one kg, so his claim is incorrect."> Nope, we can never "accept" the null. </opt>
+<opt text="The consultant is correct, there is indeed not much difference between the two diets." >  </opt>
+<opt text="The claim of the consultant is incorrect for the following reasons. First, there is no good reason to compare a difference of one kg and second, we can never accept the null hypothesis!" correct = "true"> Yay! 👍 </opt>
+<opt text="The consultant showed that the average difference in terms of weight loss is equal to one kg, so his claim is correct."> Nope, we can never "accept" the null. </opt>
 </choice>
 
-Finally, the scientists notice that our data consider the same subject several times. Indeed, the first column of the dataset indicates that the data are based on 6 subjects which were all measured 11 times. Therefore, she wonders if our linear regression model is suitable for this kind of data and asks for your advice:
+The competing company that promotes diet C is unhappy about the claims made by the consultant. So they hire their own consultant, who selects a difference of 950 grams. Please complete the following test this second consultant wants to perform:
 
+<codeblock id="chap2_diet4">
 
-<choice id="chap3_exc5">
-<opt text="There is no problem to have the same subject several times in our data."> Unfortunately, we assume that residuals are iid and this is not the case here 😩. Naturally, there are methods to deal with such forms of dependence but they are beyond the scope of this class.
-</opt>
-<opt text="It can be problematic to have the same subject several times in our data because the residuals cannot have a normal distribution in this case "> Nope, this has no impact on the distribution.
-</opt>
-<opt text="It can be problematic to have the same subject several times in our data because the model will not be linear">  Nope, this has no impact on the relationship between the variables.
-</opt>
-<opt text="It can be problematic to have the same subject several times in our data because our data won't be independent" correct="true">  Yay! 😆 Note that Mixed Linear Models were developed to answer such form of dependence in the data. However, this is beyond the scope of this class. 
-</opt>
+Since diet A becomes first we should consider a negative difference.
+
+</codeblock>
+
+Then, the (second) consultant claims that diet C leads to an average weight loss that is significantly larger by 950 grams than diet A. What do you think of this argument:
+
+<choice id="chap2_diet_4">
+<opt text="The claim is correct because the p-value is smaller than 5%."> In some sense, this answer is correct... but why did the consultant pick 950 grams? </opt>
+<opt text="The claim is incorrect because we can't accept the null hypothesis."> In this case, we can reject the null. </opt>
+<opt text="The claim is incorrect because the hypothesis was constructed after looking at the known results." correct = "true"> Yes, this is an example of HARKing, an acronym coined by Norbert Kerr that refers to the questionable practice of hypothesizing after the results are known. Nevertheless, this is a very common practice... </opt>
 </choice>
 
+</exercise>
 
+<exercise id = "5" title="Exercises on the COVID-19 dataset">
+
+<p>In this section, we revisit the data from Parisi, et al., (2021) which studies the applicability of predictive models for intensive care admission of COVID-19 patients in a secondary care hospital in Belgium. In this exercise, we wish to evaluate whether the average oxygen saturation of the patients admitted to an ICU is lower than the ones that are not. For this purpose, we will conduct a statistical analysis and our first question concerns the hypotheses we should use. Let <span class="math inline">\(\mu_{I}\)</span> and <span class="math inline">\(\mu_{N}\)</span> denote the mean oxygen saturation
+of the patients admitted to an ICU and the ones that are not admitted to an ICU, respectively. Consider the following four sets of hypotheses:</p>
+
+<p><strong>A. </strong><span class="math inline">\(H_0\)</span>: <span
+class="math inline">\(\mu_I = \mu_N\)</span>, <span
+class="math inline">\(H_a\)</span>: <span class="math inline">\(\mu_I \neq \mu_N\)</span></p>
+
+<p><strong>B. </strong><span class="math inline">\(H_0\)</span>: <span
+class="math inline">\(\mu_I = \mu_N\)</span>, <span
+class="math inline">\(H_a\)</span>: <span class="math inline">\(\mu_I > \mu_N\)</span></p>
+
+<p><strong>C. </strong><span class="math inline">\(H_0\)</span>: <span
+class="math inline">\(\mu_I = \mu_N\)</span>, <span
+class="math inline">\(H_a\)</span>: <span class="math inline">\(\mu_I < \mu_N\)</span></p>
+
+<p><strong>D. </strong><span class="math inline">\(H_0\)</span>: <span
+class="math inline">\(\mu_I < \mu_N\)</span>, <span
+class="math inline">\(H_a\)</span>: <span class="math inline">\(\mu_I = \mu_N\)</span></p>
+
+Which hypotheses should you consider to assess the validity of the previously mentioned claim:
+
+
+<choice id="chap2_icu1">
+<opt text="We should use A."> No, we would use A to test if there is a difference. </opt>
+<opt text="We should use B."> No, we would use B to test if the mean is higher for ICU patients compared to non-ICU patients. </opt>
+<opt text="We should use C." correct = "true"> Well done! 😄  </opt>
+<opt text="We should use D."> No, there is a problem with these hypotheses. </opt>
+<opt text="Both C and D are correct and can used."> No, there is a problem with D. </opt>
+<opt text="None of them are correct."> No, one of them seems to be OK here! </opt>
+</choice>
+
+As previously mentioned, we are interested in testing if ICU patients have lower mean of oxygen saturation (corresponding to the variable `spo2`) compared to the non-ICU patients. The variable `icu` has values of `1` (for patients that are admitted to an ICU) and `0` (for patients that are not admitted to an ICU). Using this information, please complete the code below to construct the variables of interest:
+
+<codeblock id="chap2_covid1">
+
+Remember that `icu` is `1` for the patients that are admitted to an ICU and `0` otherwise.
+
+</codeblock>
+
+Next, we wish to visualize the empirical distribution of the data in order to select a suitable test. Complete the code below to construct boxplots comparing the two groups:
+
+<codeblock id="chap2_covid2">
+
+Which function in the `idar` R package allows to construct boxplots of two groups?
+
+</codeblock>
+
+Based on this graph, which of the following test appears to be the most suitable?
+
+<choice id="chap2_icu2">
+<opt text="Student's t-test."> The student's t-test assumes that the variances of the two groups are the same. This is very hard to verify in practice and thus, it is preferable to avoid using this test.</opt>
+<opt text="Welch's t-test." > The outliers observed in this graph tend to indicate that this choice can be problematic. </opt>
+<opt text="Wilcoxon test." correct = "true" > This is arguably the best choice for this problem. </opt>
+</choice>
+
+Based on the test and hypotheses you selected, complete the code below to obtain the p-value for the test of interest.
+
+<codeblock id="chap2_covid3">
+
+The function `wilcox.test` can be used for Wilcoxon test. 
+
+</codeblock>
+
+<p>Based on the p-value you obtained, what can you conclude (assuming <span class="math inline">\(\alpha = 0.05\)</span>):</p>
+
+<choice id="chap2_icu3">
+<opt text="Accept the null hypothesis."> Nope you can never accept the null!</opt>
+<opt text="Reject the alternative hypothesis." > Nope you can never reject the alternative!</opt>
+<opt text="Reject the null and accept the alternative hypothesis." correct = "true" > 👍 </opt>
+<opt text="Fail to reject the null hypothesis." > Since the p-value is smaller than alpha, this is not correct. </opt>
+</choice>
+
+Therefore, we should conclude regarding the claim that the average oxygen saturation of the patients admitted to an ICU is lower than the ones that are not:
+
+<choice id="chap2_icu4">
+<opt text="Since we were able to accept the alternative hypothesis it is certain that the claim is correct."> Nope, we can never be sure! 😉 </opt>
+<opt text="Since we were able to accept the alternative hypothesis we can't conclude anything." > It is when we fail to reject the null that we can't really conclude anything. </opt>
+<opt text="Since we were able the accept the null hypothesis it is plausible that the claim is correct." > Are you sure you can accept the null? </opt>
+<opt text="Since we were able to accept the alternative hypothesis it is plausible that the claim is correct." correct = "true" > 👍 </opt>
+</choice>
+
+</exercise>
+
+
+<exercise id = "6" title="Analysis of the Diet dataset - Part II">
+
+<slides source="chapter2_diet2">
+</slides>
+
+</exercise>
+
+<exercise id = "7" title="Exercises on the Pharmacy Attendance dataset">
+
+We consider data from a study conducted in a pharmacy in Geneva where the number of clients per hour was recorded over a period of two years. We wish to assess if it is reasonable to believe that Sunday is the busiest day of the week for this pharmacy. It is important to notice that unlike our previous example, this dataset is very large with over 17 thousands observations. This is an important observation as we will see later on...
+
+We start by importing the data and creating the variables of interest:
+
+```r
+# Load data
+library(idar)
+data("pharmacy")
+
+# Construct attendance by day
+monday = na.omit(pharmacy$attendance[pharmacy$weekday == "Monday"])
+tuesday = na.omit(pharmacy$attendance[pharmacy$weekday == "Tuesday"])
+wednesday = na.omit(pharmacy$attendance[pharmacy$weekday == "Wednesday"])
+thursday = na.omit(pharmacy$attendance[pharmacy$weekday == "Thursday"])
+friday = na.omit(pharmacy$attendance[pharmacy$weekday == "Friday"])
+saturday = na.omit(pharmacy$attendance[pharmacy$weekday == "Saturday"])
+sunday = na.omit(pharmacy$attendance[pharmacy$weekday == "Sunday"])
+```
+
+Since the dataset is very large, the function `boxplot_w_points` is not applicable. Indeed, if we were to use this function we would obtain the following result:
+
+```r
+boxplot_w_points(monday, tuesday, wednesday, thursday,
+                 friday, saturday, sunday,
+                 names = c("Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"),
+                 xlab = "Number of customers per hour",
+                 horizontal = TRUE)
+```
+
+<div style="text-align:center"><img src="chap2_pharma_1.png" alt=" " width="90%"></div>
+
+So instead, in this case we prefer to use the default `R` function `boxplot` which can be used as follows:
+
+```r
+boxplot(monday, tuesday, wednesday, thursday,
+                 friday, saturday, sunday,
+                 names = c("Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"),
+                 xlab = "Number of customers per hour",
+                 horizontal = TRUE)
+```
+
+<div style="text-align:center"><img src="chap2_pharma_2.png" alt=" " width="90%"></div>
+
+It can be observed that the distributions don't appear to be symmetric, rendering that the nonparametric Kruskal-Wallis and/or Wilcoxon tests are potentially inadequate as they concern the median rather than the mean (as postulated in the claim we wish to investigate). Consequently, we opt for using Welch's t-tests. If you are curious why the assumption of having approximately normally distributed data is less important when the sample size is **large** (due to the central limit theorem 😎), you can have a look at this paper 👇
+
+<div style="text-align:center"><img src="paper.png" alt=" " width="80%"></div>
+
+The link to this paper is [here](https://www.annualreviews.org/doi/abs/10.1146/annurev.publhealth.23.100901.140546). The first sentence of the abstract already tells you a lot: "*It is widely but incorrectly believed that the t-test and linear regression are valid only for Normally distributed outcomes.*" 
+
+Using the test we selected, complete the code below to obtain the p-values associated to the tests required to assess the validity of our claim:
+
+<codeblock id="chapter2_pharma">
+
+Remember that we are comparing `sunday` to all other days.
+
+</codeblock>
+
+Based on these p-values and consider a standard value of 5% for \\( \alpha \\), what can you conclude:
+
+<choice id="chap2_pharma">
+<opt text="The claim is correct since all p-values are smaller than alpha."> Yes... but we are considering many test here... 😕 </opt>
+<opt text="The claim is correct and we are now certain that the average number of customers is higher on Sundays."> Nope, we can never be sure! </opt>
+<opt text="The claim is incorrect as we fail to reject the null hypotheses for all tests." correct = "true"> Yay! 😆 </opt>
+<opt text="The claim is correct because we can reject the null hypotheses for most tests."> Nope, our claim was that Sunday has larger average number of customers compared to all the other days. </opt>
+</choice>
 
 </exercise>
 
 
 
+<exercise id="8" title="Homework 2">
 
+We consider data from Abouir, et al., (2022) which is an observational study conducted at Geneva University Hospitals to assess the impact of weight on the pharmacokinetics of dexamethasone in normal-weight versus obese patients hospitalized for COVID-19. 
 
+**Question I:** We consider the variable `cmax` (in ng/ml) which corresponds to the maximum concentration that the drug can achieve in the blood after it is administered. We wish to assess the validity of the following claims:
 
+1. Can we conclude that the mean of the variable `cmax` is lower in the group men than in the group women?
+2. Can we conclude that the mean of the variable `cmax` is lower in the group obese than in the group non-obese?
 
-
-
-
-
-
-<exercise id="8" title="Exercise: Pharmacokinetics of dexamethasone">
-
-In this exercise, we will consider the data from Abouir, et al. (2022), which is an observational study conducted at Geneva University Hospitals to assess the impact of weight on the pharmacokinetics of dexamethasone in normal-weight versus obese patients hospitalized for COVID-19. The data can be loaded as follows:
+To perform the analysis we will need to construct the different groups we wish to compare. We can use the following code:
 
 ```r
 library(idar)
-data("codex")
+data(codex)
+
+Cmax_men = codex$cmax[codex$gender == 0]
+Cmax_women = codex$cmax[codex$gender == 1]
+Cmax_non_obese = codex$cmax[codex$obese == 0]
+Cmax_obese = codex$cmax[codex$obese == 1]
 ```
 
-Our objective is to estimate the following model:
-
-<p><span class="math display">\[\log (C_{\max, i}) = \beta_0 + \beta_1
-\text{Gender}_i + \beta_2 \text{BMI}_i + \varepsilon_i,\]</span></p>
-
-<p>where <span class="math inline">\(C_{\max, i}\)</span>, <span
-class="math inline">\(\text{Gender}_i\)</span> and <span
-class="math inline">\(\text{BMI}_i\)</span> correspond, respectively, to
-the measured <span class="math inline">\(C_\max\)</span> for individual
-<span class="math inline">\(i\)</span>, its gender (0 for men and 1 for
-women) and its BMI. Naturally, we want to assess if this model appears
-to be suitable to describe the data. Moreover, we would like to evaluate
-the validity of the following claims:</p>
-
-
-<p>- Women have a higher <span class="math inline">\(C_\max\)</span>
-than men.</p>
-<p>- Individuals with a higher BMI have a lower <span
-class="math inline">\(C_\max\)</span>.</p>
-
-
-Complete the code below to estimate this model:
-
-<codeblock id="chap3_ex_2_1">
- We are interested in the log of Cmax.
-</codeblock>
-
-To assess the adequacy of our model to the data, we consider the following graph:
+Then we can make comparisons between groups. For example, to compare the `cmax` between men and women we can use the following code:
 
 ```r
-colors = c("red", "blue")
-col_index = as.numeric(codex$gender == 1) + 1
-plot(codex$bmi, codex$log_cmax, col = colors[col_index],
-     xlab = "BMI", ylab = "Cmax - log scale")
-
-bmi_to_predict = 19:40
-pred_men   = predict(mod, data.frame(bmi = bmi_to_predict, 
-                                      gender = rep(0, length(bmi_to_predict))), 
-                     interval = "confidence")
-pred_women = predict(mod, data.frame(bmi = bmi_to_predict, 
-                                      gender = rep(1, length(bmi_to_predict))), 
-                     interval = "confidence")
-
-lines(bmi_to_predict, pred_men[,1], col = colors[1])
-lines(bmi_to_predict, pred_men[,2], col = colors[1], lty = 2)
-lines(bmi_to_predict, pred_men[,3], col = colors[1], lty = 2)
-lines(bmi_to_predict, pred_women[,1], col = colors[2])
-lines(bmi_to_predict, pred_women[,2], col = colors[2], lty = 2)
-lines(bmi_to_predict, pred_women[,3], col = colors[2], lty = 2)
-legend("bottomleft", c("Men", "Women"), col = colors, pch = 1)
+boxplot_w_points(Cmax_women, Cmax_men,
+                 names = c("Women", "Men"),
+                 ylab = "Cmax (ng/ml)")
 ```
 
-<div style="text-align:center"><img src="plot_chap_3_ex_2_1.png" alt=" " width="90%"></div>
+<div style="text-align:center"><img src="HW2_boxplot.png" alt=" " width="70%"></div>
 
-Based on this graph, does the model appears to be suitable to describe the data?
+Please perform a statistical analysis to assess the validity of the previously mentioned claims.
 
+**Question II:** We now consider the variable `tmax` (in hour) which corresponds to the time it takes for the drug to reach the maximum concentration (i.e. Cmax) after its administration. Similarly, we wish to examine the following claims:
 
-<choice id="chap3_exc6">
-<opt text="No because the relationship between the BMI and the (log of) Cmax is not linear."> A linear relationship appears to be reasonable with this dataset.
-</opt>
-<opt text="No because there is one outlier.">  It is true that there is an outlier (see the man with a BMI of about 31) but this value is still arguably acceptable. Naturally, a "robust" linear regression could be more appropriate in this case but these methods are beyond the scope of this class.
-</opt>
-<opt text="No because the data are not independent."> In this case each individual was measured once and there is no a priori reason to believe that there is any form of dependence in the data.
-</opt>
-<opt text="Yes, the model appears to be a reasonable approximation." correct="true">  It is not perfect but reasonable...
-</opt>
-</choice>
+1. Can we conclude that the mean of the variable `tmax` is lower in the group men than in the group women?
+2. Can we conclude that the mean of the variable `tmax` is lower in the group obese than in the group non-obese?
 
-Based on this model, we obtain the following output:
+To perform the analysis we will need to construct the different groups we wish to compare. We can use the following code:
 
 ```r
-summary(mod)
+Tmax_men = codex$tmax[codex$gender == 1]
+Tmax_women = codex$tmax[codex$gender == 0]
+Tmax_obese = codex$tmax[codex$obese == 1]
+Tmax_non_obese = codex$tmax[codex$obese == 0]
 ```
 
-```out
-Call:
-lm(formula = log_cmax ~ gender + bmi, data = codex)
+Based on these groups, please perform a statistical analysis to assess the validity of the previously mentioned claims.
 
-Residuals:
-     Min       1Q   Median       3Q      Max 
--1.47722 -0.26049  0.01147  0.35029  0.76580 
 
-Coefficients:
-            Estimate Std. Error t value Pr(>|t|)    
-(Intercept)  5.79742    0.47785  12.132 1.93e-12 ***
-gender       0.75372    0.19354   3.894 0.000585 ***
-bmi         -0.04175    0.01685  -2.477 0.019786 *  
----
-Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+**Question III:** Finally, we consider the variable `auc` (in ng.h/ml) which corresponds to the integral (from 0 to 8 hours) of a curve that describes the variation of the drug concentration as a function of time. Similarly, we wish to examine the following claims:
 
-Residual standard error: 0.5166 on 27 degrees of freedom
-Multiple R-squared:    0.4,	Adjusted R-squared:  0.3555 
-F-statistic: 8.999 on 2 and 27 DF,  p-value: 0.001012
-```
+1. Can we conclude that the mean of the variable `auc` is lower in the group men than in the group women?
+2. Can we conclude that the mean of the variable `auc` is lower in the group obese than in the group non-obese?
 
-Consider the following five sets of hypotheses:
-
-
-
-<p><strong>A. </strong><span class="math inline">\(H_0: \; \beta_1 &lt; 0\)</span>, <span
-class="math inline">\(H_a: \; \beta_1 = 0\)</span></p>
-
-<p><strong>B. </strong><span class="math inline">\(H_0: \; \beta_1 = 0\)</span>, <span
-class="math inline">\(H_a: \; \beta_1 &gt; 0\)</span></p>
-
-<p><strong>C. </strong><span class="math inline">\(H_0: \; \beta_1 = 0\)</span>, <span
-class="math inline">\(H_a: \; \beta_1 &lt; 0\)</span></p>
-
-<p><strong>D. </strong><span class="math inline">\(H_0: \; \beta_2 = 0\)</span>, <span
-class="math inline">\(H_a: \; \beta_2 &gt; 0\)</span></p>
-
-<p><strong>E. </strong><span class="math inline">\(H_0: \; \beta_2 = 0\)</span>, <span
-class="math inline">\(H_a: \; \beta_2 &lt; 0\)</span></p>
-
-
-
-<p>Considering the first claim (i.e. women have a higher <span
-class="math inline">\(C_\max\)</span> than men), what are the hypotheses
-we should consider to evaluate its validity:</p>
-
-
-<choice id="chap3_exc7">
-<opt text="Hypothesis A"> The alternative is (normally) what we want to prove...
-</opt>
-<opt text="Hypothesis B" correct="true"> Yay! 😆
-</opt>
-<opt text="Hypothesis C"> This would be true if the variable gender was changed to 0 for women and 1 for men.
-</opt>
-<opt text="Hypothesis D"> The first claim is not about the BMI. 🤔
-</opt>
-<opt text="Hypothesis E"> The first claim is not about the BMI. 🤔
-</opt>
-</choice>
-
-
-Using the hypotheses you selected, what is the associated p-value?
-
-<choice id="chap3_exc8">
-<opt text="1.93e-12"> No that's the intercept.
-</opt>
-<opt text="0.000585"> This is not the correct alternative hypothesis. 🤔
-</opt>
-<opt text="0.019786">  No that's for the BMI.
-</opt>
-<opt text="0.0002925" correct="true"> 👍
-</opt>
-<opt text="0.9997075"> This is not the correct alternative hypothesis. 🤔
-</opt>
-<opt text="0.009893"> No that's for the BMI.
-</opt>
-<opt text="0.990107"> No that's for the BMI.
-</opt>
-</choice>
-
-
-Based on this p-value what can you conclude?
-
-<choice id="chap3_exc9">
-<opt text="At the 95% confidence level, we can reject the null and accept the alternative. Therefore, women have a statistically significantly higher Cmax than men." correct="true"> 👍
-</opt>
-<opt text="At the 95% confidence level, we don't have enough evidence to reject the null hypothesis."> No, the p-value is smaller than alpha.
-</opt>
-<opt text="At the 95% confidence level, we can accept the null hypothesis."> Are you sure you can accept the null? 😏
-</opt>
-</choice>
-
-
-Similarly, what can you conclude for the second claim?
-
-<choice id="chap3_exc10">
-<opt text="At the 95% confidence level, we can reject the null and accept the alternative. Therefore, an increase in BMI is statistically significantly associated to a decrease in Cmax." correct="true"> 👍 Just to be sure, you found a p-value of 0.009893 right?
-</opt>
-<opt text="At the 95% confidence level, we don't have enough evidence to reject the null hypothesis."> No, the p-value is smaller than alpha.
-</opt>
-<opt text="At the 95% confidence level, we can accept the null hypothesis."> Are you sure you can accept the null? 😏
-</opt>
-</choice>
-
-
-<p>Finally, one subject (which was not included in the original study)
-is measured with a <span class="math inline">\(C_\max\)</span> of 40.3.
-This subject is a female of age 58 with a BMI of 28. We are suspecting
-that this subject is reacting differently than the subjects in our
-study. Complete the code below to compute a confidence interval
-(at the 95% confidence level) for <span class="math inline">\(C_\max\)</span> of an individual having these characteristics:</p>
-
-
-<codeblock id="chap3_ex_2_2">
-We want to compute a prediction confidence interval.
-</codeblock>
-
-
-<p>Based on this code, you should obtain a 95% confidence interval for the logarithm of
-<span class="math inline">\(C_\max\)</span> of (4.283257, 6.48104). What
-is this telling us?</p>
-
-<choice id="chap3_exc11">
-<opt text="The subject has a suspiciously high Cmax of 40.3 while our confidence intervals is (4.283257, 6.48104)."> Did you forget a log somewhere?
-</opt>
-<opt text="The subject has a suspiciously low Cmax of 40.3 (corresponding to a logarithm value of 3.696) as our confidence interval is (4.283257, 6.48104)." correct="true"> 👍
-</opt>
-<opt text="The subject has a reasonable Cmax value."> Wrong 😏
-</opt>
-</choice>
-
-
-
-
-
-
-
-
-
-
-
-
-</exercise>
-
-
-
-
-
-
-
-
-
-<exercise id="9" title="Homework">
-
-We consider synthetic data based on Charepalli et al. (2018) where the impact on important biomarkers of different diets was studied. One of the experiments was conducted on pigs which were divided into two treatment groups, "C" and "NC", corresponding to two dietary compositions. The first group "C" contains 20% of deep fried potatoes (i.e. chips) while this is not the case in the group "NC" which doesn't contain any fried food. Caloric intake was measured weekly until the end of the study. The objective of our study is to evaluate the possible link existing between fried food consumption and its effects on inflammatory response. For this purpose, we will model the logarithm of the cortisol levels (in pg/mg) as a function of other variables (e.g. diet, caloric intake and so on). You can load the data as follows (make sure to update `idar`):
-
-```r
-library(idar)
-data("cortisol")
-
-# Log transform
-cortisol$log_cortisol = log(cortisol$cortisol)
-```
-
-
-
-
-
-
-
-Two scientists working on this project have different (and contradicting) theories regarding the inflammatory response induced by fried food. Your objective is to model the data in a suitable way to assess the validity of their claims.
-
-1. **Scientist A**: There is no connection between fried food consumption and cortisol levels. However, caloric intake has a significant impact on cortisol levels (i.e. the scientist believes that a higher caloric intake leads to a lower cortisol level).
-2. **Scientist B**: Fried food consumption as well as caloric intake have significant impact on cortisol levels. Higher amount of fried food consumption corresponds to higher cortisol levels.
-
-
-Scientist A considers the following model:
-
-```r
-mod_scientist_A = lm(log_cortisol ~ caloric, data = cortisol)
-summary(mod_scientist_A)
-```
-
-```out
-Call:
-lm(formula = log_cortisol ~ caloric, data = cortisol)
-
-Residuals:
-    Min      1Q  Median      3Q     Max 
--1.8395 -0.5889  0.1799  0.6998  1.8756 
-
-Coefficients:
-              Estimate Std. Error t value Pr(>|t|)    
-(Intercept)  8.7732375  0.5228605  16.779  < 2e-16 ***
-caloric     -0.0006702  0.0001683  -3.983  0.00019 ***
----
-Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
-
-Residual standard error: 0.8741 on 59 degrees of freedom
-Multiple R-squared:  0.2119,	Adjusted R-squared:  0.1985 
-F-statistic: 15.86 on 1 and 59 DF,  p-value: 0.0001895
-```
-
-This scientist claims that this model verifies the claim that higher caloric intake is significantly associated to a lower cortisol level. However, the second scientist considers the following model:
-
-```r
-mod_scientist_B = lm(log_cortisol ~ caloric + group, data = cortisol)
-summary(mod_scientist_B)
-```
-
-```out
-Call:
-lm(formula = log_cortisol ~ caloric + group, data = cortisol)
-
-Residuals:
-    Min      1Q  Median      3Q     Max 
--2.0341 -0.4551  0.2124  0.4368  1.5076 
-
-Coefficients:
-              Estimate Std. Error t value Pr(>|t|)    
-(Intercept)  5.0968675  0.7986440   6.382 3.17e-08 ***
-caloric      0.0010089  0.0003373   2.991  0.00407 ** 
-groupNC     -2.4746749  0.4535788  -5.456 1.05e-06 ***
----
-Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
-
-Residual standard error: 0.7167 on 58 degrees of freedom
-Multiple R-squared:  0.4792,	Adjusted R-squared:  0.4612 
-F-statistic: 26.68 on 2 and 58 DF,  p-value: 6.082e-09
-```
-
-Scientist B thinks that this is a better model leading to different conclusions.
-
-1. For the first model: *(a)* construct a graph comparing the predictions with the data (make sure to highlight the two groups with different colors); *(b)* construct model diagnostic graphs; *(c)* compute the AIC.
-2. For the second model: *(a)* construct a graph comparing the predictions with the data (make sure to highlight the two groups with different colors); *(b)* construct model diagnostic graphs; *(c)* compute the AIC.
-3. Based on this analysis, which model should you consider and why?
-4. Based on the model you selected, what can you say about the claims of the scientists?
-5. Read the Wikipedia page on the [Simpson paradox](https://en.wikipedia.org/wiki/Simpson%27s_paradox). Explain how this paradox is related to your analysis.
-
-
-</exercise>
-
-
-
-
-
-
-
-
-
-
-
-
-<exercise id="10" title="Optional Homework 🤓">
-
-
-
-
-
-In this problem, we will consider the data from Can, et al., (2022). If you would like to know about the context of this study, here is the [reference](https://www.nature.com/articles/s42003-021-02978-2). You can load the data considered in one part of this study as follows:
-
-```{r}
-library(idar)
-data("HP13Cbicarbonate")
-```
-
-We can have a first look at the data by using
-
-```{r, eval = F}
-head(HP13Cbicarbonate)
-```
-
-```{out}
-      signal    dose group
-1 0.24134760 0.01496   Fed
-2 0.27495350 0.01406   Fed
-3 0.04328066 0.01872   Fed
-4 0.07457924 0.02183   Fed
-5 0.13268619 0.02574   Fed
-6 0.03746000 0.02103   Fed
-```
-
-<p> This dataset corresponds to an experiment conducted on rats which were divided in two groups (encoded in the variable <code>group</code>). In the first group, the rats were fed before the experiment while in the second group they were in the fasted state (i.e. overnight-fasted). The variable <code>signal</code> corresponds to the hyperpolarized [<span class="math inline">\(^{13}\)</span>C]bicarbonate signal intensities normalized to the total sum of metabolites. Moreover, the variable  <code>dose</code> corresponds to the initial reaction rate as a function of the injected dose of hyperpolarized [1-<span class="math inline">\(^{13}\)</span>C]pyruvate. The model we would like to consider is given by:</p> 
-
-
-<p><span class="math display">\[\log(\text{signal}_i) = \beta_0 +
-\beta_1 \text{group}_i + \beta_2 \text{dose}_i + \beta_3
-\text{group}_i  \text{dose}_i + \varepsilon_i\]</span></p>
-
-<p>where the variable <span
-class="math inline">\(\text{group}_i\)</span> is equal to 0 if the <span
-class="math inline">\(i\)</span>-th rat is in fasted state and 1
-otherwise. The scientists working on this study want to verify the
-following claims:</p>
-
-- In the "fasted" group, the variable dose has no impact on the signal.
-- In the "fed" group, the variable dose has an impact on the signal (and we expect that the higher is the dose, the lower is the signal).
-
-Based on this information:
-
-1. Estimate the model described above.
-2. Construct a graph to compare the predictions for this model with the data (make sure to highlight the two groups with different colors).
-3. Construct model diagnostic graphs for this model.
-4. Comment on the adequacy of this model to the data.
-5. What can we comment/conclude regarding the scientists claims?
-
+Please perform a statistical analysis to assess the validity of the previously mentioned claims.
 
 </exercise>

@@ -1,364 +1,463 @@
 ---
-title: 'Chapter 4: Generalized Linear Models'
+title: 'Chapter 3: Linear Regression'
 description:
   ''
 prev: /chapter3
-next: null
+next: /chapter5
 type: chapter
-id: 2
+id: 4
 ---
 
 
 <exercise id="1" title="Lecture slides">
 
-You can view the slides directly in the browser below. To download the slides, please check [here](https://raw.githack.com/stephaneguerrier/data_analytics/master/Lecture4.html#1) for the .html version or [here](https://raw.githack.com/stephaneguerrier/data_analytics/master/Lecture4.pdf) for the .pdf version. 
+You can view the slides directly in the browser below. To download the slides, please check
+[here](https://raw.githack.com/stephaneguerrier/data_analytics/master/Lecture3.html#1) for the .html version or [here](https://raw.githack.com/stephaneguerrier/data_analytics/master/Lecture3.pdf) for the .pdf version. 
 
-<iframe src="https://raw.githack.com/stephaneguerrier/data_analytics/master/Lecture4.html#1" width="710" height="530">
+<iframe src="https://raw.githack.com/stephaneguerrier/data_analytics/master/Lecture3.html#1" width="710" height="530">
 </iframe>
 
-
-
 </exercise>
 
 
 
-<exercise id="2" title="Analysis of the bronchitis dataset: Estimation">
+<exercise id = "2" title ="Analysis of the Reading dataset: Estimation">
 
-
-
-<slides source="chapter4_bronchitis_estimation">
+<slides source="chapter3_reading_estimation">
 </slides>
 
-
 </exercise>
 
+<exercise id = "3" title ="Analysis of the Reading dataset: Prediction">
 
-<exercise id = "3" title ="Analysis of the bronchitis dataset: Prediction - Part I">
-
-<slides source="chapter4_bronchitis_prediction_1">
-</slides>
-
-
-</exercise>
-
-
-
-
-<exercise id = "4" title ="Analysis of the bronchitis dataset: Improving our model">
-
-<slides source="chapter4_bronchitis_improve_model">
+<slides source="chapter3_reading_prediction">
 </slides>
 
 </exercise>
 
 
+<exercise id = "4" title ="Analysis of the Reading dataset: Model diagnostic">
 
-
-<exercise id = "5" title ="Analysis of the bronchitis dataset: How good is our model?">
-
-
-<slides source="chapter4_bronchitis_how_good_model">
+<slides source="chapter3_reading_model_diagnostic">
 </slides>
 
+</exercise>
+
+<exercise id = "5" title ="Analysis of the Reading dataset: Improving our model">
+
+<slides source="chapter3_reading_complexify_model">
+</slides>
 
 </exercise>
 
 
-<exercise id = "6" title ="Analysis of the bronchitis dataset: Prediction - Part II 😱">
+<exercise id = "6" title ="Analysis of the Reading dataset: Confidence intervals for predictions">
 
-*Similarly, to our discussion on cross-validation the content of this section is more advanced and aimed at the motivated/curious students... explaining the symbol:* 😱.
-
-In this section we consider different approaches to present the predictions that can be made using the second model by constructing an interactive 3D plot. For this purpose, we will use the R package `plotly` which can be installed  as follows:
-
-```r
-install.packages("plotly")
-```
-
-Then, we can compute a prediction "matrix" as follows:
-
-```r
-m = 40
-cigs_to_predict = seq(from = min(bronchitis$cigs), to = max(bronchitis$cigs), 
-length.out = m)
-poll_to_predict = seq(from = min(bronchitis$poll), to = max(bronchitis$poll), 
-length.out = m)
-predicted_prob = matrix(NA, m, m)
-for (i in 1:m){
-  for (j in 1:m){
-    predicted_prob[i,j] = predict(mod2, data.frame(cigs = cigs_to_predict[i], 
-    poll = poll_to_predict[j]), type = "response")
-  }
-}
-```
-
-Using this matrix containing predictions for different values of the variables `cigs` and `poll`, we can construct the following figure:
-
-```r
-library(plotly)
-plot_ly(x = poll_to_predict, y = cigs_to_predict, z = predicted_prob) %>% 
-add_surface()
-```
-
-
-<div align="center">
-<iframe src="p_1.html" width="750" height="500" ></iframe> 
-</div>
- 
-Or if we want something a little better:
-
-```r
-fig = plot_ly(x = poll_to_predict, y = cigs_to_predict, z = predicted_prob) %>% 
-add_surface(
-  contours = list(
-    y = list( 
-      highlight = TRUE,
-      highlightcolor = "#41a7b3"
-    ),
-    x = list( 
-      highlight = TRUE,
-      highlightcolor = "#41a7b3"
-    ),
-  z = list(highlight = FALSE)))
-fig = fig %>% 
-layout(scene = list(xaxis = list(title = "Pollution index"),
-                    yaxis = list(title = "Daily number of cigarettes"),
-                    zaxis = list(title = "Predicted probability of Bronchitis")))
-fig = fig %>% colorbar(title = "Estimated \n probability")
-fig
-```
-
-
-<div align="center">
-<iframe src="p_2.html" width="750" height="500" ></iframe> 
-</div>
-
-
-We can also consider adding the observations on which the model is estimated to the surface curve of estimated conditional probabilities with the following `R` code:
-
-
-```r
-# define colors
-mycol <- c("#44234c", "#e7e82b")
-hcolors <- c(mycol)[(bronchitis$bron + 1)]
-# plot scatter plot of observations in bronchitis
-fig_1 <- plot_ly(bronchitis,
-  x = ~poll,
-  y = ~cigs,
-  z = ~bron,
-  text = ~bron,
-  type = "scatter3d",
-  mode = "markers",
-  marker = list(color = hcolors)
-)
-# add surface of predicted conditional probabilities on scatter plot
-fig_2 <- fig_1 %>%
-  add_surface(x = poll_to_predict, y = cigs_to_predict, z = predicted_prob) %>%
-  layout(scene = list(
-    xaxis = list(title = "Pollution index"),
-    yaxis = list(title = "Daily number of cigarettes"),
-    zaxis = list(title = "Predicted probability of Bronchitis")
-  ))
-fig_2 <- fig_2 %>% colorbar(title = "Estimated \n probability")
-fig_2
-```
-
-<div align="center">
-<iframe src="fig_surface_points_logistic.html" width="750" height="500" ></iframe> 
-</div>
+<slides source="chapter3_reading_ci">
+</slides>
 
 </exercise>
 
 
+<exercise id="7" title="Exercise: Pharmacokinetics of Indomethacin">
 
 
+In this exercise, we will consider a dataset on the pharmacokinetics of indomethacin which is an anti-inflammatory drug commonly used as a prescription medication to reduce fever, pain, stiffness, and swelling from inflammation. This dataset can be downloaded as follows:
 
-<exercise id = "7" title ="Exercise: ICU admission of COVID-19 patients - Part I">
+```r
+data(Indometh)
+```
 
-In this section, we revisit the data from Parisi, et al., (2021) which studies the applicability of predictive models for intensive care admission of COVID-19 patients in a secondary care hospital in Belgium. In this exercise, we will consider the following model:
+We can have a first look at the data by using
+
+```r
+head(Indometh)
+```
+
+```out
+  Subject time conc
+1       1 0.25 1.50
+2       1 0.50 0.94
+3       1 0.75 0.78
+4       1 1.00 0.48
+5       1 1.25 0.37
+6       1 2.00 0.19
+```
+
+Our objective is to model the concentration (i.e. plasma concentrations of indomethacin measured in mcg/ml) as a function of the times at which blood samples were drawn (in hr). In particular, we are interested in estimating the mean concentration after 1 hour. The first variable corresponds to `Indometh$conc` and the second to `Indometh$time`.
+
+We can visualize the relationship between these two variables by creating a scatter plot with:
+
+```r
+plot(Indometh$time, Indometh$conc, xlab = "Time (hr)", ylab = "Concentration (mcg/ml)")
+```
+
+<div style="text-align:center"><img src="plot_chap_3_ex_1_1.png" alt=" " width="90%"></div>
+
+One scientist thinks that the following model will a good approximation:
+
+<p><span class="math display">\[\text{Concentration}_i = \beta_0 +
+\beta_1 \text{Time}_i + \varepsilon_i\]</span></p>
+
+which we can estimate as follows:
+
+```r
+mod1 = lm(conc ~ time, data = Indometh)
+```
+
+When comparing the predictions of the model with the data, he obtains the following graph using the following code:
+
+```r
+plot(Indometh$time, Indometh$conc, xlab = "Time (hr)", ylab = "Concentration (mcg/ml)")
+time_to_predict = seq(from = 0.25, to = 8, length.out = 100)
+data_to_predict = data.frame(time = time_to_predict)
+predict_concentration = predict(mod1, data_to_predict, interval = "confidence")
+lines(time_to_predict, predict_concentration[,1])
+lines(time_to_predict, predict_concentration[,2], lty = 2)
+lines(time_to_predict, predict_concentration[,3], lty = 2)
+``` 
 
 
+<div style="text-align:center"><img src="plot_chap_3_ex_1_2.png" alt=" " width="90%"></div>
 
-<div style="text-align:center"><img src="chap4_eq_mdl_3.png" alt=" " width="70%"></div>
 
-<p>where <span
-class="math inline">\(\color{#e64173}{\text{icu}_i}\)</span> is equal to
-1 if patient <span class="math inline">\(i\)</span> is admitted to an
-ICU (0 otherwise), <span
-class="math inline">\(\color{#6A5ACD}{\text{gender}_i}\)</span> is equal
-to 0 if patient <span class="math inline">\(i\)</span> is a man or equal
-to 1 if patient <span class="math inline">\(i\)</span> is a woman, and
-<span class="math inline">\(\color{#20B2AA}{\text{ldh}_i}\)</span>
-corresponds to the lactic acid dehydrogenase of patient <span
-class="math inline">\(i\)</span>.</p>
+Based on this graph, the scientist asks for your opinion on his model:
+
+<choice id="chap3_exc1">
+<opt text="The model seems appropriate as there is a good match between our model and the data."> No, the fit is actually quite poor as the data don't exhibit a linear relationship between the time and the concentration.
+</opt>
+<opt text=" I don't know!"> 😉 </opt>
+<opt text="The adequacy between our model and the data is quite poor, indicating that we should look for another model." correct="true">  Yay! 😆 </opt>
+<opt text="The model is not perfect but nevertheless the adequacy is reasonable between our model and the data.">  Well a model will never be perfect but here we can see that the data exhibit a nonlinear relationship while our model is linear.
+</opt>
+</choice>
+
+
+Another scientist suggests to transform the data and he proposes to consider the following model instead:
+
+<p><span class="math display">\[\log(\text{Concentration}_i) = \beta_0 +
+\beta_1 \text{Time}_i + \varepsilon_i\]</span></p>
+
+
+and therefore he refits this model as follows:
+
+```r
+# Add log concentration
+Indometh$log_conc = log(Indometh$conc)
+
+# Fit model 2
+mod2 = lm(log_conc ~ time, data = Indometh)
+```
+
+When considering the model diagnostic plots associated to this model, he obtains the following results:
+
+```r
+plot(fitted(mod2), residuals(mod2), xlab = "Fitted values", ylab = "Residuals")
+```
+
+<div style="text-align:center"><img src="plot_chap_3_ex_1_3.png" alt=" " width="90%"></div>
+
+
+Based on this graph, the scientist asks for your opinion on his model:
+
+<choice id="chap3_exc2">
+<opt text="This graph indicates that the model is not adequate for the data we are considering." correct="true"> Yay! 😆
+</opt>
+<opt text="The model suggests that there is nothing wrong."> We can see a clear "U" shape in the residuals. </opt>
+<opt text="I don't know!"> 😉 </opt>
+
+</choice>
+
+
+A third scientist thinks that we should further modify our model and she proposes to consider the following model instead:
+
+<p><span class="math display">\[\log(\text{Concentration}_i) = \beta_0 +
+\beta_1 \log(\text{Time}_i) + \varepsilon_i\]</span></p>
 
 Complete the code below to estimate the parameters of this model:
 
-<codeblock id="chap4_ex_1_1">
+<codeblock id="chap3_ex_1_1">
 
-Remember to use `family = binomial()`.
-
-</codeblock>
-
-Based on this model, we would like to test if women are more likely to be admitted to an ICU. 
-
-
-Consider the following six sets of hypotheses:
-
-<p><strong>A. </strong><span class="math inline">\(H_0: \; \beta_1 = 0, \; H_a: \beta_1 \neq
-0\)</span></p>
-
-<p><strong>B. </strong><span class="math inline">\(H_0: \; \beta_1 = 0, \; H_a: \beta_1 &lt;
-0\)</span></p>
-
-<p><strong>C. </strong><span class="math inline">\(H_0: \; \beta_2 = 0, \; H_a: \beta_2 &gt;
-0\)</span></p>
-
-<p><strong>D. </strong><span class="math inline">\(H_0: \; \beta_2 = 0, \; H_a: \beta_2 &lt;
-0\)</span></p>
-
-<p><strong>E. </strong><span class="math inline">\(H_0: \; \beta_1 = 0, \; H_a: \beta_1 &gt;
-0\)</span></p>
-
-<p><strong>F. </strong><span class="math inline">\(H_0: \; \beta_1 &lt; 0, \; H_a: \beta_1 =
-0\)</span></p>
-
-What is the corresponding set of hypotheses associated to this question:
-
-
-<choice id="chap4_exc1">
-<opt text="Hypothesis A"> Here we would be testing that men and women are admitted to an ICU with different probabilities...
-</opt>
-<opt text="Hypothesis B"> Here we would be testing that women are less likely to be admitted to an ICU.
-</opt>
-<opt text="Hypothesis C"> Are you sure we are interested in beta 2? 🤔
-</opt>
-<opt text="Hypothesis D"> Are you sure we are interested in beta 2? 🤔
-</opt>
-<opt text="Hypothesis E" correct="true"> Well done! 👍
-</opt>
-<opt text="Hypothesis F"> Are you sure? 😅
-</opt>
-</choice>
-
-
-Based on the hypotheses you select, what is the p-value associated to this test:
-
-
-<choice id="chap4_exc2">
-<opt text="0.00365"> Our test is not about the intercept.
-</opt>
-<opt text="0.00540"> Our test is not about the variable ldh.
-</opt>
-<opt text="0.02359"> You are considering a different alternative hypothesis. 🤔
-</opt>
-<opt text="0.011795">  You are considering a different alternative hypothesis. 🤔
-</opt>
-<opt text="0.988205" correct="true">  Well done! 👍
-</opt>
-</choice>
-
-
-This p-value is telling us that we cannot reject the null but also that we might consider a different alternative hypothesis. Indeed, we should probably consider the following alternative hypothesis instead:
-
-<p><span class="math display">\[H_0: \; \beta_1 = 0, \;\; H_a: \beta_1
-&lt; 0\]</span></p>
-
-
-<p>What could we conclude for this test (considering <span
-class="math inline">\(\alpha = 0.05\)</span>):</p>
-
-
-<choice id="chap4_exc3">
-<opt text="We cannot reject the null. "> The p-value is actually smaller than alpha...
-</opt>
-<opt text="We can reject the null and accept the alternative. Therefore, men are statistically significantly more likely to be admitted to an ICU among the COVID-19 patients." correct = "true"> Well done! 👍
-</opt>
-<opt text="I don't know! 😢"> Don't worry... 🤗
-</opt>
-</choice>
-
-
-Next, we are interested in testing if the variable `ldh` is relevant in regards of the admission of COVID-19 patients to an ICU. Consider the following four sets of hypothesis:
-
-
-<p><strong>A. </strong><span class="math inline">\(H_0: \; \beta_2 = 0, \; H_a: \beta_2 \neq
-0\)</span></p>
-
-<p><strong>B. </strong><span class="math inline">\(H_0: \; \beta_2 = 0, \; H_a: \beta_2 &lt;
-0\)</span></p>
-
-<p><strong>C. </strong><span class="math inline">\(H_0: \; \beta_2 = 0, \; H_a: \beta_2 &gt;
-0\)</span></p>
-
-<p><strong>D. </strong><span class="math inline">\(H_0: \; \beta_2 \neq 0, \; H_a: \beta_2 =
-0\)</span></p>
-
-
-
-What is the corresponding set of hypotheses associated to this question:
-
-
-<choice id="chap4_exc4">
-<opt text="Hypothesis A" correct = "true"> Yay! 😆
-</opt>
-<opt text="Hypothesis B"> We are not assuming that lhd decreases the probability of admission.
-</opt>
-<opt text="Hypothesis C"> We are not assuming that lhd increases the probability of admission.
-</opt>
-<opt text="Hypothesis D"> Are you sure? 😅
-</opt>
-</choice>
-
-
-Based on the hypotheses you selected, what is the p-value associated to this test:
-
-
-<choice id="chap4_exc5">
-<opt text="0.00365"> Our test is not about the intercept.
-</opt>
-<opt text="0.00540" correct = "true"> Yay! Well done! 👍
-</opt>
-<opt text="0.00270"> You are considering a different alternative hypothesis. 🤔
-</opt>
-<opt text="0.99730">  You are considering a different alternative hypothesis. 🤔
-</opt>
-<opt text="0.02359">  Our test is not about this variable.
-</opt>
-</choice>
-
-Next, we are interested in predicting the probability that a woman of age 56 with a measured ldh of 645 and oxygen saturation of 94 is admitted to an ICU. Complete to code below to compute this probability:
-
-
-<codeblock id="chap4_ex_1_2">
-
-We only need the fact that the patient is a women and that her measured lhd is equal to 645.
+Remember we want to compute the log of the variable time.
 
 </codeblock>
 
-Based on the above code you should obtain a value of 29.92%. What does this number mean:
+Complete the code below to compare the predictions of the model with the data:
+
+<codeblock id="chap3_ex_1_2">
+
+</codeblock>
+
+Based on the graph you obtain, the scientist asks for your opinion on her model:
 
 
-<choice id="chap4_exc6">
-<opt text="It means that this woman will not be admitted to the ICU. "> Nope!
+<choice id="chap3_exc3">
+<opt text="The model seems appropriate as there is a good match between the model and the data." correct="true"> 👍
 </opt>
-<opt text="It means that this woman will be admitted to the ICU with a probability of exactly 29.92%."> The value 29.92% is only our best guess... Remember that all models are wrong but some are useful. 🤔
+<opt text="The adequacy between the model and the data is quite poor, indicating that we should look for another model.">  Nope, this seems quite reasonable. </opt>
+</choice>
+
+
+Based on this model, the scientist would like to estimate the mean concentration after 1 hour. Which one of the followings is the correct answer?
+
+<choice id="chap3_exc4">
+<opt text="-1.0317"> A negative number may not make sense...
 </opt>
-<opt text="It means that this woman will be admitted to the ICU with an estimated probability of 29.92%."  correct = "true"> Well done! 👍
+<opt text="-0.5058">  A negative number may not make sense...
 </opt>
-<opt text="It means that this woman will be admitted to the ICU. ">  Nope!
+<opt text="0.35640">  You should consider using log(1) instead of 1...
+</opt>
+<opt text="0.60302" correct="true">  Well done! 👍 Note that this answer is actually only an approximation due to Jensen's inequality... But this will be beyond the scope of this class. Just to be clear, the way to compute this result is with <p><span class="math inline">exp(-0.5058)</span></p>
 </opt>
 
 </choice>
 
+Finally, the scientists notice that our data consider the same subject several times. Indeed, the first column of the dataset indicates that the data are based on 6 subjects which were all measured 11 times. Therefore, she wonders if our linear regression model is suitable for this kind of data and asks for your advice:
 
 
-In order to evaluate visually the impact of the two variables in our model, we would like to construct a graph to compare the prediction for the groups men and women as a function of the ldh. Complete the code below to make this graph:
+<choice id="chap3_exc5">
+<opt text="There is no problem to have the same subject several times in our data."> Unfortunately, we assume that residuals are iid and this is not the case here 😩. Naturally, there are methods to deal with such forms of dependence but they are beyond the scope of this class.
+</opt>
+<opt text="It can be problematic to have the same subject several times in our data because the residuals cannot have a normal distribution in this case "> Nope, this has no impact on the distribution.
+</opt>
+<opt text="It can be problematic to have the same subject several times in our data because the model will not be linear">  Nope, this has no impact on the relationship between the variables.
+</opt>
+<opt text="It can be problematic to have the same subject several times in our data because our data won't be independent" correct="true">  Yay! 😆 Note that Mixed Linear Models were developed to answer such form of dependence in the data. However, this is beyond the scope of this class. 
+</opt>
+</choice>
 
-<codeblock id="chap4_ex_1_3">
 
-Make sure to place `ldh_to_predict` in `data.frame` used to predict...
 
+</exercise>
+
+
+
+
+
+
+
+
+
+
+
+
+<exercise id="8" title="Exercise: Pharmacokinetics of dexamethasone">
+
+In this exercise, we will consider the data from Abouir, et al. (2022), which is an observational study conducted at Geneva University Hospitals to assess the impact of weight on the pharmacokinetics of dexamethasone in normal-weight versus obese patients hospitalized for COVID-19. The data can be loaded as follows:
+
+```r
+library(idar)
+data("codex")
+```
+
+Our objective is to estimate the following model:
+
+<p><span class="math display">\[\log (C_{\max, i}) = \beta_0 + \beta_1
+\text{Gender}_i + \beta_2 \text{BMI}_i + \varepsilon_i,\]</span></p>
+
+<p>where <span class="math inline">\(C_{\max, i}\)</span>, <span
+class="math inline">\(\text{Gender}_i\)</span> and <span
+class="math inline">\(\text{BMI}_i\)</span> correspond, respectively, to
+the measured <span class="math inline">\(C_\max\)</span> for individual
+<span class="math inline">\(i\)</span>, its gender (0 for men and 1 for
+women) and its BMI. Naturally, we want to assess if this model appears
+to be suitable to describe the data. Moreover, we would like to evaluate
+the validity of the following claims:</p>
+
+
+<p>- Women have a higher <span class="math inline">\(C_\max\)</span>
+than men.</p>
+<p>- Individuals with a higher BMI have a lower <span
+class="math inline">\(C_\max\)</span>.</p>
+
+
+Complete the code below to estimate this model:
+
+<codeblock id="chap3_ex_2_1">
+ We are interested in the log of Cmax.
 </codeblock>
+
+To assess the adequacy of our model to the data, we consider the following graph:
+
+```r
+colors = c("red", "blue")
+col_index = as.numeric(codex$gender == 1) + 1
+plot(codex$bmi, codex$log_cmax, col = colors[col_index],
+     xlab = "BMI", ylab = "Cmax - log scale")
+
+bmi_to_predict = 19:40
+pred_men   = predict(mod, data.frame(bmi = bmi_to_predict, 
+                                      gender = rep(0, length(bmi_to_predict))), 
+                     interval = "confidence")
+pred_women = predict(mod, data.frame(bmi = bmi_to_predict, 
+                                      gender = rep(1, length(bmi_to_predict))), 
+                     interval = "confidence")
+
+lines(bmi_to_predict, pred_men[,1], col = colors[1])
+lines(bmi_to_predict, pred_men[,2], col = colors[1], lty = 2)
+lines(bmi_to_predict, pred_men[,3], col = colors[1], lty = 2)
+lines(bmi_to_predict, pred_women[,1], col = colors[2])
+lines(bmi_to_predict, pred_women[,2], col = colors[2], lty = 2)
+lines(bmi_to_predict, pred_women[,3], col = colors[2], lty = 2)
+legend("bottomleft", c("Men", "Women"), col = colors, pch = 1)
+```
+
+<div style="text-align:center"><img src="plot_chap_3_ex_2_1.png" alt=" " width="90%"></div>
+
+Based on this graph, does the model appears to be suitable to describe the data?
+
+
+<choice id="chap3_exc6">
+<opt text="No because the relationship between the BMI and the (log of) Cmax is not linear."> A linear relationship appears to be reasonable with this dataset.
+</opt>
+<opt text="No because there is one outlier.">  It is true that there is an outlier (see the man with a BMI of about 31) but this value is still arguably acceptable. Naturally, a "robust" linear regression could be more appropriate in this case but these methods are beyond the scope of this class.
+</opt>
+<opt text="No because the data are not independent."> In this case each individual was measured once and there is no a priori reason to believe that there is any form of dependence in the data.
+</opt>
+<opt text="Yes, the model appears to be a reasonable approximation." correct="true">  It is not perfect but reasonable...
+</opt>
+</choice>
+
+Based on this model, we obtain the following output:
+
+```r
+summary(mod)
+```
+
+```out
+Call:
+lm(formula = log_cmax ~ gender + bmi, data = codex)
+
+Residuals:
+     Min       1Q   Median       3Q      Max 
+-1.47722 -0.26049  0.01147  0.35029  0.76580 
+
+Coefficients:
+            Estimate Std. Error t value Pr(>|t|)    
+(Intercept)  5.79742    0.47785  12.132 1.93e-12 ***
+gender       0.75372    0.19354   3.894 0.000585 ***
+bmi         -0.04175    0.01685  -2.477 0.019786 *  
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+Residual standard error: 0.5166 on 27 degrees of freedom
+Multiple R-squared:    0.4,	Adjusted R-squared:  0.3555 
+F-statistic: 8.999 on 2 and 27 DF,  p-value: 0.001012
+```
+
+Consider the following five sets of hypotheses:
+
+
+
+<p><strong>A. </strong><span class="math inline">\(H_0: \; \beta_1 &lt; 0\)</span>, <span
+class="math inline">\(H_a: \; \beta_1 = 0\)</span></p>
+
+<p><strong>B. </strong><span class="math inline">\(H_0: \; \beta_1 = 0\)</span>, <span
+class="math inline">\(H_a: \; \beta_1 &gt; 0\)</span></p>
+
+<p><strong>C. </strong><span class="math inline">\(H_0: \; \beta_1 = 0\)</span>, <span
+class="math inline">\(H_a: \; \beta_1 &lt; 0\)</span></p>
+
+<p><strong>D. </strong><span class="math inline">\(H_0: \; \beta_2 = 0\)</span>, <span
+class="math inline">\(H_a: \; \beta_2 &gt; 0\)</span></p>
+
+<p><strong>E. </strong><span class="math inline">\(H_0: \; \beta_2 = 0\)</span>, <span
+class="math inline">\(H_a: \; \beta_2 &lt; 0\)</span></p>
+
+
+
+<p>Considering the first claim (i.e. women have a higher <span
+class="math inline">\(C_\max\)</span> than men), what are the hypotheses
+we should consider to evaluate its validity:</p>
+
+
+<choice id="chap3_exc7">
+<opt text="Hypothesis A"> The alternative is (normally) what we want to prove...
+</opt>
+<opt text="Hypothesis B" correct="true"> Yay! 😆
+</opt>
+<opt text="Hypothesis C"> This would be true if the variable gender was changed to 0 for women and 1 for men.
+</opt>
+<opt text="Hypothesis D"> The first claim is not about the BMI. 🤔
+</opt>
+<opt text="Hypothesis E"> The first claim is not about the BMI. 🤔
+</opt>
+</choice>
+
+
+Using the hypotheses you selected, what is the associated p-value?
+
+<choice id="chap3_exc8">
+<opt text="1.93e-12"> No that's the intercept.
+</opt>
+<opt text="0.000585"> This is not the correct alternative hypothesis. 🤔
+</opt>
+<opt text="0.019786">  No that's for the BMI.
+</opt>
+<opt text="0.0002925" correct="true"> 👍
+</opt>
+<opt text="0.9997075"> This is not the correct alternative hypothesis. 🤔
+</opt>
+<opt text="0.009893"> No that's for the BMI.
+</opt>
+<opt text="0.990107"> No that's for the BMI.
+</opt>
+</choice>
+
+
+Based on this p-value what can you conclude?
+
+<choice id="chap3_exc9">
+<opt text="At the 95% confidence level, we can reject the null and accept the alternative. Therefore, women have a statistically significantly higher Cmax than men." correct="true"> 👍
+</opt>
+<opt text="At the 95% confidence level, we don't have enough evidence to reject the null hypothesis."> No, the p-value is smaller than alpha.
+</opt>
+<opt text="At the 95% confidence level, we can accept the null hypothesis."> Are you sure you can accept the null? 😏
+</opt>
+</choice>
+
+
+Similarly, what can you conclude for the second claim?
+
+<choice id="chap3_exc10">
+<opt text="At the 95% confidence level, we can reject the null and accept the alternative. Therefore, an increase in BMI is statistically significantly associated to a decrease in Cmax." correct="true"> 👍 Just to be sure, you found a p-value of 0.009893 right?
+</opt>
+<opt text="At the 95% confidence level, we don't have enough evidence to reject the null hypothesis."> No, the p-value is smaller than alpha.
+</opt>
+<opt text="At the 95% confidence level, we can accept the null hypothesis."> Are you sure you can accept the null? 😏
+</opt>
+</choice>
+
+
+<p>Finally, one subject (which was not included in the original study)
+is measured with a <span class="math inline">\(C_\max\)</span> of 40.3.
+This subject is a female of age 58 with a BMI of 28. We are suspecting
+that this subject is reacting differently than the subjects in our
+study. Complete the code below to compute a confidence interval
+(at the 95% confidence level) for <span class="math inline">\(C_\max\)</span> of an individual having these characteristics:</p>
+
+
+<codeblock id="chap3_ex_2_2">
+We want to compute a prediction confidence interval.
+</codeblock>
+
+
+<p>Based on this code, you should obtain a 95% confidence interval for the logarithm of
+<span class="math inline">\(C_\max\)</span> of (4.283257, 6.48104). What
+is this telling us?</p>
+
+<choice id="chap3_exc11">
+<opt text="The subject has a suspiciously high Cmax of 40.3 while our confidence intervals is (4.283257, 6.48104)."> Did you forget a log somewhere?
+</opt>
+<opt text="The subject has a suspiciously low Cmax of 40.3 (corresponding to a logarithm value of 3.696) as our confidence interval is (4.283257, 6.48104)." correct="true"> 👍
+</opt>
+<opt text="The subject has a reasonable Cmax value."> Wrong 😏
+</opt>
+</choice>
+
+
+
+
 
 
 
@@ -371,291 +470,98 @@ Make sure to place `ldh_to_predict` in `data.frame` used to predict...
 
 
 
-<exercise id = "8" title ="Exercise: ICU admission of COVID-19 patients - Part II">
 
-The previous model ignored the age of the patients as well as their SpO2, which are arguably two important variables. Therefore, we could consider a model that includes these variables as follows:
+
+
+
+
+
+<exercise id="9" title="Homework">
+
+We consider synthetic data based on Charepalli et al. (2018) where the impact on important biomarkers of different diets was studied. One of the experiments was conducted on pigs which were divided into two treatment groups, "C" and "NC", corresponding to two dietary compositions. The first group "C" contains 20% of deep fried potatoes (i.e. chips) while this is not the case in the group "NC" which doesn't contain any fried food. Caloric intake was measured weekly until the end of the study. The objective of our study is to evaluate the possible link existing between fried food consumption and its effects on inflammatory response. For this purpose, we will model the logarithm of the cortisol levels (in pg/mg) as a function of other variables (e.g. diet, caloric intake and so on). You can load the data as follows (make sure to update `idar`):
 
 ```r
-mod_big = glm(icu ~ sex + ldh + spo2 + age, data = covid, family = binomial())
-summary(mod_big)
+library(idar)
+data("cortisol")
+
+# Log transform
+cortisol$log_cortisol = log(cortisol$cortisol)
+```
+
+
+
+
+
+
+
+Two scientists working on this project have different (and contradicting) theories regarding the inflammatory response induced by fried food. Your objective is to model the data in a suitable way to assess the validity of their claims.
+
+1. **Scientist A**: There is no connection between fried food consumption and cortisol levels. However, caloric intake has a significant impact on cortisol levels (i.e. the scientist believes that a higher caloric intake leads to a lower cortisol level).
+2. **Scientist B**: Fried food consumption as well as caloric intake have significant impact on cortisol levels. Higher amount of fried food consumption corresponds to higher cortisol levels.
+
+
+Scientist A considers the following model:
+
+```r
+mod_scientist_A = lm(log_cortisol ~ caloric, data = cortisol)
+summary(mod_scientist_A)
 ```
 
 ```out
 Call:
-glm(formula = icu ~ sex + ldh + spo2 + age, family = binomial(), 
-    data = covid)
+lm(formula = log_cortisol ~ caloric, data = cortisol)
 
-Deviance Residuals: 
-    Min       1Q   Median       3Q      Max  
--1.8526  -0.7429  -0.4085   0.6182   1.8504  
+Residuals:
+    Min      1Q  Median      3Q     Max 
+-1.8395 -0.5889  0.1799  0.6998  1.8756 
 
 Coefficients:
-             Estimate Std. Error z value Pr(>|z|)  
-(Intercept)  8.793791   7.405089   1.188   0.2350  
-sexwomen    -1.567246   0.772703  -2.028   0.0425 *
-ldh          0.003797   0.001868   2.033   0.0421 *
-spo2        -0.106755   0.072588  -1.471   0.1414  
-age         -0.013913   0.021722  -0.641   0.5218  
+              Estimate Std. Error t value Pr(>|t|)    
+(Intercept)  8.7732375  0.5228605  16.779  < 2e-16 ***
+caloric     -0.0006702  0.0001683  -3.983  0.00019 ***
 ---
 Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
 
-(Dispersion parameter for binomial family taken to be 1)
-
-    Null deviance: 79.499  on 63  degrees of freedom
-Residual deviance: 58.501  on 59  degrees of freedom
-AIC: 68.501
-
-Number of Fisher Scoring iterations: 5
+Residual standard error: 0.8741 on 59 degrees of freedom
+Multiple R-squared:  0.2119,	Adjusted R-squared:  0.1985 
+F-statistic: 15.86 on 1 and 59 DF,  p-value: 0.0001895
 ```
 
-We can see that among these 4 variables, some appear not significant, implying that we may be able to find a smaller model with less variables which is more adequate (hopefully the model we considered previously). Indeed, we could actually wonder what is the "best" model to describe our data or at least the model with the smallest AIC. By comparing the AIC of the two models, it seems that the first one is more adequate. 
-
-
-<p>However, is it the "best" model? Since our dataset has four variables (i.e. <code>sex</code>, <code>age</code>, <code>ldh</code> and <code>spo2</code>),
-we can actually construct <span class="math inline">\(2^4 = 16\)</span> models (why? 🤔). Therefore, we could manually construct these 16 models and find the one with the smallest AIC. This can be done as follows:</p>
-
-
+This scientist claims that this model verifies the claim that higher caloric intake is significantly associated to a lower cortisol level. However, the second scientist considers the following model:
 
 ```r
-# Empty model (i.e. intercept only)
-mod1 = glm(icu ~ 1, data = covid, family = binomial())
-
-# Models with one variable
-mod2 = glm(icu ~ sex, data = covid, family = binomial())
-mod3 = glm(icu ~ age, data = covid, family = binomial())
-mod4 = glm(icu ~ ldh, data = covid, family = binomial())
-mod5 = glm(icu ~ spo2, data = covid, family = binomial())
-
-# Models with two variables
-mod6 = glm(icu ~ sex + age, data = covid, family = binomial())
-mod7 = glm(icu ~ sex + ldh, data = covid, family = binomial())
-mod8 = glm(icu ~ sex + spo2, data = covid, family = binomial())
-mod9 = glm(icu ~ age + ldh, data = covid, family = binomial())
-mod10 = glm(icu ~ age + spo2, data = covid, family = binomial())
-mod11 = glm(icu ~ ldh + spo2, data = covid, family = binomial())
-
-# Models with three variables
-mod12 = glm(icu ~ sex + age + ldh, data = covid, family = binomial())
-mod13 = glm(icu ~ sex + age + spo2, data = covid, family = binomial())
-mod14 = glm(icu ~ age + ldh + spo2, data = covid, family = binomial())
-mod15 = glm(icu ~ sex + ldh + spo2, data = covid, family = binomial())
-
-# Full model
-mod16 = glm(icu ~ sex + age + ldh + spo2, data = covid, family = binomial())
-```
-
-
-Now, let's see which one has the smallest AIC:
-
-```{r}
-AIC_vector = c(AIC(mod1), AIC(mod2), AIC(mod3), AIC(mod4), AIC(mod5),
-               AIC(mod6), AIC(mod7), AIC(mod8), AIC(mod9), AIC(mod10),
-               AIC(mod11), AIC(mod12), AIC(mod13), AIC(mod14), AIC(mod15),
-               AIC(mod16))
-plot(AIC_vector, xlab = "Model index", ylab = "AIC", type = "b", pch = 16)
-grid()
-abline(h = min(AIC_vector), lty=2)
-abline(h = min(AIC_vector)+2, lty=2)
-```
-
-
-<div style="text-align:center"><img src="plot_aic_2.png" alt=" " width="70%"></div>
-
- <p style="padding: 10px; border: 2px solid #358ccb; background-color:#8efaff ; border-radius: 25px;">
- 
- 
-😱 <em> A more advanced remark for the curious/interested students: When we are comparing the AIC of different models it is practical to consider the following difference: <span class="math inline">\(\Delta_i = \text{AIC}_i -
-\text{AIC}_{\min}\)</span> where <span class="math inline">\( \text{AIC}_i\)</span> denotes the AIC of the i-th model and  <span class="math inline">\(\text{AIC}_{\min}\)</span> denotes the smallest AIC among the set of models examined. In practice, selecting the model with the smallest AIC may not be the best approach and one may decide to consider a different model in some cases. For example, 
-<a  style="text-decoration: none; border-bottom:1px solid darkblue;"  href="http://faculty.washington.edu/skalski/classes/QERM597/papers_xtra/Burnham%20and%20Anderson.pdf">Burnham & Anderson 2004 </a> suggested that any model having a difference <span class="math inline">\(\Delta_i < 2\)</span> has no substantial difference with the model with the smallest AIC. Other researchers have suggested to consider <span class="math inline">\(\Delta_i < 4\)</span>. These numbers are actually associated to estimation error of the AIC. In our example, we can see that Models 7, 12, 15 and 16 are such that <span class="math inline">\(\Delta_i < 2\)</span> and therefore we can consider that there are no substantial differences between them. However, Models 12, 15 and 16 are based three variables while Model 7 is only based on two variables. Thus, it is reasonable to consider either Model 7 or Model 15 (which has the smallest AIC) and to assume that these models are quite comparable.</em>
-
- 
- 
- </p>
-
-
-
-
-
-
-We can see on the graph that two models have an AIC that appears smaller than the ones of the other models. Indeed, Models 7 and 15 seem to be interesting candidates. Let's have a look at these models:
-
-```r
-summary(mod7)
+mod_scientist_B = lm(log_cortisol ~ caloric + group, data = cortisol)
+summary(mod_scientist_B)
 ```
 
 ```out
 Call:
-glm(formula = icu ~ sex + ldh, family = binomial(), data = covid)
+lm(formula = log_cortisol ~ caloric + group, data = cortisol)
 
-Deviance Residuals: 
-    Min       1Q   Median       3Q      Max  
--1.5371  -0.7854  -0.4244   0.6393   1.9873  
+Residuals:
+    Min      1Q  Median      3Q     Max 
+-2.0341 -0.4551  0.2124  0.4368  1.5076 
 
 Coefficients:
-             Estimate Std. Error z value Pr(>|z|)   
-(Intercept) -2.238523   0.770023  -2.907  0.00365 ** 
-sexwomen    -1.708715   0.754830  -2.264  0.02359 * 
-ldh          0.004801   0.001726   2.782  0.00540 **
+              Estimate Std. Error t value Pr(>|t|)    
+(Intercept)  5.0968675  0.7986440   6.382 3.17e-08 ***
+caloric      0.0010089  0.0003373   2.991  0.00407 ** 
+groupNC     -2.4746749  0.4535788  -5.456 1.05e-06 ***
 ---
 Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
 
-(Dispersion parameter for binomial family taken to be 1)
-
-    Null deviance: 79.499  on 63  degrees of freedom
-Residual deviance: 60.961  on 61  degrees of freedom
-AIC: 66.961
-
-Number of Fisher Scoring iterations: 5
+Residual standard error: 0.7167 on 58 degrees of freedom
+Multiple R-squared:  0.4792,	Adjusted R-squared:  0.4612 
+F-statistic: 26.68 on 2 and 58 DF,  p-value: 6.082e-09
 ```
 
-```r
-summary(mod15)
-```
+Scientist B thinks that this is a better model leading to different conclusions.
 
-```out
-Call:
-glm(formula = icu ~ sex + ldh + spo2, family = binomial(), data = covid)
-
-Deviance Residuals: 
-    Min       1Q   Median       3Q      Max  
--1.8765  -0.7099  -0.4200   0.6055   1.8993  
-
-Coefficients:
-             Estimate Std. Error z value Pr(>|z|)  
-(Intercept)  6.605361   6.400212   1.032   0.3020  
-sexwomen    -1.679296   0.757965  -2.216   0.0267 *
-ldh          0.003892   0.001857   2.096   0.0361 *
-spo2        -0.092701   0.067652  -1.370   0.1706  
----
-Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
-
-(Dispersion parameter for binomial family taken to be 1)
-
-    Null deviance: 79.499  on 63  degrees of freedom
-Residual deviance: 58.914  on 60  degrees of freedom
-AIC: 66.914
-
-Number of Fisher Scoring iterations: 5
-```
-
-We can see that these two models have essentially the same AIC and that the first model (i.e. Model 7) is the same model we considered in the previous exercise. How can we interpret this result:
-
-
-
-<choice id="chap4_exc7">
-<opt text="It is clear that Model 7 is best model because it has less parameters and has a small AIC. "> Model 7 is a good candidate but there is nothing clear about the fact that it is the best one.
-</opt>
-<opt text=" It is clear that Model 15 is the best model because it has the smallest AIC. "> Model 15 is a good candidate with the smallest AIC, however, other models may also be adequate.
-</opt>
-<opt text="The two models appear to be reasonable choices but others models may also be of interest. "  correct = "true"> Yes, it is very difficult to find which is the best model.
-</opt>
-</choice>
-
-To compare these two final models, we could also use 10-fold cross-validation to compute an estimator of their classification accuracy This can be done as follows:
-
-```r
-library(boot)  
-set.seed(1559) # For reproducibility
-
-cost = function(resp, pred){
-  mean(resp == (pred > 0.5))
-}
-
-cv.glm(covid, mod7, cost, K = 10)$delta[2]
-cv.glm(covid, mod15, cost, K = 10)$delta[2]
-```
-
-```out
-0.7485352
-0.6806641
-```
-
-
-Based on this analysis, it turns out that the smaller model (i.e. model 7) appears to provide slightly more reliable prediction than the larger model (i.e. model 15). Therefore, one could argue that this candidate is an interesting choice (but this may not be the best possible model).
-
-Now that we selected a model which only contains two variables, i.e. `ldh` and `sex`, does it imply that the variables `spo2` and `age` are irrelevant to predict ICU admissions? 
-
-
-<choice id="chap4_exc8">
-<opt text="Yes, since Model 7 is the best model then these variables are not important."> No, they could still be important... 🤔
-</opt>
-<opt text="Not at all, since Model 7 is the best model then these variables are the most important. "> No, while these variables could still be of interest, they are very likely to be less important.
-</opt>
-<opt text="The fact that our model has good predictive abilities suggests that these variables are not the most important ones, but they could still play a role in understanding the ICU admissions."  correct = "true"> Well done!
-</opt>
-</choice>
-
-
-When comparing the p-values associated to the variable `sex` in the R outputs of these two models, you notice that it is equal to 2.359% for Model 7 and 2.670% for Model 15. This seems to suggest that these p-values depend on the model we are selecting and that, potentially, different models could lead to different conclusions. Do you think this is true:
-
-
-<choice id="chap4_exc9">
-<opt text="No, otherwise how could we trust the results of a statistical analysis?"> This is a well known problem that is encountered in statistical analysis. This problem is often called "inference after selection". Basically, the p-values should reflect the uncertainty due to the selection of the model but this is generally not the case. Sadly, there are no known consensus on how to address this problem... So let's be careful when we are using statistics!
-</opt>
-<opt text="Yes, this could be a problem and, in particular, if we are not careful on how we select our model. " correct="true"> This is a well known problem that is encountered in statistical analysis. This problem is often called "inference after selection". Basically, the p-values should reflect the uncertainty due to the selection of the model but this is generally not the case. Sadly, there are no known consensus on how to address this problem... So let's be careful when we are using statistics!
-</opt>
-<opt text="No it is not a problem if we are careful in selecting a good model. "> Sadly, we don't know how to do this... 😢
-</opt>
-</choice>
-
-If we had 40 variables instead of 4, could we use the same approach where we consider the AICs of all possible models:
-
-<choice id="chap4_exc10">
-<opt text="Yes, but it will be annoying."> Actually, we could construct 109,951,200,000 different models... and that's A LOT! 😳 Actually, if fitting one model takes 1 second, we would need over 2000 years to fit all models... So, this approach is hardly possible.
-</opt>
-<opt text="Yes, it should be no problem. " > Actually, we could construct 109,951,200,000 different models... and that's A LOT! 😳 Actually, if fitting one model takes 1 second, we would need over 2000 years to fit all models... So, this approach is hardly possible.
-</opt>
-<opt text=" No, that's too many models." correct = "true"> Well done! 👍
-</opt>
-</choice>
-
-
-To avoid considering all models, we can use the `step()` function to perform stepwise model selection using the AIC by adding variables iteratively to our initial model. This approach is known as "stepwise forward AIC" and it is an heuristic method which avoids to explore ALL models. Nevertheless, various modern methods allow to improve on this stepwise approach for model selection but they are beyond the scope of this class. You can use this approach as follows:
-
-
-```r
-smallest_model = glm(icu ~ 1, data = covid, family = binomial())
-biggest_model = glm(icu ~ sex + age + ldh + spo2, data = covid, family = binomial())
-
-# Find a model with a forward approach using the AIC
-best_aic = step(smallest_model, scope = list(lower = formula(smallest_model),
-                                        upper = formula(biggest_model)), 
-                           direction = "forward", trace = FALSE)
-summary(best_aic)
-```
-
-```out
-Call:
-glm(formula = icu ~ ldh + sex + spo2, family = binomial(), data = covid)
-
-Deviance Residuals: 
-    Min       1Q   Median       3Q      Max  
--1.8765  -0.7099  -0.4200   0.6055   1.8993  
-
-Coefficients:
-             Estimate Std. Error z value Pr(>|z|)  
-(Intercept)  6.605361   6.400212   1.032   0.3020  
-ldh          0.003892   0.001857   2.096   0.0361 *
-sexwomen    -1.679296   0.757965  -2.216   0.0267 *
-spo2        -0.092701   0.067652  -1.370   0.1706  
----
-Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
-
-(Dispersion parameter for binomial family taken to be 1)
-
-    Null deviance: 79.499  on 63  degrees of freedom
-Residual deviance: 58.914  on 60  degrees of freedom
-AIC: 66.914
-
-Number of Fisher Scoring iterations: 5
-```
-
-In this example, we can see that this approach is able to find the model with the smallest AIC (i.e. Model 15). This approach is a suitable solution when exploring all possible models is impossible.
-
-
-
-
-
+1. For the first model: *(a)* construct a graph comparing the predictions with the data (make sure to highlight the two groups with different colors); *(b)* construct model diagnostic graphs; *(c)* compute the AIC.
+2. For the second model: *(a)* construct a graph comparing the predictions with the data (make sure to highlight the two groups with different colors); *(b)* construct model diagnostic graphs; *(c)* compute the AIC.
+3. Based on this analysis, which model should you consider and why?
+4. Based on the model you selected, what can you say about the claims of the scientists?
+5. Read the Wikipedia page on the [Simpson paradox](https://en.wikipedia.org/wiki/Simpson%27s_paradox). Explain how this paradox is related to your analysis.
 
 
 </exercise>
@@ -663,117 +569,66 @@ In this example, we can see that this approach is able to find the model with th
 
 
 
-<exercise id = "9" title ="Homework">
-
-# Problem I: Framingham Heart Study
-
-In this first exercise, we consider the data from the Framingham Heart Study which is a long term prospective study of the etiology of cardiovascular disease among a population of subjects in the community of Framingham, Massachusetts. More precisely, we are interested in the following model:
-
-<div style="text-align:center"><img src="chap4_eq_mdl_4.png" alt=" " width="100%"></div>
-
-where
-
-<p>- <span class="math inline">\(g(x) = \exp(x)/(1 +
-\exp(x))\)</span>;</p>
-<p>- <span class="math inline">\(\color{#e64173}{\text{CHD}_i}\)</span>:
-corresponds to the presence of Coronary Heart Disease defined as
-pre-existing Angina Pectoris, Myocardial Infarction (hospitalized,
-silent or unrecognized), or Coronary Insufficiency for subject <span
-class="math inline">\(i\)</span> (0 = Free of disease; 1 = Prevalent
-disease);</p>
-<p>- <span class="math inline">\(\color{#6A5ACD}{\text{BMI}_i}\)</span>:
-Body Mass Index of subject <span class="math inline">\(i\)</span>;</p>
-<p>- <span class="math inline">\(\color{#20B2AA}{\text{SEX}_i}\)</span>:
-Gender of subject <span class="math inline">\(i\)</span> (1 = Male, 2 =
-Female);</p>
-<p>- <span class="math inline">\(\color{#FFA500}{\text{AGE}_i}\)</span>:
-Age at exam (in year) of subject <span
-class="math inline">\(i\)</span>;</p>
-<p>- <span
-class="math inline">\(\color{#8bb174}{\text{SYSBP}_i}\)</span>: Systolic
-Blood Pressure (mmHg) of subject <span
-class="math inline">\(i\)</span>;</p>
-<p>- <span
-class="math inline">\(\color{#314f4f}{\text{DIABP}_i}\)</span>:
-Diastolic Blood Pressure (mmHg) of subject <span
-class="math inline">\(i\)</span>.</p>
 
 
 
-We are interested in estimating the parameters associated to this model and assessing the validity of the following claims:
-
-- Men are more likely than women to be affected by a coronary heart disease.
-
-- Individuals with a higher systolic blood pressure are more likely to be affected by a coronary heart disease.
-
-- Individuals with a higher body mass index are more likely to be affected by a coronary heart disease.
-
-- Individuals with a lower diastolic blood pressure are more likely to be affected by a coronary heart disease.
-
-Based on this model, what is the probability that a 50 years old men with a BMI of 25, systolic blood pressure of 120 and diastolic blood pressure of 85 is affected by a coronary heart disease? How would this probability change if we consider a person with a BMI of 50 instead (with other variables being the same)? 
-
-To obtain the data, you first need to install the `riskCommunicator` R package as follows:
-
-```r
-install.packages("riskCommunicator")
-```
-
-Then you can obtain the data by running:
- 
-```r
-library("riskCommunicator")
-data(framingham)
-```
-
-The variables needed for your analysis are called: `PREVCHD`, `AGE`, `SYSBP`, `DIABP`, `BMI` and `SEX`.
 
 
-# Problem II: Pima Indians Diabetes
 
-In this second exercise, we will consider a dataset on diabetes where 768 women of at least 21 years old of the Pima Indian heritage were considered. This dataset includes the following variables:
 
-- `pregnant`: Number of times pregnant
-- `glucose`: Plasma glucose concentration in an oral glucose tolerance test
-- `pressure`: Diastolic blood pressure (mm Hg)
-- `triceps`: Triceps skin fold thickness (mm)
-- `insulin`: 2-Hour serum insulin (mu U/ml)
-- `mass`: Body mass index (weight in kg/(height in m)^2)
-- `pedigree`: Diabetes pedigree function
-- `age`: Age of the patients (years)
-- `diabetes`: Class variable (test for diabetes)
 
-The dataset is stored in the `mlbench` R package which you can install as follows:
+<exercise id="10" title="Optional Homework 🤓">
 
-```{r, eval = FALSE}
-install.packages("mlbench")
-```
 
-Then, you can load the data as:
+
+
+
+In this problem, we will consider the data from Can, et al., (2022). If you would like to know about the context of this study, here is the [reference](https://www.nature.com/articles/s42003-021-02978-2). You can load the data considered in one part of this study as follows:
 
 ```{r}
-library(mlbench)
-data(PimaIndiansDiabetes)
-head(PimaIndiansDiabetes)
+library(idar)
+data("HP13Cbicarbonate")
 ```
 
+We can have a first look at the data by using
 
-```out
-  pregnant glucose pressure triceps insulin mass pedigree age diabetes
-1        6     148       72      35       0 33.6    0.627  50      pos
-2        1      85       66      29       0 26.6    0.351  31      neg
-3        8     183       64       0       0 23.3    0.672  32      pos
-4        1      89       66      23      94 28.1    0.167  21      neg
-5        0     137       40      35     168 43.1    2.288  33      pos
-6        5     116       74       0       0 25.6    0.201  30      neg
+```{r, eval = F}
+head(HP13Cbicarbonate)
 ```
 
-- Given these variables, what is the largest model (which we will call "Model 1") that you can fit to predict the possibility of a woman (Pima Indian heritage) being diagnosed with diabetes?
-- Based on Model 1 we would like to assess the validity of the following claims:
-    - Women with a higher body mass index are more likely to be affected by diabetes.
-    - Older women are more likely to be affected by diabetes.
-    - Is Model 1 the best possible model to describe the data at hand? Is it the model with the smallest AIC? In order to find the model with the smallest AIC, is it feasible to explore all models? Why or why not?
-    - Apply the "stepwise forward AIC" approach and describe the model you obtain (which we will call "Model 2"). Based on Model 2, re-assess the validity of the previous claims. Do you obtain different conclusions?
-    - Compare the in-sample and out-of-sample classification accuracy of Models 1 and 2? Which model appears to be better?
+```{out}
+      signal    dose group
+1 0.24134760 0.01496   Fed
+2 0.27495350 0.01406   Fed
+3 0.04328066 0.01872   Fed
+4 0.07457924 0.02183   Fed
+5 0.13268619 0.02574   Fed
+6 0.03746000 0.02103   Fed
+```
+
+<p> This dataset corresponds to an experiment conducted on rats which were divided in two groups (encoded in the variable <code>group</code>). In the first group, the rats were fed before the experiment while in the second group they were in the fasted state (i.e. overnight-fasted). The variable <code>signal</code> corresponds to the hyperpolarized [<span class="math inline">\(^{13}\)</span>C]bicarbonate signal intensities normalized to the total sum of metabolites. Moreover, the variable  <code>dose</code> corresponds to the initial reaction rate as a function of the injected dose of hyperpolarized [1-<span class="math inline">\(^{13}\)</span>C]pyruvate. The model we would like to consider is given by:</p> 
+
+
+<p><span class="math display">\[\log(\text{signal}_i) = \beta_0 +
+\beta_1 \text{group}_i + \beta_2 \text{dose}_i + \beta_3
+\text{group}_i  \text{dose}_i + \varepsilon_i\]</span></p>
+
+<p>where the variable <span
+class="math inline">\(\text{group}_i\)</span> is equal to 0 if the <span
+class="math inline">\(i\)</span>-th rat is in fasted state and 1
+otherwise. The scientists working on this study want to verify the
+following claims:</p>
+
+- In the "fasted" group, the variable dose has no impact on the signal.
+- In the "fed" group, the variable dose has an impact on the signal (and we expect that the higher is the dose, the lower is the signal).
+
+Based on this information:
+
+1. Estimate the model described above.
+2. Construct a graph to compare the predictions for this model with the data (make sure to highlight the two groups with different colors).
+3. Construct model diagnostic graphs for this model.
+4. Comment on the adequacy of this model to the data.
+5. What can we comment/conclude regarding the scientists claims?
 
 
 </exercise>
