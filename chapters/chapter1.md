@@ -249,7 +249,7 @@ You can define a matrix in `R` with the function `matrix()`. For example,
 matrix(seq(4), ncol=2, nrow=2)
 ```
 
-create the following matrix:
+creates the following matrix:
 
 ```out
      [,1] [,2]
@@ -272,7 +272,7 @@ which returns:
 
 ## Operations on vectors and matrices
 
-Once that a vector or a matrix is defined, one can then perform various vectorized operations and matrix calculations. Some simple examples include:
+Once that a vector or a matrix is defined, one can then perform various vectorized operations and matrix computations. Some simple examples include:
 
 ```R
 b= c(1,2,3,4)
@@ -340,11 +340,11 @@ t(A)
 </exercise>
 
 
-<exercise id="4" title="Working with dataframes">
+<exercise id="4" title="Working with data.frame">
 
-A dataframe is the most common way of storing data in `R` and, generally, is the data structure most often used for data analyses. A dataframe structure features associated with observations in a tabular format.
+A `data.frame` is the most common way of storing data in `R` and, generally, is the data structure most often used for data analyses. A `data.frame` structure <b>features</b> associated with <b>observations</b> in a tabular format.
 
-One can create a dataframe using the function `data.frame()`. For example, let us create a dataframe of students for which is recorded the name, age, weight (in kg), height (in cm) and favorite sport.
+One can create a `data.frame` using the function `data.frame()`. For example, let us create a `data.frame` of students where for each students is recorded their name, their age, their weight (in kg), their height (in cm) and their favorite sport.
 
 ```R
 df = data.frame("name" = c("Florian", "Kevin", "Sadri", "Caroline"), 
@@ -354,9 +354,9 @@ df = data.frame("name" = c("Florian", "Kevin", "Sadri", "Caroline"),
                 "sport" = c("running", "boxing", "tennis", "swimming"))
 ``` 
 
-As it can be observed, the dataset is created by combining vectors of equal length. 
+As it can be observed, a `data.frame` is created by combining vectors of equal length. 
 
-One can inspect the structure of the dataset with the function `str()`.
+One can inspect the structure of the `data.frame` with the function `str()`.
 
 ```R
 str(df)
@@ -373,7 +373,7 @@ returns:
  $ sport : chr  "running" "boxing" "tennis" "swimming"
 ```
 
-One can print the first or last rows of the dataset with respectively the function `head()` and `tail()` and print the name of the columns with the function `colnames()`. For example:
+One can print the first or last rows of the `data.frame` with respectively the function `head()` and `tail()` and print the name of the columns with the function `colnames()`. For example:
 
 ```R
 colnames(df)
@@ -385,13 +385,13 @@ returns
 [1] "name"   "age"    "weight" "height" "sport" 
 ```
 
-You can access a specific column with the `$` operator. For example, you cna subset the column `weight` as such:
+You can access a specific column with the `$` operator. For example, you can subset the column `weight` as such:
 
 ``` 
 df$weight
 ```
 
-returns:
+which returns:
 
 ```out
 [1] 75 65 78 65
@@ -408,4 +408,57 @@ df$bmi = df$weight / (df$height / 100)^2
 </exercise>
 
 <exercise id="5" title="Basic data visualization">
+
+One advantage of working with `R` when performing data analysis is that `R` provides great data visualization capabilities. Indeed, in addition to multiple graphics libraries such as [`ggplot2`](https://ggplot2.tidyverse.org/) or [`plotly`](https://plotly.com/r/), it is very easy to produce high quality graphics in base `R`.
+
+Let us consider the dataset `diet` in the `R` package `idar` and create the variable `weight_loss`.
+
+```R 
+library(idar)
+data(diet)
+diet$weight_loss = diet$final.weight - diet$initial.weight
+```
+
+Consider now that you want to plot the distribution of the variable `weight_loss` using a [boxplot](https://en.wikipedia.org/wiki/Box_plot). You can produce a boxplot of the variable with:
+
+```
+boxplot(diet$weight_loss, main="Distribution of weight loss")
+```
+
+<div style="text-align:center"><img src="weight_loss.png"" alt=" " width="70%"> </div>
+
+
+Similarly, you can produce an histogram of the variable with:
+
+```
+hist(diet$weight_loss, main="Distribution of weight loss", xlab="")
+```
+
+<div style="text-align:center"><img src="hist_weight.png"" alt=" " width="70%"> </div>
+
+Consider now that you would like to produce a simple line graph presenting the function \\(f(x)\\) between \\(-3\\) and \\(3\\). 
+
+\\(f(x) = x\sin(1/x)\\)
+
+You can produce such a graph by first generating the range of value for \\(x\\):
+
+```
+x = seq(-2, 2, by=0.01)
+```
+
+Then generating the corresponding \\(f(x) = y =  x\sin(1/x) \\):
+
+```
+y=x *sin(1/x)
+```
+
+and then using the function `plot()`:
+
+```
+plot(x, y, type="l")
+```
+
+<div style="text-align:center"><img src="f1.png"" alt=" " width="70%"> </div>
+
+
 </exercise>
