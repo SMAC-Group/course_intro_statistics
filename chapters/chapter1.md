@@ -175,6 +175,10 @@ which will return, when executed:
 [1] TRUE
 ```
 
+# Exercise
+
+### Exercise 1
+
 Try the following commands on your console and be sure to understand how they operate and what they
 return.
 
@@ -192,11 +196,18 @@ a > b
 a < b
 a %% 2
 a %/% 2
-d = TRUE
-e = NA
-d == TRUE
-d == e
 ```
+
+### Exercise 2
+
+Define the object `val_1` as `TRUE`, `val_2` as `FALSE` and `val_3` as `NA`. Test equality between objects `val_1` and `val_2` and between `val_2` and `val_3`. What do you conclude on comparison between objects that are equals to `NA`?
+
+<codeblock id="chap_intro_r_logical_1">
+
+
+</codeblock>
+
+
 
 </exercise>
 
@@ -337,10 +348,37 @@ det(A)
 t(A)
 ```
 
+# Exercise
+
+### Exercise 1
+
+Create a vector with the first five lower-case letters of the alphabet. Extract the 4th element.
+
+
+<codeblock id="chap_intro_r_vector_1">
+
+</codeblock>
+
+### Exercise 2
+
+Create a [Toeplitz matrix](https://en.wikipedia.org/wiki/Toeplitz_matrix) where the first row of the matrix correspond to the vector \\(\[1,2,3,4\]\\)
+
+<codeblock id="chap_intro_r_matrix_1">
+
+Note that the general form of a n by n Toeplitz matrix is:
+
+<div style="text-align:center"><img src="toeplitz_mat.png"" alt=" " width="70%"> </div>
+
+</codeblock>
+
+
+
 </exercise>
 
 
 <exercise id="4" title="Working with data.frame">
+
+## Basic operations
 
 A `data.frame` is the most common way of storing data in `R` and, generally, is the data structure most often used for data analyses. A `data.frame` structure <b>features</b> associated with <b>observations</b> in a tabular format.
 
@@ -403,6 +441,87 @@ Similarly, consider that you want to add a new column `bmi` which is equal to th
 df$bmi = df$weight / (df$height / 100)^2
 ```
 
+# Subsetting operations
+
+You can perform conditional subsetting operations on `data.frame`
+
+Let us consider the dataset `diet` in the `R` package `idar`
+
+```R
+library(idar)
+data(diet)
+```
+
+Consider that you want to extract only Male subject from the study. You can subset the dataframe as such:
+
+```R
+diet_sub = diet[diet$gender=="Male", ]
+```
+
+You can then count the number of Male in the study with:
+
+```R
+dim(diet_sub)[1]
+```
+
+```out
+[1] 33
+```
+
+Similarly, if you want to extract only the male subjects who followed diet A, then you can run the following code:
+
+```R
+diet_sub_2= diet[diet$gender=="Male" & diet$diet.type=="A", ]
+diet_sub_2
+``` 
+
+```out
+   id gender age height diet.type initial.weight final.weight
+44 15   Male  39    168         A             71         71.6
+45 16   Male  31    158         A             72         70.9
+46 17   Male  40    173         A             74         69.5
+47 18   Male  50    160         A             78         73.9
+48 19   Male  43    162         A             80         71.0
+49 20   Male  25    165         A             80         77.6
+50 21   Male  52    177         A             83         79.1
+51 22   Male  42    166         A             85         81.5
+52 23   Male  39    166         A             87         81.9
+53 24   Male  40    190         A             88         84.5
+```
+
+
+## Exercise
+
+### Exercise 1
+
+Load the `diet` dataset from the `idar` `R` package and extract subjects with an `initial.weight` smaller or equal to 70.
+
+<codeblock id="chap_intro_r_diet_2">
+
+
+</codeblock>
+
+### Exercise 2
+
+Load the `diet` dataset from the `idar` `R` package and extract female subjects that followed diet B.
+
+<codeblock id="chap_intro_r_diet_1">
+
+
+</codeblock>
+
+
+### Exercise 3
+
+Load the `diet` dataset from the `idar` `R` package and extract female subjects that followed either diet B or C and with a final weight below 65.
+
+<codeblock id="chap_intro_r_diet_3">
+
+
+</codeblock>
+
+
+
 
 
 </exercise>
@@ -460,5 +579,11 @@ plot(x, y, type="l")
 
 <div style="text-align:center"><img src="f1.png"" alt=" " width="70%"> </div>
 
+
+</exercise>
+
+
+
+<exercise id="6" title="Using the AI helper">
 
 </exercise>
