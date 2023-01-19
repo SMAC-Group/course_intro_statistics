@@ -586,4 +586,31 @@ plot(x, y, type="l")
 
 <exercise id="6" title="Using the AI helper">
 
+The objective of this course is not to develop your ability to script R code but rather to introduce you to the statistical methods typically used in a pharmaceutical science context and to allow you to learn which method to use depending on your research questions and data. Thus, we have developed an application allowing you to use the latest advances in terms of artificial intelligence to generate `R` code according to the procedures you want to produce. 
+
+More precisely, this application is based on the latest [openAI](https://openai.com/) models and allows you to describe statistical procedures in natural language and generate R code producing the described analysis. Please note that there is no guarantee for the generated code, but we have observed that most of the generated code chunks are generally error free and produce the described analysis. We invite you to use this application to focus on understanding statistical methods and their application rather than on writing R code.
+
+# Downloading and running the AI helper
+
+## Online access
+You can access the AI helper directly here. 
+
+## Local access
+If you notice that the online application is slow due to the number of users, we invite you to download the application directly to your computer and run it locally.
+
+To do so, install the application directly from GitHub with:
+
+```R
+install.packages("devtools")
+devtools::install_github("https://github.com/stephaneguerrier/ai_helper_pharma")
+```
+You can then easily run the app locally with:
+
+```R
+library(helper)
+run_app()
+``` 
+
+
+
 </exercise>
