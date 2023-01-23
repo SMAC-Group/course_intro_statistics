@@ -1,5 +1,5 @@
 ---
-title: 'Chapter 3: Linear Regression'
+title: 'Chapter 4: Linear Regression'
 description:
   ''
 prev: /chapter3

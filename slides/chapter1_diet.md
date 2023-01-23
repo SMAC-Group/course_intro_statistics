@@ -8,7 +8,7 @@ type: slides
 
 # Getting the data
 
-In this set of slides we will replicate the `diet` data analysis presented in the lectures slides. Our first step is to download the data which are available in the `idar` R package. Assuming that this package is installed (if not please refer to Section 1 of this chapter), we can load the data as follows:
+In this set of slides we will replicate the `diet` data analysis presented in the lectures slides. Our first step is to download the data which are available in the `idar` `R` package. Assuming that this package is installed (if not please refer to Chapter 1), we can load the data as follows:
 
 ```r
 # Import data
@@ -99,7 +99,7 @@ abline(v = 0)
 
 ---
 
-# Testing Diet B effectiveness 
+# Testing diet B effectiveness 
 
 Suppose that we wish to assess how well diet B is working. One possible method is to use a t-test based on the hypotheses
 
@@ -148,7 +148,7 @@ which shows that we can expect a mean weight loss for diet B between 2.25 Kg and
 
 ---
 
-As previously mentioned, the t-test is valid under strict parametric assumptions (e.g. normal distribution). While there are no perfect way to check these assumptions, we create a simple function allowing to visually assess how close some data are to a normal distribution. 
+As previously mentioned, the t-test is valid under strict parametric assumptions (e.g. normal distribution). While there are no perfect ways to check these assumptions, we create a simple function allowing to visually assess how close some data are to a normal distribution. 
 
 This function available in `idar` is called `hist_compare_to_normal` and allows to compare the empirical distribution of the data to its theoretical normal distribution. The theoretical distribution is also estimated in a robust fashion (which is less influenced by outliers). 
 

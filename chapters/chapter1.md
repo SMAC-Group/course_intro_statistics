@@ -12,7 +12,7 @@ id: 1
 
 ## Installing `R`
 
-This course will make use of the `R` programming language. The `R` language is a programming language for statistical computing and graphics supported by the R Core Team and the [`R` Foundation for Statistical Computing](https://www.r-project.org/). `R` is widely used by data scientists, data miners and statisticians for data analysis and developing statistical software. 
+This course will make use of the `R` programming language. The `R` language is a programming language for statistical computing and graphics supported by the `R` Core Team and the [`R` Foundation for Statistical Computing](https://www.r-project.org/). `R` is widely used by data scientists, data miners and statisticians for data analysis and developing statistical software. 
 
 ### Installing `R` on macOS
 
@@ -29,7 +29,7 @@ To install `R` on Ubuntu Linux, follow the procedure detailed [here](https://cra
 
 ## Installing `RStudio`
 
-RStudio is an Integrated Development Environment (IDE) for R. An IDE is a software application that provides comprehensive facilities to computer programmers for software development. An IDE normally consists of at least a source code editor, build automation tools and a debugger. We will be using RStudio Desktop throughout the semester. Please install it from the [RStudio’s official webpage](https://www.rstudio.com/).
+`RStudio` is an Integrated Development Environment (IDE) for `R`. An IDE is a software application that provides comprehensive facilities to computer programmers for software development. An IDE normally consists of at least a source code editor, build automation tools and a debugger. We will be using `RStudio` Desktop throughout the semester. Please install it from the [RStudio’s official webpage](https://www.rstudio.com/).
 
 
 ### Installing `RStudio` on macOS
@@ -38,11 +38,11 @@ To install `RStudio` on macOS, download the macOS `.dmg` installer on the [RStud
 
 ### Installing `RStudio` on Windows
 
-To install `RStudio` on Windows, download the Windows `.exe` installer the [RStudio’s products page](https://www.rstudio.com/products/rstudio/download/) and execute it once downloaded.
+To install `RStudio` on Windows, download the Windows `.exe` installer on the [RStudio’s products page](https://www.rstudio.com/products/rstudio/download/) and execute it once downloaded.
 
 ### Installing `RStudio` in Ubuntu Linux
 
-To install `RStudio` on Ubuntu Linux, download the Ubuntu/Debian `.deb` installer the [RStudio’s products page](https://www.rstudio.com/products/rstudio/download/). You can then install the `.deb` file.
+To install `RStudio` on Ubuntu Linux, download the Ubuntu/Debian `.deb` installer on the [RStudio’s products page](https://www.rstudio.com/products/rstudio/download/). You can then install the `.deb` file.
 
 ## Installing `R` package `idar` 
 
@@ -71,7 +71,7 @@ If you are on Windows, go to the [R for Windows Build Tools Archive](https://cra
 
 If you are on macOS, go to the [Mac Apple Store](https://apps.apple.com/us/app/xcode/id497799835?mt=12) and install the latest `Xcode` version that your installation support. 
 
-You should then be able to install devtools by running the following command in `R`: 
+You should then be able to install `devtools` by running the following command in `R`: 
 
 ```R
 install.packages("devtools")
@@ -101,7 +101,7 @@ You should see something like:
 * DONE (idar)
 ```
 
-To test if the package is correctly installed you can simply run
+To test if the package is correctly installed you can simply run:
 
 ```r
 library(idar)
@@ -117,7 +117,7 @@ If you see no error, which means an output like this when the previous command i
 
 then the package is correctly installed! Congratulations!
 
-Below is a gif illustrating the installation of the `idar` `R` package:
+Below is a GIF illustrating the installation of the `idar` `R` package:
 
 <center>
 
@@ -216,7 +216,7 @@ Define the object `val_1` as `TRUE`, `val_2` as `FALSE` and `val_3` as `NA`. Tes
 <exercise id="3" title="Working with vectors and matrices">
 
 
-You can easily create vectors and matrices in `R` and performs vectors and/or matrices computations.
+You can easily create vectors and matrices in `R` and perform vectors and/or matrices computations.
 
 ## Vectors
 
@@ -290,7 +290,7 @@ b= c(1,2,3,4)
 b * 2
 ``` 
 
-returns:
+which returns:
 
 ```out
 [1]  2  4  6  8
@@ -380,7 +380,7 @@ Note that the general form of a n by n Toeplitz matrix is:
 
 ## Basic operations
 
-A `data.frame` is the most common way of storing data in `R` and, generally, is the data structure most often used for data analyses. A `data.frame` structure <b>features</b> associated with <b>observations</b> in a tabular format.
+A `data.frame` is the most common way of storing data in `R` and, generally, is the data structure most often used for data analyses. A `data.frame` organizes <b>features</b> (or <b>variables</b>) associated with <b>observations</b> in a tabular format.
 
 One can create a `data.frame` using the function `data.frame()`. For example, let us create a `data.frame` of students where for each students is recorded their name, their age, their weight (in kg), their height (in cm) and their favorite sport.
 
@@ -394,13 +394,13 @@ df = data.frame("name" = c("Florian", "Kevin", "Sadri", "Caroline"),
 
 As it can be observed, a `data.frame` is created by combining vectors of equal length. 
 
-One can inspect the structure of the `data.frame` with the function `str()`.
+One can inspect the structure of the `data.frame` with the function `str()`, 
 
 ```R
 str(df)
 ```
 
-returns:
+which returns:
 
 ```out
 'data.frame':	4 obs. of  5 variables:
@@ -586,9 +586,9 @@ plot(x, y, type="l")
 
 <exercise id="6" title="Using the AI helper">
 
-The objective of this course is not to develop your ability to script R code but rather to introduce you to the statistical methods typically used in a pharmaceutical science context and to allow you to learn which method to use depending on your research questions and data. Thus, we have developed an application allowing you to use the latest advances in terms of artificial intelligence to generate `R` code according to the procedures you want to produce. 
+The objective of this course is not to develop your ability to script `R` code but rather to introduce you to the statistical methods typically used in a pharmaceutical science context and to allow you to learn which method to use depending on your research questions and data. Thus, we have developed an application allowing you to use the latest advances in terms of artificial intelligence to generate `R` code according to the procedures you want to produce. 
 
-More precisely, this application is based on the latest [openAI](https://openai.com/) models and allows you to describe statistical procedures in natural language and generate R code producing the described analysis. Please note that there is no guarantee for the generated code, but we have observed that most of the generated code chunks are generally error free and produce the described analysis. We invite you to use this application to focus on understanding statistical methods and their application rather than on writing R code.
+More precisely, this application is based on the latest [openAI](https://openai.com/) models and allows you to describe statistical procedures in natural language and generate `R` code producing the described analysis. Please note that there is no guarantee for the generated code, but we have observed that most of the generated code chunks are generally error free and produce the described analysis. We invite you to use this application to focus on understanding statistical methods and their application rather than on writing`R`code.
 
 # Downloading and running the AI helper
 

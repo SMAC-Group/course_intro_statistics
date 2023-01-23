@@ -282,7 +282,7 @@ boxplot_w_points(monday, tuesday, wednesday, thursday,
                  horizontal = TRUE)
 ```
 
-<div style="text-align:center"><img src="chap2_pharma_1.png" alt=" " width="90%"></div>
+<div style="text-align:center"><img src="customers_per_hour.png" alt=" " width="90%"></div>
 
 So instead, in this case we prefer to use the default `R` function `boxplot` which can be used as follows:
 
