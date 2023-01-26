@@ -13,7 +13,7 @@ presented in the lectures slides, and we will compare diets A and B. Our first s
 
 ```r
 # Import data
-library(idar) 
+library(idarps) 
 data(diet)
 ```
 
