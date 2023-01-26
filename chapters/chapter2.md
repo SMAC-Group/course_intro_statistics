@@ -182,7 +182,7 @@ length of stay (in days) of the patients. Our goal is to conduct
 an analysis to assess if it can be concluded that the average length of stay is longer than 10 days. To analyze the data, we start loading the data as follows: 
 
 ```r
-library(idar)
+library(idarps)
 data(codex)
 ```
 
@@ -242,7 +242,7 @@ We consider data from [Parisi et al., (2021)](https://jeccm.amegroups.com/articl
 The data can be obtained as follows:
 
 ```r
-library(idar)
+library(idarps)
 data(covid)
 
 # SpO2

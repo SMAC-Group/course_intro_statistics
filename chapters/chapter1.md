@@ -8,7 +8,7 @@ type: chapter
 id: 1
 ---
 
-<exercise id="1" title="Installing R, RStudio, Rtools/Xcode and idar">
+<exercise id="1" title="Installing R, RStudio, Rtools/Xcode and idarps">
 
 ## Installing `R`
 
@@ -44,9 +44,9 @@ To install `RStudio` on Windows, download the Windows `.exe` installer on the [R
 
 To install `RStudio` on Ubuntu Linux, download the Ubuntu/Debian `.deb` installer on the [RStudio’s products page](https://www.rstudio.com/products/rstudio/download/). You can then install the `.deb` file.
 
-## Installing `R` package `idar` 
+## Installing `R` package `idarps` 
 
-We have developed an `R` package for this class which is called `idar` (which stands for Introduction to Data Analytics with `R`, `idar`). In order to install the `idar` package, you will have to first install the tools required to install `idar` directly from its [GitHub repository](https://github.com/SMAC-Group/idar).
+We have developed an `R` package for this class which is called `idarps` (which stands for Introduction to Data Analytics with `R` for Pharmaceutical Sciences, `idarps`). In order to install the `idarps` package, you will have to first install the tools required to install `idarps` directly from its [GitHub repository](https://github.com/SMAC-Group/idarps).
 
 To do so, you will first need to install a `C++` compiler in your installation. The steps to do so are the following:
 
@@ -86,10 +86,10 @@ Make sure that the installation succeeded by looking at the last lines of the lo
 * DONE (devtools)
 ```
 
-Once this is done, you can install the `idar` package with:
+Once this is done, you can install the `idarps` package with:
 
 ```r
-devtools::install_github("https://github.com/SMAC-Group/idar")
+devtools::install_github("https://github.com/SMAC-Group/idarps")
 ```
 
 You should see something like:
@@ -98,26 +98,26 @@ You should see something like:
 ...
 ** testing if installed package can be loaded from final location
 ** testing if installed package keeps a record of temporary installation path
-* DONE (idar)
+* DONE (idarps)
 ```
 
 To test if the package is correctly installed you can simply run:
 
 ```r
-library(idar)
+library(idarps)
 ```
 
 If you see no error, which means an output like this when the previous command is run:
 
 
 ```out
-> library(idar)
+> library(idarps)
 > 
 ```
 
 then the package is correctly installed! Congratulations!
 
-Below is a GIF illustrating the installation of the `idar` `R` package:
+Below is a GIF illustrating the installation of the `idarps` `R` package:
 
 <center>
 
@@ -445,10 +445,10 @@ df$bmi = df$weight / (df$height / 100)^2
 
 You can perform conditional subsetting operations on `data.frame`
 
-Let us consider the dataset `diet` in the `R` package `idar`
+Let us consider the dataset `diet` in the `R` package `idarps`
 
 ```R
-library(idar)
+library(idarps)
 data(diet)
 ```
 
@@ -494,7 +494,7 @@ diet_sub_2
 
 ### Exercise 1
 
-Load the `diet` dataset from the `idar` `R` package and extract subjects with an `initial.weight` smaller or equal to 70.
+Load the `diet` dataset from the `idarps` `R` package and extract subjects with an `initial.weight` smaller or equal to 70.
 
 <codeblock id="chap_intro_r_diet_2">
 
@@ -503,7 +503,7 @@ Load the `diet` dataset from the `idar` `R` package and extract subjects with an
 
 ### Exercise 2
 
-Load the `diet` dataset from the `idar` `R` package and extract female subjects that followed diet B.
+Load the `diet` dataset from the `idarps` `R` package and extract female subjects that followed diet B.
 
 <codeblock id="chap_intro_r_diet_1">
 
@@ -513,7 +513,7 @@ Load the `diet` dataset from the `idar` `R` package and extract female subjects 
 
 ### Exercise 3
 
-Load the `diet` dataset from the `idar` `R` package and extract female subjects that followed either diet B or C and with a final weight below 65.
+Load the `diet` dataset from the `idarps` `R` package and extract female subjects that followed either diet B or C and with a final weight below 65.
 
 <codeblock id="chap_intro_r_diet_3">
 
@@ -530,10 +530,10 @@ Load the `diet` dataset from the `idar` `R` package and extract female subjects 
 
 One advantage of working with `R` when performing data analysis is that `R` provides great data visualization capabilities. Indeed, in addition to multiple graphics libraries such as [`ggplot2`](https://ggplot2.tidyverse.org/) or [`plotly`](https://plotly.com/r/), it is very easy to produce high quality graphics in base `R`.
 
-Let us consider the dataset `diet` in the `R` package `idar` and create the variable `weight_loss`.
+Let us consider the dataset `diet` in the `R` package `idarps` and create the variable `weight_loss`.
 
 ```R 
-library(idar)
+library(idarps)
 data(diet)
 diet$weight_loss = diet$final.weight - diet$initial.weight
 ```

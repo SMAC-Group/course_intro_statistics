@@ -203,7 +203,7 @@ Next, we wish to visualize the empirical distribution of the data in order to se
 
 <codeblock id="chap2_covid2">
 
-Which function in the `idar` R package allows to construct boxplots of two groups?
+Which function in the `idarps` R package allows to construct boxplots of two groups?
 
 </codeblock>
 
@@ -259,7 +259,7 @@ We start by importing the data and creating the variables of interest:
 
 ```r
 # Load data
-library(idar)
+library(idarps)
 data("pharmacy")
 
 # Construct attendance by day
@@ -335,7 +335,7 @@ We consider data from Abouir, et al., (2022) which is an observational study con
 To perform the analysis we will need to construct the different groups we wish to compare. We can use the following code:
 
 ```r
-library(idar)
+library(idarps)
 data(codex)
 
 Cmax_men = codex$cmax[codex$gender == 0]

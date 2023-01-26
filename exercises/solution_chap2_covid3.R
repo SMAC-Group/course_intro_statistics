@@ -1,4 +1,4 @@
-library(idar)
+library(idarps)
 data(covid)
 
 # Extract the variable SpO2

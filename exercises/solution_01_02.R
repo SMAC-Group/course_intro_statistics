@@ -1,5 +1,5 @@
 # load data and libraries
-library(idar)
+library(idarps)
 data(diet)
 
 # Compute weight loss

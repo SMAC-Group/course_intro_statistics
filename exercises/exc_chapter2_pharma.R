@@ -1,5 +1,5 @@
 # Load data
-library(idar)
+library(idarps)
 data("pharmacy")
 
 # Construct attendance by day

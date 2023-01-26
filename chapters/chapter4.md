@@ -246,7 +246,7 @@ Finally, the scientists notice that our data consider the same subject several t
 In this exercise, we will consider the data from Abouir, et al. (2022), which is an observational study conducted at Geneva University Hospitals to assess the impact of weight on the pharmacokinetics of dexamethasone in normal-weight versus obese patients hospitalized for COVID-19. The data can be loaded as follows:
 
 ```r
-library(idar)
+library(idarps)
 data("codex")
 ```
 
@@ -478,10 +478,10 @@ is this telling us?</p>
 
 <exercise id="9" title="Homework">
 
-We consider synthetic data based on Charepalli et al. (2018) where the impact on important biomarkers of different diets was studied. One of the experiments was conducted on pigs which were divided into two treatment groups, "C" and "NC", corresponding to two dietary compositions. The first group "C" contains 20% of deep fried potatoes (i.e. chips) while this is not the case in the group "NC" which doesn't contain any fried food. Caloric intake was measured weekly until the end of the study. The objective of our study is to evaluate the possible link existing between fried food consumption and its effects on inflammatory response. For this purpose, we will model the logarithm of the cortisol levels (in pg/mg) as a function of other variables (e.g. diet, caloric intake and so on). You can load the data as follows (make sure to update `idar`):
+We consider synthetic data based on Charepalli et al. (2018) where the impact on important biomarkers of different diets was studied. One of the experiments was conducted on pigs which were divided into two treatment groups, "C" and "NC", corresponding to two dietary compositions. The first group "C" contains 20% of deep fried potatoes (i.e. chips) while this is not the case in the group "NC" which doesn't contain any fried food. Caloric intake was measured weekly until the end of the study. The objective of our study is to evaluate the possible link existing between fried food consumption and its effects on inflammatory response. For this purpose, we will model the logarithm of the cortisol levels (in pg/mg) as a function of other variables (e.g. diet, caloric intake and so on). You can load the data as follows (make sure to update `idarps`):
 
 ```r
-library(idar)
+library(idarps)
 data("cortisol")
 
 # Log transform
@@ -586,7 +586,7 @@ Scientist B thinks that this is a better model leading to different conclusions.
 In this problem, we will consider the data from Can, et al., (2022). If you would like to know about the context of this study, here is the [reference](https://www.nature.com/articles/s42003-021-02978-2). You can load the data considered in one part of this study as follows:
 
 ```{r}
-library(idar)
+library(idarps)
 data("HP13Cbicarbonate")
 ```
 

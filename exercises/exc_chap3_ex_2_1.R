@@ -1,4 +1,4 @@
-library(idar)
+library(idarps)
 data("codex")
 codex$log_cmax = ____(codex$___)
 mod = lm(log_cmax ~ ____ + bmi, data = codex)
