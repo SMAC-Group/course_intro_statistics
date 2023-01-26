@@ -1,4 +1,4 @@
-library(idar)
+library(idarps)
 data(covid)
 
 # SpO2

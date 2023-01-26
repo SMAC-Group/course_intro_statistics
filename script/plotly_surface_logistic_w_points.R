@@ -7,7 +7,7 @@ library(reshape2)
 library(htmlwidgets)
 
 # fit model bronchitis
-library(idar)
+library(idarps)
 data("bronchitis")
 mod2 = glm(bron ~ cigs + poll, data = bronchitis, family = binomial())
 summary(mod2)

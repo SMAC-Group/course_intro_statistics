@@ -22,7 +22,7 @@ t.test(dietA, dietB, alternative = "two.sided")
 # Exercise:
 
 # Import data
-library(idar) 
+library(idarps) 
 data(diet)
 
 # Compute weight loss

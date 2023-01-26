@@ -1,4 +1,4 @@
-library(idar)
+library(idarps)
 data(bronchitis)
 mod2 = glm(bron ~ cigs + poll, data = bronchitis, family = binomial())
 
