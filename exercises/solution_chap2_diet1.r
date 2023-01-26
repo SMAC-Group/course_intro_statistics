@@ -1,5 +1,5 @@
 # Import data
-library(idar) 
+library(idarps) 
 data(diet)
 
 # Compute weight loss

@@ -21,7 +21,7 @@ We start by importing the data as presented in the lecture slides.
 
 ```r
 # Import data and compute weight loss
-library(idar)
+library(idarps)
 data(diet)
 diet$weight.loss = diet$initial.weight - diet$final.weight
 
