@@ -12,7 +12,7 @@ In this set of slides we will replicate the `diet` data analysis presented in th
 
 ```r
 # Import data
-library(idar) 
+library(idarps) 
 data(diet)
 ```
 
