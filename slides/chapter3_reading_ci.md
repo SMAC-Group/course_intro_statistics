@@ -18,7 +18,7 @@ In the previous section, we saw that the third model appears to be the most adeq
 which corresponds to the expected (or average) score for a child of a certain age in a certain group. But how certain are we about this expected score? To answer this question, we can compute confidence intervals (typically at the 95% confidence level) for our predicted scores. This can be done very similarly to what we did before using the function `predict`. First, we recall how the third model is estimated:
 
 ```r
-library(idar)
+library(idarps)
 data(reading)
 reading$age_minus_6 = age_minus_6
 mod3 = lm(score ~ age_minus_6 + group:age_minus_6, data = reading)

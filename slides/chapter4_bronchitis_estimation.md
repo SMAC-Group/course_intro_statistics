@@ -8,7 +8,7 @@ type: slides
 
 # Getting the data
 
-In this set of slides, we will replicate the analysis of `bronchitis` dataset presented in the lecture slides. As always, our first step is to load the data which is available in the `idar` R package. Assuming that this package is installed (if not, please refer to Section 1 of Chapter 1), we can load the data as follows:
+In this set of slides, we will replicate the analysis of `bronchitis` dataset presented in the lecture slides. As always, our first step is to load the data which is available in the `idarps` R package. Assuming that this package is installed (if not, please refer to Section 1 of Chapter 1), we can load the data as follows:
 
 ```r
 library(idarps)

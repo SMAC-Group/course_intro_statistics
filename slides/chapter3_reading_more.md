@@ -38,11 +38,11 @@ To plot the data, we can use the function `plot` as follows:
 ---
 
 In this set of slides, we will replicate the analysis of `reading` dataset
-presented in the lectures slides. Our first step is to load the data which is available in the `idar` R package. Assuming that this package is installed (if not, please refer to Section 1 of Chapter 1), we can load the data as follows:
+presented in the lectures slides. Our first step is to load the data which is available in the `idarps` R package. Assuming that this package is installed (if not, please refer to Section 1 of Chapter 1), we can load the data as follows:
 
 ```r
 # Import data
-library(idar) 
+library(idarps) 
 data(reading)
 ```
 
@@ -258,7 +258,7 @@ F-statistic:   173 on 2 and 57 DF,  p-value: < 2.2e-16
 
 ```r
 # Load data
-library(idar)
+library(idarps)
 data(reading)
 
 # Html colors

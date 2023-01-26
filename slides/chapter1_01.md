@@ -23,7 +23,7 @@ In this set of slides we will continue to use the `diet` data to explain how can
 
 ```r
 # Import data
-library(idar)
+library(idarps)
 data(diet)
 ```
 We can have an overview for the data using the function `names` to see which variables included in the data set.

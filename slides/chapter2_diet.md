@@ -9,7 +9,7 @@ type: slides
 # Getting the data
 
 In this set of slides, we will replicate the `diet` data analysis example
-presented in the lectures slides, and we will compare diets A and B. Our first step is to load the data which is available in the `idar` R package. Assuming that this package is installed (if not, please refer to Chapter 1), we can load the data as follows:
+presented in the lectures slides, and we will compare diets A and B. Our first step is to load the data which is available in the `idarps` R package. Assuming that this package is installed (if not, please refer to Chapter 1), we can load the data as follows:
 
 ```r
 # Import data
