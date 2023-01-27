@@ -6,7 +6,7 @@ output: html_document
 In this homework, we consider data from Parisi, et al., (2021) to assess the validity of several claims. Our first step is to import the data which can be done as follows:
 
 ```{r}
-library(idar)
+library(idarps)
 data(covid)
 
 # SpO2

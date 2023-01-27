@@ -39,7 +39,7 @@ abline(v = 0)
 wilcox.test(dietA, dietC, alternative = "less")
 
 # Part II
-library(idar)
+library(idarps)
 
 diet$weight.loss = diet$initial.weight - diet$final.weight
 # Variable of interest

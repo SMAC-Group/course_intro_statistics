@@ -6,7 +6,7 @@ output: html_document
 We start by considering the model postulated by Scientist A:
 
 ```{r}
-library(idar)
+library(idarps)
 data("cortisol")
 
 # Log transform
