@@ -6,7 +6,7 @@ output: html_document
 In this homework, we wish to investigate Abouir, et al., (2022) to assess the validity of several claims. First of all, we need to select the observations for different analysis.
 
 ```{r}
-library(idar)
+library(idarps)
 data(codex)
 
 # Cmax

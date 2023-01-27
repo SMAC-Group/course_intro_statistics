@@ -28,7 +28,7 @@ actually somewhat disappointing!
 We should first check if there is significant difference in the location of `bill_length_mm` for all species. If so, then we should test in pairs to compare the location of `bill_length_mm` between each pair of species.
 </codeblock>
 
-### 2) Load the package `idar` and the dataset `cortisol` with `data(cortisol)`. Consider the variable `Urine Cortisol (pg/mg)` and represent the variable graphically. Consider that you would like to test if there is evidence of a difference in the means of the variable `Urine Cortisol (pg/mg)` between the groups `C` and `NC`. Perform the adapted test given the distribution of the variable and interpret the result.
+### 2) Load the package `idarps` and the dataset `cortisol` with `data(cortisol)`. Consider the variable `Urine Cortisol (pg/mg)` and represent the variable graphically. Consider that you would like to test if there is evidence of a difference in the means of the variable `Urine Cortisol (pg/mg)` between the groups `C` and `NC`. Perform the adapted test given the distribution of the variable and interpret the result.
 
 
 <codeblock id="02_01">
@@ -63,7 +63,7 @@ Check the distribution and the variance of the variable `Urine Cortisol (pg/mg)`
 </opt>
 </choice>
 
-### 1) We saw previously, that diet B (in the dataset `diet` of the `idar` package) was effective in reducing the weights of the participents. Is it also the case when only the women in the study are considered? Complete the code below and comment on the results.
+### 1) We saw previously, that diet B (in the dataset `diet` of the `idarps` package) was effective in reducing the weights of the participents. Is it also the case when only the women in the study are considered? Complete the code below and comment on the results.
 
 <codeblock id="01_02">
 
