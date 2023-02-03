@@ -46,7 +46,30 @@ To install `RStudio` on Ubuntu Linux, download the Ubuntu/Debian `.deb` installe
 
 ## Installing `R` package `idarps` 
 
-We have developed an `R` package for this class which is called `idarps` (which stands for Introduction to Data Analytics with `R` for Pharmaceutical Sciences, `idarps`). In order to install the `idarps` package, you will have to first install the tools required to install `idarps` directly from its [GitHub repository](https://github.com/SMAC-Group/idarps).
+We have developed an `R` package for this class which is called `idarps` (which stands for Introduction to Data Analytics with `R` for Pharmaceutical Sciences, `idarps`). 
+
+
+### Installation from CRAN
+
+You can download the `idarps` package directly from [The Comprehensive R Archive Network (CRAN)](https://cran.r-project.org/) by executing the following `R` instruction:
+
+```R
+install.packages("idarps")
+```
+
+Make sure that package is correctly installed by looking at the installation logs. You should see something like:
+
+
+```out
+...
+** testing if installed package can be loaded from final location
+** testing if installed package keeps a record of temporary installation path
+* DONE (idarps)
+```
+
+### Installation of the development version from GitHub
+
+In order to install the `idarps` package, you will have to first install the tools required to install `idarps` directly from its [GitHub repository](https://github.com/SMAC-Group/idarps).
 
 To do so, you will first need to install a `C++` compiler in your installation. The steps to do so are the following:
 
@@ -62,12 +85,12 @@ You should obtain an output similar to:
 [1] "R version 4.1.3 (2022-03-10)"
 ```
 
-### Installing `Rtools` on Windows
+#### Installing `Rtools` on Windows
 
 If you are on Windows, go to the [R for Windows Build Tools Archive](https://cran.r-project.org/bin/windows/Rtools/history.html) and install the correct `Rtools` version depending on your `R` version by downloading the `.exe` file and executing it.
 
 
-### Installing `Xcode` on macOS
+#### Installing `Xcode` on macOS
 
 If you are on macOS, go to the [Mac Apple Store](https://apps.apple.com/us/app/xcode/id497799835?mt=12) and install the latest `Xcode` version that your installation support. 
 
@@ -588,28 +611,22 @@ plot(x, y, type="l")
 
 The objective of this course is not to develop your ability to script `R` code but rather to introduce you to the statistical methods typically used in a pharmaceutical science context and to allow you to learn which method to use depending on your research questions and data. Thus, we have developed an application allowing you to use the latest advances in terms of artificial intelligence to generate `R` code according to the procedures you want to produce. 
 
-More precisely, this application is based on the latest [openAI](https://openai.com/) models and allows you to describe statistical procedures in natural language and generate `R` code producing the described analysis. Please note that there is no guarantee for the generated code, but we have observed that most of the generated code chunks are generally error free and produce the described analysis. We invite you to use this application to focus on understanding statistical methods and their application rather than on writing`R`code.
+More precisely, this application is based on the latest [openAI](https://openai.com/) [deep learning models](https://platform.openai.com/docs/models/overview) and allows you to describe statistical procedures in natural language (English or French) and generate `R` code producing the described analysis. Please note that there is no guarantee for the generated code, but we have observed that most of the generated code chunks are generally error free and produce the described analysis. We invite you to use this application to focus on understanding statistical methods and their application rather than on writing`R`code.
 
-# Downloading and running the AI helper
+# Using the Data Analysis AI Helper
 
 ## Online access
-You can access the AI helper directly here. 
 
-## Local access
-If you notice that the online application is slow due to the number of users, we invite you to download the application directly to your computer and run it locally.
+You can access the web application directly [here](https://data-analytics-lab.shinyapps.io/ai-helper-pharma).
 
-To do so, install the application directly from GitHub with:
+Below is a GIF illustrating the usage of the Data Analysis AI Helper web application:
 
-```R
-install.packages("devtools")
-devtools::install_github("https://github.com/stephaneguerrier/ai_helper_pharma")
-```
-You can then easily run the app locally with:
+<center>
 
-```R
-library(helper)
-run_app()
-``` 
+![](gif_usage_helper.gif)
+
+</center>
+
 
 
 
