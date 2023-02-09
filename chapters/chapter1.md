@@ -152,27 +152,27 @@ Below is a GIF which illustrates the installation of the `idarps` package:
 
 <exercise id="2" title="Basic arithmetic and logical computations">
 
-`R` can be used for arithmetic and logical computations. `R` provides the following standard arithmetic operators:
+`R` can be used for arithmetic and logical computations. It provides the following standard arithmetic operators:
 
 <div style="text-align:center"><img src="arithmetic_op.png" alt=" " width="70%"> </div>
 
-For example, if you want to compute the following expression: \\(6\times3 + \frac{3^2}{2} +2 \\), you can execute the following command:
+For example, if you want to compute the following expression: \\(6\times3 + \frac{3^2}{2} +2 \\), you can run the following command:
 
 ```R
-6*3 + 3^2/2 + 1
+6*3 + 3^2/2 + 2
 ``` 
 
-which will return, when executed:
+which will return:
 
 ```out
-[1] 23.5
+[1] 24.5
 ``` 
 
 Similarly, `R` provides the following standard logical operators:
 
 <div style="text-align:center"><img src="logical_op.png" alt=" " width="70%"> </div>
 
-For example, if you want to compare two numbers, say \\(9\\) and \\(12\\), you could run the following code:
+For example, if you want to compare two numbers, say \\(9\\) and \\(12\\), you can run the following command:
 
 
 ```R
@@ -183,7 +183,7 @@ a == b
 a < b
 ```
 
-which will return, when executed:
+which will return:
 
 ```
 > a = 9
@@ -196,7 +196,7 @@ which will return, when executed:
 [1] TRUE
 ```
 
-# Exercise
+# Exercises
 
 ### Exercise 1
 
@@ -221,7 +221,7 @@ a %/% 2
 
 ### Exercise 2
 
-Define the object `val_1` as `TRUE`, `val_2` as `FALSE` and `val_3` as `NA`. Test equality between objects `val_1` and `val_2` and between `val_2` and `val_3`. What do you conclude on comparison between objects that are equals to `NA`?
+Define the object `val_1` as `TRUE`, `val_2` as `FALSE` and `val_3` as `NA`. Test equality between `val_1` and `val_2`, and between `val_2` and `val_3`. What can you conclude on the comparison between objects one of which is equal to `NA`?
 
 <codeblock id="chap_intro_r_logical_1">
 
@@ -237,48 +237,41 @@ Define the object `val_1` as `TRUE`, `val_2` as `FALSE` and `val_3` as `NA`. Tes
 <exercise id="3" title="Working with vectors and matrices">
 
 
-You can easily create vectors and matrices in `R` and perform vectors and/or matrices computations.
+You can easily create vectors and matrices in `R` and perform computations.
 
 ## Vectors
 
-You can create a vector in different ways. For example, you can create a sequence from \\(0\\) to \\(12\\) by \\(1\\) with the following command:
+You can create a vector in different ways. The most basic approach is to list out every element in the vector using the function `c()`. For example, to create a sequence from \\(0\\) to \\(12\\) by \\(1\\) we can use:
+
+```R
+c(0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12)
+```
+
+You can also use the following command:
 
 ```R
 0:12
 ```
 
-Similarly, you can use the function `seq()` or the function `c()`:
+or use the function `seq()`:
 
 ```
-seq(0, 12, by = 1)
-c(0,1,2,3,4,5,6,7,8,9,10,11,12)
+seq(from = 0, to = 12, by = 1)
 ```
 
-All commands returns:
+All commands will return:
 
 ```out
- [1]  0  1  2  3  4  5  6  7  8  9 10 11 12
+ [1]  0  1  2  3  4  5  6  7  8  9  10  11  12
 ```
 
-The operation of extracting a value from a `R` object is called <b>subsetting </b>. To subset a vector, you can use the `[]` operator. ⚠ Note that in `R` the index starts at 1.
-
-For example, you can extract the fifth element from the previous sequence with the following command:
-
-``` 
-mysequence = seq(0, 12, by = 1)
-mysequence[5]
-```
-
-```out
-[1] 4
-```
 
 ## Matrices
 
-You can define a matrix in `R` with the function `matrix()`. For example, 
+You can define a matrix in `R` with the function `matrix()`. For example,  
 
 ```R
-matrix(seq(4), ncol=2, nrow=2)
+matrix(seq(4), ncol = 2, nrow = 2)
 ```
 
 creates the following matrix:
@@ -289,10 +282,30 @@ creates the following matrix:
 [2,]    2    4
 ```
 
-Similarly as for vectors, you can subset matrices with the `[]` operator. For example, we can subset the element of the first row and of the second column of the matrix previously defined with:
+
+## Subsetting
+
+The operation of extracting a value from an `R` object is called <b>subsetting</b>. To subset an element from a vector, you can use the `[]` operator.  
+
+⚠ Note that in `R` the index starts from 1.
+
+For example, you can extract the 5th element from the previous sequence with the following command:
+
+``` 
+mysequence = seq(from = 0, to = 12, by = 1)
+mysequence[5]
+```
+
+which will return: 
+
+```out
+[1] 4
+```
+
+Similarly, you can also subset matrices with the `[]` operator. For example, we can subset the element of the 1st row and of the 2nd column of the matrix previously defined with:
 
 ```R
-mymat = matrix(seq(4), ncol=2)
+mymat = matrix(seq(4), ncol = 2, nrow = 2)
 mymat[1,2]
 ```
 
@@ -304,39 +317,59 @@ which returns:
 
 ## Operations on vectors and matrices
 
-Once that a vector or a matrix is defined, one can then perform various vectorized operations and matrix computations. Some simple examples include:
+Once a vector or a matrix is defined, we can then perform various operations and computations. Some simple examples include:
 
 ```R
-b= c(1,2,3,4)
+b = c(1,2,3,4)
 b * 2
 ``` 
 
-which returns:
+which will do the computation for all elements of the vector `b` and return:
 
 ```out
 [1]  2  4  6  8
 ```
 
-Similarly,
+If we run:
 
 ```R
 sqrt(b)
 ``` 
 
-returns:
+it will return the computation for all elements of the vector `b`:
 
 ```out
 [1]  1.000000 1.414214 1.732051 2.000000
 ```
 
-Alternatively,
+Similarly, we can perform different computations on matrices. For example, we define two matrices `A` and `C` with:
 
 ```R
-A = matrix(seq(4), ncol= 2)
-C = matrix(c(5:8), ncol =2)
+A = matrix(seq(4), ncol = 2, nrow = 2)
+C = matrix(c(5:8), ncol = 2, nrow = 2)
+``` 
+
+When we run:
+
+```R
+A * C
+``` 
+
+it will return:
+
+```
+     [,1] [,2]
+[1,]   5    21
+[2,]   12   32
+```
+
+Notice that this is not a matrix multiplication! The `*` operator actually performs a vectorized multiplication on the matrices (i.e. multiply each element in `A` to the corresponding element in `C`). In order to perform a matrix multiplication, we should use `%*%`:
+
+```R
 A %*% C
 ``` 
-returns:
+
+and it will return: 
 
 ```
      [,1] [,2]
@@ -344,13 +377,13 @@ returns:
 [2,]   34   46
 ```
 
-One can compute the inverse of the matrix \\(A\\) with the following command:
+To compute the inverse of the matrix `A`, we can use the function `solve()`:
 
 ```
 D = solve(A)
 ```
 
-Therefore resulting in the identity matrix if matrix  \\(A\\) is multiplied by matrix \\(D\\)
+So if we multiply the matrix `A` to the matrix `D`, we will get the identity matrix:
 
 ```R
 A %*% D
@@ -362,14 +395,14 @@ A %*% D
 [2,]    0    1
 ``` 
 
-One can also calculate the determinant or the transpose of a given matrix using respectively the following commands:
+We can also calculate the determinant or the transpose of a given matrix using the functions `det()` or `t()` respectively:
 
 ```R
 det(A)
 t(A)
 ```
 
-# Exercise
+# Exercises
 
 ### Exercise 1
 
@@ -382,7 +415,7 @@ Create a vector with the first five lower-case letters of the alphabet. Extract 
 
 ### Exercise 2
 
-Create a [Toeplitz matrix](https://en.wikipedia.org/wiki/Toeplitz_matrix) where the first row of the matrix correspond to the vector \\(\[1,2,3,4\]\\)
+Create a [Toeplitz matrix](https://en.wikipedia.org/wiki/Toeplitz_matrix) where the first row of the matrix corresponds to the vector \\(\[1,2,3,4\]\\)
 
 <codeblock id="chap_intro_r_matrix_1">
 
