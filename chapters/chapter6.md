@@ -1,5 +1,5 @@
 ---
-title: 'Chapter 6: Practice exam'
+title: 'Chapter 6: Practice Exam'
 description:
   ''
 prev: /chapter5

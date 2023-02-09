@@ -1,5 +1,5 @@
 ---
-title: 'Chapter 1: A brief introduction to R'
+title: 'Chapter 1: A Brief Introduction to R'
 description:
   ''
 prev: null
@@ -10,54 +10,54 @@ id: 1
 
 <exercise id="1" title="Installing R, RStudio, Rtools/Xcode and idarps">
 
-## Installing `R`
+## Installing R
 
-This course will make use of the `R` programming language. The `R` language is a programming language for statistical computing and graphics supported by the `R` Core Team and the [`R` Foundation for Statistical Computing](https://www.r-project.org/). `R` is widely used by data scientists, data miners and statisticians for data analysis and developing statistical software. 
+This course will make use of `R`, which is a programming language for statistical computing and graphics supported by the R Core Team and the [R Foundation for Statistical Computing](https://www.r-project.org/). `R` is widely used by data scientists, data miners and statisticians for data analysis and for developing statistical software. 
 
-### Installing `R` on macOS
+### Installing R on macOS
 
 To install `R` on macOS, download the `.pkg` installer on the [CRAN website](https://cran.r-project.org/bin/macosx/) and execute it once downloaded.
 
-### Installing `R` on Windows
+### Installing R on Windows
 
 To install `R` on Windows, download the `.exe` installer on the [CRAN website](https://cran.r-project.org/bin/windows/base/) and execute it once downloaded.
 
-### Installing `R` in Ubuntu Linux
+### Installing R on Ubuntu Linux
 
 To install `R` on Ubuntu Linux, follow the procedure detailed [here](https://cran.r-project.org/).
 
 
-## Installing `RStudio`
+## Installing RStudio
 
-`RStudio` is an Integrated Development Environment (IDE) for `R`. An IDE is a software application that provides comprehensive facilities to computer programmers for software development. An IDE normally consists of at least a source code editor, build automation tools and a debugger. We will be using `RStudio` Desktop throughout the semester. Please install it from the [RStudio’s official webpage](https://www.rstudio.com/).
+`RStudio` is an Integrated Development Environment (IDE) for `R`. An IDE is a software application that provides comprehensive facilities to computer programmers for software development. An IDE usually consists of at least a source code editor, build automation tools and a debugger. We will be using `RStudio` throughout the semester. Please install it from the [RStudio’s official webpage](https://www.rstudio.com/).
 
 
-### Installing `RStudio` on macOS
+### Installing RStudio on macOS
 
 To install `RStudio` on macOS, download the macOS `.dmg` installer on the [RStudio’s products page](https://www.rstudio.com/products/rstudio/download/) and execute it once downloaded.
 
-### Installing `RStudio` on Windows
+### Installing RStudio on Windows
 
 To install `RStudio` on Windows, download the Windows `.exe` installer on the [RStudio’s products page](https://www.rstudio.com/products/rstudio/download/) and execute it once downloaded.
 
-### Installing `RStudio` in Ubuntu Linux
+### Installing RStudio on Ubuntu Linux
 
 To install `RStudio` on Ubuntu Linux, download the Ubuntu/Debian `.deb` installer on the [RStudio’s products page](https://www.rstudio.com/products/rstudio/download/). You can then install the `.deb` file.
 
-## Installing `R` package `idarps` 
+## Installing R package idarps 
 
-We have developed an `R` package for this class which is called `idarps` (which stands for Introduction to Data Analytics with `R` for Pharmaceutical Sciences, `idarps`). 
+We have developed an `R` package for this class which is called `idarps` (Introduction to Data Analytics with R for Pharmaceutical Sciences). 
 
 
 ### Installation from CRAN
 
-You can download the `idarps` package directly from [The Comprehensive R Archive Network (CRAN)](https://cran.r-project.org/) by executing the following `R` instruction:
+You can download the `idarps` package directly from [Comprehensive R Archive Network (CRAN)](https://cran.r-project.org/) by executing the following `R` instruction:
 
 ```R
 install.packages("idarps")
 ```
 
-Make sure that package is correctly installed by looking at the installation logs. You should see something like:
+Make sure that the package is correctly installed by checking the installation logs. You should see something like:
 
 
 ```out
@@ -69,11 +69,9 @@ Make sure that package is correctly installed by looking at the installation log
 
 ### Installation of the development version from GitHub
 
-In order to install the `idarps` package, you will have to first install the tools required to install `idarps` directly from its [GitHub repository](https://github.com/SMAC-Group/idarps).
+In order to install the `idarps` package from its [GitHub repository](https://github.com/SMAC-Group/idarps), you will have to first install a `C++` compiler in your computer, either `Rtools` on Windows or `Xcode` on macOS. The steps to do so are explained as follows.
 
-To do so, you will first need to install a `C++` compiler in your installation. The steps to do so are the following:
-
-Check your `R` version installed with:
+To start, check your `R` version installed with:
 
 ```R
 R.Version()$version.string
@@ -92,15 +90,15 @@ If you are on Windows, go to the [R for Windows Build Tools Archive](https://cra
 
 #### Installing `Xcode` on macOS
 
-If you are on macOS, go to the [Mac Apple Store](https://apps.apple.com/us/app/xcode/id497799835?mt=12) and install the latest `Xcode` version that your installation support. 
+If you are on macOS, go to the [Mac Apple Store](https://apps.apple.com/us/app/xcode/id497799835?mt=12) and install the latest `Xcode` application. 
 
-You should then be able to install `devtools` by running the following command in `R`: 
+You should then be able to install the `devtools` package by running the following command in `R`: 
 
 ```R
 install.packages("devtools")
 ``` 
 
-Make sure that the installation succeeded by looking at the last lines of the log. You should see something like:
+Make sure that the installation succeeded by checking the installation logs. You should see something like:
 
 ```out
 ...
@@ -130,7 +128,7 @@ To test if the package is correctly installed you can simply run:
 library(idarps)
 ```
 
-If you see no error, which means an output like this when the previous command is run:
+and you should see an output like this:
 
 
 ```out
@@ -138,9 +136,9 @@ If you see no error, which means an output like this when the previous command i
 > 
 ```
 
-then the package is correctly installed! Congratulations!
+then you have successfully installed and loaded the `idarps` package! Congratulations!
 
-Below is a GIF illustrating the installation of the `idarps` `R` package:
+Below is a GIF which illustrates the installation of the `idarps` package:
 
 <center>
 
