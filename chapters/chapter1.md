@@ -419,9 +419,9 @@ Create a [Toeplitz matrix](https://en.wikipedia.org/wiki/Toeplitz_matrix) where 
 
 <codeblock id="chap_intro_r_matrix_1">
 
-Note that the general form of a n by n Toeplitz matrix is:
+The final matrix should be:
 
-<div style="text-align:center"><img src="toeplitz_mat.png"" alt=" " width="70%"> </div>
+<div style="text-align:center"><img src="toeplitz_2.png"" alt=" " width="25%"> </div>
 
 </codeblock>
 
