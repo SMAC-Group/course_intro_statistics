@@ -22,7 +22,7 @@ If you would like to load the data, you can do it as follows:
 
 ```R
 # Load data
-library(idar)
+library(idarps)
 data("fev")
 head(fev)
 ``` 
@@ -310,7 +310,7 @@ If you would like to load the data, you can do it as follows:
 
 ```R
 # Load data 
-library(idar)
+library(idarps)
 data("snoring")
 head(snoring)
 ```
