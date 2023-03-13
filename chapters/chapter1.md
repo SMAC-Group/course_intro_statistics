@@ -183,7 +183,7 @@ The `YAML` header declare various elements of the aesthetics and compilation opt
 ---
 title: Report 
 author: Stéphane Guerrier
-date: "`r format(Sys.time(), '%d %B, %Y')`" #<<
+date: "`r format(Sys.time(), '%d %B, %Y')`" 
 output:
   html_document:
     css: "my_style.css"
