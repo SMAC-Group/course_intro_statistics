@@ -1,5 +1,5 @@
 ---
-title: 'Chapter 1: A Brief Introduction to R'
+title: 'Chapter 1: A Brief Introduction to R and RMarkdown'
 description:
   ''
 prev: null
@@ -151,7 +151,61 @@ Below is a GIF which illustrates the installation of the `idarps` package:
 
 
 
-<exercise id="2" title="Basic arithmetic and logical computations">
+<exercise id="2" title="Introduction to RMarkdown">
+
+# Essentials
+
+<center>
+<img src="hex_rmd.png" width = 20%>
+</center>
+
+`RMarkdown` (or `R Markdown` ) is a syntax for creating documents using literate programming. This technique allows the combination of document narrative and code computation to dynamically generate documents in different formats. **This allows the creation of scientific reports that combine textual elements written by the authors with computed elements, such as visual representations or the results of a statistical analysis or data modelling. **
+
+
+In a nutshell, `RMarkdown` stands on the shoulders of `knitr` and `Pandoc`. The former executes the computer code embedded in `Markdown`, and converts `RMarkdown` to `Markdown`. The latter renders `Markdown` to the output format you want (such as PDF, HTML, Word, and so on).
+-- <cite>R Markdown: The Definitive Guide</cite>
+
+<center>
+<img src="workflow.png" width = 70%>
+</center>
+
+# Getting started
+
+Creating a new `RMarkdown` document in `Rstudio` 
+
+<center>
+<img src="demo_rmd_2.gif" width = 100%>
+</center>
+
+The `YAML` header declare various elements of the aesthetics and compilation options of your document such as the title of the document, the author, the date, the output format (`.pdf`, `.html`), the theme, specific `css` or `pandoc` options, etc.
+
+```r
+---
+title: Report 
+author: Stéphane Guerrier
+date: "`r format(Sys.time(), '%d %B, %Y')`" #<<
+output:
+  html_document:
+    css: "my_style.css"
+    toc: true
+    theme: united
+bibliography: biblio.bib
+---
+```
+
+Since compiling a `.Rmd` document in `.pdf` requires `LaTeX`, and that you may not all have `LaTeX` already installed, we will only consider compilation in `.html` for this class. Find a detailed procedure to install the [`tinytex`](https://yihui.org/tinytex/) `LaTeX` distribution at this webpage [Install LaTeX (TinyTeX) for PDF reports](https://bookdown.org/yihui/rmarkdown-cookbook/install-latex.html).
+
+# RMarkdown playground
+Find the app [here](https://dal-unige.shinyapps.io/rmd_app/).
+
+ <iframe src="https://dal-unige.shinyapps.io/rmd_app/" title="RMarkdown playground" height="800" width="770"  ></iframe> 
+ 
+
+</exercise>
+
+
+
+<exercise id="3" title="Basic arithmetic and logical computations">
 
 `R` can be used for arithmetic and logical computations. It provides the following standard arithmetic operators:
 
@@ -235,7 +289,7 @@ Define the object `val_1` as `TRUE`, `val_2` as `FALSE` and `val_3` as `NA`. Tes
 
 
 
-<exercise id="3" title="Working with vectors and matrices">
+<exercise id="4" title="Working with vectors and matrices">
 
 
 You can easily create vectors and matrices in `R` and perform computations.
@@ -431,7 +485,7 @@ The final matrix should be:
 </exercise>
 
 
-<exercise id="4" title="Working with data.frame">
+<exercise id="5" title="Working with dataframes">
 
 ## Basic operations
 
@@ -597,7 +651,7 @@ Load the `diet` dataset from the `idarps` package and extract the data of `Femal
 
 </exercise>
 
-<exercise id="5" title="Basic data visualization">
+<exercise id="6" title="Basic data visualization">
 
 One advantage of working with `R` when performing data analysis is that `R` provides great data visualization capabilities. 
 
@@ -654,7 +708,7 @@ Besides using the base `R`, there are many existing graphics libraries such as [
 
 
 
-<exercise id="6" title="Using the AI helper">
+<exercise id="7" title="Using the AI helper">
 
 The objective of this course is not to develop your ability to script `R` code. Instead, this course aims to introduce you the statistical methods typically used in the context of pharmaceutical sciences, and to allow you to learn which methods to use depending on your research questions and data. Therefore, we have developed a web application which allows you to use the latest advances in Artificial Intelligence (AI) in order to automatically generate `R` code according to the data analysis you want to produce. 
 
