@@ -153,13 +153,11 @@ Below is a GIF which illustrates the installation of the `idarps` package:
 
 <exercise id="2" title="Introduction to RMarkdown">
 
-# Essentials
-
 <center>
 <img src="hex_rmd.png" width = 20%>
 </center>
 
-`RMarkdown` (or `R Markdown` ) is a syntax for creating documents using literate programming. This technique allows the combination of document narrative and code computation to dynamically generate documents in different formats. **This allows the creation of scientific reports that combine textual elements written by the authors with computed elements, such as visual representations or the results of a statistical analysis or data modelling. **
+`RMarkdown` (or `R Markdown`) is a syntax for creating documents using literate programming. This technique allows the combination of document narrative and code computation to dynamically generate documents in different formats. This allows the creation of scientific reports that combine textual elements written by the authors with computed elements, such as visual representations or the results of a statistical analysis or data modelling.
 
 
 In a nutshell, `RMarkdown` stands on the shoulders of `knitr` and `Pandoc`. The former executes the computer code embedded in `Markdown`, and converts `RMarkdown` to `Markdown`. The latter renders `Markdown` to the output format you want (such as PDF, HTML, Word, and so on).
@@ -171,13 +169,13 @@ In a nutshell, `RMarkdown` stands on the shoulders of `knitr` and `Pandoc`. The 
 
 # Getting started
 
-Creating a new `RMarkdown` document in `Rstudio` 
+Here is how we can create a new `RMarkdown` document in `Rstudio`: 
 
 <center>
 <img src="demo_rmd_2.gif" width = 100%>
 </center>
 
-The `YAML` header declare various elements of the aesthetics and compilation options of your document such as the title of the document, the author, the date, the output format (`.pdf`, `.html`), the theme, specific `css` or `pandoc` options, etc.
+The `YAML` header declares various elements of the aesthetics and compilation options of your document, such as the title of the document, the author, the date, the output format (`.pdf`, `.html`), the theme, specific `css` or `pandoc` options, and so on. An example of the `YAML` header is presented below.
 
 ```r
 ---
@@ -193,10 +191,10 @@ bibliography: biblio.bib
 ---
 ```
 
-Since compiling a `.Rmd` document in `.pdf` requires `LaTeX`, and that you may not all have `LaTeX` already installed, we will only consider compilation in `.html` for this class. Find a detailed procedure to install the [`tinytex`](https://yihui.org/tinytex/) `LaTeX` distribution at this webpage [Install LaTeX (TinyTeX) for PDF reports](https://bookdown.org/yihui/rmarkdown-cookbook/install-latex.html).
+Since compiling a `.Rmd` document in `.pdf` requires `LaTeX`, and maybe not everyone has `LaTeX` installed, we will only consider compilation in `.html` for this class. If you are interested, you can find a detailed procedure to install the [`tinytex`](https://yihui.org/tinytex/) `LaTeX` distribution at this webpage: [Install LaTeX (TinyTeX) for PDF reports](https://bookdown.org/yihui/rmarkdown-cookbook/install-latex.html).
 
 # RMarkdown playground
-Find the app [here](https://dal-unige.shinyapps.io/rmd_app/).
+We prepare an application (https://dal-unige.shinyapps.io/rmd_app/) that allows you to try out the various functionalities of `RMarkdown`. 
 
  <iframe src="https://dal-unige.shinyapps.io/rmd_app/" title="RMarkdown playground" height="800" width="770"  ></iframe> 
  

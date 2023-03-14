@@ -29,7 +29,7 @@ You can view the slides directly in the browser below. To download the slides, p
 
 <exercise id = "2" title ="Exercises">
 
-### 1. Which of the following statements are incorrect?
+### 1) Which of the following statements are incorrect?
 
 <choice id="chap1_theo1">
 <opt text="Every decision based on statistical methods is associated to a risk of taking the wrong decision." > Sad but true... 😟  </opt>
@@ -164,7 +164,7 @@ Based on the test you performed and considering a type I error (i.e. "alpha") of
 
 <choice id="chap1_diet_2">
 <opt text="We can be sure that diet A significantly reduces the weights of the participants." > Sadly, we can never be sure with statistical methods... </opt>
-<opt text="We don't really know..."> In some sense, this is correct... 😉  However, the statistical method you selected indicates that it is very likely that the diet is working. </opt>
+<opt text="We don't really know."> In some sense, this is correct... 😉  However, the statistical method you selected indicates that it is very likely that the diet is working. </opt>
 <opt text="We can reject the null hypothesis at the significance level of 5% and conclude that diet A significantly reduces the weights of the participants." correct = "true"> Yay! 👍 </opt>
 <opt text="We cannot reject the null hypothesis at the significance level of 5%."> Actually, in this case the p-value is smaller than 5% as it is 0.00101%, so we can reject the null hypothesis.</opt>
 </choice>
@@ -177,7 +177,7 @@ Based on the test you performed and considering a type I error (i.e. "alpha") of
 We consider data from [Abouir, et al., (2022)](https://ascpt.onlinelibrary.wiley.com/doi/pdfdirect/10.1111/cts.13297) which is an observational study conducted at Geneva University Hospitals to assess the impact of weight 
 on the pharmacokinetics of dexamethasone in normal-weight versus
 obese patients hospitalized for COVID-19. For the moment, we will only 
-consider the variable `lenght_hospital`, which corresponds to the
+consider the variable `length_hospital`, which corresponds to the
 length of stay (in days) of the patients. Our goal is to conduct
 an analysis to assess if it can be concluded that the average length of stay is longer than 10 days. To analyze the data, we start loading the data as follows: 
 
@@ -189,14 +189,14 @@ data(codex)
 and have a look at the data:
 
 ```r
-boxplot_w_points(codex$lenght_hospital, horizontal = T, 
+boxplot_w_points(codex$length_hospital, horizontal = T, 
     xlab = "Length of stay (day)")
 ```
 
 <div style="text-align:center"><img src="chap1_length_of_stay_1.png" alt=" " width="70%"></div>
 
 ```r
-hist_compare_to_normal(codex$lenght_hospital, horizontal = T, 
+hist_compare_to_normal(codex$length_hospital, horizontal = T, 
     xlab = "Length of stay (day)")
 ```
 
@@ -218,7 +218,7 @@ Using the test you selected, what is the p-value corresponding to the test of in
 <opt text="0.08602" correct = "true"> Yay! 😉 </opt>
 <opt text="0.172"> You may have used  the wrong alternative hypothesis. </opt>
 <opt text="0.9177"> You may have used  the wrong alternative hypothesis. </opt>
-<opt text="Something else..."> You may have used the wrong value for `mu` and/or the wrong alternative hypothesis. </opt>
+<opt text="Something else."> You may have used the wrong value for `mu` and/or the wrong alternative hypothesis. </opt>
 </choice>
 
 Based on this p-value what can you conclude:
