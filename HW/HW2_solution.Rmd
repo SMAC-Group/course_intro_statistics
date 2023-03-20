@@ -3,7 +3,7 @@ title: "Homework 2"
 output: html_document
 ---
 
-In this homework, we wish to investigate Abouir, et al., (2022) to assess the validity of several claims. First of all, we need to select the observations for different analysis.
+In this homework, we want to assess the validity of several claims based on the data from Abouir, et al., (2022). First of all, we need to select the observations for different analyses.
 
 ```{r}
 library(idarps)
@@ -45,14 +45,14 @@ wilcox.test(Cmax_men, Cmax_women, alternative = "less")
 wilcox.test(Cmax_obese, Cmax_non_obese, alternative = "less")
 ```
 
-From the result we can see that the p-value = 0.001661 in the first test is smaller than 0.05, which indicates there are some evidence against the null hypotheses in favor of the alternative. Therefore, at the 95% confidence level, we reject the null and accept the alternative hypothesis that the mean of the variable `cmax` in group of `women` is smaller than that of the group `men`. However, for the second test, there isn't enough an evidence to reject the null hypothesis which we assert that the means for the variable `cmax` are the same between the groups `obese` and `non_obese`. Interestingly, different conclusions would be obtained if we were use a (Welch) t-test:
+For the first test, we can see that the p-value = 0.001661 is smaller than 0.05, which indicates that there is evidence against the null hypothesis in favor of the alternative. Therefore, at the 5% significance level, we reject the null and accept the alternative hypothesis that the mean of the variable `cmax` in the group `men` is smaller than the one in the group `women`. However, for the second test, there isn't enough evidence to reject the null hypothesis that the means for the variable `cmax` are the same between the groups `obese` and `non_obese`. Interestingly, different conclusions would be obtained if we use a (Welch) t-test:
 
 ```{r}
 t.test(Cmax_men, Cmax_women, alternative = "less")
 t.test(Cmax_obese, Cmax_non_obese, alternative = "less")
 ```
 
-Indeed, we obtain a p-value smaller than $\alpha = 0.05$ for the second test leading to a different conclusion.
+Indeed, we obtain a p-value smaller than $0.05$ for the second test leading to a different conclusion.
 
 ### Question 2: Difference between groups for $T_{\max}$
 
@@ -67,11 +67,11 @@ boxplot_w_points(Tmax_obese, Tmax_non_obese, names = c("Obese", "Non-obese"), yl
 Based on these graphs, we also select Wilcoxon test and obtain the p-values as follows:
 
 ```{r}
-wilcox.test(Tmax_women, Tmax_men, alternative = "less")
+wilcox.test(Tmax_men, Tmax_women, alternative = "less")
 wilcox.test(Tmax_obese, Tmax_non_obese, alternative = "less")
 ```
 
-Thus, we fail the reject the null hypothesis at the 95% confidence level for both tests.
+Since both p-values are greater than 0.05, we fail to reject the null hypotheses at the 5% significance level for both tests.
 
 ### Question 3: Difference between groups for AUC
 
@@ -83,12 +83,12 @@ boxplot_w_points(AUC_women, AUC_men, names = c("Women", "Men"), ylab = "AUC (ng.
 boxplot_w_points(AUC_obese, AUC_non_obese, names = c("Obese", "Non-obese"), ylab = "AUC (ng.h/ml)")
 ```
 
-We obtain the p-values are follows:
+We obtain the p-values as follows:
 
 ```{r}
 wilcox.test(AUC_men, AUC_women, alternative = "less")
 wilcox.test(AUC_obese, AUC_non_obese, alternative = "less")
 ```
 
-Therefore, at the 95% confidence level, we reject the null hypothesis for the test and accept the alternative hypothesis stating that the mean of the variable `auc` in group of `women` is smaller than that of the group `men`. However, for the second test, there isn't enough an evidence (at the 95% confidence level) to reject the null hypothesis which we assert that the means for the variable `auc` are the same between the groups `obese` and `non_obese`.
+Therefore, for the first test, at the 5% significance level, we reject the null and accept the alternative hypothesis stating that the mean of the variable `auc` in the group `men` is smaller than the one in the group `women`. However, for the second test, there isn't enough evidence (at the 5% significance level) to reject the null hypothesis that the means for the variable `auc` are the same between the groups `obese` and `non_obese`.
 

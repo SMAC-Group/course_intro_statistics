@@ -144,7 +144,7 @@ The competing company that promotes diet C is unhappy about the claims made by t
 
 <codeblock id="chap2_diet4">
 
-Since diet A becomes first we should consider a negative difference.
+Since diet A comes first we should consider a negative difference.
 
 </codeblock>
 
@@ -344,7 +344,7 @@ Cmax_non_obese = codex$cmax[codex$obese == 0]
 Cmax_obese = codex$cmax[codex$obese == 1]
 ```
 
-Then we can make comparisons between groups. For example, to compare the `cmax` between men and women we can use the following code:
+Then we can make comparisons between groups. For example, to visualize the empirical distribution of `cmax` between men and women we can use the following code:
 
 ```r
 boxplot_w_points(Cmax_women, Cmax_men,
@@ -364,10 +364,10 @@ Please perform a statistical analysis to assess the validity of the previously m
 To perform the analysis we will need to construct the different groups we wish to compare. We can use the following code:
 
 ```r
-Tmax_men = codex$tmax[codex$gender == 1]
-Tmax_women = codex$tmax[codex$gender == 0]
-Tmax_obese = codex$tmax[codex$obese == 1]
+Tmax_men = codex$tmax[codex$gender == 0]
+Tmax_women = codex$tmax[codex$gender == 1]
 Tmax_non_obese = codex$tmax[codex$obese == 0]
+Tmax_obese = codex$tmax[codex$obese == 1]
 ```
 
 Based on these groups, please perform a statistical analysis to assess the validity of the previously mentioned claims.
@@ -378,6 +378,15 @@ Based on these groups, please perform a statistical analysis to assess the valid
 1. Can we conclude that the mean of the variable `auc` is lower in the group men than in the group women?
 2. Can we conclude that the mean of the variable `auc` is lower in the group obese than in the group non-obese?
 
-Please perform a statistical analysis to assess the validity of the previously mentioned claims.
+To perform the analysis we will need to construct the different groups we wish to compare. We can use the following code:
+
+```r
+AUC_men = codex$auc[codex$gender == 0]
+AUC_women = codex$auc[codex$gender == 1]
+AUC_non_obese = codex$auc[codex$obese == 0]
+AUC_obese = codex$auc[codex$obese == 1]
+```
+
+Based on these groups, please perform a statistical analysis to assess the validity of the previously mentioned claims.
 
 </exercise>

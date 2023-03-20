@@ -3,7 +3,7 @@ title: "Homework 1"
 output: html_document
 ---
 
-In this homework, we consider data from Parisi, et al., (2021) to assess the validity of several claims. Our first step is to import the data which can be done as follows:
+In this homework, we want to assess the validity of several claims based on the data from Parisi, et al., (2021). Our first step is to import the data as follows:
 
 ```{r}
 library(idarps)
@@ -28,9 +28,13 @@ Before performing our statistical analysis to evaluate the validity of the above
 boxplot_w_points(spo2, ylab = "Oxygen saturation (%)", xlab = "All patients")
 ```
 
-Based on this graph, it clearly appears that t-test may not be suitable solution and we select instead a Wilcoxon test. Assuming that an average oxygen saturation below 95 can be considered as "low", we perform the following analysis:
+Based on this graph, it clearly appears that t-test may not be suitable since outliers are present in the data, and hence we choose to use Wilcoxon test instead. Assuming that an average oxygen saturation below 95% is considered as "low", we perform the following analysis:
 
-Therefore, at 5\% confidence level, we can reject the null hypothesis: $H_0: \;\; \mu = 95$ and accept the alternative that the average oxygen saturation is below 95 for the admitted COVID-19 patients. Similar results would be obtained considering 94 as a cutoff:
+```{r, warning = FALSE}
+wilcox.test(spo2, mu = 95, alternative = "less")
+```
+
+Therefore, at 5\% significance level, we can reject the null and accept the alternative hypothesis that the average oxygen saturation is below 95% for the admitted COVID-19 patients. Similar result can be obtained considering 94% as a cutoff:
 
 ```{r, warning = FALSE}
 wilcox.test(spo2, mu = 94, alternative = "less")
@@ -38,25 +42,25 @@ wilcox.test(spo2, mu = 94, alternative = "less")
 
 ### Question 2: Can we conclude that the admitted COVID-19 patients have an average oxygen saturation below 93%?
 
-Similarly, we perform the following test:
+Similarly to the previous question, we perform the following test:
 
 ```{r, warning = FALSE}
 wilcox.test(spo2, mu = 93, alternative = "less")
 ```
 
-Therefore, at 5\% confidence level, we don't have enough evidence to reject the null hypothesis: $H_0: \;\; \mu = 93$ (which doesn't mean that the null is correct).
+Therefore, at 5\% significance level, there's not enough evidence to reject the null hypothesis (which doesn't mean that the null is correct).
 
-Interestingly, a different result would be obtain by considering a t-test. Indeed, we have
+Interestingly, a different result would be obtained if we consider a t-test. Indeed, we have
 
 ```{r, warning = FALSE}
 t.test(spo2, mu = 93, alternative = "less")
 ```
 
-The difference between these tests can probably be explained by the "sensitivity" of the t-test to the outliers that seems to be present in the data.
+The difference between these tests can probably be explained by the "sensitivity" of the t-test to the outliers that seem to be present in the data.
 
 ### Question 3: Can we conclude that the COVID-19 patients admitted to an Intensive Care Unit (ICU) tend to have a lower oxygen saturation than the ones that are not? For example, is it reasonable to conclude that average oxygen saturation of ICU patients is lower than 92%? Similarly, is it reasonable to conclude that average oxygen saturation of non ICU patients is greater than 92%?
 
-Before performing our statistical analyses, we start by visualizing the empirical distribution of the data as follows:
+Before performing our analysis, we start by visualizing the empirical distribution of the data as follows:
 
 ```{r}
 # Check empirical distribution
@@ -65,11 +69,11 @@ boxplot_w_points(spo2_icu, spo2_not_icu,
                  ylab = "Oxygen saturation (%)")
 ``` 
 
-To investigate if the COVID-19 patients admitted to an Intensive Care Unit (ICU) tend to have a lower oxygen saturation than the ones that are not, we perform a similar analysis:
+To investigate if the COVID-19 patients admitted to an ICU tend to have a lower oxygen saturation than the ones that are not admitted, we perform a similar analysis:
 
 ```{r, warning = FALSE}
 wilcox.test(spo2_icu, mu = 92, alternative = "less")
 wilcox.test(spo2_not_icu, mu = 92, alternative = "greater")
 ```
 
-Therefore, at 5\% confidence level, we can accept the alternative hypotheses that the average oxygen saturation of ICU patients is lower than 92% and that the average oxygen saturation of non ICU patients is greater than 92%. These conclusions indicate that oxygen saturation appears to be an important criterion in the decision of admitting a patient to an ICU. Thus, the claim that "COVID-19 patients admitted to an Intensive Care Unit (ICU) tend to have a lower oxygen saturation than the ones that are not" is reasonable based on the analysed data.
+Therefore, at 5\% significance level, we can accept the alternative hypotheses that the average oxygen saturation of ICU patients is lower than 92% and that the average oxygen saturation of non ICU patients is greater than 92%. These conclusions indicate that oxygen saturation appears to be an important criterion in the decision of admitting a patient to an ICU. Thus, the claim that "COVID-19 patients admitted to an Intensive Care Unit (ICU) tend to have a lower oxygen saturation than the ones that are not" is reasonable based on the analysed data.
