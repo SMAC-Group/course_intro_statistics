@@ -143,7 +143,7 @@ Below is a GIF which illustrates the installation of the `idarps` package:
 
 <center>
 
-![](idar.gif)
+![](gif_idarps.gif)
 
 </center>
 
