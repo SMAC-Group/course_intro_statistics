@@ -313,7 +313,7 @@ Remember that we are comparing `sunday` to all other days.
 Based on these p-values and consider a standard value of 5% for \\( \alpha \\), what can you conclude:
 
 <choice id="chap2_pharma">
-<opt text="The claim is correct since all p-values are smaller than alpha."> Yes... but we are considering many test here... 😕 </opt>
+<opt text="The claim is correct since all p-values are smaller than alpha."> Yes... but we are considering many tests here... 😕 </opt>
 <opt text="The claim is correct and we are now certain that the average number of customers is higher on Sundays."> Nope, we can never be sure! </opt>
 <opt text="The claim is incorrect as we fail to reject the null hypotheses for all tests." correct = "true"> Yay! 😆 </opt>
 <opt text="The claim is correct because we can reject the null hypotheses for most tests."> Nope, our claim was that Sunday has larger average number of customers compared to all the other days. </opt>
