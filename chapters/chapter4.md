@@ -476,9 +476,9 @@ is this telling us?</p>
 
 
 
-<exercise id="9" title="Homework">
+<exercise id="9" title="Homework 3">
 
-We consider synthetic data based on Charepalli et al. (2018) where the impact on important biomarkers of different diets was studied. One of the experiments was conducted on pigs which were divided into two treatment groups, "C" and "NC", corresponding to two dietary compositions. The first group "C" contains 20% of deep fried potatoes (i.e. chips) while this is not the case in the group "NC" which doesn't contain any fried food. Caloric intake was measured weekly until the end of the study. The objective of our study is to evaluate the possible link existing between fried food consumption and its effects on inflammatory response. For this purpose, we will model the logarithm of the cortisol levels (in pg/mg) as a function of other variables (e.g. diet, caloric intake and so on). You can load the data as follows (make sure to update `idarps`):
+We consider synthetic data based on Charepalli et al. (2018) where the impact on important biomarkers of different diets was studied. One of the experiments was conducted on pigs which were divided into two treatment groups, "C" and "NC", corresponding to two dietary compositions. The first group "C" contains 20% of deep fried potatoes (i.e. chips) while the group "NC" doesn't contain any fried food. Caloric intake was measured weekly until the end of the study. The objective of our study is to evaluate the possible link existing between fried food consumption and its effects on inflammatory response. For this purpose, we will model the logarithm of the cortisol levels (in pg/mg) as a function of other variables (e.g. diet, caloric intake and so on). You can load the data as follows:
 
 ```r
 library(idarps)
@@ -496,8 +496,8 @@ cortisol$log_cortisol = log(cortisol$cortisol)
 
 Two scientists working on this project have different (and contradicting) theories regarding the inflammatory response induced by fried food. Your objective is to model the data in a suitable way to assess the validity of their claims.
 
-1. **Scientist A**: There is no connection between fried food consumption and cortisol levels. However, caloric intake has a significant impact on cortisol levels (i.e. the scientist believes that a higher caloric intake leads to a lower cortisol level).
-2. **Scientist B**: Fried food consumption as well as caloric intake have significant impact on cortisol levels. Higher amount of fried food consumption corresponds to higher cortisol levels.
+1. **Scientist A**: There is no connection existing between fried food consumption and cortisol levels. However, caloric intake has a significant impact on cortisol levels (i.e. the scientist believes that a higher caloric intake leads to a lower cortisol level).
+2. **Scientist B**: Both fried food consumption and caloric intake have significant impact on the cortisol level. Higher amount of fried food consumption corresponds to a higher cortisol level.
 
 
 Scientist A considers the following model:
@@ -527,7 +527,9 @@ Multiple R-squared:  0.2119,	Adjusted R-squared:  0.1985
 F-statistic: 15.86 on 1 and 59 DF,  p-value: 0.0001895
 ```
 
-This scientist claims that this model verifies the claim that higher caloric intake is significantly associated to a lower cortisol level. However, the second scientist considers the following model:
+This scientist claims that this model verifies the claim that higher caloric intake is significantly associated to a lower cortisol level. 
+
+Scientist B considers the following model:
 
 ```r
 mod_scientist_B = lm(log_cortisol ~ caloric + group, data = cortisol)
@@ -577,13 +579,13 @@ Scientist B thinks that this is a better model leading to different conclusions.
 
 
 
-<exercise id="10" title="Optional Homework 🤓">
+<exercise id="10" title="Optional Homework 3 🤓">
 
 
 
 
 
-In this problem, we will consider the data from Can, et al., (2022). If you would like to know about the context of this study, here is the [reference](https://www.nature.com/articles/s42003-021-02978-2). You can load the data considered in one part of this study as follows:
+In this problem, we will consider the data from Can, et al., (2022). If you would like to know more about the context of this study, here is the [reference](https://www.nature.com/articles/s42003-021-02978-2). You can load the data considered in one part of this study as follows:
 
 ```{r}
 library(idarps)
@@ -619,8 +621,8 @@ class="math inline">\(i\)</span>-th rat is in fasted state and 1
 otherwise. The scientists working on this study want to verify the
 following claims:</p>
 
-- In the "fasted" group, the variable dose has no impact on the signal.
-- In the "fed" group, the variable dose has an impact on the signal (and we expect that the higher is the dose, the lower is the signal).
+- In the "fasted" group, the variable `dose` has no impact on the signal.
+- In the "fed" group, the variable `dose` has an impact on the signal (and we expect that the higher is the dose, the lower is the signal).
 
 Based on this information:
 
@@ -628,7 +630,7 @@ Based on this information:
 2. Construct a graph to compare the predictions for this model with the data (make sure to highlight the two groups with different colors).
 3. Construct model diagnostic graphs for this model.
 4. Comment on the adequacy of this model to the data.
-5. What can we comment/conclude regarding the scientists claims?
+5. What can we comment/conclude regarding the claims of the scientists?
 
 
 </exercise>

@@ -663,15 +663,15 @@ In this example, we can see that this approach is able to find the model with th
 
 
 
-<exercise id = "9" title ="Homework">
+<exercise id = "9" title ="Homework 4">
 
-# Problem I: Framingham Heart Study
+# Exercise 1: Framingham Heart Study
 
 In this first exercise, we consider the data from the Framingham Heart Study which is a long term prospective study of the etiology of cardiovascular disease among a population of subjects in the community of Framingham, Massachusetts. More precisely, we are interested in the following model:
 
 <div style="text-align:center"><img src="chap4_eq_mdl_4.png" alt=" " width="100%"></div>
 
-where
+where we denote
 
 <p>- <span class="math inline">\(g(x) = \exp(x)/(1 +
 \exp(x))\)</span>;</p>
@@ -721,14 +721,14 @@ install.packages("riskCommunicator")
 Then you can obtain the data by running:
  
 ```r
-library("riskCommunicator")
+library(riskCommunicator)
 data(framingham)
 ```
 
 The variables needed for your analysis are called: `PREVCHD`, `AGE`, `SYSBP`, `DIABP`, `BMI` and `SEX`.
 
 
-# Problem II: Pima Indians Diabetes
+# Exercise 2: Pima Indians Diabetes
 
 In this second exercise, we will consider a dataset on diabetes where 768 women of at least 21 years old of the Pima Indian heritage were considered. This dataset includes the following variables:
 
@@ -767,13 +767,14 @@ head(PimaIndiansDiabetes)
 6        5     116       74       0       0 25.6    0.201  30      neg
 ```
 
-- Given these variables, what is the largest model (which we will call "Model 1") that you can fit to predict the possibility of a woman (Pima Indian heritage) being diagnosed with diabetes?
+- Given these variables, what is the largest model (without interactions, which we will call "Model 1") that you can fit to predict the possibility of a woman (Pima Indian heritage) being diagnosed with diabetes?
 - Based on Model 1 we would like to assess the validity of the following claims:
     - Women with a higher body mass index are more likely to be affected by diabetes.
     - Older women are more likely to be affected by diabetes.
-    - Is Model 1 the best possible model to describe the data at hand? Is it the model with the smallest AIC? In order to find the model with the smallest AIC, is it feasible to explore all models? Why or why not?
-    - Apply the "stepwise forward AIC" approach and describe the model you obtain (which we will call "Model 2"). Based on Model 2, re-assess the validity of the previous claims. Do you obtain different conclusions?
-    - Compare the in-sample and out-of-sample classification accuracy of Models 1 and 2? Which model appears to be better?
+    
+- Is Model 1 the best possible model to describe the data at hand? Is it the model with the smallest AIC? In order to find the model with the smallest AIC, is it feasible to explore all models? Why or why not?
+- Apply the "stepwise forward AIC" approach and describe the model you obtain (which we will call "Model 2"). Based on Model 2, re-assess the validity of the previous claims. Do you obtain different conclusions?
+- Compare the in-sample and out-of-sample classification accuracy of Models 1 and 2? Which model appears to be better?
 
 
 </exercise>
