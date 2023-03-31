@@ -21,7 +21,10 @@ Next, we evaluate graphically the adequacy of this model with the data:
 
 ```{r, fig.align='center'}
 colors = c("#F8766D", "#00BFC4")
-plot(cortisol$caloric, cortisol$log_cortisol, xlab = "Caloric intake", ylab = "Urine costisol (pg/ml)", col = colors[as.numeric(cortisol$group == "NC") + 1], pch = 15 +as.numeric(cortisol$group == "C"))
+plot(cortisol$caloric, cortisol$log_cortisol, 
+     xlab = "Caloric intake", ylab = "Urine costisol (pg/ml)", 
+     col = colors[as.numeric(cortisol$group == "NC") + 1], 
+     pch = 15 + as.numeric(cortisol$group == "C"))
 grid()
 legend("bottomleft", c("Fried food", "Non-fried food"), col = colors, pch = c(16, 15), bty = "n")
 
@@ -31,18 +34,22 @@ lines(cal_to_predict, pred[,1])
 polygon(c(cal_to_predict, rev(cal_to_predict)), c(pred[,2], rev(pred[,3])), col = "#BEBEBE4C", border = NA)
 ```
 
-It is quite clear that the model of Scientist A is not a suitable model to describe our data. We can have a look at the diagnostic plots which should convey a similar message:
+It is quite clear that the model of Scientist A is not a suitable model to describe the data, as it doesn't take into account the effects of groups. We can have a look at the diagnostic plots which convey the same message:
 
 ```{r, fig.align='center'}
-plot(predict(mod_scientist_A), resid(mod_scientist_A), xlab = "Fitted values", ylab = "Residuals", col = colors[as.numeric(cortisol$group == "NC") + 1], pch = 15 +as.numeric(cortisol$group == "C"))
+plot(predict(mod_scientist_A), resid(mod_scientist_A), 
+     xlab = "Fitted values", ylab = "Residuals", 
+     col = colors[as.numeric(cortisol$group == "NC") + 1], 
+     pch = 15 + as.numeric(cortisol$group == "C"))
 ```
 
 ```{r, fig.align='center'}
-qqnorm(resid(mod_scientist_A), col = colors[as.numeric(cortisol$group == "NC") + 1], pch = 15 +as.numeric(cortisol$group == "C"))
+qqnorm(resid(mod_scientist_A), col = colors[as.numeric(cortisol$group == "NC") + 1], 
+       pch = 15 + as.numeric(cortisol$group == "C"))
 qqline(resid(mod_scientist_A))
 ```
 
-Unsurprisingly, these graphs (mainly the first one actually) reveal that this first model doesn't appear adequate to model the data we are considering.
+As we can see, these graphs (mainly the first one actually) show that this model proposed by Scientist A doesn't appear adequate to model the data we are considering.
 
 Next, we consider the model of Scientist B:
 
@@ -56,7 +63,10 @@ Similarly, we evaluate graphically the adequacy of this model with the data:
 
 ```{r, fig.align='center'}
 colors = c("#F8766D", "#00BFC4")
-plot(cortisol$caloric, cortisol$log_cortisol, xlab = "Caloric intake", ylab = "Urine costisol (pg/ml)", col = colors[as.numeric(cortisol$group == "NC") + 1], pch = 15 +as.numeric(cortisol$group == "C"))
+plot(cortisol$caloric, cortisol$log_cortisol, 
+     xlab = "Caloric intake", ylab = "Urine costisol (pg/ml)", 
+     col = colors[as.numeric(cortisol$group == "NC") + 1], 
+     pch = 15 + as.numeric(cortisol$group == "C"))
 grid()
 legend("topleft", c("Fried food", "Non-fried food"), col = colors, pch = c(16, 15), bty = "n")
 
@@ -74,17 +84,21 @@ polygon(c(cal_to_predict, rev(cal_to_predict)), c(pred_NC[,2], rev(pred_NC[,3]))
 This second model appears more suitable to describe our data. 
 
 ```{r, fig.align='center'}
-plot(predict(mod_scientist_B), resid(mod_scientist_B), xlab = "Fitted values", ylab = "Residuals", col = colors[as.numeric(cortisol$group == "NC") + 1], pch = 15 +as.numeric(cortisol$group == "C"))
+plot(predict(mod_scientist_B), resid(mod_scientist_B), 
+     xlab = "Fitted values", ylab = "Residuals", 
+     col = colors[as.numeric(cortisol$group == "NC") + 1], 
+     pch = 15 + as.numeric(cortisol$group == "C"))
 ```
 
 ```{r, fig.align='center'}
-qqnorm(resid(mod_scientist_B), col = colors[as.numeric(cortisol$group == "NC") + 1], pch = 15 +as.numeric(cortisol$group == "C"))
+qqnorm(resid(mod_scientist_B), col = colors[as.numeric(cortisol$group == "NC") + 1], 
+       pch = 15 + as.numeric(cortisol$group == "C"))
 qqline(resid(mod_scientist_A))
 ```
 
-These graphs reveal that this second model appears to be better than the first model. However, the fit is still relatively poor as can be observed in the second graph. 
+These graphs show that this model proposed by Scientist B appears to be better than the first model. However, the fit is still relatively poor as can be observed in the second graph. 
 
-In terms of AIC, the second model is clear better. Indeed, we have:
+In terms of AIC, the second model is clearly better with smaller AIC. Indeed, we have:
 
 ```{r}
 AIC(mod_scientist_A)
@@ -103,7 +117,10 @@ Let's evaluate the adequacy of this model with the data:
 
 ```{r, fig.align='center'}
 colors = c("#F8766D", "#00BFC4")
-plot(cortisol$caloric, cortisol$log_cortisol, xlab = "Caloric intake", ylab = "Urine costisol (pg/ml)", col = colors[as.numeric(cortisol$group == "NC") + 1], pch = 15 +as.numeric(cortisol$group == "C"))
+plot(cortisol$caloric, cortisol$log_cortisol, 
+     xlab = "Caloric intake", ylab = "Urine costisol (pg/ml)", 
+     col = colors[as.numeric(cortisol$group == "NC") + 1], 
+     pch = 15 + as.numeric(cortisol$group == "C"))
 grid()
 legend("topleft", c("Fried food", "Non-fried food"), col = colors, pch = c(16, 15), bty = "n")
 
@@ -119,15 +136,19 @@ polygon(c(cal_to_predict, rev(cal_to_predict)), c(pred_NC[,2], rev(pred_NC[,3]))
 ```
 
 ```{r, fig.align='center'}
-plot(predict(mod3), resid(mod3), xlab = "Fitted values", ylab = "Residuals", col = colors[as.numeric(cortisol$group == "NC") + 1], pch = 15 +as.numeric(cortisol$group == "C"))
+plot(predict(mod3), resid(mod3), 
+     xlab = "Fitted values", ylab = "Residuals", 
+     col = colors[as.numeric(cortisol$group == "NC") + 1], 
+     pch = 15 + as.numeric(cortisol$group == "C"))
 ```
 
 ```{r, fig.align='center'}
-qqnorm(resid(mod3), col = colors[as.numeric(cortisol$group == "NC") + 1], pch = 15 +as.numeric(cortisol$group == "C"))
+qqnorm(resid(mod3), col = colors[as.numeric(cortisol$group == "NC") + 1], 
+       pch = 15 + as.numeric(cortisol$group == "C"))
 qqline(resid(mod3))
 ```
 
-This third model appears to be more adequate to describe our data. Moreover, its AIC is lower which could indicate that this model is more adequate. Indeed, we have:
+This third model appears to be more adequate to describe our data than the first two models. Moreover, its AIC is the lowest, indicating that this model is more adequate. Indeed, we have:
 
 ```{r}
 AIC(mod_scientist_A)
@@ -135,11 +156,11 @@ AIC(mod_scientist_B)
 AIC(mod3)
 ```
 
-Interestingly, our conclusions will now depend on the model we decide to select. As the first model appears inadequate, we only consider the last two models. Based on these models, the claim of Scientist A that "*higher caloric intake leads to a lower cortisol level*" appears to be unfounded. Scientist A only managed to validate his/her claim by considering an incorrect model. This phenomenon is called "Simpson's paradox" where a trend appears without considering different groups but appears in the opposite direction when the groups are considered. This phenomenon is well illustrated in the animation below:
+Interestingly, our conclusions will now depend on the model we decide to select. As the first model appears inadequate, we only consider the last two models. Based on these models, the claim of Scientist A that "*higher caloric intake leads to a lower cortisol level*" appears to be unfounded. Scientist A only managed to validate his/her claim by considering an incorrect model. This phenomenon is called "Simpson's paradox" where a trend appears without considering different groups but the trend appears in the opposite direction when the groups are considered. This phenomenon is well illustrated in the animation below:
 
 
 <div align="center">
 ![](simpson.gif)
 </div>
 
-The claim of Scientist B that "*caloric intake has significant impact on cortisol levels*" appears reasonable since at the 95% confidence level we could accept the alternative hypothesis associated this claim for both models. However, the validity of the claim that "*a higher amount of fried food consumption corresponds to higher cortisol levels*" depends on the model we select. Indeed, for the first model (i.e. the model of Scientist B) we could accept the alternative hypothesis associated this claim but this is not the case for the second model (i.e. `mod3`). This can probably be explained by the fact that the claim "*a higher amount of fried food consumption corresponds to higher cortisol levels*" is associated to two parameters in the second model (but only one for the first model), making the analysis more complicated. In conclusion, while the second model appears to be more suitable, it may not provide us with a suitable approach to assess the validity of the claim "*a higher amount of fried food consumption corresponds to higher cortisol levels*". In such case, the model proposed by Scientist B could arguably be preferred.
+The claim of Scientist B that "*caloric intake has significant impact on the cortisol level*" appears reasonable since at the 95% confidence level we could accept the alternative hypothesis associated to this claim for both models. However, the validity of the claim that "*a higher amount of fried food consumption corresponds to a higher cortisol level*" depends on the model we select. Indeed, for the first model (i.e. the model of Scientist B) we could accept the alternative hypothesis associated to this claim but this is not the case for the second model (i.e. `mod3`). This can probably be explained by the fact that the claim "*a higher amount of fried food consumption corresponds to a higher cortisol level*" is associated to two parameters in the second model (but only to one parameter in the first model), making the analysis more complicated and difficult for interpretation. In conclusion, while the second model appears to be more suitable, it may not provide us with a suitable approach to assess the validity of the claim "*a higher amount of fried food consumption corresponds to a higher cortisol level*". In such case, the model proposed by Scientist B could arguably be preferred for its better interpretability.

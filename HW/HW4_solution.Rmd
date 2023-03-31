@@ -8,12 +8,12 @@ output: html_document
 We consider the following: 
 
 $$\small \Pr(\color{#e64173}{\text{CHD}_i} = 1| \color{#6A5ACD}{\text{BMI}_i}, \color{#20B2AA}{\text{SEX}_i}, \color{#FFA500}{\text{AGE}_i}, \color{#8bb174}{\text{SYSBP}_i},  \color{#314f4f}{\text{DIABP}_i}) = g\left(\beta_0 + \beta_1\color{#6A5ACD}{\text{BMI}_i} + \beta_2 \color{#20B2AA}{\text{SEX}_i} + \beta_3 \color{#FFA500}{\text{AGE}_i} + \beta_4 \color{#8bb174}{\text{SYSBP}_i} + \beta_5 \color{#314f4f}{\text{DIABP}_i}\right),$$
-$g(x) = \exp(x)/(1 + \exp(x))$.
+where we define $g(x) = \exp(x)/(1 + \exp(x))$.
 
 We start by estimating the parameters of this model:
 
 ```{r, warning=F}
-library("riskCommunicator")
+library(riskCommunicator)
 data(framingham)
 
 mod = glm(PREVCHD ~ BMI + SEX + AGE + SYSBP + DIABP, data = framingham, family = binomial())
@@ -76,7 +76,7 @@ We can see that among these 8 variables, some appear not significant, implying t
 
 **Claim 2**: "*Older women are more likely to be affected by diabetes*" which corresponds to a p-value of nearly 5.56% (what are the hypotheses here? 🤔). Therefore, we cannot reject the null hypothesis and there isn't enough evidence to conclude at the 95% confidence level that age is determining factor.
 
-Naturally, Model 1 is not the best possible model to describe our data and. Actually, no matter how we select our model we will never be able to claim: "this is the best model!". In this case, there are 8 variables corresponding to $2^8 = 256$ possible models so it would be possible to explore all models. Nevertheless, we will consider an alternative approach based on the stepwise forward AIC method which can be performed as follows:
+Naturally, Model 1 is not the best possible model to describe our data. Actually, no matter how we select our model we will never be able to claim: "this is the best model!". In this case, there are 8 variables corresponding to $2^8 = 256$ possible models so it would be possible to explore all models. Nevertheless, we will consider an alternative approach based on the stepwise forward AIC method which can be performed as follows:
 
 ```{r}
 # Initial model
@@ -87,9 +87,9 @@ mod2 = step(smallest, scope = list(lower = formula(smallest), upper = formula(mo
 summary(mod2)
 ```
 
-It can be observed that Model 2 is nearly identical to Model 1 but the variable `triceps` was removed. It can be observed in the summary of Model 1 that this variable indeed didn't appear to play an important role. Since the total number of variables is small (i.e. only 8 variables), Models 1 and 2 are quite close and provide very similar p-values (so won't change our conclusions for the claims of interest). However, this is not always the case, in particular when the number of variables is large (in many modern studies we are considering thousands of variables). 
+It can be observed that Model 2 is nearly identical to Model 1 but the variable `triceps` was removed. It can be observed in the summary of Model 1 that this variable indeed does not appear to play an important role. Since the total number of variables is small (i.e. only 8 variables), Models 1 and 2 are quite close and provide very similar p-values (so won't change our conclusions for the claims of interest). However, this is not always the case, in particular when the number of variables is large (in many modern studies we are considering thousands of variables). 
 
-However, we can verify that Model 2 has a smaller AIC than model 1:
+However, we can verify that Model 2 has a smaller AIC than Model 1:
 
 ```{r}
 AIC(mod1)
@@ -111,7 +111,7 @@ in_accuracy_mod1
 in_accuracy_mod2
 ```
 
-As expected, the performances are nearly identical. Second, we consider the out-of-sample classification accuracy of the models:
+As expected, the in-sample prediction performances are nearly identical. Next, we consider the out-of-sample classification accuracy of the models:
 
 ```{r}
 library(boot)
