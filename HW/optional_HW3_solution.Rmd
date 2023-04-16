@@ -1,0 +1,79 @@
+---
+title: "Optional Homework 3: Solution"
+output: html_document
+---
+
+We would like to fit the following model: 
+
+$$
+\log(\text{signal}_i) = \beta_0 + \beta_1\text{group}_i + \beta_2\text{dose}_i + \beta_3\text{group}_i\text{dose}_i + \epsilon_i
+$$
+
+```{r}
+library(idarps)
+data("HP13Cbicarbonate")
+
+# Log transform
+HP13Cbicarbonate$log_signal = log(HP13Cbicarbonate$signal)
+
+# Fit the model
+mod = lm(log_signal ~ group*dose, data = HP13Cbicarbonate)
+summary(mod)
+```
+
+Next we evaluate graphically the adequacy of this model with the data:
+
+```{r, fig.align='center'}
+colors = c("#F8766D", "#00BFC4")
+plot(HP13Cbicarbonate$dose, HP13Cbicarbonate$log_signal, 
+     xlab = "Dose", ylab = "Signal (in log scale)", 
+     col = colors[as.numeric(HP13Cbicarbonate$group == "Fed") + 1], 
+     pch = 15 + as.numeric(HP13Cbicarbonate$group == "Fed"))
+grid()
+legend("topright", c("Fasted", "Fed"), col = colors, pch = c(15, 16), bty = "n")
+
+dose_to_predict = seq(0.01, 0.3, length.out = 20)
+pred_fasted = predict(mod, data.frame(dose = dose_to_predict, group = rep("Fasted", length(dose_to_predict))), interval = "confidence")
+pred_fed = predict(mod, data.frame(dose = dose_to_predict, group = rep("Fed", length(dose_to_predict))), interval = "confidence")
+
+lines(dose_to_predict, pred_fasted[,1], col = "#F8766D")
+polygon(c(dose_to_predict, rev(dose_to_predict)), c(pred_fasted[,2], rev(pred_fasted[,3])), col = "#F8766D33", border = NA)
+
+lines(dose_to_predict, pred_fed[,1], col = "#00BFC4")
+polygon(c(dose_to_predict, rev(dose_to_predict)), c(pred_fed[,2], rev(pred_fed[,3])), col = "#00BFC433", border = NA)
+```
+
+We also construct the model diagnostic graphs for this model as follows:
+
+```{r, fig.align='center'}
+plot(predict(mod), resid(mod), 
+     xlab = "Fitted values", ylab = "Residuals", 
+     col = colors[as.numeric(HP13Cbicarbonate$group == "Fed") + 1], 
+       pch = 15 + as.numeric(HP13Cbicarbonate$group == "Fed"))
+```
+
+```{r, fig.align='center'}
+qqnorm(resid(mod), 
+       col = colors[as.numeric(HP13Cbicarbonate$group == "Fed") + 1], 
+       pch = 15 + as.numeric(HP13Cbicarbonate$group == "Fed"))
+qqline(resid(mod))
+```
+
+As we can see, this model appears to be adequate to describe our data based on these diagnostic graphs.
+
+Now we evaluate the claims of the scientists. We recall the model summary as below: 
+
+```{r}
+summary(mod)
+```
+
+**Claim 1**: "*In the fasted group, the variable dose has no impact on the signal*", which corresponds to the hypotheses:
+
+$$H_0: \;\; \beta_2 = 0, \;\;\; H_a: \;\; \beta_2 \neq 0.$$
+The p-value of this test is 0.88846. Therefore, we can conclude at the 95% confidence level that the variable dose has no impact on the signal in the fasted group.
+
+**Claim 2**: "*In the fed group, the variable dose has an impact on the signal (and we expect that the higher is the dose, the lower is the signal)*", which corresponds to the hypotheses:
+
+$$H_0: \;\; \beta_3 = 0, \;\;\; H_a: \;\; \beta_3 < 0.$$
+
+The p-value of this test is 0.02199. Therefore, at the 95% confidence level we can reject the null hypothesis and conclude that in the fed group, the higher is the dose, the lower is the signal. 
