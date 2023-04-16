@@ -1,0 +1,159 @@
+---
+title: "Practice Exam: Solution"
+output: html_document
+---
+
+# Dataset 1: Forced Expiratory Volume
+
+```{r}
+# Load data
+library(idarps)
+data("fev")
+head(fev)
+```
+
+### Question 1: Do you see any potential problems of the approach of Scientist A? Justify your answer.
+
+Yes, there is a potential problem of the approach of Scientist A because the impacts of the other variables (i.e. age, sex, height) on FEV are not taken into account. 
+
+### Question 2: Does this model suggest that smoking increases the FEV as claimed by Scientist A? Justify your answer.
+
+Considering the model: 
+
+$$
+\text{fev}_i = \beta_0 + \beta_1\text{age}_i + \beta_2\text{height}_i + \beta_3\text{smoke}_i + \epsilon_i
+$$
+
+```{r}
+mod1 = lm(fev ~ age + height + smoke, data = fev)
+summary(mod1)
+```
+
+To test whether smoking increases the FEV as claimed by Scientist A, we consider the following hypotheses: 
+
+$$H_0: \;\; \beta_3 = 0, \;\;\; H_a: \;\; \beta_3 > 0.$$
+
+The p-value of this test is $1-0.0667/2=0.96665$. Therefore, at the 95% confidence level we fail to reject the null hypothesis and cannot conclude that smoking increases the FEV as claimed by Scientist A. 
+
+### Question 3: Do you think the argument of Scientist A is correct? Moreover, what is the hypothesis associated to this p-value with value of 6.67%? Is it relevant to what Scientist A claims? Justify your answer. 
+
+The argument of Scientist A is wrong. In fact, the hypothesis associated to this p-value is 
+
+$$H_0: \;\; \beta_3 = 0, \;\;\; H_a: \;\; \beta_3 \neq 0.$$
+
+That is, to test whether smoking has an impact on the FEV. It is relevant to test the claim of Scientist A. Indeed, to test the claim of Scientist A, we use the following hypotheses: 
+
+$$H_0: \;\; \beta_3 = 0, \;\;\; H_a: \;\; \beta_3 > 0.$$
+
+Since the estimated $\beta_3$ is smaller than 0, the p-value of this test is $1-0.0667/2=0.96665$. (If the alternative hypothesis is $H_a: \;\; \beta_3 > 0$, i.e. smoking decreases the FEV, then the p-value is $0.0667/2=0.03335$.)
+
+### Question 4: Do you agree with the argument used by Scientist C to justify the use of `mod2`? Provide your opinion as to which model appears to be better and justify your answer. 
+
+The argument used by Scientist C is wrong. Indeed, compared to `mod1`, `mod2` adds another variable "sex". Since models with more variables always have larger $R^2$ value, it is no doubt that `mod2` has larger $R^2$ value than `mod1`. However, a model with more variables doesn't mean it is better. 
+
+Based on the available information, `mod2` is better because it has smaller AIC value compared to `mod1`. 
+
+
+### Question 5: Based on this graph, Scientist C asks for your opinion on his model.
+
+The correct answer is: The adequacy between the model and the data is quite poor, indicating that we should look for another model.
+
+Reason: An adequate model should have residuals evenly spread around 0, i.e. the residuals are not related to the fitted value. However, in this graph we clear see that the larger the fitted value is, the more widely spread the residuals are. 
+
+
+### Question 6: Based on these graphs, Scientist D asks for your opinion on her model.
+
+The correct answer is: The model seems appropriate as there is a good match between the model and the data.
+
+
+### Question 7: Write the hypotheses you would use to test this claim. What is the associated p-value and what is your conclusion at the 5% significance level? 
+
+Considering the model:
+
+$$
+\log(\text{fev}_i) = \beta_0 + \beta_1\text{age}_i + \beta_2\text{sex}_i + \beta_3\text{height}_i + \beta_4\text{smoke}_i + \epsilon_i
+$$
+
+```{r}
+mod3 = lm(log(fev) ~ age + sex + height + smoke, data = fev)
+summary(mod3)
+```
+
+To test the claim of Scientist D, we use the following hypotheses: 
+
+$$H_0: \;\; \beta_4 = 0, \;\;\; H_a: \;\; \beta_4 < 0.$$
+
+
+The p-value of this test is $0.0279/2=0.01395$. Therefore, at the 5% significance level we can reject the null hypothesis and conclude that smoking reduces the FEV among the youths. 
+
+
+### Question 8: Comment on the validity of the comparison made by Scientist C and justify your answer. 
+
+```{r}
+range(fev$age)
+```
+
+This comparison made by Scientist C is not valid. Indeed, `mod3` is based on data that only have "age" varying from 3 to 19, but Scientist C is using this model to predict on a woman of age 65. So Scientist C is estimating beyond the original observation range, i.e. extrapolating, which does not make sense. 
+
+### Question 9: Do you agree with the argument of Scientist A? Justify your answer. 
+
+Scientist A is correct for saying that with Statistics we can never be sure. However, he is wrong by saying that his initial argument based on the t-test is equally valid. Indeed, although no statistical methods can give absolutely accurate answer, some methods are better than others because they are more suitable to analyze the data at hand. In this example, Scientist A uses a t-test which does not take into account the impacts of other variables, whereas `mod3` is an adequate model for this dataset and it takes into account all variables. So given the available information, `mod3` is better than t-test in this case. 
+
+
+# Dataset 2: Snoring
+
+```{r}
+# Load data 
+library(idarps)
+data("snoring")
+head(snoring)
+```
+
+Considering the model:
+
+$$
+\text{Pr}(\text{snore}_i) = \frac{\exp(\beta_0 + \beta_1\text{sex}_i + \beta_2\text{age}_i + \beta_3\text{height}_i + \beta_4\text{weight}_i + \beta_5\text{smoke}_i + \beta_6\text{alcohol}_i)}{1+\exp(\beta_0 + \beta_1\text{sex}_i + \beta_2\text{age}_i + \beta_3\text{height}_i + \beta_4\text{weight}_i + \beta_5\text{smoke}_i + \beta_6\text{alcohol}_i)}
+$$
+
+```{r}
+mod1 = glm(snore ~ sex + age + height + weight + smoke + alcohol,  
+           family = binomial(), data = snoring)
+summary(mod1)
+```
+
+### Question 1: What does this model tell you about a typical profile of a snorer? For example, is a snorer typically an old man? A young woman? Does a snorer typically smoke or drink a lot, and so on?
+
+This model says that a typical snorer would be a man, old, not a smoker, and drinks lots of alcohol. 
+
+Note that we cannot conclude on height and weight as these two variables are not significant in `mod1`. 
+
+### Question 2: Based on this model, the company wants to test if smokers are less likely to snore than non-smokers. To test this claim, what are the corresponding null and alternative hypotheses? What is the corresponding p-value and your conclusion at the 5% significance level?
+
+To test this claim, we use the following hypotheses: 
+
+$$H_0: \;\; \beta_5 = 0, \;\;\; H_a: \;\; \beta_5 < 0.$$
+
+The p-value of this test is $0.03787/2=0.018935$. Therefore, at the 5% significance level we can reject the null hypothesis and conclude that smokers are less likely to snore than non-smokers.
+
+
+### Question 3: Do you agree with your manager? Justify your answer.
+
+The manager is correct by saying that  statistical analyses are uncertain and it is possible to obtain a counterintuitive conclusion once a while.
+
+
+### Question 4: Do you agree with the argument of your colleague? Justify your answer.
+
+I do not agree with the argument of this colleague. Indeed, we have seen based on `mod1` that there are other variables (age, alcohol) that have significant impacts on the probability of snoring. So we should take them into account for a more complete analysis. 
+
+
+### Question 5: Do you agree with the claim of your colleague? Justify your answer.
+
+The claim of this colleague is correct at the 5% significance level because the p-value is indeed 83.181% for this test based on `mod1` and is larger than 5%. 
+
+
+### Question 6: Do you agree with your manager? Justify your answer.
+
+The manager is wrong by saying that `mod_aic` is the best model one can possibly obtain. Indeed, based on AIC values, we can only claim that `mod_aic` is better than `mod1` and `mod2`. However, there are other possible models, such as the ones taking into account the interactions of variables, that one can try to fit with this dataset, and it is not clear if they will be better than `mod_aic` or not. 
+
+
+### Question 7: Your manager asks you to explain to your colleagues how to interpret these numbers? Moreover, why is it expected that the out-of-sample classification accuracy is smaller than the in-sample classification accuracy?
