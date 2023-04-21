@@ -1,0 +1,209 @@
+---
+title: "Modeling and Data Analysis for Pharmaceutical Sciences - Final Exam of Part 1"
+output: html_document
+---
+
+# Instructions
+
+This final exam has ?????? questions (?????? for dataset 1 and 8 for dataset 2).
+
+The duration of the exam is ?????? minutes.
+
+Some questions are multiple choice questions, but most of them are open questions and require you to answer with some short texts.
+
+You can answer in English or in French.
+
+Each question is worth 1 point.
+
+Your grade will be computed considering a maximum of ?????? points.
+
+Good luck!
+
+
+
+# Dataset 1: Peruvian Blood Pressure
+
+This dataset consists of variables possibly relating to blood pressures of 39 Peruvians who have moved from rural high-altitude areas to urban lower-altitude areas. The variables in this dataset are listed as follows: 
+
+- `Age`: Age in years
+- `Years`: Years in urban area
+- `Weight`: Weight in kg
+- `Height`: Height in mm
+- `Chin`: Chin skinfold
+- `Forearm`: Forearm skinfold
+- `Calf`: Calf skinfold
+- `Pulse`: Resting pulse rate
+- `Systol`: Systolic blood pressure
+
+You work in a pharmaceutical company and want to conduct suitable statistical analysis to understand these data. In particular, you are asked to find significant variables that contribute to high systolic blood pressure. 
+
+You can load this dataset as follows:
+
+```{r, eval=FALSE}
+library(idarps)
+data("PeruvianBP")
+head(PeruvianBP)
+```
+
+
+
+# Dataset 2: Breast Cancer 
+
+This dataset consists of several clinical features observed or measured for 116 participants in a study of breast cancer. In particular, age, BMI, glucose, insulin and HOMA are recorded for each participant, as well as whether they have breast cancer or not. 
+
+- `Age`: Age in years
+- `BMI`: Body mass index in kg/$m^2$
+- `Glucose`: Glucose in mg/dL
+- `Insulin`: Insulin in $\mu$U/mL
+- `HOMA`: Homeostasis model assessment 
+- `Classification`: Presence of breast cancer (0 if no cancer, 1 if with cancer)
+
+
+You work in a hospital and your goal is to develop a suitable model based on the available data in order to discover the significant features that contribute to the presence of breast cancer in women. 
+
+You can load this dataset as follows:
+
+```{r, eval=FALSE}
+library(idarps)
+data("BreastCancer")
+head(BreastCancer)
+```
+
+```{r}
+load("/Users/zhangyum/Desktop/BreastCancer.rda")
+```
+
+
+Doctor A is interested in testing if a higher glucose value leads to a higher probability of getting breast cancer. He considers a logistic regression with all the available features as the covariates, and he obtains the following result: 
+
+```{r}
+mod1 = glm(Classification ~ ., family = binomial(), data = BreastCancer)
+summary(mod1)
+```
+
+
+### Question 1
+
+**Based on this model, can you verify Doctor A's claim (i.e., a higher glucose value leads to a higher probability of getting breast cancer)? What is the p-value associated to this test?**
+
+**Solution:** The p-value of this test is $0.000838/2=0.000419$. Therefore, at the 5% significance level, we can reject the null hypothesis and conclude that a higher glucose value leads to a higher probability of getting breast cancer. 
+
+
+### Question 2
+
+**Doctor B believes that a higher BMI should contribute to a higher probability of getting breast cancer. Based on `mod1`, can you determine the validity of Doctor B's claim? What is the p-value associated to this test?**
+
+**Solution:** Since the estimated coefficient corresponding to BMI is smaller than 0, the p-value corresponding to this test is $1-0.007718/2=0.996141$. Therefore, at the 5% significance level, we fail to reject the null hypothesis and cannot conclude what Doctor B claims. 
+
+
+
+
+Doctor C points out that age is known to have a nonlinear effect on the probability of getting breast cancer, in the sense that people between 40 to 60 years old have higher probability of getting breast cancer than the others. Doctor A argues that this is no problem because logistic regression is a nonlinear model.
+
+### Question 3
+
+**Do you agree with Doctor C that the nonlinear effect of age can be a potential problem to use `mod1`? Justify your answer.**
+
+**Solution:** Yes I agree with Doctor C in the sense that the nonlinear effect of age can be a potential problem to use `mod1`. Indeed, `mod1` actually indicates a linear effect of age, and it shows that the probability of getting breast cancer decreases as the age increases. 
+
+
+Given the results of `mod1`, Doctor B points out that although glucose is a significant variable, its estimated coefficient is very small (with a value of 0.09875). So Doctor B says that it is not necessary to include glucose into the model. 
+
+### Question 4
+
+**Do you agree with the argument of Doctor B to remove glucose from the model? Justify your answer.**
+
+**Solution:** I do not agree with the argument of Doctor B. In `mod1`, glucose has a very small p-value of 0.000838, indicating that it has a statistically significant effect on the presence of breast cancer, so we should take it into consideration. Moreover, the coefficient value depends on the magnitude / scale of the variable. We can always rescale the glucose variable to obtain a larger coefficient value.
+
+
+Doctor D joins the dicussion. She looks at `mod1` and says that we should actually remove insulin and HOMA from the model, because she believes that they are not relevant to breast cancer. So she considers the following model: 
+
+```{r}
+mod2 = glm(Classification ~ Age + BMI + Glucose, family = binomial(), data = BreastCancer)
+summary(mod2)
+```
+
+She also computes the AIC of both models, which gives: 
+
+```{r}
+AIC(mod1)
+AIC(mod2)
+```
+
+
+### Question 5
+
+**Which one of `mod1` and `mod2` is better? Is it possible to find a better model for this dataset?**
+
+**Solution:** Since `mod2` has a smaller AIC value, it is better than `mod1`. It is possible to find a better model. For example, we can try to consider interactions between variables and see if we can find a model with smaller AIC.
+
+
+Doctor E also joins the discussion and he believes that we should use age in months instead of years. So he proposes to adjust `mod2` as follows:
+
+```{r}
+# Create the variable age in months
+BreastCancer$Age_in_month = 12*BreastCancer$Age
+```
+
+```{r}
+mod3 = glm(Classification ~ Age_in_month + BMI + Glucose, family = binomial(), data = BreastCancer)
+summary(mod3)
+```
+
+Doctor D says that `mod3` is not as good as `mod2` because the corresponding coefficient is -0.02433 in `mod2` and now it becomes -0.002027 in `mod3`. Doctor D believes that this indicates that age is more important in `mod2` than in `mod3`.
+
+
+### Question 6
+
+**Do you agree with Doctor D that `mod2` is better than `mod3`? Do you agree that age is more important in `mod2` than in `mod3`? Justify your answer.**
+
+**Solution:** I do not agree with Doctor D. In fact, the only difference between `mod2` and `mod3` is the rescaling of age, so they are actually equivalent. Moreover, since age has a p-value of 0.0843 in both models, it shows that age is equally important in `mod2` and `mod3`. 
+
+
+Doctor B suspects that the data actually consider multiple measurements of the same persons at different ages. For example, she suspects that some people are measured several times a few years apart. Doctor B is worried that this is potential problem and she asks for your opinion. 
+
+
+### Question 7
+
+**Do you think this could be problem if the data are indeed collected in this way (i.e., multiple measurements of the same persons at different ages)?**
+
+- No, because logistic regression is a nonlinear model. 
+- No, because independence is not important since we account for the age effect already. 
+- Yes, because logistic regression considers non-normal data. 
+- Yes, because logistic regression assumes that data are independent. 
+- Maybe, it depends on the p-value for the age variable. 
+- It is impossible to answer given the available information.
+
+
+**Solution:** Yes, because logistic regression assumes that data are independent. 
+
+
+The doctors decide to further assess the validity of `mod2` by computing its in-sample and out-of-sample classification accuracy. They obtain the following results:
+
+```{r}
+mod2_predict = mod2$fitted.values > 0.5
+in_accuracy_mod2 = mean((BreastCancer$Classification == 1) == mod2_predict)
+in_accuracy_mod2
+
+library(boot)
+cost = function(resp, pred){
+  mean(resp == (pred > 0.5))
+}
+
+set.seed(123) # for reproducibility
+out_accuracy_mod2 = cv.glm(BreastCancer, mod2, cost, K = 10)$delta[2]
+out_accuracy_mod2
+```
+
+
+### Question 8
+
+**Based on this study conducted in the USA, a group of Swiss researchers would like to use `mod2` to assess the risk of people getting breast cancer based on their characteristics (i.e., age, BMI, glucose). What is the expected accuracy (i.e., correct classification prediction) of using `mod2` on the Swiss population?**
+
+- The expected accuracy is difficult to assess since we are comparing data collected in the USA which may not be comparable to the Swiss population.
+- The expected accuracy is at least 0.6908442 (i.e., the out-of-sample accuracy) since it is a measured out of the sample.
+- The expected accuracy is at least 0.6908442 (i.e., the out-of-sample accuracy) because we are comparing data collected in the USA which may not be comparable to the Swiss population.
+- The expected accuracy is at least 0.7155172 (i.e., the in-sample accuracy) because we are comparing data collected in the USA which may not be comparable to the Swiss population.
+- The expected accuracy is between 0.6908442 and 0.7155172.
+
+**Solution:** The expected accuracy is difficult to assess since we are comparing data collected in the USA which may not be comparable to the Swiss population.
