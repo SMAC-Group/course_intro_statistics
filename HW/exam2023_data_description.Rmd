@@ -27,7 +27,7 @@ install.packages("idarps")
 
 Then, you can load this dataset as follows:
 
-```{r, eval=FALSE}
+```{r}
 library(idarps)
 data("PeruvianBP")
 head(PeruvianBP)
@@ -50,7 +50,7 @@ You work in a hospital and your goal is to develop a suitable model based on the
 
 The data are in the `idarps` R package and you can load the data as follows:
 
-```{r, eval=FALSE}
+```{r}
 library(idarps)
 data("BreastCancer")
 head(BreastCancer)
