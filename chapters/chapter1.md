@@ -137,6 +137,7 @@ and you should see an output like this:
 > 
 ```
 
+
 then you have successfully installed and loaded the `idarps` package! Congratulations!
 
 Below is a GIF which illustrates the installation of the `idarps` package:
