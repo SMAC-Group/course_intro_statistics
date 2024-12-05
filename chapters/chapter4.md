@@ -3,7 +3,7 @@ title: 'Chapter 4: Linear Regression'
 description:
   ''
 prev: /chapter3
-next: /chapter5
+next: null
 type: chapter
 id: 4
 ---

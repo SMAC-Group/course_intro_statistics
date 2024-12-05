@@ -57,7 +57,7 @@ const Layout = ({ isHome, title, description, children }) => {
                             <footer className={classes.footer}>
                             
                             <div align="center">
-                            <H3>About this course:</H3>
+                            <H3>À propos du cours:</H3>
                             </div>
                                 <div className={classes.footerContent}>
                                
@@ -66,8 +66,7 @@ const Layout = ({ isHome, title, description, children }) => {
 
                                         
                                         <p> 
-This course is intended to provide an introduction to the data analysis tools with <code>R</code>. These tools include statistical hypothesis testing, (generalized) linear models, machine learning and semi-parametric methods. Applications of these statistical methods are provided in the context of Pharmaceutical Sciences. At the end of this class, students are expected to understand the underlying theoretical foundations and the computational issues of different statistical methods, as well as to communicate the practical interpretation of the data analysis results.
-                                        </p>
+Ce cours propose une introduction aux outils fondamentaux de la Statistique. Les thèmes abordés incluent la statistique descriptive (résumés numériques, graphiques) et inférentielle (estimations, intervalles de confiance, tests d’hypothèses). À la fin du cours, les étudiants sauront analyser et interpréter des données, tout en communiquant efficacement les résultats.                                        </p>
                                             
                                     </section>
                                     

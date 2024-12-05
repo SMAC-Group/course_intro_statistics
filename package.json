@@ -1,7 +1,7 @@
 {
-    "name": "course-data-analytics",
+    "name": "course-intro-statistics",
     "private": true,
-    "description": "Course on Data Analytics",
+    "description": "Cours Introduction a la Statistique",
     "version": "0.0.1",
     "author": "Lionel Voirol <lionel.voirol@unige.ch>",
     "dependencies": {
