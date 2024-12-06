@@ -11,7 +11,7 @@ id: 1
 
 
 
-<exercise id="1" title="Slides iframe externe">
+<exercise id="1" title="Slides xaringan externe">
 
 
 You can view the slides directly in the browser below. To download the slides, please check [here](https://raw.githack.com/stephaneguerrier/data_analytics/master/Lecture1.html#1) for the .html version or [here](https://raw.githack.com/stephaneguerrier/data_analytics/master/Lecture1.pdf) for the .pdf version. 
