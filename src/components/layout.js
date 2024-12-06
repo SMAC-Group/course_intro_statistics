@@ -66,7 +66,7 @@ const Layout = ({ isHome, title, description, children }) => {
 
                                         
                                         <p> 
-Ce cours propose une introduction aux outils fondamentaux de la Statistique. Les thèmes abordés incluent la statistique descriptive (résumés numériques, graphiques) et inférentielle (estimations, intervalles de confiance, tests d’hypothèses). À la fin du cours, les étudiants sauront analyser et interpréter des données, tout en communiquant efficacement les résultats.                                        </p>
+Ce cours propose une introduction aux notions fondamentales de la Statistique. Les thèmes abordés incluent notamment la notion de variable aléatoire, de distribution discrète et continues, d'estimateurs, d'intervalles de confiance et de test d'hypothèses. À la fin du cours, les étudiants sauront analyser et interpréter des données, tout en communiquant efficacement des résultats statistiques.                                        </p>
                                             
                                     </section>
                                     

@@ -17,7 +17,6 @@
     },
     "showProfileImage": true,
     "footerLinks": [
-      
         { "text": "Source", "url": "https://github.com/SMAC-Group/course_intro_statistics" }
     ],
     "theme": "#de7878"
